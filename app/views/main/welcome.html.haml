@@ -1,0 +1,42 @@
+
+=link_to "admin", admin_path(current_user), class: 'btn'
+
+.page1
+	%h1= "logo Dean"
+	%h1= "le goût Birman pour les grandes occasions"
+	%br
+	%br
+	%br
+
+	= render partial: 'main/search_links'
+
+	%br
+	%br
+
+	= image_tag "dress1.jpg", class: "welcome_picture"
+	%h1= "Designez vos robes sur mesure en choisissant votre tissus"
+
+	%h1= ">"
+	%h1= "<"
+
+.page2
+	%h1= "logo Dean"
+	%h1= "le goût Birman pour les grandes occasions"
+
+	%br
+	%br
+
+	= image_tag "tailor1.jpg", class: "tailor_picture"
+	%h1= "Notre service : "
+	%h1= "Nous sommes une équipe basée en France et Birmanie et vous proposons  de supers compositions "
+
+	%br
+	.block
+		%h1= "ON MEASURE"
+		%h3= "travail de précision"
+	.block
+		%h1= "FREE SHIPPING"
+		%h3= "travail de précision"
+	.block
+		%h1= "MONEY BACK"
+		%h3= "travail de précision"	

@@ -1,0 +1,2 @@
+$('#item_<%= @product.id %> .show_product').hide();
+$('#item_<%= @product.id %>').append("<%= j render partial: 'products/product_form', locals: {product: @product } %>");

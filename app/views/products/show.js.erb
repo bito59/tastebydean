@@ -1,0 +1,8 @@
+if (<%= @product.kind == "model" %>) {
+	$('#model_area').append("<%= j render partial: 'products/show_product_to_admin', locals: {product: @product } %>");
+}
+else {
+	$('#material_area').append("<%= j render partial: 'products/show_product_to_admin', locals: {product: @product } %>");
+}
+$('#new_product').remove();
+$('#new_product_form_btn').show();

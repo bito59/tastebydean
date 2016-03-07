@@ -1,0 +1,27 @@
+!!! 5
+%html
+%head
+	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+	= javascript_include_tag 'application', 'data-turbolinks-track' => true
+	= csrf_meta_tags
+
+#flash_msg
+	%p.notice = notice
+	%p.alert = alert
+
+%header
+
+%body
+	.container_screened
+		.container
+			= yield
+
+%footer
+	.text
+		%h3= mail_to("tastebydean@gmail.com")
+		%h3.smallhide= "|"
+		%h3= link_to 'Nos conditions', root_path
+		%h3.smallhide= "|"
+		%h3= "© tastebydean 2016"
+	.follow
+

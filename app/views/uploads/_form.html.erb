@@ -1,0 +1,9 @@
+<%= form_for @upload, remote: true, authenticity_token: true, :url => uploads_path, html: { multipart: true } do |f| %>
+  <%= f.label :uploaded_file %>
+  <%= f.file_field :uploaded_file, multiple: true, name: 'upload[uploaded_file]' %>
+  <%= f.submit %>
+<% end %>
+
+
+
+

@@ -1,0 +1,24 @@
+#thread
+	= link_to "Home", root_path
+	- if params[:kind] == "model"
+		- unless params[:customer].blank?
+			= link_to params[:customer], products_path(kind: "model", customer: params[:customer])
+		- else 
+			= link_to "all products", products_path(kind: "model")		
+	- elsif params[:kind] == "material"
+		= link_to "fabrics", products_path(kind: "model")
+		
+
+#fast_link
+	= render partial: 'main/search_links'
+
+#type_sort
+	
+
+#display_sort
+	Changer le display
+
+
+#product_area
+	- @products.each do |product|
+		= render partial: 'products/show_product_to_customer', locals: { product: product }

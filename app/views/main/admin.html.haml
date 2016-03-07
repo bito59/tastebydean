@@ -1,0 +1,30 @@
+
+%h1= "welcome admin"
+
+= link_to 'Back to home', root_path, class: "btn"
+
+#form_area.new_product
+	= link_to 'new product', new_product_path, remote: :true, id: "new_product_form_btn", class: "btn"
+	//= render :partial => 'products/product_form', locals: { product: @product }
+
+
+%br
+
+Les modèles
+#model_area
+	- @models.each do |product|
+		= render partial: 'products/show_product_to_admin', locals: { product: product }
+
+%br
+Les tissus
+#material_area
+	- @materials.each do |product|
+		= render partial: 'products/show_product_to_admin', locals: { product: product }
+
+#new_area
+
+
+
+
+
+

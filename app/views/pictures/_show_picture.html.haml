@@ -1,0 +1,3 @@
+.picture{ id: "picture_#{picture.id}" }
+	= image_tag picture.image.url(:thumb)
+	= link_to 'Destroy', picture, method: :delete, remote: true, data: { confirm: 'Are you sure?' } 

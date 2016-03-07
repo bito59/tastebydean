@@ -1,0 +1,11 @@
+%h1= @product.title
+
+= link_to 'Back to admin', admin_path, class: "btn"
+
+//Formulaire nouvelle image
+= render partial: 'pictures/picture_form', locals: { picture: @picture }
+
+#pictures
+	%h2= 'Images'
+	- @pictures.each do |picture|
+		= render partial: 'pictures/show_picture', locals: { picture: picture }
