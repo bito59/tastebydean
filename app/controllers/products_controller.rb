@@ -6,7 +6,20 @@ class ProductsController < ApplicationController
 
   def index
     products = Product.joins(:pictures).group("products.id").where(activated: true).having("count(pictures.id) > ?",0)
-    @products = products.filter(params.slice(:kind, :family, :customer))
+    if params[:kind] == "material"
+      @products = products.filter(params.slice(:kind, :family, :customer))     
+    else
+      @products = products.where("kind = ? or kind = ?", "model-female", "model-male")
+    end
+    respond_to do |format|
+      if params[:display] == "large"
+        format.js { render 'display_large.js.erb' }
+      elsif params[:display] == "small"
+        format.js { render 'display_small.js.erb' }
+      else
+        format.html { render }
+      end
+    end
   end
 
   def filter
@@ -15,19 +28,19 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     respond_to do |format|
-      format.js { render 'new.js.erb' }
+      format.js { render 'admin/products/new.js.erb' }
     end
   end
 
   def show
     respond_to do |format|
-      format.js { render 'show.js.erb' }
+      format.js { render 'admin/products/show.js.erb' }
     end
   end
 
   def edit
     respond_to do |format|
-      format.js   { render 'edit.js.erb' }
+      format.js   { render 'admin/products/edit.js.erb' }
     end
   end
 
@@ -37,13 +50,7 @@ class ProductsController < ApplicationController
       if @product.save
         @gallery = @product.build_gallery()
         @gallery.save
-        #format.html { redirect_to admin_path, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-        format.js   { render 'show.js.erb' }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-        format.js   { }
+        format.js   { render 'admin/products/show.js.erb' }
       end
     end
   end
@@ -52,22 +59,16 @@ class ProductsController < ApplicationController
     @product.slug = nil
     respond_to do |format|
       if @product.update(product_params)
-        #format.html { }
-        format.json { render :show, status: :ok, location: @product }
-        format.js   { render 'products/update.js.erb' }           
-      else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.js   { render 'admin/products/update.js.erb' }           
       end
     end
   end
 
   def destroy
-    @product.destroy
     respond_to do |format|
-      #format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
-      format.js   { render 'destroy.js.erb' }
+      if @product.destroy
+        format.js   { render 'admin/products/destroy.js.erb' }
+      end
     end
   end
 
@@ -77,7 +78,7 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:title, :description, :activated, :kind, :family, :customer, :new_product, :price, :price_unit, :measure, :measure_unit, :image)
+      params.require(:product).permit(:title, :description, :activated, :kind, :family, :customer, :event, :price, :price_unit, :measure, :measure_unit, :image)
     end
 
 end

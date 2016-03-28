@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :kind
       t.string :family
       t.string :customer
-      t.boolean :new_product, null: false, default: true
+      t.text :event
       t.decimal :price, precision: 8, scale: 2
       t.string :price_unit
       t.float :measure

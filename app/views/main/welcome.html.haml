@@ -1,9 +1,6 @@
 
-=link_to "admin", admin_path(current_user), class: 'btn'
-
 .page1
-	%h1= "logo Dean"
-	%h1= "le goût Birman pour les grandes occasions"
+	%h1= t_scoped(:logo_title)
 	%br
 	%br
 	%br
@@ -14,29 +11,24 @@
 	%br
 
 	= image_tag "dress1.jpg", class: "welcome_picture"
-	%h1= "Designez vos robes sur mesure en choisissant votre tissus"
+	%h1= t_scoped(:welcome_title)
 
 	%h1= ">"
 	%h1= "<"
 
 .page2
-	%h1= "logo Dean"
-	%h1= "le goût Birman pour les grandes occasions"
-
-	%br
-	%br
 
 	= image_tag "tailor1.jpg", class: "tailor_picture"
-	%h1= "Notre service : "
-	%h1= "Nous sommes une équipe basée en France et Birmanie et vous proposons  de supers compositions "
+	%h1= t_scoped(:intro_title)
+	%h1= t_scoped(:intro_description)
 
 	%br
 	.block
-		%h1= "ON MEASURE"
-		%h3= "travail de précision"
+		%h1= t_scoped(:block1_title)
+		%h3= t_scoped(:block1_description)
 	.block
-		%h1= "FREE SHIPPING"
-		%h3= "travail de précision"
+		%h1= t_scoped(:block2_title)
+		%h3= t_scoped(:block2_description)
 	.block
-		%h1= "MONEY BACK"
-		%h3= "travail de précision"	
+		%h1= t_scoped(:block3_title)
+		%h3= t_scoped(:block3_description)

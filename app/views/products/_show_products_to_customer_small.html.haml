@@ -1,0 +1,7 @@
+.show_products_small
+	- @products.each do |product|
+		.product{ id: "item_#{product.id}" }
+			= image_tag show_event(product), class: "event"
+			= image_tag product.pictures.first.image.url(:medium), class: "photo"
+			%h1= product.title
+			%h2= "Confection price : " + product.price.to_s + product.price_unit

@@ -19,6 +19,12 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.inet     :current_sign_in_ip
       t.inet     :last_sign_in_ip
 
+      ## User informations
+      t.attachment :avatar
+      t.string :pseudo
+      t.boolean :registered, default: false
+      t.string :slug
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at

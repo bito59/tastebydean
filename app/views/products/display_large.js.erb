@@ -1,0 +1,3 @@
+$('#product_area').fadeOut(400, function() {
+	$(this).empty().append("<%= j render partial: 'products/show_products_to_customer_large', locals: {products: @products } %>").fadeIn(400);
+});

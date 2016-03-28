@@ -3,12 +3,7 @@ class MainController < ApplicationController
 	#, only: :welcome
 
 	def welcome
-		@products = Product.all
-	end
-
-	def admin
-		@models = Product.all.where("kind = ? or kind = ?", "model-female", "model-male")
-		@materials = Product.all.where(kind: "material").order("created_at DESC")
+		#@products = Product.all
 	end
 
 end

@@ -1,0 +1,2 @@
+$('#table_item_<%= @product.id %>').after("<%= j render partial: 'admin/products/edit_product_form', locals: {product: @product } %>");
+$('#table_item_<%= @product.id %>').hide();

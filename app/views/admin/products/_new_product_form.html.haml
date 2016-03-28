@@ -1,0 +1,40 @@
+.new_product_form
+    = render partial: 'admin/products/table_header'
+    = form_for @product, remote: true, authenticity_token: true do |f|
+        %table
+            %tr.new-row
+                %td= f.text_field :title, autocomplete: "off", placeholder: "title", required: true
+                %td= f.select(:kind, Product::KINDS)
+                %td.material.option{style: "display:none"}= f.text_field :customer, value: "all", class: "custom_field", disabled: true, readonly: true
+                %td.model-male.option{style: "display:none"}= f.select :customer, Product::MALE_CUSTOMERS, {}, class: "custom_field", disabled: true
+                %td.model-female.option{style: "display:none"}= f.select :customer, Product::FEMALE_CUSTOMERS, {}, class: "custom_field", disabled: true
+                %td.material.option{style: "display:none"}= f.select :family, Product::MATERIAL_FAMILIES, {}, class: "custom_field", disabled: true
+                %td.model-male.option{style: "display:none"}= f.select :family, Product::MALE_FAMILIES, {}, class: "custom_field", disabled: true
+                %td.model-female.option{style: "display:none"}= f.select :family, Product::FEMALE_FAMILIES, {}, class: "custom_field", disabled: true
+                %td= f.text_field :description, autocomplete: "off", placeholder: "description", required: true
+                %td= f.number_field :price, autocomplete: "off", required: true
+                %td= f.select(:price_unit, Product::PRICE_UNITS)
+                %td= f.number_field :measure, autocomplete: "off", required: true
+                %td= f.select(:measure_unit, Product::MEASURE_UNITS)
+                %td= f.check_box :activated
+                %td= f.select(:event, Product::EVENTS)
+                %td
+                %td= f.submit
+                %td= link_to 'Cancel', root_path, remote: :true, class: "close_new_form btn"
+
+:javascript
+
+    $('.close_new_form').click(function() {
+        $(this).closest(".new_product_form").remove();
+        $('#new_product_form_btn').show();  
+    });
+
+    $('#product_kind').change(function() {
+        $('.option').hide();
+        $('.option').find('.custom_field').prop('disabled', true);
+        var kind = $(this).val();
+        $('.' + kind).show();
+        $('.' + kind).find('.custom_field').prop('disabled', false);
+    }).trigger('change');
+    
+

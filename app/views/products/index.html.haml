@@ -1,6 +1,6 @@
 #thread
 	= link_to "Home", root_path
-	- if params[:kind] == "model"
+	- if params[:kind] == "model-female" || params[:kind] == "model-male"
 		- unless params[:customer].blank?
 			= link_to params[:customer], products_path(kind: "model", customer: params[:customer])
 		- else 
@@ -13,12 +13,20 @@
 	= render partial: 'main/search_links'
 
 #type_sort
-	
+	Filtrer les résultats
 
 #display_sort
-	Changer le display
+	= link_to 'Display large', products_path(display: "large"), remote: :true, id: "display_large_btn", class: "btn display_btn"
+	= link_to 'Display small', products_path(display: "small"), remote: :true, id: "display_small_btn", class: "btn display_btn disabled"
 
 
-#product_area
-	- @products.each do |product|
-		= render partial: 'products/show_product_to_customer', locals: { product: product }
+#product_area.product_area
+	= render partial: 'products/show_products_to_customer_small', locals: { products: @products }
+
+
+:javascript
+
+	$('.display_btn').click(function() {
+		$(this).addClass('disabled');
+		$('.display_btn').not(this).removeClass('disabled');
+	});

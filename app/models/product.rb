@@ -1,8 +1,11 @@
 class Product < ActiveRecord::Base
 
-	attr_accessor :nb_stars
+	#attr_accessor :nb_stars
 	extend FriendlyId
 		friendly_id :title, use: :slugged
+
+	#resourcify
+  	#include Authority::Abilities
 
 	has_one :gallery, dependent: :destroy
 	has_many :pictures, through: :gallery
@@ -59,9 +62,14 @@ class Product < ActiveRecord::Base
 		'meter'
 	]
 
-	def rating
-		#self.nb_stars = Comment.where(:product_id == self.id).count
-		self.nb_stars = 2
+	EVENTS = [
+		'no',
+		'new',
+		'discount'
+	]
+
+	def serial_number
+		"D" + Time.now.year.to_s.last(2) + "%.3d"%self.id
 	end
 	
 end

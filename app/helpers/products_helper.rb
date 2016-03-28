@@ -8,4 +8,11 @@ module ProductsHelper
 		end
 	end
 
+	def show_event(product)
+		if product.event == "new"
+			image = "icons/new.png"
+		elsif product.event == "discount"
+			image = "icons/new.png"
+		end
+	end
 end

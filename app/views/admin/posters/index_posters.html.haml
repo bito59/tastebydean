@@ -1,0 +1,18 @@
+
+%h1= "Posters administration"
+
+#new_poster_area
+	= link_to 'new poster', new_poster_path, remote: :true, id: "new_poster_form_btn", class: "btn"
+
+%br
+
+#poster_area
+	= render partial: 'admin/posters/table_header'
+	- @posters.each do |poster|
+		= render partial: 'admin/posters/show_poster_to_admin', locals: { poster: poster }
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+.show_products_large
+	- @products.each do |product|
+		.product{ id: "item_#{product.id}" }
+			.row
+				.col-xs-12.col-sm-6.col-md-4
+					= image_tag product.pictures.first.image.url(:medium), class: "photo"
+				.col-xs-12.col-sm-6.col-md-8
+					.details
+						= image_tag show_event(product), class: "event"
+						%h1= product.title
+						%h1= product.serial_number
+						%h2= "Type of product : " + product.family
+						%h2= "Confection price : " + product.price.to_s + product.price_unit
+						%h3= product.description
+						.fabrics
+							= link_to 'All fabrics for noeux papillon (36)', root_path

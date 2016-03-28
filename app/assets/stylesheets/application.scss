@@ -15,7 +15,8 @@
 * require bootstrap3-editable/bootstrap-editable
 * require bootstrap-editable
 * require_tree .
-* require_self
+*= require_self
+*= require main
 
  *= require jquery.fileupload-ui
 

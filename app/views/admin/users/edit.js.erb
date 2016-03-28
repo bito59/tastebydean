@@ -1,0 +1,2 @@
+$('#table_user_<%= @user.id %>').after("<%= j render partial: 'admin/users/edit_user_form', locals: {user: @user } %>");
+$('#table_user_<%= @user.id %>').hide();

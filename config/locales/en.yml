@@ -1,23 +1,41 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  views:
+    layouts:
+      application:
+        welcome: "Welcome"
+        basket: "My basket"
+        admin_products: "Manage products"
+        admin_users: "Manage users"
+        my_account: "My account"
+        log_out: "Log out"
+        delete_account: "Delete my account"
+        log_in: "Log in"
+        conditions: "Our conditions"
+    main:
+      welcome:
+        logo_title: "The Burmese taste for big occasions !"
+        welcome_title: "Design your dresses on measure with our special fabrics"
+        intro_title: "Our service : "
+        intro_description: "We are a team based in France and Myanmar, propose you..."
+        block1_intro: "ON MESURE"
+        block1_description: "Work with precision"
+        block1_intro: "DELIVERY"
+        block1_description: "We deliver everywhere in the world"
+        block1_intro: "SATISFACTION"
+        block1_description: "Satisfied or satisfied. Return is possible :)"
+      search_links:
+        all: "All products"
+        woman: "Woman"
+        man: "Man"
+        child: "Child"
+        fabrics: "Fabrics"
+      modal_accounts:
+        log_in: "Log in"
+        password: "Password"
+        confirm_password: 'Password confirmation'
+        password_forgotten: "Password forgotten ?"
+        not_registered?: "No account yet ?"
+        register: "Create account"
+        registered?: "Having an account ?"
+        new_account: "New account"
+        create_account: "Create the account"

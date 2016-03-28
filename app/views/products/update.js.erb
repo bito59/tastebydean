@@ -1,7 +1,0 @@
-if ($('#item_<%= @product.id %>').closest('#<%= @product.kind %>_area').length) {
-	$('#item_<%= @product.id %>').replaceWith("<%= j render partial: 'products/show_product_to_admin', locals: {product: @product } %>");
-}
-else {
-	$('#item_<%= @product.id %>').remove();
-	$('#<%= @product.kind %>_area').append("<%= j render partial: 'products/show_product_to_admin', locals: {product: @product } %>");
-}

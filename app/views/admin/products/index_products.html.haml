@@ -1,0 +1,36 @@
+
+%h1= "Products administration"
+
+#new_product_area
+	= link_to 'new product', new_product_path, remote: :true, id: "new_product_form_btn", class: "btn"
+
+%br
+Models for female
+%br
+#model-female_area
+	= render partial: 'admin/products/table_header'
+	- @femalemodels.each do |product|
+		= render partial: 'admin/products/show_product_to_admin', locals: { product: product }
+%br
+Models for male
+%br
+#model-male_area
+	= render partial: 'admin/products/table_header'
+	- @malemodels.each do |product|
+		= render partial: 'admin/products/show_product_to_admin', locals: { product: product }
+
+%br
+The tissus
+%br
+#material_area
+	= render partial: 'admin/products/table_header'
+	- @materials.each do |product|
+		= render partial: 'admin/products/show_product_to_admin', locals: { product: product }
+
+#new_area
+
+
+
+
+
+
