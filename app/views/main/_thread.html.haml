@@ -1,0 +1,10 @@
+#thread
+	= link_to t_scoped(:home), root_path
+	- if request.path_info.include?('admin')
+		=# t_scoped(params[:kind].to_sym)
+		= link_to "Admin", admin_path()
+	- else
+		- if params[:customer] == "child"
+			= t_scoped(params[:customer].to_sym)
+		- else
+			= t_scoped(params[:kind].to_sym)

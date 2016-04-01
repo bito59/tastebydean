@@ -7,5 +7,6 @@ class Picture < ActiveRecord::Base
 	validates_attachment_presence :image
 	validates_attachment_content_type :image, :content_type => ["image/png"]
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+	validates :image, dimensions: { width: 768, height: 1152 }
 
 end

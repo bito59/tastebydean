@@ -21,8 +21,8 @@ class Product < ActiveRecord::Base
 
 
 	KINDS = [
-		'model-male',
-		'model-female',
+		'male',
+		'female',
 		'material'
 	]
 
@@ -32,14 +32,9 @@ class Product < ActiveRecord::Base
 		'cotton'
 	]
 
-	MALE_CUSTOMERS = [
-		'man',
-		'boy'
-	]
-
-	FEMALE_CUSTOMERS = [
-		'woman',
-		'girl'
+	CUSTOMERS = [
+		'adult',
+		'child'
 	]
 
 	MALE_FAMILIES = [
@@ -69,7 +64,7 @@ class Product < ActiveRecord::Base
 	]
 
 	def serial_number
-		"D" + Time.now.year.to_s.last(2) + "%.3d"%self.id
+		"D" + Time.now.year.to_s.last(2) + "%.4d"%self.id
 	end
 	
 end

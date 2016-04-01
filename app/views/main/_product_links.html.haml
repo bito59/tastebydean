@@ -1,0 +1,6 @@
+#search_links
+	= link_to t_scoped(:all), products_path(kind: "all"), class: "btn"
+	= link_to t_scoped(:woman), products_path(kind: "female", customer: "adult"), class: "btn"
+	= link_to t_scoped(:man), products_path(kind: "male", customer: "adult"), class: "btn"
+	= link_to t_scoped(:child), products_path(kind: "all", customer: "child"), class: "btn"
+	= link_to t_scoped(:fabrics), products_path(kind: "material"), class: "btn"

@@ -1,19 +1,9 @@
-#thread
-	= link_to "Home", root_path
-	- if params[:kind] == "model-female" || params[:kind] == "model-male"
-		- unless params[:customer].blank?
-			= link_to params[:customer], products_path(kind: "model", customer: params[:customer])
-		- else 
-			= link_to "all products", products_path(kind: "model")		
-	- elsif params[:kind] == "material"
-		= link_to "fabrics", products_path(kind: "model")
-		
+= render partial: 'main/thread'
 
-#fast_link
-	= render partial: 'main/search_links'
+= render partial: 'main/product_links'
 
 #type_sort
-	Filtrer les résultats
+	Filtrer les produits
 
 #display_sort
 	= link_to 'Display large', products_path(display: "large"), remote: :true, id: "display_large_btn", class: "btn display_btn"

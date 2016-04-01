@@ -6,10 +6,10 @@ class ProductsController < ApplicationController
 
   def index
     products = Product.joins(:pictures).group("products.id").where(activated: true).having("count(pictures.id) > ?",0)
-    if params[:kind] == "material"
-      @products = products.filter(params.slice(:kind, :family, :customer))     
+    if params[:kind] == "all"
+      @products = products.where("kind = ? or kind = ?", "female", "male")
     else
-      @products = products.where("kind = ? or kind = ?", "model-female", "model-male")
+      @products = products.filter(params.slice(:kind, :family, :customer)) 
     end
     respond_to do |format|
       if params[:display] == "large"

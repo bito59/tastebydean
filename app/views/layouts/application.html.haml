@@ -21,9 +21,10 @@
 						= navbar_dropdown_header (t_scoped(:welcome) + " " + current_user.pseudo)
 						= navbar_item t_scoped(:basket), root_path
 						- if current_user.admin?
-							= navbar_item t_scoped(:admin_products), admin_products_path
-							= navbar_item t_scoped(:admin_users), admin_users_path
-							= navbar_item t_scoped(:admin_posters), admin_posters_path
+							= navbar_item t_scoped(:admin), admin_path
+							=# navbar_item t_scoped(:admin_products), admin_products_path
+							=# navbar_item t_scoped(:admin_users), admin_users_path
+							=# navbar_item t_scoped(:admin_posters), admin_posters_path
 						= navbar_item t_scoped(:my_account), user_path(current_user)	
 						= navbar_item t_scoped(:log_out), destroy_user_session_path, {method: 'delete'}
 						= navbar_item t_scoped(:delete_account), destroy_user_path(current_user), data: { confirm: "Are you sure ?" }
