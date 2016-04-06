@@ -1,11 +1,35 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+user = User.new( email: 'bitocreator@gmail.com', password: "fouesnant", password_confirmation: "fouesnant", pseudo: "thib" )
+user.add_role :admin
+user.save
 
-	user = User.new({email: 'bitocreator@gmail.com', password: "fouesnant", password_confirmation: "fouesnant", pseudo: "thib"})
-	user.add_role :admin
-	user.save
+(1..50).each do |p|
+	p.to_i
+	kind = Product::KINDS.sample
+	if kind == 'material'
+		customer = 'all'
+	else
+		customer = Product::CUSTOMERS.sample
+	end
+	if customer == 'man' || customer == 'boy'
+		family = Product::FAMILIES[:male].sample
+	elsif customer == 'woman' || customer == 'girl'
+		family = Product::FAMILIES[:female].sample
+	elsif customer == 'all'
+		family = Product::FAMILIES[:material].sample
+	end
+	serial = 'D1600' + p.to_s
+	title = 'product' + p.to_s
+	product = Product.new(	serial: serial,
+							title: title,
+							kind: kind,
+							customer: customer,
+							family: family,
+							price: p,
+							price_unit: '€',
+							measure: p,
+							measure_unit: 'meter')
+	if p.even?
+		product[:activated] = true
+	end
+	product.save!
+end

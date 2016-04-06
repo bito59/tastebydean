@@ -1,36 +1,23 @@
-
-%h1= "Products administration"
+%h1= t_scoped(:index_title)
 
 #new_product_area
-	= link_to 'new product', new_product_path, remote: :true, id: "new_product_form_btn", class: "btn"
+	= link_to t_scoped(:new_product), nil, remote: true, id: 'btn_new_product', class: "btn_new"
 
-%br
-Models for female
-%br
-#model-female_area
-	= render partial: 'admin/products/table_header'
-	- @femalemodels.each do |product|
-		= render partial: 'admin/products/show_product_to_admin', locals: { product: product }
-%br
-Models for male
-%br
-#model-male_area
-	= render partial: 'admin/products/table_header'
-	- @malemodels.each do |product|
-		= render partial: 'admin/products/show_product_to_admin', locals: { product: product }
+= render :partial => 'admin/products/product_form_modal'
 
-%br
-The tissus
-%br
-#material_area
-	= render partial: 'admin/products/table_header'
-	- @materials.each do |product|
-		= render partial: 'admin/products/show_product_to_admin', locals: { product: product }
+#products_area
+	%h1= t_scoped(:products)
+	= form_for_filterrific @filterrific do |f|
+		Search
+		=# f.text_field(:search_query, class: 'filterrific-periodically-observed')
+		Kinds
+		=# f.select(:with_country_id, @filterrific.select_options[:with_country_id],{ include_blank: '- Any -' })
+		Sorted by
+		=# f.select(:sorted_by, @filterrific.select_options[:sorted_by])
 
-#new_area
+		= link_to('Reset filters', reset_filterrific_url,)
+		= render_filterrific_spinner
 
+	= render(partial: 'admin/products/list', locals: { products: @products })
 
-= datagrid_form_for @grid, method: :get, url: admin_products_path
-= paginate(@grid.assets)
-= datagrid_table @grid
-= paginate(@grid.assets)
+:javascript

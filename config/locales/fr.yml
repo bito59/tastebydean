@@ -47,3 +47,20 @@ fr:
                 male: "Homme"
                 material: "Tissus"
                 child: "Enfant"
+            header:
+                en: 'Anglais'
+                fr: 'Français'
+                bi: 'Birman'
+                welcome: "Bienvenue "
+                basket : "Mon panier"
+                admin: 'Admin'
+                my_account: "Mon compte"
+                log_out: 'Déconnexion'
+                delete_account: 'Supprimer le compte'
+                log_in: 'Connexion'
+        admin:
+            products:
+                index_products:
+                    index_title: 'Liste des produits'
+                    new_product: 'Nouveau produit'
+

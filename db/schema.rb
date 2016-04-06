@@ -62,20 +62,21 @@ ActiveRecord::Schema.define(version: 20160328145843) do
   end
 
   create_table "products", force: :cascade do |t|
+    t.string   "serial"
     t.string   "title"
-    t.string   "description"
-    t.boolean  "activated"
-    t.string   "slug"
     t.string   "kind"
-    t.string   "family"
     t.string   "customer"
+    t.string   "family"
+    t.string   "description"
+    t.boolean  "activated",                            default: false
     t.text     "event"
     t.decimal  "price",        precision: 8, scale: 2
     t.string   "price_unit"
     t.float    "measure"
     t.string   "measure_unit"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.string   "slug"
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
   end
 
   add_index "products", ["slug"], name: "index_products_on_slug", unique: true, using: :btree

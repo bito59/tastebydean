@@ -1,51 +1,27 @@
 !!! 5
 %html
 %head
-	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+	= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
 	= javascript_include_tag 'application', 'data-turbolinks-track' => true
 	= csrf_meta_tags
 
-#flash_msg
-	= render_flash
-	
-%header
-	= navbar fixed: :top do
-		= navbar_header brand: 'Dean', brand_link: root_path
-		= navbar_collapse do
-			= navbar_group class: 'no-hide', align: 'right' do
-				= navbar_dropdown flag(locale, 20, 16) do
-					- alternate_locales.each do |l|
-						%li.flag= link_to flag(l, 20, 16), params.merge({locale: l})
-				- if user_signed_in?
-					= navbar_dropdown current_user.pseudo do
-						= navbar_dropdown_header (t_scoped(:welcome) + " " + current_user.pseudo)
-						= navbar_item t_scoped(:basket), root_path
-						- if current_user.admin?
-							= navbar_item t_scoped(:admin), admin_path
-							=# navbar_item t_scoped(:admin_products), admin_products_path
-							=# navbar_item t_scoped(:admin_users), admin_users_path
-							=# navbar_item t_scoped(:admin_posters), admin_posters_path
-						= navbar_item t_scoped(:my_account), user_path(current_user)	
-						= navbar_item t_scoped(:log_out), destroy_user_session_path, {method: 'delete'}
-						= navbar_item t_scoped(:delete_account), destroy_user_path(current_user), data: { confirm: "Are you sure ?" }
-				- else
-					= navbar_text t_scoped(:log_in), class: "account_link connect_account"
-					-# = navbar_text 'Créer mon compte', class: "account_link create_account"
-
-%body
-	.container_screened
-		.container
+.container_screened
+	.container
+		#header.row
+			= render partial: 'main/header'
+			#flash_msg
+				= render_flash
+		#body.row
 			= render :partial => 'main/modal_accounts'
 			= yield
-
-%footer
-	.text
-		%h3= mail_to("tastebydean@gmail.com")
-		%h3.smallhide= "|"
-		%h3= link_to t_scoped(:conditions), root_path
-		%h3.smallhide= "|"
-		%h3= "© tastebydean 2016"
-	.follow
+		#footer.row
+			.text
+				%h3= mail_to("tastebydean@gmail.com")
+				%h3.smallhide= "|"
+				%h3= link_to t_scoped(:conditions), root_path
+				%h3.smallhide= "|"
+				%h3= "© tastebydean 2016"
+			.follow
 
 :javascript
 	$(document).ready(function(){

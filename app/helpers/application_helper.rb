@@ -57,8 +57,6 @@ module ApplicationHelper
 	def alternate_locales
 	  # Remove current locale from list
 	  aval_locales_but_current = I18n.available_locales - [locale]
-
-
 	end
 
 	def flag(language, width, height)

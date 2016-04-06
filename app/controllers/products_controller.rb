@@ -22,13 +22,23 @@ class ProductsController < ApplicationController
     end
   end
 
-  def filter
-  end
-
   def new
     @product = Product.new
     respond_to do |format|
-      format.js { render 'admin/products/new.js.erb' }
+      format.html { render 'admin/products/product_form' }
+      #format.js { render 'admin/products/new.js.erb' }
+    end
+  end
+
+  def create
+    @product = Product.new(product_params)
+    respond_to do |format|
+      if @product.save
+        @gallery = @product.build_gallery()
+        @gallery.save
+        format.html { render 'admin/products/index_products' }
+        #format.js   { render 'admin/products/show.js.erb' }
+      end
     end
   end
 
@@ -44,16 +54,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  def create
-    @product = Product.new(product_params)
-    respond_to do |format|
-      if @product.save
-        @gallery = @product.build_gallery()
-        @gallery.save
-        format.js   { render 'admin/products/show.js.erb' }
-      end
-    end
-  end
+
 
   def update
     @product.slug = nil
@@ -78,7 +79,7 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:title, :description, :activated, :kind, :family, :customer, :event, :price, :price_unit, :measure, :measure_unit, :image)
+      params.require(:product).permit(:serial_number, :title, :description, :activated, :kind, :family, :customer, :event, :price, :price_unit, :measure, :measure_unit, :image)
     end
 
 end

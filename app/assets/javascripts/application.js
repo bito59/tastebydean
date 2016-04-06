@@ -10,14 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// require turbolinks
+// require bootstrap3-editable/bootstrap-editable
+// require jquery-fileupload
+
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require jquery-fileupload
-// require jquery-fileupload/basic
-// require jquery-fileupload/vendor/tmpl
-// require turbolinks
 //= require bootstrap-sprockets
-// require bootstrap3-editable/bootstrap-editable
+//= require filterrific/filterrific-jquery
 //= require_tree .
 

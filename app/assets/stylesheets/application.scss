@@ -15,14 +15,10 @@
 * require bootstrap3-editable/bootstrap-editable
 * require bootstrap-editable
 * require_tree .
-*= require_self
+* require jquery.fileupload-ui
+* require_self
+
+
 *= require main
 
- *= require jquery.fileupload-ui
-
 */
-
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import url(https://fonts.googleapis.com/css?family=Playball);

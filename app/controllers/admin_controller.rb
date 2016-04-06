@@ -2,17 +2,21 @@ class AdminController < ApplicationController
 	#skip_before_filter :authenticate_user!
 
 	def index
+		render 'admin/index_admin'
 	end
 
 	def admin_products
-		@malemodels = Product.all.where("kind = ?", "male")
-		@femalemodels = Product.all.where("kind = ?", "female")
-		@materials = Product.all.where(kind: "material").order("created_at DESC")
-		@grid = ProductsGrid.new(params[:products_grid]) do |scope|
-			scope.page(params[:page]) # See pagination section
-	    end
-		#render 'admin/products/index_products'
-		render 'admin/index'
+		@product = Product.new
+		@filterrific = initialize_filterrific(
+		    Product,
+		    params[:filterrific]
+		  ) or return
+		  @products = @filterrific.find.page(params[:page]).paginate(page: params[:page], per_page: 10)
+
+		  respond_to do |format|
+		    format.html { render 'admin/products/index_products' }
+		    format.js
+		  end
 	end
 
 	def admin_users
@@ -21,7 +25,7 @@ class AdminController < ApplicationController
 	end
 
 	def admin_posters
-		@posters = Poster.all
+		@posters = Poster.unscoped.all
 		render 'admin/posters/index_posters'
 	end
 
