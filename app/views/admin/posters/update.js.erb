@@ -1,8 +1,0 @@
-if ($('#table_item_<%= @poster.id %>').closest('#<%= @poster.kind %>_area').length) {
-	$('#table_item_<%= @poster.id %>').replaceWith("<%= j render partial: 'admin/posters/show_poster_to_admin', locals: {poster: @poster } %>");
-}
-else {
-	$('#table_item_<%= @poster.id %>').remove();
-	$('#<%= @poster.kind %>_area').append("<%= j render partial: 'admin/posters/show_poster_to_admin', locals: {poster: @poster } %>");
-}
-$('#edit_item_<%= @poster.id %>').remove();

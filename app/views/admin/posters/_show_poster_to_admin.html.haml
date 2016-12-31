@@ -1,9 +1,0 @@
-%table{ id: "table_item_#{poster.id}" }
-	%tr
-		%td= poster.title
-		%td= poster.text
-		%td= poster.image
-		%td= poster.activated
-		%td= link_to count_pictures(poster), gallery_path(poster.id), class: "btn"
-		%td= link_to 'Edit', edit_poster_path(poster), remote: true, class: "btn"
-		%td= link_to 'Destroy', poster, method: :delete, remote: true, data: { confirm: 'Are you sure?' }
