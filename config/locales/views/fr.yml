@@ -1,0 +1,94 @@
+fr:
+    public:
+        header:
+            creations: "Création"
+            collections: "Collection"
+            accessories: "Boutique"
+        footer: 
+            terms: "Conditions"
+            designed_by: "Design par "
+        welcome:
+            welcome_title: "La tenue de cérémonie sur mesure"
+            creations: "Creation"
+            creations_caption: "Votre tenue créée sur mesure"
+            collections: "Collection"
+            collections_caption: "nos modèles à personnaliser"
+            accessories: "Accessoires"
+            accessories_caption: "Notre sélection de tissus et d'accessoires"
+            drawing_explain: "Concevez votre tenue à partir d'un dessin, une photo, un modèle."
+            fabrics_explain: "Choisissez votre tissus et vos couleurs sur notre site ou près de chez vous."
+            manequin_explain: "Communiquez-nous vos mensurations, toutes nos réalisations sont faites sur mesure."
+            comment: "Super robe livrée juste à temps pour le mariage de mon frère, merci Dean !"
+            follow_us: "Nous suivre"
+        news_form:
+            discover: "Découvrez les dernières nouveautés et ventes privées par email :"
+            zipcode: "Code postal"
+            email: "Email"
+            validate: 'Valider'
+        devise_modal:
+            email: "Email"
+            password: "Mot de passe"
+            confirm_password: "Confirmer le mot de passe"
+            password_forgotten: "Mot de passe oublié"
+            zipcode: "Code postal"
+            register: "Créer un compte"
+            log_in: "Se connecter"
+            create_account: "Valider"
+    products:
+        browse_products:
+            man: "Homme"
+            woman: "Femme"
+            child: "Enfant"
+            all_models: "Tous les modèles"
+            products: 
+                one: "produit"
+                other: " %{count} produits"
+        show_product:
+            share: "Partager ce produit"
+        buy_form:
+            available_fabrics: "Tissus disponibles"
+            i_buy_fabric: "J'achette mon tissus."
+            add_to_basket: 'Ajouter au panier'
+    carts:
+        shopping_cart:
+            empty_cart: "Votre panier est vide !"
+            quantity: "Quantité"
+            product: "Produit"
+            photo: "Photo"
+            fabric: "Tissu"
+            unit_price: "Prix"
+            total_price: "Total"
+            basket_total: "Sous total :"
+            shipping_fees: "Frais de livraison :"
+            # Delivery
+            delivery_title: "Choix de la livraison :"
+            c&c: "Je viens chercher ma commande à l'atelier sur RDV"
+            c&c_price: "gratuit"
+            c&s: "Expédition à mon adresse"
+            c&s_price: "payant"
+            surname: "Prénom"
+            name: "Nom"
+            address: "Adresse"
+            zipcode: "Code postal"
+            city: "Ville"
+            phone: "Téléphone"
+            # Invoice
+            invoice_title: "Détails pour la facturation :"
+            # Payment details
+            payment_title: "Choix du paiement :"
+            payment_title: 'Type de paiement :'
+            proposal: 'Faire un devis'
+            total: 'Total TTC :'
+            # Conditions
+            conditions_title: "Conditions :"
+            condition1_title: "Vous avez choisi de fournir le tissu pour certains articles"
+            condition1: "Les quantités requises vous seront communiqées par email, Les frais d’acheminement jusqu’à notre atelier sont à votre charge."
+            condition2_title: "Nos délais d’expédition sont d’en moyenne 2 semaines"
+            condition2: "à compter de la réception de toutes les mesures et des tissus. Vous serez avertis de la production des articles par email."
+            conditions_valid: "j'accepte les conditions générales de vente"
+            #
+            order_btn: "Commander"
+
+
+
+

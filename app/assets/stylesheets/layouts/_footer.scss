@@ -1,0 +1,10 @@
+footer {
+	width: 100%; bottom: 0px;
+
+	.content {
+		.logo {margin-left: 20px;float: left;}
+		.copyright {position: absolute;left: calc(50% - 50px);}
+		.links {margin-right: 20px;float: right;}
+		li:first-of-type {margin-right: 70px;}
+	}
+}

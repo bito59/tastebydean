@@ -1,0 +1,6 @@
+fr:
+    order_lines:
+        create:
+            items_added: "Les articles ont été ajoutés à votre panier"
+            item_added: "L'article a été ajouté à votre panier"
+            item_not_added: "Problème d'ajout à votre panier"

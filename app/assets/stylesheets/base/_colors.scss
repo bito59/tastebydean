@@ -1,0 +1,50 @@
+/* Colors */
+
+$red: #63081A;
+$green: #235C07;
+$grey: #083442;
+$white: #FFFFFF;
+
+a, h1, h2, h3, h4, h5, input {color: $red;}
+
+#flash_msg {
+	color: rgb(255, 255, 255);
+	.flash_notice {background: none repeat scroll 0% 0% rgba(135, 216, 211, 0.85);}
+	.flash_alert {background: none repeat scroll 0% 0% rgba(204, 0, 0, 0.70);}
+	.flash_success {background: none repeat scroll 0% 0% rgba(35, 92, 7, 0.85);}
+}
+
+#devise_modal {
+	.links, .links > a {color: white;}
+}
+
+header, footer {
+	a.white {color: white;}
+    a:hover {color: $green;}
+}
+
+footer {
+	span {color: $green;}
+}
+
+#welcome1 {
+    h2 {color: white;}
+    h3, h4 {color: $green;}
+    li {background-color: rgba(255,255,255,0.5);border-radius: 15px;}
+}
+
+#welcome2 {
+	//li * {color: $grey;}
+	.comment  {
+		//h1, h2, h3 {color: $red;}
+	}
+	.instagram {
+		//h2 {color: $red;}
+		h3 {color: $green;}
+	}
+	.follow {
+		//h2 {color: $red;}
+		h3 {color: $red;}
+		.btn {background: $green;}
+	}
+}

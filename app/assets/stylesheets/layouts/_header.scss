@@ -1,0 +1,19 @@
+header {
+	top: 0;line-height: 4em; z-index: 1;
+	img { vertical-align: middle;}
+	.logo {top: 10px;position: absolute;margin: auto;width: 100%;}
+	.logo-left {
+		width: auto;float: left;top: 0px; left: 20px; padding: 0px 0px 0px 20px;
+		li {margin: 0;font-size: 12px;}
+	}
+	.links {position: absolute;right: 15px;}
+
+	@media (min-width: map-get($breakpoints, tablet)) {
+		li {margin: 0px 20px 0px 20px;}
+		.logo {width: auto;float: left;top: 0px; padding-left: 20px;}
+		.links {position: relative;right: 20px;float:right;img {margin: 0px 5px 0px 5px;}}
+	}
+
+}
+
+

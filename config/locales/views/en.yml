@@ -1,0 +1,35 @@
+en:
+  views: 
+    main:
+        header:
+            creations: "Creations"
+            collections: "Collections"
+            accessories: "Accessories"
+        footer: 
+            terms: "Conditions"
+            designed_by: "Design by bitocreator"
+        welcome:
+            welcome_title: "Your tenue on measure"
+            creations: "Creation"
+            creations_caption: "Concevez votre tenue"
+            collections: "Collection"
+            collections_caption: "Choisissez votre tissus et vos couleurs"
+            accessories: "Accessoires"
+            accessories_caption: "Ajoutez une touche personnelle"
+            drawing_explain: "Concevez votre tenue à partir d'un dessin, une photo, un modèle."
+            fabrics_explain: "Choisissez votre tissus et vos couleurs sur notre site ou près de chez vous."
+            manequin_explain: "Communiquez-nous vos mensurations, toutes nos réalisations sont faites sur mesure."
+            comment: "Super robe livrée juste à temps pour le mariage de mon frère, merci Dean !"
+            follow_us: "Nous suivre"
+        news_form:
+            discover: "Découvrez les dernières nouveautés et ventes privées par email :"
+            zipcode: "Zipcode"
+            email: "Email"
+        browse_products:
+            man: "Homme"
+            woman: "Femme"
+            child: "Enfant"
+            accessories: "Accessoires"
+
+
+        

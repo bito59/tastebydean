@@ -1,0 +1,38 @@
+%header.modal-fade
+	- if @root == true
+		.logo.mb
+			= link_to_icon('logo-white-mb', 119, 53, root_path)
+		.links.mb
+			%li
+				= link_to_icon('filter-white-mb', 25, 25, root_path)
+		.logo.tb
+			= link_to_icon('logo-white', 94, 43, root_path)
+		.links.tb
+			%li= link_to t('.creations'), browse_products_path(kind: 'creation'), class: 'white'
+			%li= link_to t('.collections'), browse_products_path(kind: 'model'), class: 'white'
+			%li= link_to t('.accessories'), browse_products_path(kind: 'accessory'), class: 'white'
+			%li
+				- if user_signed_in?
+					= link_to_icon('user_green', 20, 20, destroy_user_session_path, {method: :delete})
+				- else
+					= link_to_icon('user_white', 20, 20, new_user_session_path, {id: 'connection_modal', remote: true})
+				= link_to_icon('cart_white', 20, 20, cart_path)
+	- else
+		.logo-left
+			%li= link_to_icon('logo-round', 50, 50, root_path)
+			%li= "Boutique"	
+		.links.mb
+			%li
+				= link_to_icon('filter-red-mb', 25, 25, root_path)
+		.links.tb
+			%li= link_to t('.creations'), browse_products_path(kind: 'creation')
+			%li= link_to t('.collections'), browse_products_path(kind: 'model')
+			%li= link_to t('.accessories'), browse_products_path(kind: 'accessory')
+			%li.icons
+				- if user_signed_in?
+					= link_to_icon('user_green', 20, 20, destroy_user_session_path, {method: :delete})
+				- else
+					= link_to_icon('user_red', 20, 20, new_user_session_path, {id: 'connection_modal', remote: true})
+				= link_to_icon('cart_red', 20, 20, cart_path)
+=#.cart
+=# render partial: 'carts/cart_overview'

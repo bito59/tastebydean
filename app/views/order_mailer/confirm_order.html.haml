@@ -1,0 +1,26 @@
+!!! 5
+%html
+
+%body
+	#main
+		%h1= 'Bonjour ' + @order.surname + ' ' + @order.name
+		%p= 'Votre commande n° ' + @order.serial + ' a bien été passée et nous vous en remerçions !'
+		%h2= 'Vous recevrez prochainement la confirmation pour cette commande'
+	
+	#detail
+		%h1= 'Voici le détail de votre commande :'
+		%table
+			%tr.head
+				%th= t('.quantity')
+				%th= t('.product')
+				%th= t('.photo')
+				%th= t('.fabric')
+				%th= t('.unit_price')
+				%th= t('.total_price')
+				%th
+			- @order_lines.each do |order_line|
+				= render 'order_mailer/order_line_row', order_line: order_line
+		#sub_total
+			%h2= number_to_currency(@order.subtotal)
+		#delivery_option
+			%h2= @order.delivery_method

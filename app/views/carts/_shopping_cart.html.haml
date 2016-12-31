@@ -1,0 +1,91 @@
+- if @order_lines.size == 0
+	%h1= t('.empty_cart')
+- else
+	#basket
+		#basket_details
+			%table
+				%tr.head
+					%th= t('.quantity')
+					%th= t('.product')
+					%th= t('.photo')
+					%th= t('.fabric')
+					%th= t('.unit_price')
+					%th= t('.total_price')
+					%th
+				- @order_lines.each do |order_line|
+					= render 'carts/cart_row', product: order_line.product, order_line: order_line, show_total: true
+	
+			#sub_total
+				%h2= t('.basket_total')
+				%h2{id: 'subtotal'}= number_to_currency(@order.subtotal)
+
+		#order_details
+			= form_for @order, url: pass_orders_path(id: @order.id) do |g|
+				= g.hidden_field :user_id, value: @user.id
+				#delivery
+					.delivery_choice
+						%h2= t('.delivery_title')
+						.collect
+							= g.check_box :delivery_method, { checked: true, id: 'del_collect' }, 'collect', nil
+							%h4= t('.c&c')
+							%h4= t('.c&c_price')
+						.ship
+							= g.check_box :delivery_method, { checked: false, id: 'del_ship' }, 'ship', nil
+							%h4= t('.c&s')
+							%h4= t('.c&s_price')
+					.delivery_summary
+						#shipping_fees
+							%h2= t('.shipping_fees')
+							= g.text_field :shipping_fees, {id: 'ship_fees', readonly: true}
+				#payment
+					.payment_choice
+						%h2= t('.payment_title')
+						= link_to t('.proposal'), root_path, remote: true, class: "btn"
+					.payment_summary
+						%h2= t('.payment_type')
+						= g.text_field :payment_method, {id: 'pay_type', readonly: true, value: 'Devis'}
+						%h2= t('.total')
+						= g.text_field :total, {id: 'total', readonly: true, value: @order.subtotal}
+				#invoice
+					%h2= t('.invoice_title')
+					.form
+						= g.select :title, ['Mme','Mlle','Mr']
+						= g.text_field :surname, autocomplete: "off", placeholder: t('.surname'), required: true
+						= g.text_field :name, autocomplete: "off", placeholder: t('.name'), required: true
+						= g.text_field :phone, autocomplete: "off", placeholder: t('.phone'), required: true
+						= g.text_field :address, autocomplete: "off", placeholder: t('.address'), required: true
+						= g.text_field :zipcode, autocomplete: "off", placeholder: t('.zipcode'), required: true
+						= g.text_field :city, autocomplete: "off", placeholder: t('.city'), required: true	
+				#conditions_details
+					%h2= t('.conditions_title')
+					%h4= t('.condition1_title')
+					%h4= t('.condition1')
+					%h4= t('.condition2_title')
+					%h4= t('.condition2')
+					%h4= t('.conditions_valid')
+					= g.radio_button :accept_conditions, false, required: 'required'
+				= g.submit t('.order_btn'), class: "confirm"
+				
+
+
+:javascript
+
+	$('#del_collect').click(function(){
+		$('#del_collect').prop('checked', true);
+		$('#del_ship').prop('checked', false);
+		$('#ship_fees').val("0").trigger('change');
+		$('#ship_details').hide();
+	});
+
+	$('#del_ship').click(function(){
+		$('#del_ship').prop('checked', true);
+		$('#del_collect').prop('checked', false);
+		$('#ship_fees').val("5").trigger('change');
+		$('#ship_details').show();
+	});
+
+	$('#ship_fees').change(function(){
+		total = parseInt($('#ship_fees').val()) + parseInt($('#subtotal').text());
+		$('#total').val(total);
+	});
+

@@ -1,0 +1,18 @@
+#section_p {
+	min-height: -webkit-calc(100vh-60px-60px);padding-top: 100px;max-width: 1024px;margin: auto;
+	hr {margin: 10px 20px 0px 30px;}
+	.filters {
+		width: 100%;justify-content: space-around;margin-top: 30px;
+		h2, a {font-size: 14px;font-family: $regular;margin: 0px 10px 0px 20px;}
+		.filters a:hover {color: $green;}
+		.filters h1 {font-size: 14px;font-family: $regular;}
+	}
+	.results {
+		margin: 30px auto;flex-wrap: wrap;
+		.product {margin: 0px 30px 30px 30px;}
+		.product a:hover {background-color: rgba(255,255,255,0.5);}
+		.product img {width: 250px;height: 250px;}
+		.product h1 {font-size: 16px;font-family: $regular;margin: 0px 0px 10px 0px;}
+		.product h2 {font-size: 12px;margin: 0px;}
+	}
+}

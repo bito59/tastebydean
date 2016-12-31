@@ -1,0 +1,95 @@
+/* Typographies */
+
+@font-face {font-family: 'Montserrat-Regular'; src: asset-url("fonts/Montserrat-Regular.otf") format("truetype");}
+@font-face {font-family: 'Montserrat-SemiBold'; src: asset-url("fonts/Montserrat-SemiBold.otf") format("truetype");}
+@font-face {font-family: 'Montserrat-Light'; src: asset-url("fonts/Montserrat-Light.otf") format("truetype");}
+@font-face {font-family: 'Montserrat-ExtraLight'; src: asset-url("fonts/Montserrat-ExtraLight.otf") format("truetype");}
+
+$regular: 'Montserrat-Regular';
+$bold: 'Montserrat-SemiBold';
+$light: 'Montserrat-Light';
+$xlight: 'Montserrat-ExtraLight';
+
+// Init Modular scale
+$ms-base: 16px;
+$ms-ratio: 1.333;
+
+// Init Typi
+$typi: (null: (16px, 2), tablet: (18px, 2), laptop: (18px, 2), desktop: (20px, 2));
+$h1-map: (null: (ms(4), 1.2), mobile: ms(3), tablet: ms(3), laptop: ms(4), desktop: (ms(4), 1.3));
+$h2-map: (null: (ms(2), 1.5), mobile: ms(2), tablet: ms(2), laptop: ms(2), desktop: ms(2));
+$h3-map: (null: (ms(2), 2), mobile: ms(1), tablet: ms(1), laptop: (ms(1), 2), desktop: (ms(1), 2));
+$h5-map: (null: ms(-2), laptop: ms(-1), desktop: ms(-1));
+$main-title-map: (null: (ms(2), 1.2), mobile: ms(2), tablet: ms(3), laptop: ms(3), desktop: (ms(3), 1.3));
+
+// Init html
+html {@include typi-base();}
+body, a, h1, h2, h3, h4, h5, input {font-family: $light;}
+h1 { @include typi($h1-map) }
+h2 { @include typi($h2-map);}
+h3 { @include typi($h3-map);}
+h4, ul, li, p, a { @include typi($typi) }
+h5, footer > a { @include typi($h5-map) }
+
+a, h1, h2, h3, h4, h5, input {text-align: center; vertical-align: middle;text-decoration: none;}
+a:hover {text-decoration: none; cursor: pointer;}
+
+
+// Specific rules
+
+#flash_msg {font-family: $bold;font-size: 2.827em;}
+#devise_modal {.links > a {font-family: $xlight;font-size: 0.8em;}}
+
+header {
+    a:hover {font-family: $regular;}
+    .logo-left {font-family: $bold;}
+}
+footer {
+    span, .copy {font-family: $regular;}
+    h4, a {font-family: $xlight; font-size: 1em;}
+}
+
+#welcome1 {
+    .title {@include typi($main-title-map);}
+    h2 {font-family: $xlight;}
+    h3 {font-family: $regular;}
+}
+
+#welcome2 {
+    .comment {
+        .text { 
+            h1 {font-size: 80px; }
+            .name {font-family: $regular;}
+        }
+    }
+    .instagram, .follow {
+        h2 {font-family: $regular;}
+        h3 {font-family: $regular;}
+    }
+}
+
+@media (min-width: map-get($breakpoints, tablet)) {
+    #welcome2 .title {font-size: 80px;}
+    #welcome2 {
+        .comment {
+            .text { 
+                //h2 {font-family: $light;}
+            }
+        }
+    }
+}
+
+#section_w2 {
+    .comment  {
+        //h1 {font-family: $regular; @include font-size(70px);}
+        //h2 {font-family: $regular; @include font-size(22px);}
+        //h3 {font-family: $regular; @include font-size(16px);}
+    }
+
+    .follow {
+        //h1 {font-family: $regular; @include font-size(30px);}
+        //h2 {font-family: $light; @include font-size(18px);}
+        //.btn {font-family: $light; @include font-size(12px);}
+    }
+}
+

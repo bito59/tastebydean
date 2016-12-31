@@ -1,0 +1,22 @@
+%tr{ id: "ol_#{order_line.id}"}
+	%td
+		#ol_qties_form{ id: "ol_#{order_line.id}"}
+			=# form_for order_line_path(id: order_line[:id]), remote: true do |f|
+			= link_to_icon('plus', 20, 20, '#', { id:'ol_#{order_line.id}_plus', class: "ol_qty", remote: true } )
+			=# f.number_field :quantity, readonly: true, value: 1, min: 1, required: true 
+			%h4= order_line.quantity
+			= link_to_icon('minus', 20, 20, '#', { id:'ol_#{order_line.id}_minus', class: "ol_qty", remote: true } )
+
+
+	%td 
+		= product.title
+		= product.serial
+	%td= image_tag "mains/samples/product_sample1.png"
+	%td= image_tag "mains/samples/fabric_sample3.jpg"
+
+	%td= number_to_currency(order_line.unit_price)
+	%td= number_to_currency(order_line.total_price)
+
+	%td
+		= link_to order_line_path(id: order_line.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' } do
+			= image_tag "icons/delete_ol.png"

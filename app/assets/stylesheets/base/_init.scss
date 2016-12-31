@@ -1,0 +1,27 @@
+/* Init file */
+
+*, html, body {margin: 0; padding:0;}
+body {overflow-x: hidden;}
+html {height: 100%;}
+div, header, footer {margin: 0px; padding: 0px; text-align: center;}
+ul, li {list-style-type: none;vertical-align: middle;margin: 0;padding: 0;}
+li { display:inline-block;}
+input {border: none;}
+
+//Typi breakpoint variables
+$breakpoints: (mobile: 320px, tablet: 720px, laptop: 1024px, desktop: 1366px);
+
+.tb, .lt, .dt {display: none;}
+
+@media (min-width: map-get($breakpoints, tablet)) {
+	.tb {display:block;}
+	.mb {display: none !important;}
+}
+
+@media (min-width: map-get($breakpoints, laptop)) {
+	.lt {display:block;}
+}
+
+@media (min-width: map-get($breakpoints, desktop)) {
+	.dt {display:block;}
+}

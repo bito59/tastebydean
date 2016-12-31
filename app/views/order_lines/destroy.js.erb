@@ -1,0 +1,4 @@
+$("#ol_<%= @order_line.id %>").remove();
+$("#subtotal").text("<%= @order.subtotal %>");
+$('#flash_msg').append("<%= j render_flash %>").change();
+console.log("Order_line was deleted and order is empty.");	

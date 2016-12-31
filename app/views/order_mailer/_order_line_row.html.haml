@@ -1,0 +1,10 @@
+%tr
+	%td= order_line.quantity
+	%td 
+		= order_line.product.title
+		= order_line.product.serial
+	%td= image_tag "mains/samples/product_sample1.png"
+	%td= image_tag "mains/samples/fabric_sample3.jpg"
+	%td= number_to_currency(order_line.unit_price)
+	%td= number_to_currency(order_line.total_price)
+

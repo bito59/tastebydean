@@ -1,0 +1,23 @@
+#basket_form
+	= form_for @order_line, authenticity_token: true do |f|
+		.fabrics
+			- if @product.kind == 'model' || @product.kind == 'creation'
+				%h3= t('.available_fabrics')
+				.images
+					= link_to_icon('arrow_left', 10, 10, '#', { id:'arrow_left', remote: true } )
+					= "Pas encore prêt ;)"
+					= link_to_icon('arrow_right', 10, 10, '#', { id:'arrow_right', remote: true } )
+				= link_to t('.i_buy_fabric'), root_path, { id:'i_buy_fabric', remote: true }
+				= f.hidden_field :fabric_id, {id: 'fabric_id', required: true}
+		.quantities
+			= link_to_icon('plus', 20, 20, '#', { id:'plus', remote: true } )
+			= f.number_field :quantity, readonly: true, value: 1, min: 1, required: true 
+			= link_to_icon('minus', 20, 20, '#', { id:'minus', remote: true } )
+		= f.hidden_field :product_id, value: @product.id
+		= f.submit t('.add_to_basket'), class: "confirm"
+
+:javascript
+
+	$('#i_buy_fabric').click(function(){
+		$('#fabric_id').val(1);
+	});

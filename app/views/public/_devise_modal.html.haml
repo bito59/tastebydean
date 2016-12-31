@@ -1,0 +1,41 @@
+.logo
+	= link_to_icon('logo-round', 100, 100, root_path, {remote: true})
+#connection{style: 'display: none'}
+	= form_for(:user, url: session_path(:user)) do |f|
+		.fields.flex-column
+			= f.text_field :email, required: true, placeholder: t('.email')
+			= f.password_field :password, required: true, placeholder: t('.password')
+			.line
+		= f.submit t('.log_in'), class: 'btn'
+		.clear
+	.links
+		= link_to t('.register'), root_path, {remote: true, id: "create_account"}
+		|
+		= link_to t('.password_forgotten'), new_password_path(resource_name)
+#register
+	= form_for(:user, url: registration_path(:user)) do |f|
+		.fields.flex-column
+			= f.text_field :email, required: true, placeholder: t('.email')
+			= f.password_field :password, required: true, placeholder: t('.password')
+			= f.password_field :password_confirmation, required: true, placeholder: t('.confirm_password')
+			.line.flex-line
+				= f.text_field :zipcode, required: true, placeholder: t('.zipcode'), class: 'zipcode'
+				= f.text_field :news, required: true, placeholder: t('.zipcode'), class: 'news'
+		= f.submit t('.create_account'), class: 'btn'
+	.links
+		= link_to t('.log_in'), root_path, {remote: true, id: "connect_account"}
+		|
+		= link_to t('.password_forgotten'), root_path
+
+:javascript
+
+	$('#create_account').click(function() {
+		$('#connection').hide();
+		$('#register').fadeIn("slow");
+	});
+
+	$('#connect_account').click(function() {
+		$('#register').hide();
+		$('#connection').fadeIn("slow");
+	});
+

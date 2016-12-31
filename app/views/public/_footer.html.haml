@@ -1,0 +1,16 @@
+%footer#footer.modal-fade
+	%hr
+	.content
+		.logo
+			= link_to_icon('logo-red', 100, 50, root_path)
+		.copyright
+			%h4.copy= "© Dean " + Time.now.year.to_s
+		.links
+			%li
+				%h4= link_to t('.terms'), root_path
+			%li
+				%h4
+					= t('.designed_by')
+					%span='bitocreator'
+
+  

@@ -1,0 +1,55 @@
+%section#section1
+	%h1= t_scoped(:welcome_title)
+	.links
+		= link_to root_path do
+			.creations
+				%h2= t_scoped(:creations)
+				= image_tag "mains/creations.png"
+				%h3= t_scoped(:creations_caption)
+		= link_to root_path do
+			.collections
+				%h2= t_scoped(:collections)
+				= image_tag "mains/collections.png"
+				%h3= t_scoped(:collections_caption)
+		= link_to root_path do
+			.accessories
+				%h2= t_scoped(:accessories)
+				= image_tag "mains/accessories.png"
+				%h3= t_scoped(:accessories_caption)
+	= link_to_icon('arrow', 20, 20, root_path)
+
+
+%section#section2
+	.concept
+		.drawing
+			= image_tag "mains/drawing.png"
+			%h3= t_scoped(:drawing_explain)
+		.fabrics
+			= image_tag "mains/fabrics.png"
+			%h3= t_scoped(:fabrics_explain)
+		.manequin
+			= image_tag "mains/manequin.png"
+			%h3= t_scoped(:manequin_explain)
+		%hr
+
+	.comment
+		%h1= "N" + t_scoped(:comment)
+		%h3= 'Sophie'
+		%hr
+
+	.instagram
+		%h1= 'Instagram'
+		%h2= '#tastebydean'
+		.elements
+			- for i in 1..6 do
+				.picture{ id: "instagram_#{i}" }
+					= image_tag "mains/instagram/#{i}.png"
+		%hr
+
+	.follow
+		%h1= t_scoped(:follow_us)
+		= link_to_icon('facebook', 40, 40, 'https://www.facebook.com/tastebydean/')
+		= link_to_icon('instagram', 40, 40, root_path)
+		= link_to_icon('pinterest', 40, 40, 'https://fr.pinterest.com/tastebydean/')
+		= render partial: 'main/news_form.html.haml'
+		%hr
