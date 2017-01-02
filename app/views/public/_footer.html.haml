@@ -1,16 +1,16 @@
-%footer#footer.modal-fade
+%footer.modal-fade
 	%hr
 	.content
-		.logo
+		%li.logo.tb
 			= link_to_icon('logo-red', 100, 50, root_path)
-		.copyright
+		%li.copyright
 			%h4.copy= "© Dean " + Time.now.year.to_s
-		.links
-			%li
+		%ul.links
+			%li.lt
 				%h4= link_to t('.terms'), root_path
 			%li
 				%h4
 					= t('.designed_by')
-					%span='bitocreator'
+					%span='Massetech'
 
   

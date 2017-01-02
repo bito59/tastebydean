@@ -1,10 +1,19 @@
-.btn_valid {background: $green;border-radius: 5px;font-family: $light;font-size: 1em;color: #FFFFFF;width: 130px;height: 40px;}
+
 
 input {
-	background-color: rgba(8,52,66,0.2);border-radius: 5px;padding-left: 10px;
+	background-color: rgba(8,52,66,0.2);border-radius: 5px;
 	font-family: $light;font-size: 12px;height: 30px;color: $grey;border:none;
 }
 
+#welcome2 {
+	.btn_valid {background: $green;border-radius: 5px;font-family: $light;font-size: 1em;color: #FFFFFF;width: 75%;height: 3em;}
+ }
 
 
+@media (min-width: map-get($breakpoints, tablet)) {
+    #welcome2 {
+    	input:not(.btn) {padding-left: 1em; }
+    	.btn_valid {width: 35%;}
+    }
 
+}

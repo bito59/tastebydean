@@ -1,8 +1,9 @@
-#news
-	%h4= t('.discover')
+#news.news
+	%li
+		%h4= t('.discover')
 	= form_for @news, remote: true, authenticity_token: true do |f|
-		.fields.flex-line
+		%li.fields
 			= f.text_field :zipcode, autocomplete: "off", placeholder: t('.zipcode'), required: true, class: 'zipcode'
 			= f.text_field :email, autocomplete: "off", placeholder: t('.email'), required: true, class: 'email'
 			= f.hidden_field :country, value: I18n.locale
-		= f.submit t('.validate'), class: "btn_valid"
+		%li= f.submit t('.validate'), class: "btn btn_valid"

@@ -1,10 +1,22 @@
 footer {
-	width: 100%; bottom: 0px;
-
+	width: 100%; bottom: 0px;margin-top: 4em;
 	.content {
-		.logo {margin-left: 20px;float: left;}
-		.copyright {position: absolute;left: calc(50% - 50px);}
-		.links {margin-right: 20px;float: right;}
-		li:first-of-type {margin-right: 70px;}
+		li:not(.tb, .lt) {display: block;}
+		height: 5em;
+	}
+}
+
+@media (min-width: map-get($breakpoints, tablet)) {
+	footer {
+		.content {
+			@include flexbox; @include flex-flow(row wrap); @include justify-content(space-between); @include align-items(center);
+			ul {
+				@include flexbox; @include flex-flow(row wrap); @include justify-content(space-between); @include align-items(center);
+				li:first-of-type {margin-right: 3em;}
+				li:last-of-type {margin-right: 1em;}
+			}
+			.logo {margin-left: 1em;float: left;}
+			.copyright {position: absolute;left: calc(50% - 50px);}
+		}
 	}
 }

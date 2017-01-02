@@ -8,7 +8,7 @@ module ApplicationHelper
 	end
 
 	def link_to_icon(name, width, height, target_link,options={})
-	  link_to(image_tag('icons/' + name.to_s + '.png', width: width, height: height), target_link, options)
+	  link_to(image_tag('icons/' + name.to_s + '.png', width: width, height: height, class: 'icon'), target_link, options)
 	end
 
 # --------    Flash messages display -----------------------------------------

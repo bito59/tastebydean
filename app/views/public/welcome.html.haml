@@ -52,14 +52,14 @@
 		.images
 			- (1..3).each do |i|
 				%li= image_tag "contents/instagram/#{i}.png"
-			- (4..6).each do |i|
+			- (4..9).each do |i|
 				%li.tb= image_tag "contents/instagram/#{i}.png"
 	%hr
 
 	%ul.follow
-		%li
+		%li.doudou
 			%h2= t('.follow_us')
-		%ul
+		.images
 			%li= link_to_icon('facebook', 40, 40, 'https://www.facebook.com/tastebydean/')
 			%li= link_to_icon('instagram', 40, 40, root_path)
 			%li= link_to_icon('pinterest', 40, 40, 'https://fr.pinterest.com/tastebydean/')
