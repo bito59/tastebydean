@@ -4,12 +4,12 @@
 		%li.logo.tb
 			= link_to_icon('logo-red', 100, 50, root_path)
 		%li.copyright
-			%h4.copy= "© Dean " + Time.now.year.to_s
+			%h5.copy= "© Dean " + Time.now.year.to_s
 		%ul.links
 			%li.lt
-				%h4= link_to t('.terms'), root_path
+				%h5= link_to t('.terms'), root_path
 			%li
-				%h4
+				%h5
 					= t('.designed_by')
 					%span='Massetech'
 

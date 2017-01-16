@@ -34,7 +34,7 @@ class Product < ApplicationRecord
 
 # ---------------- Options & functions -----------------------------------------------------------------------------
 
-	KINDS = ['creation', 'model', 'accessory']
+	KINDS = ['model', 'accessory', 'creation']
 	CUSTOMERS = ['man', 'woman', 'boy', 'girl']
 	FAMILIES = {
 		female: ['dress','jacket','hat'],
@@ -45,11 +45,11 @@ class Product < ApplicationRecord
 	MEASURE_UNITS = ['m','cm']
 
 	def affect_serial
-		if self.kind = 'creation' 
+		if self[:kind] == 'creation' 
 			self.serial = "C" + Time.now.year.to_s.last(2) + "%.4d"%self.id
-		elsif self.kind = 'model'
+		elsif self[:kind] == 'model'
 			self.serial = "M" + Time.now.year.to_s.last(2) + "%.4d"%self.id
-		elsif self.kind = 'accessory'
+		elsif self[:kind] == 'accessory'
 			self.serial = "A" + Time.now.year.to_s.last(2) + "%.4d"%self.id
 		end
 		self.slug = self.serial

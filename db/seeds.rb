@@ -27,7 +27,7 @@ Product.delete_all
 		family = Product::FAMILIES[:female].sample
 	end
 	price = ["2", "3", "4", "5", "6", "7", "8", "9", "10"].sample
-	title = 'auto_product_' + p.to_s
+	title = 'Elegance ' + p.to_s
 	product = Product.new(	serial: p,
 							title: title,
 							kind: kind,
@@ -43,7 +43,7 @@ Product.delete_all
 	if p.even?
 		product[:activated] = true
 	end
-	product.save!
+	product.save
 	product.affect_serial
 	#product.product_pictures.create({
 	#	image: File.open("#{Rails.root}/app/assets/images/image_sample/product_sample.jpg"),
@@ -58,9 +58,9 @@ Fabric.create( activated: true, title: 'I buy fabric', kind: 'all', price: 0, pr
 # Creation of fabrics
 (2..20).each do |f|
 	kind = Fabric::KINDS.sample
-	price = ["2", "3", "4", "5", "6", "7", "8", "9", "10"].sample
+	price = ["2", "3", "4", "5","6", "7", "8", "9", "10"].sample
 	title = 'auto_product_' + f.to_s
-	fabric = Fabric.new(	serial: p,
+	fabric = Fabric.new(	serial: f,
 							title: title,
 							kind: kind,
 							price: price,
@@ -69,7 +69,7 @@ Fabric.create( activated: true, title: 'I buy fabric', kind: 'all', price: 0, pr
 	if f.even?
 		fabric[:activated] = true
 	end
-	fabric.save!
+	fabric.save
 	fabric.affect_serial
 end
 

@@ -19,10 +19,12 @@
   %body
     #flash_msg.modal-fade
       = render_flash
-    = render partial: 'public/header'
-    %main#main
+    = render partial: 'layouts/header'
+    %main.main
       //#devise_modal.modal.no-hide{style: 'display: none'}
       //= render partial: 'public/devise_modal'
       //.modal-fade
       = yield
-    = render partial: 'public/footer'
+      %section#mb_main_menu.mb_menu
+        = render partial: 'layouts/mb_main_menu'
+    = render partial: 'layouts/footer'

@@ -9,7 +9,7 @@ class MainController < ApplicationController
 		if flash.empty?
 			#flash_message('notice', 'Welcome to tastebydean !')
 		end
-		render 'public/welcome'
+		render 'welcome/welcome'
 	end
 
 	def create_news

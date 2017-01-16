@@ -1,17 +1,17 @@
 %section#welcome1
 	%h2.title= t('.welcome_title')
 	%ul.tb
-		= link_to browse_products_path(kind: 'creation') do
+		= link_to showroom_products_path(kind: 'creation') do
 			%li
 				%h3= t('.creations')
 				= image_tag "contents/creations.png"
 				%h4= t('.creations_caption')
-		= link_to browse_products_path(kind: 'model') do
+		= link_to shop_products_path(kind: 'model') do
 			%li
 				%h3= t('.collections')
 				= image_tag "contents/collections.png"
 				%h4= t('.collections_caption')
-		= link_to browse_products_path(kind: 'accessory') do
+		= link_to shop_products_path(kind: 'accessory') do
 			%li
 				%h3= t('.accessories')
 				= image_tag "contents/accessories.png"
@@ -60,8 +60,10 @@
 		%li.doudou
 			%h2= t('.follow_us')
 		.images
-			%li= link_to_icon('facebook', 40, 40, 'https://www.facebook.com/tastebydean/')
-			%li= link_to_icon('instagram', 40, 40, root_path)
-			%li= link_to_icon('pinterest', 40, 40, 'https://fr.pinterest.com/tastebydean/')
-		= render partial: 'public/news_form'
+			%li= link_to_icon('facebook', 40, 40, 'https://www.facebook.com/tastebydean/', target: "_blank")
+			%li= link_to_icon('instagram', 40, 40, 'https://www.instagram.com/tastebydean/', target: "_blank")
+			%li= link_to_icon('pinterest', 40, 40, 'https://fr.pinterest.com/tastebydean/tastebydean/', target: "_blank")
+		= render partial: 'welcome/news_form'
+
+
 

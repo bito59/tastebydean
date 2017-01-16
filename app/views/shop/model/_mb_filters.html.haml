@@ -1,0 +1,16 @@
+.left
+.middle
+	- if params[:customer].nil?
+		%h3.title= t('.all_models')
+	- elsif params[:customer] == 'man'
+		%h3.title= t('.man')
+	- elsif params[:customer] == 'woman'
+		%h3.title= t('.woman')
+	- elsif params[:customer] == 'boy'
+		%h3.title= t('.boy')
+	- elsif params[:customer] == 'girl'
+		%h3.title= t('.girl')
+	%h4= t('.products', count: products.count)
+
+.right
+	= link_to_icon('equalizer', 40, 40, root_path, {id: 'open_mb_collection_filter', remote: true})

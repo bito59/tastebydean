@@ -1,0 +1,40 @@
+#shop_index {
+	max-width: 1024px;padding-top: 7em; margin: auto;
+	.filters {
+		width: 100%;
+		a {margin: 0px 10px 0px 10px;}
+		@include flexbox; @include justify-content(space-around);@include align-items(center);
+		img {margin-top: 10px;}
+		.left, .middle, .right {width: 33%;}	
+	}
+	.results {
+		@include flexbox; @include flex-flow(row wrap); @include justify-content(center);@include align-items(center);
+		.product {
+			margin: 3em 1em;padding: 2em 1em;background-color: rgba(99, 8, 26, 0.05);border-radius: 18px;
+			img {width: 250px;height: 250px;}
+			h4 {margin-top: 1em;}
+		}
+	}
+}
+
+#shop_show {
+	max-width: 1024px;padding-top: 7em; margin: auto;
+	.title {
+		h3 {line-height: 1.2;}
+	}
+	.pictures {
+		margin: 2em auto;
+		img {width: 250px;height: 250px;}
+	}
+	.share > li {margin: 0 0.5em;}
+}
+
+@media (min-width: map-get($breakpoints, tablet)) {
+	#shop_index {
+		.filters {
+			.left, .right {width: 20%;}
+			.middle {width: 60%;}
+		}
+	}
+
+}

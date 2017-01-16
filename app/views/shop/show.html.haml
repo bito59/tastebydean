@@ -1,0 +1,21 @@
+%section#shop_show
+	.title
+		%h3= @product.title
+		%h3.price= @product.price.to_s + " " + @product.price_unit
+		%h5= @product.serial
+	.pictures
+		#picture
+			= image_tag "contents/samples/product1.png"
+		.slider
+	.share
+		%li= link_to_icon('facebook_square', 30, 30, 'www.facebook.com', target: '_blank')
+		%li= link_to_icon('mail', 30, 30, 'www.gmail.com', target: '_blank') 
+	.choices
+		%h4=# t('.your_size')
+		=# render partial: 'shop/buy_form'
+		%h3=# @product.description
+
+
+
+
+

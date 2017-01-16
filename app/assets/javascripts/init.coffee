@@ -3,13 +3,13 @@ window.App ||= {}
 App.init = ->
 	init_flash()
 	init_boostrap_modal()
-	
+	init_mobile_menu()
 
 $(document).on "turbolinks:load", ->
   App.init()
 	
 
-# -------------------------------  JS functions  --------------------------------------------
+# -------------------------------  JS init functions  --------------------------------------------
 
 # Init bootstrap modal for user log in
 init_boostrap_modal = ->
@@ -42,6 +42,19 @@ init_flash = ->
 	$('.flash').click ->
 		$(this).fadeOut 2000, ->
 			$(this).empty()
+
+# Init mobile menus
+init_mobile_menu = ->
+	console.log 'Mobile menu loaded'
+	$('#open_mb_main_menu').click ->
+		$('#mb_main_menu').fadeIn 500
+	$('#open_mb_collection_filter').click ->
+		$('#mb_collection_filter').fadeIn 500
+	$('.close_mb_menu').click ->
+		console.log 'button clicked'
+		$(this).closest('.mb_menu').fadeOut 500
+
+# -------------------------------  JS functions  --------------------------------------------
 	
 # Show flash messages
 show_flash = ->

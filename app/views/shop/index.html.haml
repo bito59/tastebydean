@@ -1,0 +1,13 @@
+%section#shop_index
+	#mb_collection_filter.mb_menu
+		= render partial: 'shop/' + @path + '/mb_filters_menu'
+	.filters
+		= render partial: 'shop/' + @path + '/filters', locals: {products: @products}
+
+	.results
+		- @products.each do |product|
+			#product.product{ id: "item_#{product.serial}" }
+				= link_to shop_product_path(id: product.slug) do
+					= image_tag "contents/samples/product1.png"
+					%h4= product.title
+	

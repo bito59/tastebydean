@@ -6,6 +6,18 @@ $grey: #083442;
 $white: #FFFFFF;
 
 a, h1, h2, h3, h4, h5, input {color: $red;}
+a.selected {color: $green;}
+
+// ----------------------    Layout rules ----------------------------------------------------
+
+header, footer {
+	a.white {color: white;}
+    a:hover {color: $green;}
+}
+
+footer {
+	span {color: $green;}
+}
 
 #flash_msg {
 	color: rgb(255, 255, 255);
@@ -18,14 +30,11 @@ a, h1, h2, h3, h4, h5, input {color: $red;}
 	.links, .links > a {color: white;}
 }
 
-header, footer {
-	a.white {color: white;}
-    a:hover {color: $green;}
+#mb_main_menu, #mb_collection_filter, #mb_material_filter, #mb_accessory_filter {
+    a, span, h2 {color: white;}
 }
 
-footer {
-	span {color: $green;}
-}
+// ----------------------    Pages rules ----------------------------------------------------
 
 #welcome1 {
     h2 {color: white;}
@@ -34,17 +43,22 @@ footer {
 }
 
 #welcome2 {
-	//li * {color: $grey;}
-	.comment  {
-		//h1, h2, h3 {color: $red;}
-	}
 	.instagram {
-		//h2 {color: $red;}
 		h3 {color: $green;}
 	}
 	.follow {
-		//h2 {color: $red;}
 		h3 {color: $red;}
 		.btn {background: $green;}
 	}
 }
+
+#shop_index {
+	.filters {
+		h3 {color: $green;}
+	}
+}
+
+#shop_show {
+	h3.price {color: $green;}
+}
+

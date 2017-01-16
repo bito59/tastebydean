@@ -1,0 +1,14 @@
+%li
+	= link_to_icon('equalizer', 40, 40, '#', remote: true)
+%li
+	%ul.links
+		%li= link_to t('.man'), shop_products_path(kind: params[:kind], customer: 'man')
+		%li= '|'
+		%li= link_to t('.woman'), shop_products_path(kind: params[:kind], customer: 'woman')
+		%li= '|'
+		%li= link_to t('.child'), shop_products_path(kind: params[:kind], customer: 'child')
+		%li= '|'
+		%li= link_to t('.all_models'), shop_products_path(kind: params[:kind])
+%li
+	%h2= t('.products', count: @products.count)
+%hr

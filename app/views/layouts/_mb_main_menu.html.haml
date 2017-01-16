@@ -1,0 +1,27 @@
+%li.logo= image_tag "icons/logo-red.png"
+
+= link_to showroom_products_path(kind: 'creation') do
+	%li
+		%h2= t('.creation')
+= link_to shop_products_path(kind: 'model') do
+	%li
+		%h2= t('.collection')
+= link_to shop_products_path(kind: 'accessory') do
+	%li
+		%h2= t('.shop') 
+= link_to cart_path do
+	%li
+		%h2= t('.basket') 
+
+- if user_signed_in?
+	= link_to destroy_user_session_path do
+		%li
+			%h2= t('.disconnect') 
+- else
+	= link_to new_user_session_path do
+		%li
+			%h2= t('.connect')
+
+= link_to root_path, {class: 'close_mb_menu', remote: true} do
+	%li
+		%h2= t('.cancel')

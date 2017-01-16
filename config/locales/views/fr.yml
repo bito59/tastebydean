@@ -1,19 +1,33 @@
 fr:
-    public:
+    layouts:
         header:
-            creations: "Création"
-            collections: "Collection"
-            accessories: "Boutique"
+        main_filters:
+            creation: 'Création'
+            collection: 'Collection'
+            shop: 'Boutique'
+            basket: 'Panier'
+            connect: 'Connexion'
+            cancel: 'Annuler'
         footer: 
             terms: "Conditions"
             designed_by: "Design par "
+        devise_modal:
+            email: "Email"
+            password: "Mot de passe"
+            confirm_password: "Confirmer le mot de passe"
+            password_forgotten: "Mot de passe oublié"
+            zipcode: "Code postal"
+            register: "Créer un compte"
+            log_in: "Se connecter"
+            create_account: "Valider"
+    welcome:
         welcome:
             welcome_title: "La tenue de cérémonie sur mesure"
             creations: "Creation"
             creations_caption: "Votre tenue créée sur mesure"
             collections: "Collection"
-            collections_caption: "nos modèles à personnaliser"
-            accessories: "Accessoires"
+            collections_caption: "Nos modèles à personnaliser"
+            accessories: "Boutique"
             accessories_caption: "Notre sélection de tissus et d'accessoires"
             drawing_explain: "Concevez votre tenue à partir d'un dessin, une photo, un modèle."
             fabrics_explain: "Choisissez votre tissus et vos couleurs sur notre site ou près de chez vous."
@@ -25,15 +39,20 @@ fr:
             zipcode: "Code postal"
             email: "Email"
             validate: 'Valider'
-        devise_modal:
-            email: "Email"
-            password: "Mot de passe"
-            confirm_password: "Confirmer le mot de passe"
-            password_forgotten: "Mot de passe oublié"
-            zipcode: "Code postal"
-            register: "Créer un compte"
-            log_in: "Se connecter"
-            create_account: "Valider"
+    shop:
+        model:
+            main_filters:
+                man: 'Homme'
+                woman: 'Femme'
+                boy: 'Garçon'
+                girl: 'Fille'
+                all_models: 'Tous les modèles'
+                cancel: 'Annuler'
+            filters:
+                products: 
+                    zero: '%{count} produit'
+                    one: '%{count} produit'
+                    other: '%{count} produits'
     products:
         browse_products:
             man: "Homme"
