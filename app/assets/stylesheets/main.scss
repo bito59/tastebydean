@@ -1,7 +1,9 @@
 // Adding bower ressources
-@import 'modular-scale/stylesheets/modular-scale';
+@import "modular-scale/stylesheets/modular-scale";
 @import "typi/scss/typi";
 @import "sass-flex-mixin/_flex.scss";
+@import "owl.carousel/dist/assets/owl.carousel.min.css";
+@import "owl.carousel/dist/assets/owl.theme.default.css";
 
 // Adding internal rules
 @import "helpers/*";

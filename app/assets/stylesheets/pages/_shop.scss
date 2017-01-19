@@ -24,7 +24,7 @@
 	}
 	.pictures {
 		margin: 2em auto;
-		img {width: 250px;height: 250px;}
+		img {width: 250px;height: 250px;margin: auto;}
 	}
 	.share > li {margin: 0 0.5em;}
 }
@@ -36,5 +36,17 @@
 			.middle {width: 60%;}
 		}
 	}
+	#shop_show {
+		.pictures {
+			img {width: 350px;height: 350px;}
+		}
+	}
+}
 
+@media (min-width: map-get($breakpoints, desktop)) {
+	#shop_show {
+		.pictures {
+			img {width: 500px;height: 500px;}
+		}
+	}
 }

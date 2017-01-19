@@ -17,7 +17,6 @@ module Tastebydean
     I18n.available_locales = [:en, :fr, :bi]
 
     # Add assets paths
-    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
     # Precompile additional assets
     #config.assets.precompile += %w( .svg .eot .woff .ttf .otf)

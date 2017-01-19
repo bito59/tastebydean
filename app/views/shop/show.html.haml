@@ -4,10 +4,22 @@
 		%h3.price= @product.price.to_s + " " + @product.price_unit
 		%h5= @product.serial
 	.pictures
-		#picture
-			= image_tag "contents/samples/product1.png"
-		.slider
-	.share
+		.owl-carousel.owl-theme
+			.item
+				= image_tag "contents/samples/product1.png"
+			.item
+				= image_tag "contents/samples/product1.png"
+			.item
+				= image_tag "contents/samples/product1.png"
+			.item
+				= image_tag "contents/samples/product1.png"
+			.item
+				= image_tag "contents/samples/product1.png"
+			.item
+				= image_tag "contents/samples/product1.png"
+			.item
+				= image_tag "contents/samples/product1.png"
+	.share.mb
 		%li= link_to_icon('facebook_square', 30, 30, 'www.facebook.com', target: '_blank')
 		%li= link_to_icon('mail', 30, 30, 'www.gmail.com', target: '_blank') 
 	.choices
@@ -15,7 +27,20 @@
 		=# render partial: 'shop/buy_form'
 		%h3=# @product.description
 
+:javascript
 
-
+$(document).ready(function() {
+	var owl = $('.owl-carousel');
+	owl.owlCarousel({
+		number: 1,
+		dotsEach: 1,
+		center: true,
+		margin: 10,
+		nav: true,
+		loop: true,
+		items: 1
+	})
+})
+          
 
 

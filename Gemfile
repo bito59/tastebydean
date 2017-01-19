@@ -23,7 +23,7 @@ gem "paperclip"
 gem 'devise'
 gem "figaro"
 gem 'rails-i18n'
-gem 'owlcarousel2-rails'
+#gem 'owlcarousel2-rails'
 #gem 'materialize-rails'
 #gem "modular-scale"
 
