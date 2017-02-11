@@ -1,7 +1,7 @@
 body {position: relative;}
 body::-webkit-scrollbar {display: none;}
-header {z-index: 99;height: 4em;width: 100%;position: absolute;}
-footer {z-index: 99;height: 2em;;width: 100%;position: absolute;bottom: 0px;}
+header {z-index: 90;height: 4em;width: 100%;position: absolute;}
+footer {z-index: 90;height: 2em;;width: 100%;position: absolute;bottom: 0px;}
 #main {z-index: 1;min-height: calc(100vh);margin: auto;}
 #flash_msg {z-index: 3;position: fixed;top: 0;width:100%;}
 

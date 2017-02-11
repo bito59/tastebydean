@@ -17,20 +17,23 @@
       ga('create', 'UA-88492107-2', 'auto');
 
   %body
-    %header#header.modal_hide.mb-hide
+    %header#header.mb-hide.modal-fade
       - if @root == true
         = render partial: 'layouts/header_welcome'
       - else
         = render partial: 'layouts/header_others'
-    %main#main.mb-hide
+    %main#main.mb-hide.modal-fade
       = yield
+      = render partial: 'layouts/devise_modal'
+    %footer#footer.modal-fade
+      = render partial: 'layouts/footer'
+
+    %section#devise_modal.tb
+      = render partial: 'layouts/devise_modal'      
     %section#mb_main_menu.mb-menu
       = render partial: 'layouts/mb_main_menu'
     - if defined?(@path)
       %section#mb_filter.mb-menu
         = render partial: 'shop/' + @path + '/mb_filters'    
-
-    %footer#footer.modal_hide
-      = render partial: 'layouts/footer'
     %section#flash_msg
       = render_flash

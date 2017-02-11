@@ -31,7 +31,7 @@
 	}	
 	.qties {height: 4em;display: flex;@include justify-content(center);@include align-items(center);}
 	.qties select {margin-left: 1em;}
-	.buttons * {margin: 1em auto;}
+	//.buttons {margin: 1em auto;}
 
 	@media (min-width: map-get($breakpoints, tablet)) {
 		.owl-item img {height: calc(100vh - 8em - 4em);width: auto !important;margin: auto;}

@@ -1,10 +1,17 @@
 input:hover, .btn:hover, label:hover, a:hover {cursor: pointer;}
 
-input {
-	width: 75%;height: 3em;
-	font-family: $light;font-size: 1em;color: $grey;
-	background-color: rgba(8,52,66,0.05);border-radius: 10px;border:none;
+input, .btn {
+	margin: 1em auto;width: 75%;height: 3em;
+	font-family: $light;font-size: 1em;color: $red;
+	background-color: rgba(255,255,255,0.9);border-radius: 10px;//border:1px solid $grey;
 }
+
+.btn {@include typi($h3-map);}
+
+.btn-green {border:2px solid $green;}
+.btn-red {border:2px solid red;}
+.btn-valid {background: $green;color: #FFFFFF;}
+.btn-cancel {background: $red;color: #FFFFFF;}
 
 label {
 	display:block; width: 50%;margin: 1em auto;
@@ -15,18 +22,10 @@ label {
 }
 label.big {width: 80%;}
 
-.btn {
-	margin: auto;border-radius: 10px;
-	@include flexbox; @include flex-flow(row nowrap);@include justify-content(center); @include align-items(center);
+.btn {//width: 75%;margin: 1em auto;height: 3em;border-radius: 10px;
+	//@include flexbox; @include flex-flow(row nowrap);@include justify-content(center); @include align-items(center);
 }
-.btn_green {border:2px solid $green;font-family: $light;}
-.btn_red {border:2px solid red;font-family: $light;}
-.btn_valid {background: $green;font-family: $light;@include typi($h3-map);color: #FFFFFF;}
-.btn_cancel, .btn_cancel > h3 {background: $red;font-family: $light;@include typi($h3-map);color: #FFFFFF;}
-
-
-
 
 @media (min-width: map-get($breakpoints, tablet)) {
-	.btn {width: 90%;height: 3em;max-width: 200px;}
+	.btn {width: 90%;max-width: 200px;height: 3em;}
 }

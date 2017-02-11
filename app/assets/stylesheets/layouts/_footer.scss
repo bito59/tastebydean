@@ -1,4 +1,4 @@
-//footer {display: none;}
+footer {display: none;}
 footer .content {@include flexbox; @include justify-content(space-around); @include align-items(center);} 
 footer.pushed {position: relative;}
 

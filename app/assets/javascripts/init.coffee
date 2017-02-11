@@ -3,7 +3,7 @@ window.App ||= {}
 App.init = ->
 	init_fullpage()
 	init_flash()
-	init_boostrap_modal()
+	init_devise_modal()
 	init_mobile_menu()
 
 
@@ -44,48 +44,36 @@ init_flash = ->
 	$('#flash_msg').change ->
 		show_flash()
 	$('.flash').click ->
-		$(this).fadeOut 2000, ->
+		$(this).fadeOut 500, ->
 			$(this).empty()
 
-# Init bootstrap modal for user log in
-init_boostrap_modal = ->
+# Init devise modal
+init_devise_modal = ->
 	# Block links under modal
 	$(".a").click (ev) ->
 		if $(this).hasClass("blocked") == true
       		ev.preventDefault()
 	# Show modal
-	$('#connection_modal').on 'click', ->
-		$('#devise_modal').fadeIn(1000)
-		$(".modal-fade a").addClass("blocked")
-		$('.modal-fade').fadeTo(1000, 0.2)
+	$('.connect_modal').on 'click', ->
+		remove_mb_menu()
+		add_modal()
 	# Hide modal
 	$(window).on 'click', ->
-		if !$(event.target).parents('.no-hide').length && !$(event.target).is(".no-hide")
-			$('#devise_modal').fadeOut(1000)
-			$(".modal-fade a").removeClass("blocked")
-			$('.modal-fade').fadeTo(1000, 1)
+		#if !$(event.target).parents('.no-hide').length && !$(event.target).is(".no-hide")
+		if !$(event.target).parents('.front').length
+			remove_modal()
 	$('.register-link').on 'click', -> 
-		$('#devise_modal').fadeOut(1000)
+		remove_modal()
 
 # Init mobile menus
 init_mobile_menu = ->
 	$('#open_mb_main_menu').click ->
-		$('#mb_main_menu').fadeIn 500
-		$('.mb-hide').hide()
-		if $(".section")[0]
-			console.log 'fullpage exist (enter)'
-			$.fn.fullpage.setAllowScrolling(false);
-			$.fn.fullpage.setAutoScrolling(false);
+		add_mb_menu()
+		disable_fp()
 
 	$('.close_mb_menu').click ->
-		$('.mb-menu').fadeOut 500
-		$('.mb-hide').fadeIn 500
-		if $(".section")[0]
-			console.log 'fullpage exist (exit)'
-			$.fn.fullpage.setAllowScrolling(true);
-			$.fn.fullpage.setAutoScrolling(true);
-			$.fn.fullpage.silentMoveTo(1);
-
+		remove_mb_menu()
+		enable_fp()
 
 # -------------------------------  JS functions  --------------------------------------------
 	
@@ -98,7 +86,7 @@ show_flash = ->
 		$('#flash_msg')
 			.fadeOut 2000, ->
 				$(this).empty()
-	, 5000
+	, 4000
 	console.log 'Flash fired'
 
 # Account handlers
@@ -112,5 +100,28 @@ account_handler = ->
 		$('#connect-account').show
 		$('#create-account').hide
 
+add_mb_menu = ->
+	$('#mb_main_menu').fadeIn 500
+	$('.mb-hide').hide()
+remove_mb_menu = ->
+	$('.mb-menu').fadeOut 500
+	$('.mb-hide').fadeIn 500
 
+add_modal = ->
+	$('#devise_modal').fadeIn(500)
+	$(".modal-fade a").addClass("blocked")
+remove_modal = ->
+	$('#devise_modal').fadeOut(500)
+	$(".modal-fade a").removeClass("blocked")
 
+disable_fp = ->
+	if $(".section")[0]
+		console.log 'fullpage exist (enter)'
+		$.fn.fullpage.setAllowScrolling(false);
+		$.fn.fullpage.setAutoScrolling(false);
+enable_fp = ->
+	if $(".section")[0]
+		console.log 'fullpage exist (exit)'
+		$.fn.fullpage.setAllowScrolling(true);
+		$.fn.fullpage.setAutoScrolling(true);
+		$.fn.fullpage.silentMoveTo(1);
