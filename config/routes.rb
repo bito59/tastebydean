@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
-	match '', to: redirect("/#{I18n.locale}"), via: :get
-	scope "(:locale)", locale: /en|bi|fr/ do
-		root "main#welcome"
+	root "main#welcome"
+	#get '/:locale' => 'dashboard#index'
+	#match '', to: redirect("/#{I18n.locale}"), via: :get
+	#scope "(:locale)", locale: /en|bi|fr/ do
+	scope "(/:Locale)" do
+		#root "main#welcome"
 		devise_for :users
 
 		resources :news, only: [:create]
@@ -12,11 +15,8 @@ Rails.application.routes.draw do
 		  resources :products, only: [:index, :show]
 		end
 		namespace :showroom do
-		#scope '/showroom' do
-		  resources :products, only: [:index, :show]
-		end
-
-		
+			resources :products, only: [:index]
+		end		
 
 		#resources :carts, only: [:show]
 		match '/cart', to: 'carts#show', via: :get, as: :cart

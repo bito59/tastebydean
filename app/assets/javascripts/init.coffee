@@ -1,15 +1,51 @@
 window.App ||= {}
 
 App.init = ->
+	init_fullpage()
 	init_flash()
 	init_boostrap_modal()
 	init_mobile_menu()
 
+
 $(document).on "turbolinks:load", ->
-  App.init()
-	
+  	App.init()
+
 
 # -------------------------------  JS init functions  --------------------------------------------
+
+# Init fullpage
+init_fullpage = ->
+	if typeof $.fn.fullpage.destroy == 'function'
+	    $.fn.fullpage.destroy('all');
+	    console.log 'fullpage destroyed (all)'
+	if (screen.width < 1024 && $(".section")[0]) || $(".section-dk")[0]
+		console.log 'fullpage loaded'
+		$('#footer').hide();
+		$('#main').fullpage
+			fitToSectionDelay: 10000
+			scrollOverflow: true
+			afterLoad: (anchor, index) ->
+				if $('.active').hasClass 'dyn-header' #anchor == 1
+					$('#header').fadeIn('slow');
+				if $('.active').hasClass 'dyn-footer' #anchor == 4
+					$('#footer').fadeIn('slow');   	
+			onLeave: (anchor, index) ->
+				if $('.active').hasClass 'dyn-header'
+					$('#header').fadeOut 'slow'
+				if $('.active').hasClass 'dyn-footer'
+					$('#footer').fadeOut 'slow'
+
+# Init flash
+init_flash = ->
+	$('#flash_msg').hide()
+	console.log 'Flash loaded'
+	unless $('#flash_msg').length is 0
+		show_flash()
+	$('#flash_msg').change ->
+		show_flash()
+	$('.flash').click ->
+		$(this).fadeOut 2000, ->
+			$(this).empty()
 
 # Init bootstrap modal for user log in
 init_boostrap_modal = ->
@@ -31,28 +67,25 @@ init_boostrap_modal = ->
 	$('.register-link').on 'click', -> 
 		$('#devise_modal').fadeOut(1000)
 
-# Init flash
-init_flash = ->
-	$('#flash_msg').hide()
-	#console.log 'Flash loaded'
-	unless $('#flash_msg').length is 0
-		show_flash()
-	$('#flash_msg').change ->
-		show_flash()
-	$('.flash').click ->
-		$(this).fadeOut 2000, ->
-			$(this).empty()
-
 # Init mobile menus
 init_mobile_menu = ->
-	console.log 'Mobile menu loaded'
 	$('#open_mb_main_menu').click ->
 		$('#mb_main_menu').fadeIn 500
-	$('#open_mb_collection_filter').click ->
-		$('#mb_collection_filter').fadeIn 500
+		$('.mb-hide').hide()
+		if $(".section")[0]
+			console.log 'fullpage exist (enter)'
+			$.fn.fullpage.setAllowScrolling(false);
+			$.fn.fullpage.setAutoScrolling(false);
+
 	$('.close_mb_menu').click ->
-		console.log 'button clicked'
-		$(this).closest('.mb_menu').fadeOut 500
+		$('.mb-menu').fadeOut 500
+		$('.mb-hide').fadeIn 500
+		if $(".section")[0]
+			console.log 'fullpage exist (exit)'
+			$.fn.fullpage.setAllowScrolling(true);
+			$.fn.fullpage.setAutoScrolling(true);
+			$.fn.fullpage.silentMoveTo(1);
+
 
 # -------------------------------  JS functions  --------------------------------------------
 	
@@ -65,7 +98,7 @@ show_flash = ->
 		$('#flash_msg')
 			.fadeOut 2000, ->
 				$(this).empty()
-	, 6000
+	, 5000
 	console.log 'Flash fired'
 
 # Account handlers
@@ -78,5 +111,6 @@ account_handler = ->
 		$('#account').fadeIn "slow"
 		$('#connect-account').show
 		$('#create-account').hide
+
 
 

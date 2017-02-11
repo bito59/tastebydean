@@ -17,7 +17,7 @@ $ms-ratio: 1.333;
 // Init Typi
 $typi: (null: (16px, 2), tablet: (18px, 2), laptop: (18px, 2), desktop: (20px, 2));
 $h1-map: (null: (ms(4), 1.2), mobile: ms(3), tablet: ms(3), laptop: ms(4), desktop: (ms(4), 1.3));
-$h2-map: (null: (ms(2), 1.5), mobile: ms(2), tablet: ms(2), laptop: ms(2), desktop: ms(2));
+$h2-map: (null: (ms(3), 1.5), mobile: ms(3), tablet: ms(3), laptop: ms(3), desktop: ms(3));
 $h3-map: (null: (ms(2), 2), mobile: ms(1), tablet: ms(1), laptop: (ms(1), 2), desktop: (ms(1), 2));
 $h5-map: (null: ms(1), mobile: ms(-1), tablet: ms(0), laptop: (ms(0), 2), desktop: (ms(0), 2));
 $main-title-map: (null: (ms(2), 1.2), mobile: ms(2), tablet: ms(3), laptop: ms(3), desktop: (ms(3), 1.3));
@@ -27,7 +27,7 @@ html {@include typi-base();}
 body, a, h1, h2, h3, h4, h5, input {font-family: $light;}
 h1, h1 > span { @include typi($h1-map) }
 h2, h2 > span { @include typi($h2-map);}
-h3, h3 > span { @include typi($h3-map);}
+h3, h3 > span, select { @include typi($h3-map);}
 h4, ul, li, p, a, span { @include typi($typi) }
 h5, h5 > span { @include typi($h5-map) }
 
@@ -50,43 +50,40 @@ footer {
 
 #flash_msg {font-family: $bold;font-size: 2.827em;}
 #devise_modal {.links > a {font-family: $xlight;font-size: 0.8em;}}
-
-#mb_main_menu, #mb_collection_filter, #mb_material_filter, #mb_accessory_filter { 
-    a { @include typi($h2-map); }
-}
+.mb-menu { a { @include typi($h2-map); } }
 
 // ----------------------    Pages rules ----------------------------------------------------
 
-#welcome1 {
-    .title {@include typi($main-title-map);}
+.welcome .c0 {
+    //.title {@include typi($main-title-map);}
     h2 {font-family: $xlight;}
     h3 {font-family: $regular;}
 }
-
-#welcome2 {
-    .comment {
-        .text { 
-            h1 {font-size: 80px; }
-            .name {font-family: $regular;}
-        }
-    }
-    .instagram, .follow {
-        h2 {font-family: $regular;}
-        h3 {font-family: $regular;}
-    }
+.welcome .c2 .comment .text {
+    h1 {font-size: 80px; }
+    .name {font-family: $regular;}
 }
+.welcome .c2 .instagram, .follow {
+    h2 {font-family: $regular;}
+    h3 {font-family: $regular;}
+}
+
+
 
 @media (min-width: map-get($breakpoints, tablet)) {
-    #welcome2 .title {font-size: 80px;}
+    .welcome2 .title {font-size: 80px;}
 }
 
-#shop_index {
+.shop_index {
     .filters {
         a, li { @include typi($h5-map) }
     }
 }
 
-#shop_show {
-    .title > h3 {font-family: $regular;}
+.shop_show {
+    h3.title  {font-family: $regular;}
+    .customize_form {
+        select {@include typi($h3-map)}
+    }
 }
 

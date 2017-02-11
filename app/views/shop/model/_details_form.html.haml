@@ -1,0 +1,37 @@
+.sizes
+	- if product.variable_size == false
+		%h3= t('.unic_size')
+		= f.hidden_field :size, value: 'unic'
+	- else
+		%h3= t('.choose_your_size')
+		.box
+			%label
+				= f.radio_button :size, sizes[:std], checked: true
+				%h4= t('.' + sizes[:std])
+			%label
+				= f.radio_button :size, sizes[:big]
+				%h4= t('.' + sizes[:big])
+
+.fabrics
+	- if @product.custom_fabric == true
+		%h3= t('.choose_your_fabric')
+		.text
+			%h4= t('.dimensions', length: product.fabric_lgt_std, large: product.fabric_lrg_std)
+			%h4.price= '+ 20e'
+		%label.big
+			= f.radio_button :sep_fabric, true, checked: true
+			%h4= t('.customer_fabric')
+			=# f.hidden_field :separate_fabric, false
+			=# f.hidden_field :fabric_id, {id: 'fabric_id', required: true}
+	- else
+		%h3= t('.unic_fabric')
+
+.qties
+	%h3= t('.qties')
+	= f.select :quantity, ['1', '2', '3', '4']
+
+.buttons
+	.btn.btn_valid
+		= f.submit t('.add_to_basket'), class: "btn btn_valid"
+	.btn.btn_cancel
+		%h3{id: 'btn_cancel'}= t('.cancel')

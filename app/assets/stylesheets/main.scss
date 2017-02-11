@@ -4,12 +4,14 @@
 @import "sass-flex-mixin/_flex.scss";
 @import "owl.carousel/dist/assets/owl.carousel.min.css";
 @import "owl.carousel/dist/assets/owl.theme.default.css";
+@import "fullpage.js/jquery.fullPage.css";
 
 // Adding internal rules
 @import "helpers/*";
 @import "base/*";
 @import "layouts/*";
-@import "pages/*";
 @import "components/*";
+@import "pages/*";
+
 
 

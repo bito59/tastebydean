@@ -1,6 +1,4 @@
-%section#shop_index
-	#mb_collection_filter.mb_menu
-		= render partial: 'shop/' + @path + '/mb_filters_menu'
+%section.shop_index.c5
 	.filters
 		= render partial: 'shop/' + @path + '/filters', locals: {products: @products}
 
@@ -8,6 +6,15 @@
 		- @products.each do |product|
 			#product.product{ id: "item_#{product.serial}" }
 				= link_to shop_product_path(id: product.slug) do
-					= image_tag "contents/samples/product1.png"
+					= image_tag "collections/default3.png"
 					%h4= product.title
+
 	
+:javascript
+	$(document).ready(function() {
+		$('#footer').show().addClass('pushed');
+		$('#open_mb_collection_filter').click(function() {
+			$('#mb_filter').fadeIn(500);
+			$('.mb-hide').hide();
+		});
+	});

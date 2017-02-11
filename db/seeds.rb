@@ -35,13 +35,23 @@ Product.delete_all
 							family: family,
 							price: price,
 							price_unit: '€',
-							fab_length: 0.1,
-							fab_length_unit: 'meter',
+							lead_time: p,
 							description: 'Paleo portland succulents street Paleo portland succulents street 
 							Paleo portland succulents street 
 							Paleo portland succulents street ')
-	if p.even?
+	if p.even? && kind == 'model'
 		product[:activated] = true
+		product[:custom_fabric] = true
+		product[:fabric_lgt_std] = 1
+		product[:fabric_lrg_std] = 0.5
+		product[:variable_size] = true
+        product[:fabric_lgt_big] = 1.5
+        product[:fabric_lrg_big] = 0.5
+        product[:on_measure] = true
+	else
+		product[:custom_fabric] = false
+		product[:on_measure] = false
+
 	end
 	product.save
 	product.affect_serial

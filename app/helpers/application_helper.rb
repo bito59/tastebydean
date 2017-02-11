@@ -33,12 +33,12 @@ module ApplicationHelper
 	end
 
 	def define_area
-		if params[:kind] == 'model' || params[:id][0] == 'M'
+		if params[:kind] == 'model' || (!params[:id].nil? && params[:id][0] == 'M') 
 			@area = 'collection'
-		elsif params[:kind] == 'creation' || params[:id][0] == 'C'
+		elsif params[:kind] == 'creation' || (!params[:id].nil? && params[:id][0] == 'C') 
 			@area = 'creation'
-		elsif params[:kind] == 'accessory'
-			@area = 'shop'
+		elsif params[:kind] == 'accessory' || (!params[:id].nil? && params[:id][0] == 'A') 
+			@area = 'accessory'
 		end
 		@area
 	end

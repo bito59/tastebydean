@@ -18,7 +18,8 @@ module Shop
   	def show
   		#@main_picture = @product.product_pictures.active.main.random.first
   		#@pictures = @product.product_pictures.active.where.not(id: @main_picture.id)
-      @order_line = current_order.order_lines.new 
+      @order_line = current_order.order_lines.new
+      @sizes = @product.find_sizes
   		respond_to do |format|
   			format.html { render 'shop/show.html.haml' }
   		end
@@ -44,7 +45,8 @@ module Shop
       end
         
       def load_products
-        @products = Product.with_kind(params[:kind]).actives
+        @products = Product.with_kind(params[:kind])
+        #.actives
         #.with_picture
         if params[:customer] == 'child'
           @products = @products.child

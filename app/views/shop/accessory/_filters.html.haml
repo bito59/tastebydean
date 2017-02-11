@@ -1,14 +1,21 @@
-%li
-	= link_to_icon('equalizer', 40, 40, '#', remote: true)
-%li
-	%ul.links
-		%li= link_to t('.man'), shop_products_path(kind: params[:kind], customer: 'man')
+.left
+.middle
+	.mb
+		%h3.title= select_title
+		%h4= t('.products', count: products.count)
+	.tb
+		%li= selected_link('man', shop_products_path(kind: params[:kind], customer: 'man'))
 		%li= '|'
-		%li= link_to t('.woman'), shop_products_path(kind: params[:kind], customer: 'woman')
+		%li= selected_link('woman', shop_products_path(kind: params[:kind], customer: 'woman'))
 		%li= '|'
-		%li= link_to t('.child'), shop_products_path(kind: params[:kind], customer: 'child')
+		%li= selected_link('boy', shop_products_path(kind: params[:kind], customer: 'boy'))
 		%li= '|'
-		%li= link_to t('.all_models'), shop_products_path(kind: params[:kind])
-%li
-	%h2= t('.products', count: @products.count)
-%hr
+		%li= selected_link('girl', shop_products_path(kind: params[:kind], customer: 'girl'))
+		%li= '|'
+		%li= selected_link('all_models', shop_products_path(kind: params[:kind]))
+
+.right
+	.mb
+		= link_to_icon('equalizer', 30, 30, root_path, {id: 'open_mb_collection_filter', remote: true})
+	.tb
+		%h5= t('.products', count: @products.count)

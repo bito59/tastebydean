@@ -1,7 +1,7 @@
 /* Colors */
 
 $red: #63081A;
-$green: #235C07;
+$green: #5CB52A;
 $grey: #083442;
 $white: #FFFFFF;
 
@@ -11,57 +11,56 @@ a.selected {color: $green;}
 // ----------------------    Layout rules ----------------------------------------------------
 
 header, footer {
+	//background-color: white;
 	a.white {color: white;}
     a:hover {color: $green;}
 }
 
 footer {
 	span {color: $green;}
+	background-color: white;
 }
 
 #flash_msg {
 	color: rgb(255, 255, 255);
-	.flash_notice {background: none repeat scroll 0% 0% rgba(135, 216, 211, 0.85);}
-	.flash_alert {background: none repeat scroll 0% 0% rgba(204, 0, 0, 0.70);}
-	.flash_success {background: none repeat scroll 0% 0% rgba(35, 92, 7, 0.85);}
+	.flash_notice {background: none repeat scroll 0% 0% rgba(135, 216, 211, 0.80);}
+	.flash_alert {background: none repeat scroll 0% 0% rgba(204, 0, 0, 0.80);}
+	.flash_success {background: none repeat scroll 0% 0% rgba(92, 181, 42, 0.80);}
 }
 
 #devise_modal {
 	.links, .links > a {color: white;}
 }
 
-#mb_main_menu, #mb_collection_filter, #mb_material_filter, #mb_accessory_filter {
-    a, span, h2 {color: white;}
-}
+.mb-menu {a, span, h2 {color: white;} }
 
 .owl-theme .owl-dots .owl-dot.active span {background-color: $red;}
 .owl-theme .owl-nav [class*='owl-']:hover {background: #63081A;}
 
 // ----------------------    Pages rules ----------------------------------------------------
 
-#welcome1 {
+.welcome.c0 {
     h2 {color: white;}
-    h3, h4 {color: $green;}
-    li {background-color: rgba(255,255,255,0.5);border-radius: 15px;}
+    h3, h4 {color: $red;}
+    li {background-color: rgba(255,255,255,0.6);border-radius: 15px;}
+}
+.welcome .instagram {
+	h3 {color: $green;}
+}
+.welcome .follow {
+	h3 {color: $red;}
+	.btn {background: $green;}
 }
 
-#welcome2 {
-	.instagram {
-		h3 {color: $green;}
-	}
-	.follow {
-		h3 {color: $red;}
-		.btn {background: $green;}
-	}
-}
-
-#shop_index {
+.shop_index {
 	.filters {
 		h3 {color: $green;}
 	}
 }
 
-#shop_show {
+.shop_show {
 	h3.price {color: $green;}
+	.fabrics .text .price {color: $green;}
+	.c2, .c3 {background-color: white;}
 }
 

@@ -1,46 +1,101 @@
-%section#shop_show
-	.title
-		%h3= @product.title
-		%h3.price= @product.price.to_s + " " + @product.price_unit
-		%h5= @product.serial
-	.pictures
+= form_for @order_line, authenticity_token: true do |f|
+	= f.hidden_field :product_id, value: @product.id
+	%section.shop_show.c1.section.fp-noscroll{'data-anchor': '1'}
+		.title.mb
+			%h3= @product.title
+			%h3.price= @product.price.to_s + " " + @product.price_unit
+			%h5= @product.serial
 		.owl-carousel.owl-theme
 			.item
-				= image_tag "contents/samples/product1.png"
+				= image_tag "collections/default0.png"
 			.item
-				= image_tag "contents/samples/product1.png"
+				= image_tag "collections/default1.png"
 			.item
-				= image_tag "contents/samples/product1.png"
+				= image_tag "collections/default2.png"
 			.item
-				= image_tag "contents/samples/product1.png"
+				= image_tag "collections/default3.png"
 			.item
-				= image_tag "contents/samples/product1.png"
-			.item
-				= image_tag "contents/samples/product1.png"
-			.item
-				= image_tag "contents/samples/product1.png"
-	.share.mb
-		%li= link_to_icon('facebook_square', 30, 30, 'www.facebook.com', target: '_blank')
-		%li= link_to_icon('mail', 30, 30, 'www.gmail.com', target: '_blank') 
-	.choices
-		%h4=# t('.your_size')
-		=# render partial: 'shop/buy_form'
-		%h3=# @product.description
+				= image_tag "collections/default4.png"
+		.arrows
+			#btn_prev
+				%h2= '<'
+			#btn_next
+				%h2= '>'
+	%section.shop_show.c2.section.fp-noscroll{'data-anchor': '2'}
+		.title
+			%h3= @product.title
+			%h3.price.tablet= @product.price.to_s + " " + @product.price_unit
+			%h5.tablet= @product.serial
+		.description
+			%h4= @product.description
+		.icons
+			%li
+				- if @product.on_measure == false
+					= link_to_icon('facebook_square', 30, 30, 'http://www.facebook.com', target: '_blank')
+					%h4= t('shop.show.not_on_measure')
+				- else
+					= link_to_icon('facebook_square', 30, 30, 'http://www.facebook.com', target: '_blank')
+					%h4= t('shop.show.on_measure')
+			%li
+				= link_to_icon('facebook_square', 30, 30, 'http://www.facebook.com', target: '_blank')
+				%h4= t('shop.show.lead_time', lead_time: @product.lead_time)
+		.button
+			- if @product.kind == 'model'
+				#btn_custom.btn.btn_green
+					%h3= t('shop.show.customize')
+			- else
+				.qties
+					= f.select :quantity, ['1', '2', '3', '4']
+				= f.submit t('shop.show.add_to_basket'), class: "confirm"
+		.share
+			%h4=# t('shop.show.share')
+			%li=# link_to_icon('facebook_square', 30, 30, 'http://www.facebook.com', target: '_blank')
+			%li=# link_to_icon('mail', 30, 30, 'http://www.gmail.com', target: '_blank')
+	- if @product.kind == 'model'
+		%section.shop_show.c3.section.fp-noscroll{'data-anchor': '3'}
+			= render partial: 'shop/model/details_form', locals: {f: f, product: @product, sizes: @sizes}
+
 
 :javascript
 
-$(document).ready(function() {
+$(document).ready(function() {	
+
 	var owl = $('.owl-carousel');
 	owl.owlCarousel({
 		number: 1,
+		dots: true,
 		dotsEach: 1,
-		center: true,
-		margin: 10,
 		nav: true,
+		center: true,
 		loop: true,
 		items: 1
 	})
+
+	$('#btn_prev').click(function() {
+	    $('.owl-prev').trigger('click');
+	});
+
+	$('#btn_next').click(function() {
+	    $('.owl-next').trigger('click');
+	});
+
+	$('#btn_custom').click(function() {
+		if (screen.width < 1024) {
+			$.fn.fullpage.moveTo(3);
+		}else {
+			$(".c2").fadeOut(500, function(){
+				$(".c3").fadeIn(500);
+			});
+		}
+	});
+
+	$('#btn_cancel').click(function() {
+		if (screen.width < 1024) {
+			$.fn.fullpage.moveTo(2);
+		}else {
+			$(".c3").fadeOut(500, function(){
+				$(".c2").fadeIn(500);
+			});
+		}
+	});
 })
-          
-
-

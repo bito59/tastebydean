@@ -17,14 +17,20 @@
       ga('create', 'UA-88492107-2', 'auto');
 
   %body
-    #flash_msg.modal-fade
-      = render_flash
-    = render partial: 'layouts/header'
-    %main.main
-      //#devise_modal.modal.no-hide{style: 'display: none'}
-      //= render partial: 'public/devise_modal'
-      //.modal-fade
+    %header#header.modal_hide.mb-hide
+      - if @root == true
+        = render partial: 'layouts/header_welcome'
+      - else
+        = render partial: 'layouts/header_others'
+    %main#main.mb-hide
       = yield
-      %section#mb_main_menu.mb_menu
-        = render partial: 'layouts/mb_main_menu'
-    = render partial: 'layouts/footer'
+    %section#mb_main_menu.mb-menu
+      = render partial: 'layouts/mb_main_menu'
+    - if defined?(@path)
+      %section#mb_filter.mb-menu
+        = render partial: 'shop/' + @path + '/mb_filters'    
+
+    %footer#footer.modal_hide
+      = render partial: 'layouts/footer'
+    %section#flash_msg
+      = render_flash

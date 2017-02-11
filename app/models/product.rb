@@ -8,7 +8,7 @@ class Product < ApplicationRecord
 	has_many :order_lines
 	has_many :orders, through: :order_lines
 
-	validates_presence_of :kind, :customer, :family, :title, :price, :price_unit, :fab_length, :fab_length_unit
+	validates_presence_of :kind, :customer, :family, :title, :price, :price_unit
 	validates_uniqueness_of :serial, message: "This serial number is already used"
 
 # ---------------- Scopes -------------------------------------------------------------------------
@@ -54,6 +54,13 @@ class Product < ApplicationRecord
 		end
 		self.slug = self.serial
 		self.save!
+	end
+
+	def find_sizes
+		if self.variable_size == true
+			#a = self.customer + '_small'
+			sizes = {std: self.customer + '_std', big: self.customer + '_big'}
+		end
 	end
 
 end

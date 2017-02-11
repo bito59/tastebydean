@@ -52,36 +52,17 @@ ActiveRecord::Schema.define(version: 20161002135505) do
   end
 
   create_table "order_lines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "product_id"
     t.integer  "order_id"
+    t.integer  "product_id"
+    t.string   "size",                                  default: "0"
+    t.boolean  "sep_fabric",                            default: true
     t.integer  "fabric_id"
     t.integer  "quantity"
-    t.decimal  "unit_price",                 precision: 12, scale: 3
-    t.decimal  "fabric_price",               precision: 12, scale: 3
-    t.decimal  "total_price",                precision: 12, scale: 3
-    t.decimal  "around_collar_large",        precision: 10
-    t.decimal  "shoulder_width",             precision: 10
-    t.decimal  "shoulder_waist_front_large", precision: 10
-    t.decimal  "shoulder_waist_back_large",  precision: 10
-    t.decimal  "back_width",                 precision: 10
-    t.decimal  "chest_width",                precision: 10
-    t.decimal  "around_bust_large",          precision: 10
-    t.decimal  "bust_height",                precision: 10
-    t.decimal  "around_waist_large",         precision: 10
-    t.decimal  "elbow_length",               precision: 10
-    t.decimal  "around_arm_large",           precision: 10
-    t.decimal  "arm_lenght",                 precision: 10
-    t.decimal  "around_hip_height",          precision: 10
-    t.decimal  "around_hip_large",           precision: 10
-    t.decimal  "half_hip_height",            precision: 10
-    t.decimal  "crotch_length",              precision: 10
-    t.decimal  "knee_lenght",                precision: 10
-    t.decimal  "leg_length",                 precision: 10
-    t.decimal  "inside_leg_length",          precision: 10
-    t.decimal  "around_leg_large",           precision: 10
-    t.decimal  "total_height",               precision: 10
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.decimal  "unit_price",   precision: 12, scale: 3
+    t.decimal  "fabric_price", precision: 12, scale: 3
+    t.decimal  "total_price",  precision: 12, scale: 3
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
     t.index ["fabric_id"], name: "index_order_lines_on_fabric_id", using: :btree
     t.index ["order_id"], name: "index_order_lines_on_order_id", using: :btree
     t.index ["product_id"], name: "index_order_lines_on_product_id", using: :btree
@@ -134,20 +115,45 @@ ActiveRecord::Schema.define(version: 20161002135505) do
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "serial"
-    t.boolean  "activated",                                             default: false
+    t.boolean  "activated",                                                        default: false
     t.string   "kind"
     t.string   "customer"
     t.string   "family"
     t.string   "title"
-    t.text     "description",     limit: 65535
-    t.decimal  "price",                         precision: 8, scale: 2
+    t.text     "description",                limit: 65535
+    t.decimal  "price",                                    precision: 8, scale: 2
     t.string   "price_unit"
-    t.boolean  "on_measure"
+    t.string   "lead_time"
     t.boolean  "custom_fabric"
-    t.float    "fab_length",      limit: 24
-    t.string   "fab_length_unit"
-    t.datetime "created_at",                                                            null: false
-    t.datetime "updated_at",                                                            null: false
+    t.float    "fabric_lgt_std",             limit: 24
+    t.float    "fabric_lrg_std",             limit: 24
+    t.boolean  "variable_size",                                                    default: false
+    t.float    "fabric_lgt_big",             limit: 24
+    t.float    "fabric_lrg_big",             limit: 24
+    t.boolean  "on_measure"
+    t.boolean  "around_collar_large"
+    t.boolean  "shoulder_width"
+    t.boolean  "shoulder_waist_front_large"
+    t.boolean  "shoulder_waist_back_large"
+    t.boolean  "back_width"
+    t.boolean  "chest_width"
+    t.boolean  "around_bust_large"
+    t.boolean  "bust_height"
+    t.boolean  "around_waist_large"
+    t.boolean  "elbow_length"
+    t.boolean  "around_arm_large"
+    t.boolean  "arm_lenght"
+    t.boolean  "around_hip_height"
+    t.boolean  "around_hip_large"
+    t.boolean  "half_hip_height"
+    t.boolean  "crotch_length"
+    t.boolean  "knee_lenght"
+    t.boolean  "leg_length"
+    t.boolean  "inside_leg_length"
+    t.boolean  "around_leg_large"
+    t.boolean  "total_height"
+    t.datetime "created_at",                                                                       null: false
+    t.datetime "updated_at",                                                                       null: false
     t.string   "slug"
     t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree
   end

@@ -1,0 +1,18 @@
+%section.showroom_index.c5
+	.results
+		- @products.each do |product|
+			#product.product{ id: "item_#{product.serial}" }
+				=# image_tag "collections/#{product.id}.png"
+				= image_tag "creations/default2.png"
+				%h4= product.title
+
+
+	
+:javascript
+	$(document).ready(function() {
+		$('#footer').show().addClass('pushed');
+		$('#open_mb_collection_filter').click(function() {
+			$('#mb_filter').fadeIn(500);
+			$('.mb-hide').hide();
+		});
+	});

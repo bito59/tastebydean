@@ -4,9 +4,10 @@
 body {overflow-x: hidden;}
 html {height: 100%;}
 div, header, footer {margin: 0px; padding: 0px; text-align: center;}
-ul, li {list-style-type: none;vertical-align: middle;margin: 0;padding: 0;}
-li { display:inline-block;}
+ul, li {list-style-type: none;vertical-align: middle;width: 100%;margin: auto;padding: 0;}
+li { display:inline;}
 input {border: none;}
+img { vertical-align: middle;}
 
 //Typi breakpoint variables
 $breakpoints: (mobile: 320px, tablet: 720px, laptop: 1024px, desktop: 1366px);
@@ -14,14 +15,14 @@ $breakpoints: (mobile: 320px, tablet: 720px, laptop: 1024px, desktop: 1366px);
 .tb, .lt, .dt {display: none;}
 
 @media (min-width: map-get($breakpoints, tablet)) {
-	.tb {display:block;}
+	.tb {display:inline;}
 	.mb {display: none !important;}
 }
 
 @media (min-width: map-get($breakpoints, laptop)) {
-	.lt {display:block;}
+	.lt {display:inline;}
 }
 
 @media (min-width: map-get($breakpoints, desktop)) {
-	.dt {display:block;}
+	.dt {display:inline;}
 }

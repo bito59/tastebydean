@@ -1,75 +1,97 @@
-#welcome1 {
-	width: 100vw;height: 100vh;
-	@include background-image('welcome');
+.welcome.c0 {
 	ul {width: 1024px;max-width: 90%; margin: 0 auto; padding: 0 20px;}
 	li {width: 190px;height: 250px;padding: 0px 10px 0px 10px;}
-	h2 {padding: 16vh 25px 0px 25px;}
+	.fp-tableCell {vertical-align: middle;}
 	.arrow {position: absolute;left: 0;right: 0;bottom: 10px;}
 }
+.welcome.c1 {
+	.process {
+		img {width: 120px;height: 120px;}
+		li:not(:nth-child(1)) {padding-top: 1em;}
+	}
+}
 
-#welcome2 {
-	max-width: 1024px;margin: auto;
-	ul {width: 700px;max-width: 80%; margin: 0 auto; padding: 0 20px;}
-	li {width: 100%;margin: 3em auto;text-align: center;}
-	img :not(.icon) {width: 150px;height: 150px;}
-	hr {width: 70%; margin: 0 auto;}
+.welcome.c2 {
 	.comment {
-		.text { 
-			h1 {margin: 0;text-align: left;line-height: 0;margin-top: 50px;font-size: 80px; }
-			h3 {text-align: middle;}
-			.name {text-align: right;}
-		}
+		h1 {margin: 0;text-align: left;line-height: 0;font-size: 80px; }
+		h3 {text-align: middle;}
+		img {width: 130px;height: 130px;}
+		.text {margin-top: 1em;}
+		.name {text-align: right;}
 	}
 	.instagram  {
-		margin-bottom: 80px;
-		h1 {margin: 0;}
-		.images {
-			li {width: 230px; margin: 0;}
-			@include flexbox; @include flex-flow(row wrap); @include justify-content(space-around); @include align-items(center);
-		}
+		margin-top: 2em;
+		img {width: 150px;height: 150px;}
 	}
+}
 
-	.follow {
-		ul {text-align: center;}
-		li:not(.doudou) {margin: 1em 0;}
-		.images li {display: inline;margin: 0px 20px;}
-		.fields {
-			@include flexbox; @include flex-flow(row wrap); @include justify-content(center);@include align-items(center);
-			.zipcode, .email {width: 75%;height: 4em;margin: 0 10px;}
-			.zipcode {margin-bottom: 2em;}
-		}
+.welcome.c3 {
+	.follow .images {
+		margin-top: 2em;
+		 li {margin: 0px 20px;}
+	}
+	.newsletter {
+		margin-top: 4em;
+		li {display: inline-block;}
+		li:nth-child(1) {margin: 2em 0 1em 0;}
+		li:nth-child(3) {margin: 2em 0 ;}
+	}
+}
 
+@media (max-width: map-get($breakpoints, tablet)) {
+	.welcome.c0 .title {    
+		border-radius: 10px;
+	    padding: 1em;
+	    background-color: rgba(135, 216, 211, 0.30);
 	}
 }
 
 @media (min-width: map-get($breakpoints, tablet)) {
-	#welcome1 {
-		ul { @include flexbox; @include flex-flow(row nowrap); @include justify-content(space-around);
+	.welcome.c0 {
+		.fp-tableCell {vertical-align: top;}
+		.title {padding-top: 16vh;}
+		.intro {
+			@include flexbox; @include flex-flow(row nowrap); @include justify-content(space-around);
 			position: absolute;bottom: 80px;
 			left:0;right:0;margin-left:auto;margin-right:auto;
+			img :not(.icon) {width: 170px;height: 170px;}
+			li {@include flexbox; @include flex-flow(row wrap); @include justify-content(center); @include align-items(center);}
 		}
 	}
-	#welcome2 {
-		img :not(.icon) {width: 170px;height: 170px;}
-		li {@include flexbox; @include flex-flow(row nowrap); @include justify-content(center); @include align-items(center);}
+	.welcome.c1 {
 		.process {
-			li > :nth-child(1) {padding-right: 10px;}
-			li > :nth-child(2) {padding-left: 10px;}
+			img {width: 200px;height: 200px;}
+			li {@include flexbox; @include flex-flow(row nowrap); @include justify-content(space-around); @include align-items(center);
+				width: 75%;
+				* {margin: 0 1em;}
+			}	
 		}
+	}
+
+	.welcome.c2 {
 		.comment {
-			.text {
-				height: 150px; padding-left: 30px;
-				h1 {margin-top: 25px;}
-			}
+			margin-top: 2em;max-width: 75%;img {width: 200px;height: 200px;}
+			li {@include flexbox; @include flex-flow(row nowrap); @include justify-content(space-around); @include align-items(center);}
+			.text {margin-left: 2em;margin-top: 3em;}
 		}
-		.follow {
-			.fields {
-				.zipcode {width: 15%; margin-bottom:0;text-align: left;}
-				.email {width: 50%;text-align: left;}
-			}			
+		.instagram .images  {
+			width: 75%; margin: auto; * {width: 30%;}
+			@include flexbox; @include flex-flow(row wrap); @include justify-content(center); //@include flex-basis(30%);
+			img {width: 140px;height: 140px;}
 		}
+	}
+
+	.welcome.c3 {
+		.follow img {width: 60px;height: 60px;}
+		.newsletter .zipcode input {width: 20%;}
+		.newsletter .email input {width: 50%;}
+		.follow .fields {
+			.zipcode {width: 15%; margin-bottom:0;text-align: left;}
+			.email {width: 50%;text-align: left;}
+		}			
 	}
 }
+
 
 
 

@@ -7,7 +7,7 @@ class MainController < ApplicationController
 		@news = News.new
 		@root = true
 		if flash.empty?
-			#flash_message('notice', 'Welcome to tastebydean !')
+			flash_message('notice', t('flash_messages.welcome'))
 		end
 		render 'welcome/welcome'
 	end

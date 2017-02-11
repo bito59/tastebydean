@@ -1,19 +1,32 @@
-
+input:hover, .btn:hover, label:hover, a:hover {cursor: pointer;}
 
 input {
-	background-color: rgba(8,52,66,0.2);border-radius: 5px;
-	font-family: $light;font-size: 12px;height: 30px;color: $grey;border:none;
+	width: 75%;height: 3em;
+	font-family: $light;font-size: 1em;color: $grey;
+	background-color: rgba(8,52,66,0.05);border-radius: 10px;border:none;
 }
 
-#welcome2 {
-	.btn_valid {background: $green;border-radius: 5px;font-family: $light;font-size: 1em;color: #FFFFFF;width: 75%;height: 3em;}
- }
+label {
+	display:block; width: 50%;margin: 1em auto;
+	input {visibility: hidden;position: absolute;}
+	input + h4 {cursor:pointer;border:1px solid transparent;}
+	input:checked + h4 {border:3px solid $green;border-radius: 10px;}
+	.red > h4 {border:3px solid red;border-radius: 10px;}
+}
+label.big {width: 80%;}
+
+.btn {
+	margin: auto;border-radius: 10px;
+	@include flexbox; @include flex-flow(row nowrap);@include justify-content(center); @include align-items(center);
+}
+.btn_green {border:2px solid $green;font-family: $light;}
+.btn_red {border:2px solid red;font-family: $light;}
+.btn_valid {background: $green;font-family: $light;@include typi($h3-map);color: #FFFFFF;}
+.btn_cancel, .btn_cancel > h3 {background: $red;font-family: $light;@include typi($h3-map);color: #FFFFFF;}
+
+
 
 
 @media (min-width: map-get($breakpoints, tablet)) {
-    #welcome2 {
-    	input:not(.btn) {padding-left: 1em; }
-    	.btn_valid {width: 35%;}
-    }
-
+	.btn {width: 90%;height: 3em;max-width: 200px;}
 }

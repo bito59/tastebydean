@@ -1,5 +1,5 @@
 /* Retina images */
-$image-path: '../assets/pictures' !default;
+$image-path: '../assets/welcome' !default;
 $fallback-extension: 'png' !default;
 $retina-suffix: '@2x';
 @mixin background-image($name){

@@ -1,20 +1,25 @@
-.main {min-height: calc(100vh - 9em);}
-.cont {@include flexbox;@include flex-flow(row wrap);}
-.c1, .c2, .c3, .c4 {width: 100%; margin: 3em auto 0 auto; padding: 0px 30px;}
+body {position: relative;}
+body::-webkit-scrollbar {display: none;}
+header {z-index: 99;height: 4em;width: 100%;position: absolute;}
+footer {z-index: 99;height: 2em;;width: 100%;position: absolute;bottom: 0px;}
+#main {z-index: 1;min-height: calc(100vh);margin: auto;}
+#flash_msg {z-index: 3;position: fixed;top: 0;width:100%;}
 
-.c1 {max-width: 1024px; text-align: left;}
-.c2 {text-align: left;}
+.c0, .c1, .c2, .c3, .c4, .c5 {z-index: 2;max-width: 1024px;height: 100vh;margin: auto;padding: 0 2em;}
+.c0 {@include background-image('welcome');max-width: 100%;}
+.c1 {height: calc(100vh - 4em);}
+.c5 {height: 100%;padding-top: 4em;}
 
-@media (min-width: map-get($breakpoints, tablet)) {
-	.c2 {width: 60%;}
-	.c3 {width: 40%;}
+.showroom.c5 {padding-top: calc(4em + 8em);}
+
+@media (min-width: map-get($breakpoints, laptop)) {
+	.shop_show {width: 50%;max-width: 512px;height: calc(100vh - 6em - 2em);padding: 6em 0 0 0;}
+	.shop_show.c1 {float: left;right: 50%;position: absolute;}
+	.shop_show.c2, .shop_show.c3 {float: right;left: 50%;position: absolute;}
+	.shop_show.c3 {display:none;}
 }
 
-@media (min-width: 1366px) {
-	.cont {width: 1366px;margin-left: auto;margin-right: auto;}
-	.c2 {width: 70%;}
-	.c3 {width: 30%;}
-}
+
 
 
 

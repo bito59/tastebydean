@@ -1,0 +1,46 @@
+.shop_show {
+	.title, .sizes {height: 8em;padding-top: 5em;}
+
+	//c1
+	.owl-item img {height: calc(100vh - 8em - 5em - 4em);width: auto !important;margin: auto;}
+	.owl-dots {margin-top: 2em!important;}
+	.owl-dots .owl-dot span {height: 2em;width: 12px;height: 12px;}
+	.owl-next, .owl-prev {display: none!important;}
+	.arrows {
+		opacity: 0;
+		transition: opacity 1s linear;position: absolute;z-index: 99;width: 100%;top: 50%;
+		-webkit-transition: opacity 1s linear;
+		-moz-transition: opacity 1s linear;
+		-o-transition: opacity 1s linear;
+		-ms-transition: opacity 1s linear;
+		#btn_prev {float: left;padding-left: 2em;}
+		#btn_next {float: right;padding-right: 2em;}
+	}
+
+	//C2
+	.description {height: calc(100vh - 5em - 8em - 14em);}
+	.icons {@include flexbox;height: 6em;padding: 1em 0;}
+	.button{height: 4em;padding: 1em 0;}
+
+	//C3
+	.sizes .box {display: flex;@include align-items(center);}
+	.fabrics {
+		height: 8em;
+		.text {display: flex;@include justify-content(center);}
+		.text .price {margin-left: 1em;}
+	}	
+	.qties {height: 4em;display: flex;@include justify-content(center);@include align-items(center);}
+	.qties select {margin-left: 1em;}
+	.buttons * {margin: 1em auto;}
+
+	@media (min-width: map-get($breakpoints, tablet)) {
+		.owl-item img {height: calc(100vh - 8em - 4em);width: auto !important;margin: auto;}
+		.title, .sizes {padding-top: 0;}
+		.owl-dots {margin-top: 0!important;}
+		.owl-carousel:hover {cursor: pointer;}
+		.owl-carousel:hover + .arrows, .arrows:hover {opacity: 1;cursor: pointer;}
+		.description, .icons {height: auto;max-width: 70%;margin: auto;}
+		.sizes, .fabrics, .qties, .buttons {height: auto;max-width: 70%;margin: auto;}
+	}
+}
+

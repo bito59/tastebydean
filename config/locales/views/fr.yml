@@ -1,4 +1,8 @@
 fr:
+    flash_messages:
+        news_created: 'Vous êtes abonné !'
+        news_problem: 'Impossible de vous abonner'
+        welcome: 'Bienvenue chez Dean !'
     layouts:
         header:
         main_filters:
@@ -10,7 +14,7 @@ fr:
             cancel: 'Annuler'
         footer: 
             terms: "Conditions"
-            designed_by: "Design par "
+            designed_by: "Design par"
         devise_modal:
             email: "Email"
             password: "Mot de passe"
@@ -24,18 +28,21 @@ fr:
         welcome:
             welcome_title: "La tenue de cérémonie sur mesure"
             creations: "Creation"
-            creations_caption: "Votre tenue créée sur mesure"
+            creations_caption: "Votre création sur mesure"
             collections: "Collection"
             collections_caption: "Nos modèles à personnaliser"
             accessories: "Boutique"
-            accessories_caption: "Notre sélection de tissus et d'accessoires"
-            drawing_explain: "Concevez votre tenue à partir d'un dessin, une photo, un modèle."
-            fabrics_explain: "Choisissez votre tissus et vos couleurs sur notre site ou près de chez vous."
-            manequin_explain: "Communiquez-nous vos mensurations, toutes nos réalisations sont faites sur mesure."
+            accessories_caption: "Nos tissus et accessoires"
+            explain_creation_mb: 'Imaginez votre tenue'
+            explain_fabric_mb: 'Trouvez votre tissu'
+            explain_on_measure_mb: 'Donnez nous vos mesures'
+            explain_creation: "Imaginez votre tenue à partir d'un dessin, une photo, un modèle."
+            explain_fabric: "Trouvez votre tissus et vos couleurs sur notre site ou près de chez vous."
+            explain_on_measure: "Communiquez-nous vos mensurations, toutes nos réalisations sont faites sur mesure."
             comment: "Super robe livrée juste à temps pour le mariage de mon frère, merci Dean !"
             follow_us: "Nous suivre"
         news_form:
-            discover: "Découvrez les dernières nouveautés et ventes privées par email :"
+            discover: "Découvrez les dernières nouveautés par email :"
             zipcode: "Code postal"
             email: "Email"
             validate: 'Valider'
@@ -53,6 +60,29 @@ fr:
                     zero: '%{count} produit'
                     one: '%{count} produit'
                     other: '%{count} produits'
+            details_form:
+                choose_your_size: 'Choisissez votre taille'
+                choose_your_fabric: 'Choisissez votre tissu '
+                dimensions: '(%{length} x %{large} m nécessaires) :'
+                customer_fabric: 'Vous fournissez le tissu'
+                qties: 'Quantités :'
+                add_to_basket: 'Ajouter au panier'
+                cancel: 'Annuler'
+                man_std: 'S à L'
+                man_big: 'XL ou plus'
+                woman_std: 'T34 à T38'
+                woman_big: 'T40 à T46'
+                boy_std: 'Moins de 10 ans'
+                boy_big: 'Plus de 10 ans'
+                girl_std: 'Moins de 10 ans'
+                girl_big: 'Plus de 10 ans'
+        show:
+            on_measure: 'Sur mesure'
+            on_measure_exp: 'Envoyez nous vos mesures par email.'
+            customize: 'Customiser'
+            share: 'Partager ce produit'
+            not_on_measure: 'Taille unique'
+            lead_time: 'Délai : ~ %{lead_time} jours'
     products:
         browse_products:
             man: "Homme"

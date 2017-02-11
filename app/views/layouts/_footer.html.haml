@@ -1,16 +1,15 @@
-%footer.modal-fade
-	%hr
-	.content
-		%li.logo.tb
-			= link_to_icon('logo-red', 100, 50, root_path)
-		%li.copyright
-			%h5.copy= "© Dean " + Time.now.year.to_s
-		%ul.links
-			%li.lt
-				%h5= link_to t('.terms'), root_path
-			%li
-				%h5
-					= t('.designed_by')
-					%span='Massetech'
+%hr
+.content
+	.logo.tb
+		= link_to_icon('logo-red', 70, 35, root_path)
+	.copyright
+		%h5.copy= "© Dean " + Time.now.year.to_s
+	.links
+		%li.tb
+			%h5= link_to t('.terms'), root_path
+		%li
+			%h5
+				= t('.designed_by')
+				%span='Massetech'
 
   

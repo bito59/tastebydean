@@ -1,6 +1,7 @@
-%section#welcome1
-	%h2.title= t('.welcome_title')
-	%ul.tb
+%section.welcome.c0.section.section-dk.mb-hide.fp-noscroll.dyn-header{'data-anchor': '1'}
+	.title
+		%h2= t('.welcome_title')
+	%ul.intro.tb
 		= link_to showroom_products_path(kind: 'creation') do
 			%li
 				%h3= t('.creations')
@@ -17,53 +18,64 @@
 				= image_tag "contents/accessories.png"
 				%h4= t('.accessories_caption')
 	.arrow.tb
-		= link_to_icon('arrow', 20, 20, root_path)
+		= link_to_icon('arrow', 20, 20, '#process', {id: 'btn_arrow', remote: true})
 
 
-%section#welcome2
-	%ul.process
+%section.welcome.c1.section.mb-hide.fp-noscroll{'data-anchor': '2'}
+	%ul.process.mb
 		%li
 			= image_tag "contents/drawing.png"
-			%h3= t('.drawing_explain')
-		%li.mb
+			%h3= t('.explain_creation_mb')
+		%li
 			= image_tag "contents/fabrics.png"
-			%h3= t('.fabrics_explain')
+			%h3= t('.explain_fabric_mb')
+		%li
+			= image_tag "contents/manequin.png"
+			%h3= t('.explain_on_measure_mb')
+	%ul.process.tb
+		%li
+			= image_tag "contents/drawing.png"
+			%h4= t('.explain_creation')
 		%li.tb
-			%h3= t('.fabrics_explain')
+			%h4= t('.explain_fabric')
 			= image_tag "contents/fabrics.png"
 		%li
 			= image_tag "contents/manequin.png"
-			%h3= t('.manequin_explain')
-	%hr	
+			%h4= t('.explain_on_measure')
+
+%section.welcome.c2.section.mb-hide.fp-noscroll{'data-anchor': '3'}
 	%ul.comment
 		%li
-			= image_tag "pictures/jolie.png"
+			= image_tag "comments/jolie.png"
 			.text
 				%h1= '“'
 				%h3= t('.comment')
-				%h3.name= 'Sophie'
-	%hr
-
+				%h3.name.tb= 'Sophie'
 	%ul.instagram
 		%li
 			.title
 				%h2= 'Instagram'
 				%h3= '#tastebydean'
-		.images
-			- (1..3).each do |i|
-				%li= image_tag "contents/instagram/#{i}.png"
-			- (4..9).each do |i|
-				%li.tb= image_tag "contents/instagram/#{i}.png"
-	%hr
+		%li
+			.images
+				.mb= image_tag "instagram/#{rand(1..4)}.png"
+				- (1..9).each do |i|
+					.tb= image_tag "instagram/#{i}.png"
 
-	%ul.follow
-		%li.doudou
-			%h2= t('.follow_us')
-		.images
+%section.welcome.c3.section.mb-hide.fp-noscroll.dyn-footer{'data-anchor': '4'}
+	.follow
+		%h2= t('.follow_us')
+		%ul.images
 			%li= link_to_icon('facebook', 40, 40, 'https://www.facebook.com/tastebydean/', target: "_blank")
 			%li= link_to_icon('instagram', 40, 40, 'https://www.instagram.com/tastebydean/', target: "_blank")
 			%li= link_to_icon('pinterest', 40, 40, 'https://fr.pinterest.com/tastebydean/tastebydean/', target: "_blank")
+	.newsletter
 		= render partial: 'welcome/news_form'
 
-
-
+:javascript
+	$(document).ready(function() {
+		//$('#footer').hide();
+		$('#btn_arrow').click(function() {
+			$.fn.fullpage.moveTo(2);
+		});
+	});
