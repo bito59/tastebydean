@@ -1,16 +1,22 @@
 Rails.application.routes.draw do
 
-	root "main#welcome"
+	root "admin/products#index"
+	#root "main#welcome"
 	#get '/:locale' => 'dashboard#index'
 	#match '', to: redirect("/#{I18n.locale}"), via: :get
 	#scope "(:locale)", locale: /en|bi|fr/ do
 	scope "(/:Locale)" do
 		#root "main#welcome"
 		devise_for :users
-
 		resources :news, only: [:create]
 		resources :order_lines, only: [:create, :update, :destroy]
 		
+		namespace :admin do
+		  resources :products do
+		  	resources :pictures, only: [:create, :destroy]
+		  end
+		end
+
 		namespace :shop do
 		  resources :products, only: [:index, :show]
 		end

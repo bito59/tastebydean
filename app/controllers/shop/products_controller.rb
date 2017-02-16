@@ -5,8 +5,6 @@ module Shop
   	skip_before_action :auth_user, only: [:index, :show]
   	before_action :find_product, only: [:show, :edit, :update, :destroy]
 
-  #-------------- Actions for customers --------------------------------------------------------------------
-
   	def index
       @path = params[:kind].to_s
   		load_products
@@ -24,10 +22,6 @@ module Shop
   			format.html { render 'shop/show.html.haml' }
   		end
   	end
-
-
-
-  #-------------- Methods --------------------------------------------------------------------
 
     private
    
@@ -55,22 +49,5 @@ module Shop
         end
         @products
       end
-
-      def filter_products
-        @filterrific = initialize_filterrific(
-          Product,
-          params[:filterrific],
-          select_options: {
-            sorted_by: Product.options_for_sorted_by,
-            with_kind: Product::KINDS,
-            with_customer: Product::CUSTOMERS,
-            with_family: Product::FAMILIES,
-            with_event: Product::EVENTS,
-            activated: [true, false]
-          }
-        ) or return
-        @products = Product.filterrific_find(@filterrific).page(params[:page]).paginate(page: params[:page], per_page: 10)
-      end
-
   end
 end

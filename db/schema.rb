@@ -10,26 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161002135505) do
-
-  create_table "fabrics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "serial"
-    t.boolean  "activated",                                  default: false
-    t.string   "kind"
-    t.string   "title"
-    t.string   "description"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.decimal  "price",              precision: 8, scale: 2
-    t.string   "price_unit"
-    t.boolean  "limited_fabric"
-    t.integer  "stock_level"
-    t.string   "stock_level_unit"
-    t.datetime "created_at",                                                 null: false
-    t.datetime "updated_at",                                                 null: false
-  end
+ActiveRecord::Schema.define(version: 20170214200822) do
 
   create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "slug",                      null: false
@@ -56,14 +37,12 @@ ActiveRecord::Schema.define(version: 20161002135505) do
     t.integer  "product_id"
     t.string   "size",                                  default: "0"
     t.boolean  "sep_fabric",                            default: true
-    t.integer  "fabric_id"
     t.integer  "quantity"
     t.decimal  "unit_price",   precision: 12, scale: 3
     t.decimal  "fabric_price", precision: 12, scale: 3
     t.decimal  "total_price",  precision: 12, scale: 3
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
-    t.index ["fabric_id"], name: "index_order_lines_on_fabric_id", using: :btree
     t.index ["order_id"], name: "index_order_lines_on_order_id", using: :btree
     t.index ["product_id"], name: "index_order_lines_on_product_id", using: :btree
   end
@@ -104,12 +83,9 @@ ActiveRecord::Schema.define(version: 20161002135505) do
     t.integer  "product_id"
     t.boolean  "main"
     t.boolean  "activated"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.string   "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_product_pictures_on_product_id", using: :btree
   end
 
@@ -155,6 +131,7 @@ ActiveRecord::Schema.define(version: 20161002135505) do
     t.datetime "created_at",                                                                       null: false
     t.datetime "updated_at",                                                                       null: false
     t.string   "slug"
+    t.text     "pictures",                   limit: 65535
     t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree
   end
 
@@ -177,7 +154,6 @@ ActiveRecord::Schema.define(version: 20161002135505) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "order_lines", "fabrics"
   add_foreign_key "order_lines", "orders"
   add_foreign_key "order_lines", "products"
   add_foreign_key "orders", "users"

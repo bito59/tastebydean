@@ -1,7 +1,9 @@
 class Product < ApplicationRecord
-
 	extend FriendlyId
   	friendly_id :serial, use: :slugged
+
+  	mount_uploaders :pictures, PictureUploader
+  	serialize :pictures, JSON
 
 	has_many :product_pictures, dependent: :destroy
 	accepts_nested_attributes_for :product_pictures, allow_destroy: true

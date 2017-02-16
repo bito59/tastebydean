@@ -1,24 +1,34 @@
 #devise_modal {
-	#connection {display: none;}
+	.register {display: none;}
+	.register, .connection {height: 100%;}
 	z-index: 98;display: none;height: 100vh;width: 100vw;position: fixed;top:0;
 	.front {
-		z-index: 99;position: fixed;width: 100vw;height: 100vh;
+		z-index: 99;position: fixed;width: 100vw;height: 100vh;border-radius: 30px;
 		background: url(contents/login_font.png) no-repeat center center;background-size: cover;
-		.logo {margin: 1em auto 1em auto;}
-		.logo img {height: 25vw;width: 25vw;}
+		.logo {
+			margin: 1em auto;
+			img {height: 100px;width: 100px;}
+			h2.cross {position: absolute;top: 0.5em;right: 0.5em;}
+		}
 		.half {
 			width: 75%;margin: auto;
 			@include flexbox; @include justify-content(space-between);
-			input {width: 45%;margin-left: 0;margin-right: 0;}
+			input, label {width: 45%;margin-left: 0;margin-right: 0;}
 		}
-		.links {position: absolute;bottom: 1em;width: 100%;}
+		a {display: block;margin-top: 1em;}
+		.links {position: absolute;bottom: 0em;width: 100%;}
 		.links > a {margin: 0 1em;color: white;}
 	}	
 
 	@media (min-width: map-get($breakpoints, tablet)) {
 		background-color: rgba(255,255,255,0.9);
-		.front {width: 300px;height: 500px;left: 50%;top: 50%;margin-left: -150px;margin-top: -250px;border-radius: 30px;}
-		.logo {position: absolute;top: -30px;width: 100%;}
-		.logo img {height: 100px;width: 100px;}
+		.front {padding-top: 3em;
+			width: 350px;height: 550px;left: 50%;top: 50%;margin-left: -175px;margin-top: -275px;
+			.logo {
+				margin: 0em auto;position: absolute;top: -50px;width: 100%;
+				img {height: 100px;width: 100px;}
+			}
+			.links {bottom: 1em;left: 0;}
+		}
 	}
 }

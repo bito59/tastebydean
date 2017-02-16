@@ -7,7 +7,6 @@ class CreateOrderLines < ActiveRecord::Migration[5.0]
 		# Production
 		t.string :size, default: false
 		t.boolean :sep_fabric, default: true
-		t.references :fabric, index: true, foreign_key: true
 
 		# Prices
 		t.integer :quantity

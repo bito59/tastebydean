@@ -1,6 +1,5 @@
 class MainController < ApplicationController
 	include ApplicationHelper
-
 	skip_before_action :auth_user
 
 	def welcome

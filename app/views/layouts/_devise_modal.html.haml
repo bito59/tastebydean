@@ -1,38 +1,41 @@
 .front
 	.logo
 		= image_tag 'icons/logo-round-white.png'
-	#connection
+		%h2.cross.mb= "X"
+	.connection
 		= form_for(:user, url: session_path(:user)) do |f|
 			= f.text_field :email, required: true, placeholder: t('.email')
 			= f.password_field :password, required: true, placeholder: t('.password')
 			= f.submit t('.log_in'), class: 'btn btn-valid'
-		.links
-			= link_to t('.register'), root_path, {remote: true, id: "create_account"}
-			=#|
-			=# link_to t('.password_forgotten'), new_password_path(resource_name)
-	#register
+			= link_to t('.password_forgotten'), new_password_path(resource_name)
+		.links.mb
+			= link_to_icon('arrow_down', 40, 40, '#', {class: 'btn_register', remote: true})
+		.links.tb
+			= link_to t('.register'), root_path, {remote: true, class: "btn_register"}
+	.register
 		= form_for(:user, url: registration_path(:user)) do |f|
 			= f.text_field :email, required: true, placeholder: t('.email')
 			= f.password_field :password, required: true, placeholder: t('.password')
 			= f.password_field :password_confirmation, required: true, placeholder: t('.confirm_password')
 			.half
 				= f.text_field :zipcode, required: true, placeholder: t('.zipcode')
-				= f.text_field :news, required: true, placeholder: t('.zipcode')
+				%label.option
+					= f.check_box :news, {checked: true}
+					%span= t('.news') 
 			= f.submit t('.create_account'), class: 'btn btn-valid'
-		.links
-			= link_to t('.log_in'), root_path, {remote: true, id: "connect_account"}
-			=#|
-			=# link_to t('.password_forgotten'), root_path
+		.links.mb
+			= link_to_icon('arrow_down', 40, 40, '#', {class: 'btn_login', remote: true})
+		.links.tb
+			= link_to t('.log_in'), root_path, {class: "btn_login", remote: true}
 
 :javascript
-
-	$('#create_account').click(function() {
-		$('#connection').hide();
-		$('#register').fadeIn("slow");
+	$('.btn_register').click(function() {
+		console.log('btn clicked1');
+		$('.connection').hide();
+		$('.register').show();
 	});
-
-	$('#connect_account').click(function() {
-		$('#register').hide();
-		$('#connection').fadeIn("slow");
+	$('.btn_login').click(function() {
+		console.log('btn clicked2');
+		$('.register').hide();
+		$('.connection').show();
 	});
-

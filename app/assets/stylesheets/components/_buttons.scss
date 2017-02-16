@@ -1,12 +1,18 @@
 input:hover, .btn:hover, label:hover, a:hover {cursor: pointer;}
 
-input, .btn {
-	margin: 1em auto;width: 75%;height: 3em;
+input, label, .btn {margin: 1em auto;width: 75%;height: 3em;}
+
+input, .btn, a.btn {
 	font-family: $light;font-size: 1em;color: $red;
-	background-color: rgba(255,255,255,0.9);border-radius: 10px;//border:1px solid $grey;
+	background-color: rgba(255,255,255,1);border-radius: 10px;
 }
 
-.btn {@include typi($h3-map);}
+label.option {
+	@include flexbox; @include align-items(center);
+	input {display: none;}
+	input + span {width: 100%;line-height: 3em;background-color: red;color:white;border-radius: 10px;}
+	input:checked + span {background-color:$green;border: none;}
+}
 
 .btn-green {border:2px solid $green;}
 .btn-red {border:2px solid red;}
@@ -14,11 +20,12 @@ input, .btn {
 .btn-cancel {background: $red;color: #FFFFFF;}
 
 label {
-	display:block; width: 50%;margin: 1em auto;
-	input {visibility: hidden;position: absolute;}
-	input + h4 {cursor:pointer;border:1px solid transparent;}
-	input:checked + h4 {border:3px solid $green;border-radius: 10px;}
-	.red > h4 {border:3px solid red;border-radius: 10px;}
+	//width: 45%;
+	//display:block; //width: 50%;margin: 1em auto;
+	//input {visibility: hidden;position: absolute;}
+	//input + h4 {cursor:pointer;border:1px solid transparent;}
+	//input:checked + h4 {border:3px solid $green;border-radius: 10px;}
+	//.red > h4 {border:3px solid red;border-radius: 10px;}
 }
 label.big {width: 80%;}
 

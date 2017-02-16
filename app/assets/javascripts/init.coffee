@@ -62,8 +62,10 @@ init_devise_modal = ->
 		#if !$(event.target).parents('.no-hide').length && !$(event.target).is(".no-hide")
 		if !$(event.target).parents('.front').length
 			remove_modal()
-	$('.register-link').on 'click', -> 
+			enable_fp()
+	$('.register-link, .cross').on 'click', -> 
 		remove_modal()
+		enable_fp()
 
 # Init mobile menus
 init_mobile_menu = ->

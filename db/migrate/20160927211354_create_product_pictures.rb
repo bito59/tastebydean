@@ -5,7 +5,7 @@ class CreateProductPictures < ActiveRecord::Migration[5.0]
 		t.references :product, index: true, foreign_key: true
 		t.boolean :main
 		t.boolean :activated
-		t.attachment :image
+		t.string :image_url
 		
 		t.timestamps null: false
     end

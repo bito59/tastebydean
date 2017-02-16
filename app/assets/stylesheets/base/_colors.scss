@@ -29,7 +29,8 @@ footer {
 }
 
 #devise_modal {
-	.links, .links > a {color: white;}
+	.links, .links > a, a {color: white;}
+	h2.cross {color: white;}
 }
 
 .mb-menu {a, span, h2 {color: white;} }

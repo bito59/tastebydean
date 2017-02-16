@@ -62,27 +62,6 @@ Product.delete_all
 	#})	
 end
 
-# Creation of my own fabric
-Fabric.create( activated: true, title: 'I buy fabric', kind: 'all', price: 0, price_unit: '€', description: '')
-
-# Creation of fabrics
-(2..20).each do |f|
-	kind = Fabric::KINDS.sample
-	price = ["2", "3", "4", "5","6", "7", "8", "9", "10"].sample
-	title = 'auto_product_' + f.to_s
-	fabric = Fabric.new(	serial: f,
-							title: title,
-							kind: kind,
-							price: price,
-							price_unit: '€',
-							description: 'Paleo portland succulents street Paleo portland succulents street ')
-	if f.even?
-		fabric[:activated] = true
-	end
-	fabric.save
-	fabric.affect_serial
-end
-
 # Creation of orders
 Order.delete_all
 OrderLine.delete_all

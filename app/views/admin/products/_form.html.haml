@@ -1,0 +1,15 @@
+= form_for [:admin, @product] do |f|
+	%br
+	= f.text_field :title
+	= f.text_field :description
+	=# f.file_field :pictures, multiple: true
+	= f.submit
+
+- @product.pictures.each_with_index do |picture, index| #grab the index
+	= image_tag(picture.url)
+	= link_to "Delete", admin_product_picture_path(@product.id, index), :method => :delete, data: { confirm: "Are you sure you want to delete this picture?" }
+
+%h2= 'Add more pictures'
+= form_for @product, url: admin_product_pictures_path(@product.id), method: :post do |g|
+	= g.file_field :pictures, multiple: true
+	= g.submit "Add More pictures"

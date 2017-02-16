@@ -21,6 +21,8 @@ fr:
             confirm_password: "Confirmer le mot de passe"
             password_forgotten: "Mot de passe oublié"
             zipcode: "Code postal"
+            news: "Newsletter"
+            no_news: "Non merci"
             register: "Créer un compte"
             log_in: "Se connecter"
             create_account: "Valider"

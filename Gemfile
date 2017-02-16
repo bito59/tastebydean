@@ -18,8 +18,11 @@ gem 'normalize-rails'
 gem 'bootstrap-modal-rails'
 gem 'friendly_id'
 gem 'will_paginate'
-gem 'aws-sdk'
-gem "paperclip"
+#gem 'aws-sdk'
+#gem "paperclip"
+gem "carrierwave", github: "carrierwaveuploader/carrierwave"
+gem 'carrierwave-aws'
+gem 'mini_magick'
 gem 'devise'
 gem "figaro"
 #gem 'rails-i18n'

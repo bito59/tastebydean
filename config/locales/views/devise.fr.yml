@@ -44,7 +44,7 @@ fr:
       updated: "Votre compte a été modifié avec succès."
     sessions:
       user:
-        signed_in: "Bienvenue, vous êtes connecté."
+        signed_in: "Vous êtes connecté."
         signed_out: "Vous êtes déconnecté."
         already_signed_out: "Vous êtes déconnecté."
     unlocks:
