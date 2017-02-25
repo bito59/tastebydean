@@ -1,4 +1,4 @@
-class OrderMailer < ApplicationMailer
+class OrderMailer < ActionMailer::Base
 	default from: "tastebydean@gmail.com"
 
 	def confirm_order(user, order)

@@ -2,16 +2,14 @@ class Product < ApplicationRecord
 	extend FriendlyId
   	friendly_id :serial, use: :slugged
 
-  	mount_uploaders :pictures, PictureUploader
-  	serialize :pictures, JSON
+  	after_save :affect_serial # Needs product ID
+	validates_uniqueness_of :serial, message: "This serial number is already used"
+	validates_presence_of :kind, :customer, :family, :title
 
 	has_many :product_pictures, dependent: :destroy
 	accepts_nested_attributes_for :product_pictures, allow_destroy: true
 	has_many :order_lines
 	has_many :orders, through: :order_lines
-
-	validates_presence_of :kind, :customer, :family, :title, :price, :price_unit
-	validates_uniqueness_of :serial, message: "This serial number is already used"
 
 # ---------------- Scopes -------------------------------------------------------------------------
 
@@ -46,23 +44,26 @@ class Product < ApplicationRecord
 	PRICE_UNITS = ['€']
 	MEASURE_UNITS = ['m','cm']
 
-	def affect_serial
-		if self[:kind] == 'creation' 
-			self.serial = "C" + Time.now.year.to_s.last(2) + "%.4d"%self.id
-		elsif self[:kind] == 'model'
-			self.serial = "M" + Time.now.year.to_s.last(2) + "%.4d"%self.id
-		elsif self[:kind] == 'accessory'
-			self.serial = "A" + Time.now.year.to_s.last(2) + "%.4d"%self.id
-		end
-		self.slug = self.serial
-		self.save!
-	end
-
 	def find_sizes
-		if self.variable_size == true
-			#a = self.customer + '_small'
+		if self.unic_size == false
 			sizes = {std: self.customer + '_std', big: self.customer + '_big'}
 		end
+	end
+
+	private
+
+	def affect_serial
+		if self[:kind] == 'creation' 
+			serial = "C" + Time.now.year.to_s.last(2) + "%.4d"%self.id
+		elsif self[:kind] == 'model'
+			serial = "M" + Time.now.year.to_s.last(2) + "%.4d"%self.id
+		elsif self[:kind] == 'accessory'
+			serial = "A" + Time.now.year.to_s.last(2) + "%.4d"%self.id
+		else
+			serial = "PROBLEM - " + self.id.to_s
+		end
+		self.update_column(:serial, serial)
+		self.update_column(:slug, serial)
 	end
 
 end

@@ -1,23 +1,21 @@
 .shop_index {
 	.filters {
 		height: 8em;
-		@include flexbox; @include justify-content(space-around);@include align-items(center);
+		@include justify-content(space-around);
 		a {margin: 0px 10px 0px 10px;}
 		img {margin: 10px 0 0 1em;}
 		.left, .right {width: 15%;}
 		.middle {width: 70%;}
 	}
-	.results {@include flexbox; @include flex-flow(row wrap); @include justify-content(center);@include align-items(center);}
-	.results .product {
-		margin: 3em 1em;padding: 2em 1em;background-color: rgba(99, 8, 26, 0.02);border-radius: 10px;
-		img {max-width: 250px;height: auto!important; margin: auto;}
-		h4 {margin-top: 1em;}
+	.results {
+		@include flex-flow(row wrap);
+		img {width:250px; height:250px;border-radius: 15px;}
+		.title {margin-bottom: 1em;}
+		.product {margin: 2em;}
 	}
 
 	@media (min-width: map-get($breakpoints, tablet)) {
-		.left, .right {width: 20%;}
-		.middle {width: 60%;}
+		//.left, .right {width: 20%;}
+		//.middle {width: 60%;}
 	}
 }
-
-

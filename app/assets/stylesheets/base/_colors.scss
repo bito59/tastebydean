@@ -1,67 +1,64 @@
-/* Colors */
+/* ------------------------------ Colors  ------------------------------ */
 
-$red: #63081A;
-$green: #5CB52A;
-$grey: #083442;
-$white: #FFFFFF;
+$red: rgba(99,8,26,1);
+$red_trsp: rgba(99,8,26,0.1);
+$green: rgba(92,181,42,1);
+$grey: rgba(8,52,66,1);
+$grey_trsp: rgba(8,52,66,0.1);
+$white: rgba(255,255,255,1);
+$white_trsp: rgba(255,255,255,0.6);
+$info: rgba(135, 216, 211, 0.80);
+$danger: rgba(204, 0, 0, 0.80);
+$success: rgba(92, 181, 42, 0.80);
 
-a, h1, h2, h3, h4, h5, input {color: $red;}
+/* ------------------------------ Layout  ------------------------------ */
+
+a, h1, h2, h3, h4, h5, input, span, p {color: $red;}
 a.selected {color: $green;}
 
-// ----------------------    Layout rules ----------------------------------------------------
-
 header, footer {
-	//background-color: white;
-	a.white {color: white;}
+	a.white {color: $white;}
     a:hover {color: $green;}
+    .cart {
+    	background-color: $green;
+    	h4 {color: $white;}
+    }
 }
 
 footer {
 	span {color: $green;}
-	background-color: white;
+	background-color: $white;
 }
 
-#flash_msg {
-	color: rgb(255, 255, 255);
-	.flash_notice {background: none repeat scroll 0% 0% rgba(135, 216, 211, 0.80);}
-	.flash_alert {background: none repeat scroll 0% 0% rgba(204, 0, 0, 0.80);}
-	.flash_success {background: none repeat scroll 0% 0% rgba(92, 181, 42, 0.80);}
-}
+#flash_msg {color: $white;}
+.flash_notice {background: none repeat scroll 0% 0% $info;}
+.flash_alert {background: none repeat scroll 0% 0% $danger;}
+.flash_success {background: none repeat scroll 0% 0% $success;}
 
 #devise_modal {
-	.links, .links > a, a {color: white;}
-	h2.cross {color: white;}
+	.links, .links > a, a {color: $white;}
+	h2.cross {color: $white;}
 }
 
-.mb-menu {a, span, h2 {color: white;} }
-
-.owl-theme .owl-dots .owl-dot.active span {background-color: $red;}
-.owl-theme .owl-nav [class*='owl-']:hover {background: #63081A;}
-
-// ----------------------    Pages rules ----------------------------------------------------
-
-.welcome.c0 {
-    h2 {color: white;}
-    h3, h4 {color: $red;}
-    li {background-color: rgba(255,255,255,0.6);border-radius: 15px;}
+.c2, .c3 {background-color: $white;}
+.mb-menu {
+	a, span, h2 {color: $white;} 
 }
-.welcome .instagram {
-	h3 {color: $green;}
-}
-.welcome .follow {
-	h3 {color: $red;}
-	.btn {background: $green;}
+.price {color: $green;}
+
+.owl-theme {
+	.owl-dots .owl-dot.active span {background-color: $red;}
+	.owl-nav [class*='owl-']:hover {background: $red;}
 }
 
-.shop_index {
-	.filters {
-		h3 {color: $green;}
-	}
-}
+/* ------------------------------ Pages  ------------------------------ */
 
-.shop_show {
-	h3.price {color: $green;}
-	.fabrics .text .price {color: $green;}
-	.c2, .c3 {background-color: white;}
+.welcome.c0 .title h2 {color: $white;}
+.welcome .intro {
+	h3, h4 {color: $red;}
+    li {background-color: $white_trsp;}
 }
-
+.welcome .instagram h3 {color: $green;}
+.welcome .follow h3 {color: $red;}
+.shop_index .filters h3 {color: $green;}
+.showroom_index h4 {color: $green;}

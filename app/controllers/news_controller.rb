@@ -9,13 +9,12 @@ class NewsController < ApplicationController
 			if @news.save
 				@news = News.new
 				flash_message('success', t('flash_messages.news_created'))
-				format.js { render 'welcome/create_news.js.erb' }
+				format.js { render 'public/create_news.js.erb' }
 			else
 				flash_message('alert', t('flash_messages.news_problem'))
 			end
 		end
 	end
-  
 
   private
 

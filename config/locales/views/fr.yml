@@ -6,6 +6,7 @@ fr:
     layouts:
         header:
         main_filters:
+            admin: 'Admin'
             creation: 'Création'
             collection: 'Collection'
             shop: 'Boutique'
@@ -26,7 +27,7 @@ fr:
             register: "Créer un compte"
             log_in: "Se connecter"
             create_account: "Valider"
-    welcome:
+    public:
         welcome:
             welcome_title: "La tenue de cérémonie sur mesure"
             creations: "Creation"
@@ -65,7 +66,8 @@ fr:
             details_form:
                 choose_your_size: 'Choisissez votre taille'
                 choose_your_fabric: 'Choisissez votre tissu '
-                dimensions: '(%{length} x %{large} m nécessaires) :'
+                dimensions: '(%{length} x %{large} m nécessaires)'
+                dimensions_wp: '(%{length} x %{large} m nécessaires) :'
                 customer_fabric: 'Vous fournissez le tissu'
                 qties: 'Quantités :'
                 add_to_basket: 'Ajouter au panier'
@@ -84,7 +86,11 @@ fr:
             customize: 'Customiser'
             share: 'Partager ce produit'
             not_on_measure: 'Taille unique'
-            lead_time: 'Délai : ~ %{lead_time} jours'
+            leadtime: 'Délai : ~ %{leadtime} jours'
+    showroom:
+        index:
+            title: "Vous souhaitez réaliser l'une de vos créations ?"
+            contact: "Venez visiter l'atelier ou contactez moi pour en discuter ! ..."
     products:
         browse_products:
             man: "Homme"

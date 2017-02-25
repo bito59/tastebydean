@@ -13,8 +13,7 @@ module Showroom
     private
         
     def load_products
-      @products = Product.with_kind(params[:kind])
-      #.actives
+      @products = Product.with_kind(params[:kind]).actives.with_picture
     end
   end
 end

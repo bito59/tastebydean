@@ -12,7 +12,7 @@ module Admin
     end
 
     def show
-      @product_pictures = @product.product_pictures.all
+      #@product_pictures = @product.product_pictures.all
       respond_to do |format|
         format.html { render 'admin/products/show' }
       end
@@ -33,6 +33,9 @@ module Admin
       @product = Product.new(product_params)
       respond_to do |format|
         if @product.save
+          params[:product_pictures]['image'].each do |a|
+            @product_picture = @product.product_pictures.create!(image: a)
+          end
           format.html { redirect_to admin_product_path(@product), notice: 'Product was successfully created.' }
         else
           format.html { render action: 'new' }
@@ -43,6 +46,9 @@ module Admin
     def update
       respond_to do |format|
         if @product.update_attributes(product_params)
+          params[:product_pictures]['image'].each do |a|
+            @product_picture = @product.product_pictures.create!(image: a)
+          end
           format.html { redirect_to admin_product_path(@product), notice: 'Product was successfully updated.' }
         else
           format.html { render action: 'edit' }
@@ -59,7 +65,9 @@ module Admin
     def product_params
       params.require(:product).permit(
         :title, :description, :activated, :kind, :family, :customer, :event, 
-        :price, :price_unit, :measure, :measure_unit, {pictures: []})
+        :price, :price_unit, :measure, :measure_unit, 
+        product_pictures_attributes: [:id, :product_id, :image])
+        #{pictures: []}, {main_pict: []})
     end
   end
 end

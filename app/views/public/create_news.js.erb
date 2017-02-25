@@ -1,0 +1,2 @@
+$('#news').replaceWith("<%= j render partial: 'public/news_form', locals: {news: @news } %>");
+$('#flash_msg').append("<%= j render_flash %>").change()

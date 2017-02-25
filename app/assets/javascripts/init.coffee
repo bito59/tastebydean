@@ -5,6 +5,7 @@ App.init = ->
 	init_flash()
 	init_devise_modal()
 	init_mobile_menu()
+	init_functions()
 
 
 $(document).on "turbolinks:load", ->
@@ -12,6 +13,9 @@ $(document).on "turbolinks:load", ->
 
 
 # -------------------------------  JS init functions  --------------------------------------------
+
+init_functions = ->
+	$('.icon').mouseenter($('.cart_nb').show).mouseleave($('.cart_nb').hide);
 
 # Init fullpage
 init_fullpage = ->
@@ -59,10 +63,9 @@ init_devise_modal = ->
 		add_modal()
 	# Hide modal
 	$(window).on 'click', ->
-		#if !$(event.target).parents('.no-hide').length && !$(event.target).is(".no-hide")
 		if !$(event.target).parents('.front').length
 			remove_modal()
-			enable_fp()
+			#enable_fp()
 	$('.register-link, .cross').on 'click', -> 
 		remove_modal()
 		enable_fp()

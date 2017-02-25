@@ -35,32 +35,54 @@ Product.delete_all
 							family: family,
 							price: price,
 							price_unit: '€',
-							lead_time: p,
-							description: 'Paleo portland succulents street Paleo portland succulents street 
-							Paleo portland succulents street 
-							Paleo portland succulents street ')
+							leadtime: p,
+							description: 'Un produit sympa pour ta fête !' 
+	)
 	if p.even? && kind == 'model'
 		product[:activated] = true
-		product[:custom_fabric] = true
-		product[:fabric_lgt_std] = 1
+		product[:unic_fabric] = true
+		product[:unic_size] = false
+		product[:fabric_lng_std] = 1
 		product[:fabric_lrg_std] = 0.5
-		product[:variable_size] = true
-        product[:fabric_lgt_big] = 1.5
+        product[:fabric_lng_big] = 1.5
         product[:fabric_lrg_big] = 0.5
         product[:on_measure] = true
 	else
-		product[:custom_fabric] = false
+		product[:activated] = true
+		product[:unic_fabric] = true
+		product[:unic_size] = true
 		product[:on_measure] = false
 
 	end
 	product.save
-	product.affect_serial
 	#product.product_pictures.create({
 	#	image: File.open("#{Rails.root}/app/assets/images/image_sample/product_sample.jpg"),
 	#	main: true,
 	#	activated: true
 	#})	
 end
+
+# Creation of fabrics
+Fabric.delete_all
+(1..10).each do |p|
+	kind = Fabric::KINDS.sample
+	price = ["2", "3", "4", "5", "6", "7", "8", "9", "10"].sample
+	title = 'Tissu  ' + p.to_s
+	fabric = Fabric.new(	serial: p,
+							activated: true,
+							title: title,
+							kind: kind,
+							price: price,
+							price_unit: '€',
+							description: 'Cest très beau'
+	)
+	fabric.save
+end
+
+Measure.delete_all
+Measure.create(title: 'Simple', around_collar_large: true)
+Measure.create(title: 'More', around_collar_large: true, shoulder_width: true)
+Measure.create(title: 'Complex', around_collar_large: true, shoulder_width: true, shoulder_waist_front_large: true)
 
 # Creation of orders
 Order.delete_all

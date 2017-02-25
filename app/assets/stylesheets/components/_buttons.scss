@@ -1,37 +1,28 @@
+/* ------------------------------ Layouts  ------------------------------ */
+
 input:hover, .btn:hover, label:hover, a:hover {cursor: pointer;}
+input, .btn, a.btn {font-family: $light;font-size: 1em;border-radius: 10px;color: $red;background-color: $white;}
+input.field {background-color: $grey_trsp;}
+input, label, .btn {margin: 1em auto;width: 75%;height: 3em;@include flexbox; @include justify-content(space-around);@include align-items(center);}
 
-input, label, .btn {margin: 1em auto;width: 75%;height: 3em;}
-
-input, .btn, a.btn {
-	font-family: $light;font-size: 1em;color: $red;
-	background-color: rgba(255,255,255,1);border-radius: 10px;
-}
+label.big {width: 80%;}
+.inline label, .inline .btn {margin: 1em}
 
 label.option {
 	@include flexbox; @include align-items(center);
 	input {display: none;}
-	input + span {width: 100%;line-height: 3em;background-color: red;color:white;border-radius: 10px;}
+	input + span {width: 100%;line-height: 3em;border-radius: 10px;background-color:$grey_trsp;border: none;}
+	input:checked + span {background-color:$white;border:3px solid $green;}
+}
+label.option.full {
+	input + span {background-color: $danger;color: $white;border: none;}
 	input:checked + span {background-color:$green;border: none;}
 }
 
 .btn-green {border:2px solid $green;}
-.btn-red {border:2px solid red;}
-.btn-valid {background: $green;color: #FFFFFF;}
-.btn-cancel {background: $red;color: #FFFFFF;}
-
-label {
-	//width: 45%;
-	//display:block; //width: 50%;margin: 1em auto;
-	//input {visibility: hidden;position: absolute;}
-	//input + h4 {cursor:pointer;border:1px solid transparent;}
-	//input:checked + h4 {border:3px solid $green;border-radius: 10px;}
-	//.red > h4 {border:3px solid red;border-radius: 10px;}
-}
-label.big {width: 80%;}
-
-.btn {//width: 75%;margin: 1em auto;height: 3em;border-radius: 10px;
-	//@include flexbox; @include flex-flow(row nowrap);@include justify-content(center); @include align-items(center);
-}
+.btn-red {border:2px solid $danger;}
+.btn-valid {background: $green;color: $white; *{color: $white;}}
+.btn-cancel {background: $danger;color: $white; *{color: $white;}}
 
 @media (min-width: map-get($breakpoints, tablet)) {
 	.btn {width: 90%;max-width: 200px;height: 3em;}

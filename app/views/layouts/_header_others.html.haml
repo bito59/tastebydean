@@ -7,14 +7,17 @@
 	%li
 		= link_to_icon('filter-red-mb', 25, 25, root_path, {id: 'open_mb_main_menu', remote: true})
 .links.tb
+	- if user_signed_in?
+		%li= link_to t('layouts.main_filters.admin'), admin_products_path
 	%li= selected_header_link('creation', showroom_products_path(kind: 'creation'))
 	%li= selected_header_link('collection', shop_products_path(kind: 'model'))
 	%li= selected_header_link('shop', shop_products_path(kind: 'accessory'))
 	%li.icons
 		- if user_signed_in?
 			= link_to_icon('user_green', 20, 20, destroy_user_session_path, {method: :delete})
+			= link_to_icon('cart_red', 20, 20, cart_path, {class: 'cart_icon'})
+			= render partial: 'carts/cart_overview'
 		- else
-			= link_to_icon('user_red', 20, 20, new_user_session_path, {id: 'connection_modal', remote: true})
-		= link_to_icon('cart_red', 20, 20, cart_path)
-=#.cart
-=# render partial: 'carts/cart_overview'
+			= link_to_icon('user_red', 20, 20, new_user_session_path, {class: 'connect_modal', remote: true})
+		
+

@@ -24,6 +24,8 @@ CarrierWave.configure do |config|
     region:            ENV.fetch('AWS_REGION') # Required
   }
 
+  #remove_previously_stored_files_after_update: true
+
   # Optional: Signing of download urls, e.g. for serving private content through
   # CloudFront. Be sure you have the `cloudfront-signer` gem installed and
   # configured:

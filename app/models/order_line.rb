@@ -25,7 +25,8 @@ class OrderLine < ApplicationRecord
 		if persisted?
 			self[:fabric_price]
 		else
-			fabric.price
+			#fabric.price
+			0
 		end
 	end
 
@@ -50,7 +51,8 @@ class OrderLine < ApplicationRecord
 	def finalize
 		self[:unit_price] = unit_price
 		self[:fabric_price] = fabric_price
-		self[:total_price] = quantity * (self[:unit_price] + self[:fabric_price] * product.fab_length)
+		self[:total_price] = quantity * (self[:unit_price])
+		# + self[:fabric_price] * product.fab_length)
 	end
 
 end

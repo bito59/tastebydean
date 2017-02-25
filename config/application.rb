@@ -1,6 +1,10 @@
 require_relative 'boot'
 
 require 'rails/all'
+#require 'json'
+#require 'aws-sdk'
+#require 'aws-sdk-v1'
+#require 'base64'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -20,5 +24,14 @@ module Tastebydean
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
     # Precompile additional assets
     #config.assets.precompile += %w( .svg .eot .woff .ttf .otf)
+
+    # Accept cross origins from ForestAdmin
+    config.middleware.insert_before 0, Rack::Cors do
+        allow do
+            origins 'app.forestadmin.com'
+            resource '*', headers: :any, methods: :any
+        end
+    end
+
   end
 end

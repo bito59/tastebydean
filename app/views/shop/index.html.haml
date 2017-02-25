@@ -1,14 +1,13 @@
 %section.shop_index.c5
-	.filters
+	.filters.inline
 		= render partial: 'shop/' + @path + '/filters', locals: {products: @products}
 
-	.results
+	.results.inline
 		- @products.each do |product|
-			#product.product{ id: "item_#{product.serial}" }
+			.product{ id: "item_#{product.serial}" }
 				= link_to shop_product_path(id: product.slug) do
-					= image_tag "collections/default3.png"
-					%h4= product.title
-
+					%h4.title= product.title
+					= image_tag product.product_pictures.active.main.first.image.preview
 	
 :javascript
 	$(document).ready(function() {

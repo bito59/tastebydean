@@ -1,8 +1,0 @@
-#news.news
-	= form_for @news, remote: true, authenticity_token: true do |f|
-		%h3= t('.discover')
-		= f.hidden_field :country, value: I18n.locale
-		.fields
-			%li.zipcode= f.text_field :zipcode, autocomplete: "off", placeholder: t('.zipcode'), required: true
-			%li.email= f.text_field :email, autocomplete: "off", placeholder: t('.email'), required: true
-			%li= f.submit t('.validate'), class: "btn btn_valid"

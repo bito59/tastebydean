@@ -1,5 +1,6 @@
 class OrderLinesController < ApplicationController
   include ApplicationHelper
+  before_action :find_product, only: [:create]
 
   def create
   	@order = current_order
@@ -13,7 +14,7 @@ class OrderLinesController < ApplicationController
         else
           flash_message('success', t('.item_added'))
         end
-        format.html { redirect_to root_path }
+        format.html { redirect_to shop_product_path(@product) }
       else
         flash_message('error', t('.item_not_added'))
       end
@@ -46,7 +47,11 @@ class OrderLinesController < ApplicationController
   private
 
   def order_line_params
-    params.require(:order_line).permit(:quantity, :product_id, :fabric_id)
+    params.require(:order_line).permit(:quantity, :size, :sep_fabric, :product_id, :fabric_id)
+  end
+
+  def find_product
+    @product = Product.friendly.find(order_line_params[:product_id])
   end
 
 end

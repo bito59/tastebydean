@@ -1,8 +1,11 @@
 .welcome.c0 {
 	ul {width: 1024px;max-width: 90%; margin: 0 auto; padding: 0 20px;}
-	li {width: 190px;height: 250px;padding: 0px 10px 0px 10px;}
-	.fp-tableCell {vertical-align: middle;}
-	.arrow {position: absolute;left: 0;right: 0;bottom: 10px;}
+	li {width: 190px;height: 250px;padding: 0px 10px 0px 10px;border-radius: 15px;}
+	//.fp-tableCell {vertical-align: middle;}
+	.arrow {
+		position: absolute;left: 0;right: 0;bottom: 10px;
+		img {width: 40px;height: 40px;}
+	}
 }
 .welcome.c1 {
 	.process {
@@ -26,16 +29,8 @@
 }
 
 .welcome.c3 {
-	.follow .images {
-		margin-top: 2em;
-		 li {margin: 0px 20px;}
-	}
-	.newsletter {
-		margin-top: 4em;
-		li {display: inline-block;}
-		li:nth-child(1) {margin: 2em 0 1em 0;}
-		li:nth-child(3) {margin: 2em 0 ;}
-	}
+	.follow .inline {margin: 1em auto;}
+	.newsletter {margin-top: 4em;}
 }
 
 @media (max-width: map-get($breakpoints, tablet)) {
@@ -69,25 +64,21 @@
 	}
 
 	.welcome.c2 {
-		.comment {
-			margin-top: 2em;max-width: 75%;img {width: 200px;height: 200px;}
-			li {@include flexbox; @include flex-flow(row nowrap); @include justify-content(space-around); @include align-items(center);}
-			.text {margin-left: 2em;margin-top: 3em;}
-		}
-		.instagram .images  {
-			width: 75%; margin: auto; * {width: 30%;}
-			@include flexbox; @include flex-flow(row wrap); @include justify-content(center); //@include flex-basis(30%);
-			img {width: 140px;height: 140px;}
-		}
+		.comment {margin: 5em auto;max-width: 75%;}
+		.comment img {width: 200px;height: 200px;}
+		.text {margin-left: 2em;margin-top: 3em;}
+		.instagram img {height: 250px; width: 250px;}
 	}
 
 	.welcome.c3 {
 		.follow img {width: 60px;height: 60px;}
-		.newsletter .zipcode input {width: 20%;}
-		.newsletter .email input {width: 50%;}
-		.follow .fields {
-			.zipcode {width: 15%; margin-bottom:0;text-align: left;}
-			.email {width: 50%;text-align: left;}
+		.follow .inline {width: 30%;}
+		.newsletter {
+			li {@include flexbox; @include justify-content(center); @include align-items(center);}
+			.zipcode {margin-bottom:0;text-align: left;}
+			.zipcode input {width: 20%;}
+			.email {text-align: left;}
+			.email input {width: 50%;}
 		}			
 	}
 }

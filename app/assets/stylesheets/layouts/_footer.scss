@@ -1,6 +1,7 @@
 footer {display: none;}
 footer .content {@include flexbox; @include justify-content(space-around); @include align-items(center);} 
 footer.pushed {position: relative;}
+footer.fixed {position: absolute;}
 
 @media (min-width: map-get($breakpoints, tablet)) {
 	footer .content {height: 100%;@include justify-content(space-between);}

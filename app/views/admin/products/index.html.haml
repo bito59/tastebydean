@@ -2,5 +2,5 @@
 	= p.title
 	= p.id
 	= link_to p.serial, admin_product_path(p.id)
-	- p.pictures.each do |image| # for each image
-		= image_tag(image.url) # display the image
+	= p.product_pictures.each do |picture| # for each image
+		= image_tag(picture.image.url.to_s) # display the image

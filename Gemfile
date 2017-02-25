@@ -18,17 +18,17 @@ gem 'normalize-rails'
 gem 'bootstrap-modal-rails'
 gem 'friendly_id'
 gem 'will_paginate'
-#gem 'aws-sdk'
-#gem "paperclip"
 gem "carrierwave", github: "carrierwaveuploader/carrierwave"
 gem 'carrierwave-aws'
+#gem 'aws-sdk', '~> 2'
+gem 'aws-sdk-v1'
 gem 'mini_magick'
 gem 'devise'
 gem "figaro"
-#gem 'rails-i18n'
-#gem 'owlcarousel2-rails'
-#gem 'materialize-rails'
-#gem "modular-scale"
+gem 'forest_liana'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'drape'
+gem 'neatjson'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -8,17 +8,11 @@ class MainController < ApplicationController
 		if flash.empty?
 			flash_message('notice', t('flash_messages.welcome'))
 		end
-		render 'welcome/welcome'
+		render 'public/welcome'
 	end
 
-	def create_news
-		@news = News.new(news_params)
-	    respond_to do |format|
-	      if @news.save
-	      	@news = News.new
-	        format.js
-	      end
-	    end
+	def terms
+		render 'public/terms'
 	end
 
 	private

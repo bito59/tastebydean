@@ -1,0 +1,60 @@
+ForestLiana::ResourcesController.class_eval do
+  alias_method :default_update, :update
+
+  # Regexp to match the RFC2397 prefix.
+  REGEXP = /\Adata:([-\w]+\/[-\w\+\.]+)?;base64,(.*)/m
+
+  def update
+    # Create the S3 client.
+    s3 = AWS::S3.new(access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+                     secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+                     region: ENV['AWS_REGION'])
+    bucket = s3.buckets[ENV['S3_BUCKET_NAME']]
+
+    # Parse the "data" URL scheme (RFC 2397).
+    data_uri_parts = raw_data.match(REGEXP) || []
+
+    # Upload the image.
+    obj = bucket.objects.create(filename(data_uri_parts),
+                                base64_image(data_uri_parts),
+                                opts(data_uri_parts))
+
+    # Inject the new image URL to the params.
+    url = obj.public_url().to_s
+    params['resource']['data']['attributes']['image'] = url
+    params['data']['attributes']['image'] = url
+
+    # Finally, call the default PUT behavior.
+    default_update
+  end
+
+  private
+
+  def raw_data
+    params['data']['attributes']['image']
+  end
+
+  def base64_image(data_uri_parts)
+    Base64.decode64(data_uri_parts[2])
+  end
+
+  def extension(data_uri_parts)
+    MIME::Types[data_uri_parts[1]].first.preferred_extension
+  end
+
+  def filetype(data_uri_parts)
+    MIME::Types[data_uri_parts[1]].first.to_s
+  end
+
+  def filename(data_uri_parts)
+    ('a'..'z').to_a.shuffle[0..7].join + ".#{extension(data_uri_parts)}"
+  end
+
+  def opts(data_uri_parts)
+    {
+      acl: 'public_read',
+      content_type: filetype(data_uri_parts)
+    }
+  end
+
+end

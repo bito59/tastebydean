@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-	root "admin/products#index"
-	#root "main#welcome"
+  mount ForestLiana::Engine => '/forest'
+	#root "admin/products#index"
+	root "main#welcome"
 	#get '/:locale' => 'dashboard#index'
 	#match '', to: redirect("/#{I18n.locale}"), via: :get
 	#scope "(:locale)", locale: /en|bi|fr/ do
@@ -10,11 +11,17 @@ Rails.application.routes.draw do
 		devise_for :users
 		resources :news, only: [:create]
 		resources :order_lines, only: [:create, :update, :destroy]
+		match '/terms', to: 'main#terms', via: :get, as: :terms
 		
 		namespace :admin do
 		  resources :products do
 		  	resources :pictures, only: [:create, :destroy]
+		  	resources :main_pictures, only: [:create, :destroy]
 		  end
+		end
+
+		namespace :forest do
+		  post '/actions/do_it' => 'products#do_it'
 		end
 
 		namespace :shop do

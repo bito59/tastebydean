@@ -2,5 +2,5 @@
 %h3= @product.serial
 %h4= @product.description
 %h4= link_to 'Edit', edit_admin_product_path(@product.id)
-- @product.pictures.each do |image|
-	= image_tag(image.url.to_s)
+- @product.product_pictures.each do |picture|
+	= image_tag(picture.image.url.to_s)

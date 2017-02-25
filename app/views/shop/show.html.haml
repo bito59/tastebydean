@@ -6,42 +6,37 @@
 			%h3.price= @product.price.to_s + " " + @product.price_unit
 			%h5= @product.serial
 		.owl-carousel.owl-theme
-			.item
-				= image_tag "collections/default0.png"
-			.item
-				= image_tag "collections/default1.png"
-			.item
-				= image_tag "collections/default2.png"
-			.item
-				= image_tag "collections/default3.png"
-			.item
-				= image_tag "collections/default4.png"
+			- @pictures.each do |p| 
+				.item
+					= image_tag p.image.preview
 		.arrows
 			#btn_prev
-				%h2= '<'
+				= image_tag 'icons/arrow_left.png'
 			#btn_next
-				%h2= '>'
+				= image_tag 'icons/arrow_right.png'
 	%section.shop_show.c2.section.fp-noscroll{'data-anchor': '2'}
-		.title
+		.box1.title
 			%h3= @product.title
-			%h3.price.tablet= @product.price.to_s + " " + @product.price_unit
-			%h5.tablet= @product.serial
-		.description
+			.inline
+				%h3= t('.confection :')
+				%h3.price= @product.price.to_s + " " + @product.price_unit
+			%h5= @product.serial
+		.box1.description
 			%h4= @product.description
-		.icons
+		.box1.icons.inline
 			%li
 				- if @product.on_measure == false
 					= link_to_icon('facebook_square', 30, 30, 'http://www.facebook.com', target: '_blank')
-					%h4= t('shop.show.not_on_measure')
+					%h5= t('shop.show.not_on_measure')
 				- else
-					= link_to_icon('facebook_square', 30, 30, 'http://www.facebook.com', target: '_blank')
-					%h4= t('shop.show.on_measure')
+					= image_tag 'icons/on_measure.png' 
+					%h5= t('shop.show.on_measure')
 			%li
-				= link_to_icon('facebook_square', 30, 30, 'http://www.facebook.com', target: '_blank')
-				%h4= t('shop.show.lead_time', lead_time: @product.lead_time)
-		.button
-			- if @product.kind == 'model'
-				#btn_custom.btn.btn_green
+				= image_tag 'icons/leadtime.png'
+				%h5= t('shop.show.leadtime', leadtime: @product.leadtime)
+		.box1.buttons
+			- if @product.on_measure == true
+				#btn_custom.btn.btn-green
 					%h3= t('shop.show.customize')
 			- else
 				.qties
@@ -58,44 +53,43 @@
 
 :javascript
 
-$(document).ready(function() {	
-
-	var owl = $('.owl-carousel');
-	owl.owlCarousel({
-		number: 1,
-		dots: true,
-		dotsEach: 1,
-		nav: true,
-		center: true,
-		loop: true,
-		items: 1
-	})
-
-	$('#btn_prev').click(function() {
-	    $('.owl-prev').trigger('click');
+	$(document).ready(function() {
+		if (screen.width > 1024) {
+			$('#footer').show().addClass('fixed');
+		}	
+		var owl = $('.owl-carousel');
+		owl.owlCarousel({
+			number: 1,
+			dots: true,
+			dotsEach: 1,
+			nav: true,
+			center: true,
+			loop: true,
+			items: 1
+		});
+		
+		$('#btn_prev').click(function() {
+		    $('.owl-prev').trigger('click');
+		});
+		$('#btn_next').click(function() {
+		    $('.owl-next').trigger('click');
+		});
+		$('#btn_custom').click(function() {
+			if (screen.width < 1024) {
+				$.fn.fullpage.moveTo(3);
+			}else {
+				$(".c2").fadeOut(500, function(){
+					$(".c3").fadeIn(500);
+				});
+			}
+		});
+		$('#btn_cancel').click(function() {
+			if (screen.width < 1024) {
+				$.fn.fullpage.moveTo(2);
+			}else {
+				$(".c3").fadeOut(500, function(){
+					$(".c2").fadeIn(500);
+				});
+			}
+		});
 	});
-
-	$('#btn_next').click(function() {
-	    $('.owl-next').trigger('click');
-	});
-
-	$('#btn_custom').click(function() {
-		if (screen.width < 1024) {
-			$.fn.fullpage.moveTo(3);
-		}else {
-			$(".c2").fadeOut(500, function(){
-				$(".c3").fadeIn(500);
-			});
-		}
-	});
-
-	$('#btn_cancel').click(function() {
-		if (screen.width < 1024) {
-			$.fn.fullpage.moveTo(2);
-		}else {
-			$(".c3").fadeOut(500, function(){
-				$(".c2").fadeIn(500);
-			});
-		}
-	});
-})
