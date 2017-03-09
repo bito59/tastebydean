@@ -1,0 +1,14 @@
+%section.shop_workshop.c2
+	.filters.inline
+		= render partial: 'shop/filters/' + @area + '/filters'
+	.main
+		
+	
+:javascript
+	$(document).ready(function() {
+		$('#footer').show().addClass('pushed');
+		$('#open_mb_collection_filter').click(function() {
+			$('#mb_filter').fadeIn(500);
+			$('.mb-hide').hide();
+		});
+	});

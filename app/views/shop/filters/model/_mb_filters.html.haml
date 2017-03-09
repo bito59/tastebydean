@@ -1,5 +1,9 @@
 %li.logo= image_tag "icons/logo-red.png"
 
+= link_to shop_products_path(kind: 'model') do
+	%li
+		%h2= t('shop.model.main_filters.all_models')
+
 = link_to shop_products_path(kind: 'model', customer: 'man') do
 	%li
 		%h2= t('shop.model.main_filters.man')
@@ -12,10 +16,7 @@
 = link_to shop_products_path(kind: 'model', customer: 'boy') do
 	%li
 		%h2= t('shop.model.main_filters.boy') 
-= link_to shop_products_path(kind: 'model') do
-	%li
-		%h2= t('shop.model.main_filters.all_models')
 
 = link_to '', {class: 'close_mb_menu', remote: true} do
 	%li
-		%h2= t('.cancel')
+		%h2= t('layouts.main_filters.cancel')

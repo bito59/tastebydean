@@ -21,7 +21,7 @@ gem 'will_paginate'
 gem "carrierwave", github: "carrierwaveuploader/carrierwave"
 gem 'carrierwave-aws'
 #gem 'aws-sdk', '~> 2'
-gem 'aws-sdk-v1'
+#gem 'aws-sdk-v1'
 gem 'mini_magick'
 gem 'devise'
 gem "figaro"
@@ -29,6 +29,7 @@ gem 'forest_liana'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'drape'
 gem 'neatjson'
+gem 'magnific-popup-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri

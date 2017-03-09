@@ -19,5 +19,6 @@
 			= render partial: 'carts/cart_overview'
 		- else
 			= link_to_icon('user_red', 20, 20, new_user_session_path, {class: 'connect_modal', remote: true})
+		= link_to_icon('cart_red', 20, 20, cart_path)
 		
 

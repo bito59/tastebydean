@@ -3,11 +3,11 @@ module Shop
     include ApplicationHelper
 
   	skip_before_action :auth_user, only: [:index, :show]
-  	before_action :find_product, only: [:show, :edit, :update, :destroy]
+  	before_action :find_product, only: [:show]
+    before_action :load_products, only: [:index]
 
   	def index
-      @path = params[:kind].to_s
-  		load_products
+      define_area
   		respond_to do |format|
   		    format.html { render 'shop/index' }
   		end
@@ -17,6 +17,7 @@ module Shop
       @order_line = current_order.order_lines.new
       @sizes = @product.find_sizes
       @pictures = @product.product_pictures.active
+      puts @pictures.inspect
   		respond_to do |format|
   			format.html { render 'shop/show.html.haml' }
   		end
@@ -37,13 +38,14 @@ module Shop
       end
         
       def load_products
-        @products = Product.with_kind(params[:kind]).actives.with_picture
+        @products = Product.with_kind(params[:kind]).on_site
         if params[:customer] == 'child'
           @products = @products.child
         elsif params[:customer]
           @products = @products.with_customer(params[:customer])
         end
         @products
+        puts @products.inspect
       end
   end
 end

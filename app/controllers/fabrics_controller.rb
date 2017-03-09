@@ -1,5 +1,6 @@
 class FabricsController < ApplicationController
 	before_action :set_fabric, only: [:show, :update, :destroy]
+	#before_action :remove_old_picture, only: [:update]
 
 	def create
 		@fabric = Fabric.new(fabric_params)
@@ -16,15 +17,16 @@ class FabricsController < ApplicationController
 
 	def update
 		respond_to do |format|
-		  if @fabric.update_attributes(fabric_params)
-		    format.json render status: 200, json: {
-		      success: "Successfully updated fabric"
-		    }.to_json
-		else
-		    format.json render status: 400, json: {
-		      success: "Failed to update fabric"
-		    }.to_json
-		  end
+			#remove_old_picture
+			if @fabric.update_attributes(fabric_params)
+				format.json render status: 200, json: {
+				  success: "Successfully updated fabric"
+				}.to_json
+			else
+				format.json render status: 400, json: {
+				  success: "Failed to update fabric"
+				}.to_json
+			end
 		end
 	end
 
@@ -55,4 +57,15 @@ class FabricsController < ApplicationController
 			{image:[]}
 		)
 	end
+
+	def remove_old_picture
+		if @fabric.respond_to?(:image) && params[:image].present?
+			old_picture = @fabric.image
+			deleted_picture = old_picture.delete
+			deleted_picture.try(:remove!) # delete picture from S3
+			puts 'deleted previous image'
+		else
+			puts 'no previous image to delete'
+		end
+    end
 end

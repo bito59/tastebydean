@@ -13,7 +13,13 @@ class Product < ApplicationRecord
 
 # ---------------- Scopes -------------------------------------------------------------------------
 
-	scope :with_picture, -> { joins(:product_pictures).where('product_pictures.activated = ?',true).group("products.id").having("count(product_pictures.id) > ?",0) }
+	scope :on_site, -> { joins(:product_pictures)
+		.where('product_pictures.activated = ?',true)
+		.where('product_pictures.main = ?',true)
+		.group("products.id")
+		.having("count(product_pictures.id) > ?",0)
+		.where('products.activated = ?',true)
+	}
 	scope :random, -> { order('RAND()') }
 
 	scope :all_creations, -> { where kind: 'creation' }
@@ -21,7 +27,6 @@ class Product < ApplicationRecord
 	scope :all_fabrics, -> { where kind: 'fabric' }
 	scope :all_accessories, -> { where kind: 'accessory' }
 
-	scope :actives, -> { where activated: true }
 	scope :new_product, -> { where new_product: true }
 	scope :with_discount, -> { where discount: true }
 	
@@ -31,22 +36,35 @@ class Product < ApplicationRecord
 	scope :adult, -> { where("customer = ? or customer = ?", 'man', 'woman') }
 	scope :child, -> { where("customer = ? or customer = ?", 'boy', 'girl') }
 
-
 # ---------------- Options & functions -----------------------------------------------------------------------------
 
-	KINDS = ['model', 'accessory', 'creation']
-	CUSTOMERS = ['man', 'woman', 'boy', 'girl']
-	FAMILIES = {
-		female: ['dress','jacket','hat'],
-		male: ['tie','bow-tie','neck-tie','jacket'],
-		material: ['silk','cotton-silk','cotton']
-	}
-	PRICE_UNITS = ['€']
-	MEASURE_UNITS = ['m','cm']
+	enum kind: [:model, :accessory, :creation]
+	enum customer: [:man, :woman, :boy, :girl]
+	enum family: [:dress, :jacket, :hat, :tie, :bow_tie, :neck_tie]
+	enum price_unit: [:euro]
+	enum measure_unit: [:m, :cm]
+
+	#KINDS = ['model', 'accessory', 'creation']
+	#CUSTOMERS = ['man', 'woman', 'boy', 'girl']
+	#FAMILIES = {
+	#	female: ['dress','jacket','hat'],
+	#	male: ['tie','bow-tie','neck-tie','jacket'],
+	#	material: ['silk','cotton-silk','cotton']
+	#}
+	#PRICE_UNITS = ['€']
+	#MEASURE_UNITS = ['m','cm']
 
 	def find_sizes
 		if self.unic_size == false
 			sizes = {std: self.customer + '_std', big: self.customer + '_big'}
+		end
+	end
+
+	def on_site?
+		if self.activated == true && self.product_pictures.active.main.count > 0
+			true
+		else
+			false
 		end
 	end
 
@@ -65,5 +83,4 @@ class Product < ApplicationRecord
 		self.update_column(:serial, serial)
 		self.update_column(:slug, serial)
 	end
-
 end

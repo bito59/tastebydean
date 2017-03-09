@@ -1,0 +1,22 @@
+.showroom_index {
+	.text {
+		margin: 2em auto;
+		h3 {margin: 1em auto;}
+	}
+	.results {
+		@include flex-flow(row wrap);
+		img {border-radius: 15px;width: 100%}
+		.title {margin-bottom: 1em;}
+		.product {margin: 4em 0;}
+	}
+
+	@media (max-width: map-get($breakpoints, tablet)) {
+		.product {width: 100%;}
+	}
+}
+
+@media (min-width: map-get($breakpoints, tablet)) {
+	.showroom_index {
+		.results .product {border-radius: 15px;margin: 2em;padding: 2em;}
+	}
+}

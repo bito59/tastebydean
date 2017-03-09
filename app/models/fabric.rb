@@ -16,13 +16,24 @@ class Fabric < ApplicationRecord
 
 	scope :with_picture, -> { where.not image: nil }
 	scope :active, -> { where activated: true }
+	scope :on_site, -> { with_picture.active }
 	scope :random, -> { order('RAND()') }
 	scope :with_kind, -> (kind) { where kind: kind }
+	scope :with_family, -> (family) { where family: family }
 
 # ---------------- Options & functions -----------------------------------------------------------------------------
 
-	KINDS = ['silk', 'cotton', 'cotton-silk']
-	PRICE_UNITS = ['€']
+	enum kind: [:fabric]
+	enum family: [:silk, :linen, :wool, :cotton, :viscos, :velvet, :satin, :knit]
+	enum price_unit: [:euro]
+
+	def on_site?
+		if self.activated == true && self.image.url != nil
+			true
+		else
+			false
+		end
+	end
 
 	private 
 
@@ -40,5 +51,4 @@ class Fabric < ApplicationRecord
 		self.image.remove! if self.image
 		self.save!
 	end
-
 end

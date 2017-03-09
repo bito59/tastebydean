@@ -56,17 +56,18 @@
 	.welcome.c1 {
 		.process {
 			img {width: 200px;height: 200px;}
-			li {@include flexbox; @include flex-flow(row nowrap); @include justify-content(space-around); @include align-items(center);
-				width: 75%;
-				* {margin: 0 1em;}
+			li {@include flexbox; @include flex-flow(row nowrap); @include justify-content(center); @include align-items(center);
+				* {margin: 0 1em;max-width: 512px;}
 			}	
 		}
 	}
 
 	.welcome.c2 {
-		.comment {margin: 5em auto;max-width: 75%;}
-		.comment img {width: 200px;height: 200px;}
-		.text {margin-left: 2em;margin-top: 3em;}
+		.comment {
+			margin: 5em auto;max-width: 75%;
+			img {width: 200px;height: 200px;}
+		}
+		.text {margin-left: 2em;margin-top: 3em;max-width: 512px;}
 		.instagram img {height: 250px; width: 250px;}
 	}
 

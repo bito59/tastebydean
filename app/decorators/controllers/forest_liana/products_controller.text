@@ -1,8 +1,0 @@
-ForestLiana::ProductsController.class_eval do
-  alias_method :default_create, :create
-
-  def create
-    puts params
-    default_create
-  end
-end

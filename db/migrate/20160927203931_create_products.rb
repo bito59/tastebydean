@@ -5,15 +5,15 @@ class CreateProducts < ActiveRecord::Migration[5.0]
     	# Main datas 
     	t.string :serial
     	t.boolean :activated, default: false
-    	t.string :kind
-    	t.string :customer
-    	t.string :family
+    	t.integer :kind, default: 1
+    	t.integer :customer, default: 1
+    	t.integer :family, default: 1
     	t.string :title
 
         # Commercial
     	t.text :description
     	t.decimal :price, precision: 8, scale: 2
-    	t.string :price_unit
+    	t.integer :price_unit, default: 1
 
 		# Production
         t.string :leadtime #leadtime for production

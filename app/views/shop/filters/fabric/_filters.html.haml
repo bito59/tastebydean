@@ -1,0 +1,22 @@
+.left
+.middle
+	.mb
+		%h3= select_title
+		%h4= t('.products', count: products.count)
+	.tb
+		%li= selected_link('accessories', shop_products_path(kind: 'accessory'))
+		%li= '|'
+		%li= selected_link('all_fabrics', shop_fabrics_path(kind: 'fabric'))
+		%li= '|'
+		%li= selected_link('silk', shop_fabrics_path(kind: 'fabric', family: 'silk'))
+		%li= '|'
+		%li= selected_link('cotton-silk', shop_fabrics_path(kind: 'fabric', family: 'cotton-silk'))
+		%li= '|'
+		%li= selected_link('workshop', shop_workshop_path)
+		
+
+.right
+	.mb
+		= link_to_icon('equalizer', 30, 30, root_path, {id: 'open_mb_collection_filter', remote: true})
+	.tb
+		%h5= t('.products', count: products.count)

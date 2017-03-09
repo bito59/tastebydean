@@ -3,27 +3,28 @@
 	%section.shop_show.c1.section.fp-noscroll{'data-anchor': '1'}
 		.title.mb
 			%h3= @product.title
-			%h3.price= @product.price.to_s + " " + @product.price_unit
 			%h5= @product.serial
+			%h3.price= @product.price.to_s + " " + @product.price_unit
 		.owl-carousel.owl-theme
-			- @pictures.each do |p| 
-				.item
-					= image_tag p.image.preview
-		.arrows
+			- @pictures.each do |p|
+				.item.img-link
+					= link_to p.image.url.to_s do
+						= image_tag p.image.preview
+		.arrows.tb
 			#btn_prev
 				= image_tag 'icons/arrow_left.png'
 			#btn_next
 				= image_tag 'icons/arrow_right.png'
 	%section.shop_show.c2.section.fp-noscroll{'data-anchor': '2'}
-		.box1.title
+		.title
 			%h3= @product.title
-			.inline
+			%h5= @product.serial
+			.inline-center
 				%h3= t('.confection :')
 				%h3.price= @product.price.to_s + " " + @product.price_unit
-			%h5= @product.serial
-		.box1.description
+		.description
 			%h4= @product.description
-		.box1.icons.inline
+		.icons.inline-center
 			%li
 				- if @product.on_measure == false
 					= link_to_icon('facebook_square', 30, 30, 'http://www.facebook.com', target: '_blank')
@@ -34,14 +35,14 @@
 			%li
 				= image_tag 'icons/leadtime.png'
 				%h5= t('shop.show.leadtime', leadtime: @product.leadtime)
-		.box1.buttons
+		.box1.buttons.inline-center
 			- if @product.on_measure == true
 				#btn_custom.btn.btn-green
 					%h3= t('shop.show.customize')
 			- else
 				.qties
 					= f.select :quantity, ['1', '2', '3', '4']
-				= f.submit t('shop.show.add_to_basket'), class: "confirm"
+				= f.submit t('.add_to_basket'), class: "confirm"
 		.share
 			%h4=# t('shop.show.share')
 			%li=# link_to_icon('facebook_square', 30, 30, 'http://www.facebook.com', target: '_blank')

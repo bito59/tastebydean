@@ -1,13 +1,16 @@
-%section.shop_index.c5
+%section.shop_index.c2
 	.filters.inline
-		= render partial: 'shop/' + @path + '/filters', locals: {products: @products}
+		= render partial: 'shop/filters/' + @area + '/filters', locals: {products: @products}
 
-	.results.inline
+	.results.flex
 		- @products.each do |product|
-			.product{ id: "item_#{product.serial}" }
+			.product.one-edge-shadow{ id: "item_#{product.serial}" }
 				= link_to shop_product_path(id: product.slug) do
-					%h4.title= product.title
-					= image_tag product.product_pictures.active.main.first.image.preview
+					%h3.title= product.title
+					- if product.kind == 'fabric'
+						= image_tag product.image.preview
+					- else
+						= image_tag product.product_pictures.active.main.first.image.preview
 	
 :javascript
 	$(document).ready(function() {

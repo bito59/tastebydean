@@ -1,7 +1,6 @@
 class ProductPicture < ApplicationRecord
 	belongs_to :product
 	before_destroy :destroy_assets
-	#before_update :destroy_assets
 	mount_uploader :image, ProductPictureUploader
 	validate :image_size_validation
 

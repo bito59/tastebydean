@@ -61,12 +61,6 @@ footer {font-family: $regular;
     h3 {font-family: $regular;}
 }
 
-
-
-@media (min-width: map-get($breakpoints, tablet)) {
-    .welcome2 .title {font-size: 80px;}
-}
-
 .shop_index {
     .filters {
         a, li { @include typi($h5-map) }
@@ -78,5 +72,9 @@ footer {font-family: $regular;
     .customize_form {
         select {@include typi($h3-map)}
     }
+}
+
+@media (min-width: map-get($breakpoints, tablet)) {
+    .welcome2 .title {font-size: 80px;}
 }
 

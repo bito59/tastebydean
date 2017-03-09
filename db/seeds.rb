@@ -19,14 +19,11 @@ user.save
 # Creation of products
 Product.delete_all
 (1..20).each do |p|
-	kind = Product::KINDS.sample
-	customer = Product::CUSTOMERS.sample
-	if customer == 'man' || customer == 'boy'
-		family = Product::FAMILIES[:male].sample
-	elsif customer == 'woman' || customer == 'girl'
-		family = Product::FAMILIES[:female].sample
-	end
+	kind = Product.kinds.sample(1).to_sym
+	customer = Product.customers.sample(1).to_sym
+	family = Product.families.sample(1).to_sym
 	price = ["2", "3", "4", "5", "6", "7", "8", "9", "10"].sample
+	unit = Product.price_units.sample(1).to_sym
 	title = 'Elegance ' + p.to_s
 	product = Product.new(	serial: p,
 							title: title,
@@ -34,7 +31,7 @@ Product.delete_all
 							customer: customer,
 							family: family,
 							price: price,
-							price_unit: '€',
+							price_unit: unit,
 							leadtime: p,
 							description: 'Un produit sympa pour ta fête !' 
 	)
@@ -65,15 +62,18 @@ end
 # Creation of fabrics
 Fabric.delete_all
 (1..10).each do |p|
-	kind = Fabric::KINDS.sample
+	kind = Fabric.kinds.sample(1).to_sym
+	family = Fabric.families.sample(1).to_sym
 	price = ["2", "3", "4", "5", "6", "7", "8", "9", "10"].sample
+	unit = Fabric.price_units.sample(1).to_sym
 	title = 'Tissu  ' + p.to_s
 	fabric = Fabric.new(	serial: p,
 							activated: true,
 							title: title,
 							kind: kind,
+							family: family,
 							price: price,
-							price_unit: '€',
+							price_unit: unit,
 							description: 'Cest très beau'
 	)
 	fabric.save

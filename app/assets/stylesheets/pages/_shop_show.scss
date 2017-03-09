@@ -1,9 +1,11 @@
 .shop_show {
 	.title {margin-bottom: 1em;}
-	.fp-tableCell {vertical-align: bottom;}
 
 	//c1
-	.owl-item img {height: calc(100vh - 8em - 5em - 4em);width: auto !important;margin: auto;}
+	.owl-item img {
+		//height: calc(100vh - 8em - 5em - 4em);width: auto !important;margin: auto;
+		//max-width: 100%;
+	}
 	.owl-dots {margin-top: 2em!important;}
 	.owl-dots .owl-dot span {height: 2em;width: 12px;height: 12px;}
 	.owl-next, .owl-prev {display: none!important;}
@@ -22,11 +24,20 @@
 	//C2 et C3
 	.icons img {height: 50px;width: 50px;}
 	.price, .qties select {margin-left: 1em;}
-	.box1 {margin: 0 auto 2em auto;}
-	.box2 {margin: 0 auto 1em auto;}
+	//.box1 {margin: 0 auto 2em auto;}
+	//.box2 {margin: 0 auto 1em auto;}
 	.with_fabric {display: none;}
+}
 
-	@media (min-width: map-get($breakpoints, tablet)) {
+@media (max-width: map-get($breakpoints, tablet)) {
+	.shop_show {
+		// Centering mobile view
+		.fp-tableCell {height: calc(100vh - 6em)!important;vertical-align: bottom;}
+	}
+}
+
+@media (min-width: map-get($breakpoints, tablet)) {
+	.shop_show {
 		.owl-item img {height: calc(100vh - 8em - 4em);width: auto !important;margin: auto;}
 		.title, .sizes {padding-top: 0;}
 		.owl-dots {margin-top: 0!important;}
@@ -35,4 +46,3 @@
 		.box1, .box2 {max-width: 80%;margin: 0 auto 2em auto;}
 	}
 }
-

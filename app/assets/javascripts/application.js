@@ -4,6 +4,7 @@
 //= require turbolinks
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
+//= require magnific-popup
 
 // Bower adds on
 //= require owl.carousel/dist/owl.carousel.min.js

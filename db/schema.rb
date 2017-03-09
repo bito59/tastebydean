@@ -15,12 +15,13 @@ ActiveRecord::Schema.define(version: 20170223193433) do
   create_table "fabrics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "serial"
     t.boolean  "activated",                                         default: false
-    t.string   "kind"
+    t.integer  "kind",                                              default: 1
+    t.integer  "family",                                            default: 1
     t.string   "title"
     t.text     "image",       limit: 65535
     t.text     "description", limit: 65535
     t.decimal  "price",                     precision: 8, scale: 2
-    t.string   "price_unit"
+    t.integer  "price_unit",                                        default: 1
     t.datetime "created_at",                                                        null: false
     t.datetime "updated_at",                                                        null: false
     t.string   "slug"
@@ -122,7 +123,7 @@ ActiveRecord::Schema.define(version: 20170223193433) do
 
   create_table "product_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "product_id"
-    t.boolean "main",                     default: true
+    t.boolean "main",                     default: false
     t.boolean "activated",                default: true
     t.text    "image",      limit: 65535
     t.index ["product_id"], name: "index_product_pictures_on_product_id", using: :btree
@@ -131,13 +132,13 @@ ActiveRecord::Schema.define(version: 20170223193433) do
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "serial"
     t.boolean  "activated",                                            default: false
-    t.string   "kind"
-    t.string   "customer"
-    t.string   "family"
+    t.integer  "kind",                                                 default: 1
+    t.integer  "customer",                                             default: 1
+    t.integer  "family",                                               default: 1
     t.string   "title"
     t.text     "description",    limit: 65535
     t.decimal  "price",                        precision: 8, scale: 2
-    t.string   "price_unit"
+    t.integer  "price_unit",                                           default: 1
     t.string   "leadtime"
     t.boolean  "on_measure",                                           default: true
     t.boolean  "unic_size",                                            default: true

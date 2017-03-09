@@ -2,26 +2,29 @@
 
 = link_to showroom_products_path(kind: 'creation') do
 	%li
-		%h2= t('.creation')
+		%h2= t('layouts.main_filters.creation')
+
 = link_to shop_products_path(kind: 'model') do
 	%li
-		%h2= t('.collection')
+		%h2= t('layouts.main_filters.collection')
+
 = link_to shop_products_path(kind: 'accessory') do
 	%li
-		%h2= t('.shop') 
+		%h2= t('layouts.main_filters.shop') 
+		
 = link_to cart_path do
 	%li
-		%h2= t('.basket') 
+		%h2= t('layouts.main_filters.basket') 
 
 - if user_signed_in?
 	= link_to destroy_user_session_path do
 		%li
-			%h2= t('.disconnect') 
+			%h2= t('layouts.main_filters.disconnect') 
 - else
 	= link_to new_user_session_path, {class: 'connect_modal', remote: true} do
 		%li
-			%h2= t('.connect')
+			%h2= t('layouts.main_filters.connect')
 
 = link_to '', {class: 'close_mb_menu', remote: true} do
 	%li
-		%h2= t('.cancel')
+		%h2= t('layouts.main_filters.cancel')

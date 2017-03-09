@@ -4,7 +4,6 @@ fr:
         news_problem: 'Impossible de vous abonner'
         welcome: 'Bienvenue chez Dean !'
     layouts:
-        header:
         main_filters:
             admin: 'Admin'
             creation: 'Création'
@@ -39,9 +38,9 @@ fr:
             explain_creation_mb: 'Imaginez votre tenue'
             explain_fabric_mb: 'Trouvez votre tissu'
             explain_on_measure_mb: 'Donnez nous vos mesures'
-            explain_creation: "Imaginez votre tenue à partir d'un dessin, une photo, un modèle."
+            explain_creation: "Imaginez votre tenue à partir d'un de nos modèles, ou créez votre tenue."
             explain_fabric: "Trouvez votre tissus et vos couleurs sur notre site ou près de chez vous."
-            explain_on_measure: "Communiquez-nous vos mensurations, toutes nos réalisations sont faites sur mesure."
+            explain_on_measure: "Communiquez-nous vos mensurations pour les réalisations faites sur mesure."
             comment: "Super robe livrée juste à temps pour le mariage de mon frère, merci Dean !"
             follow_us: "Nous suivre"
         news_form:
@@ -50,14 +49,20 @@ fr:
             email: "Email"
             validate: 'Valider'
     shop:
-        model:
-            main_filters:
+        main_filters:
                 man: 'Homme'
                 woman: 'Femme'
                 boy: 'Garçon'
                 girl: 'Fille'
                 all_models: 'Tous les modèles'
-                cancel: 'Annuler'
+                accessories: 'Les accessoires'
+                fabrics: 'Les tissus'
+                silk: 'Soie'
+                cotton: 'Coton'
+                cotton-silk: 'Soie coton'
+                all_fabrics: 'Tous les tissus'
+                workshop: "L'atelier"
+        model:
             filters:
                 products: 
                     zero: '%{count} produit'
@@ -71,7 +76,6 @@ fr:
                 customer_fabric: 'Vous fournissez le tissu'
                 qties: 'Quantités :'
                 add_to_basket: 'Ajouter au panier'
-                cancel: 'Annuler'
                 man_std: 'S à L'
                 man_big: 'XL ou plus'
                 woman_std: 'T34 à T38'
@@ -80,6 +84,18 @@ fr:
                 boy_big: 'Plus de 10 ans'
                 girl_std: 'Moins de 10 ans'
                 girl_big: 'Plus de 10 ans'
+        accessory:
+            filters:
+                products: 
+                    zero: '%{count} produit'
+                    one: '%{count} produit'
+                    other: '%{count} produits'
+        fabric:
+            filters:
+                products: 
+                    zero: '%{count} tissu'
+                    one: '%{count} tissu'
+                    other: '%{count} tissus'
         show:
             on_measure: 'Sur mesure'
             on_measure_exp: 'Envoyez nous vos mesures par email.'
@@ -87,6 +103,7 @@ fr:
             share: 'Partager ce produit'
             not_on_measure: 'Taille unique'
             leadtime: 'Délai : ~ %{leadtime} jours'
+            add_to_basket: 'Ajouter au panier'
     showroom:
         index:
             title: "Vous souhaitez réaliser l'une de vos créations ?"

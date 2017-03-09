@@ -4,13 +4,14 @@ class CreateFabrics < ActiveRecord::Migration[5.0]
   		# Main datas 
   		t.string :serial
     	t.boolean :activated, default: false
-    	t.string :kind
+    	t.integer :kind, default: 1
+      t.integer :family, default: 1
     	t.string :title
     	t.text :image
       # Commercial
     	t.text :description
     	t.decimal :price, precision: 8, scale: 2 #Price per metter length
-    	t.string :price_unit
+    	t.integer :price_unit, default: 1
 
       t.timestamps
       t.string :slug

@@ -16,6 +16,7 @@ class ProductPicturesController < ApplicationController
 
   def update
     respond_to do |format|
+      puts 'dede is ok :)'
       if @picture.update_attributes(pictures_params)
         format.json render status: 200, json: {
           success: "Successfully updated the picture"
@@ -50,5 +51,10 @@ class ProductPicturesController < ApplicationController
 
   def pictures_params
     params.require(:product_picture).permit(:product_id, :serial, :activated, :main, {image:[]})
+  end
+
+  def check_pict_params
+    pictures_params
+    puts "this is params : " + params.inspect
   end
 end

@@ -1,4 +1,4 @@
-.box2.sizes
+.box.sizes
 	- if product.unic_size == true
 		%h3= t('.unic_size')
 		= f.hidden_field :size, value: 'unic'
@@ -12,7 +12,7 @@
 				= f.radio_button :size, sizes[:big]
 				%span= t('.' + sizes[:big])
 
-.box2.fabrics
+.box.fabrics
 	- if @product.unic_fabric == true
 		%h3= t('.unic_fabric')
 	- else
@@ -25,8 +25,6 @@
 		%label.option.big
 			= f.radio_button :sep_fabric, true, checked: true
 			%span= t('.customer_fabric')
-			=# f.hidden_field :separate_fabric, false
-			=# f.hidden_field :fabric_id, {id: 'fabric_id', required: true}
 
 .box2.qties.inline
 	%h3= t('.qties')

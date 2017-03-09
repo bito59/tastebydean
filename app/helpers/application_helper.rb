@@ -14,9 +14,7 @@ module ApplicationHelper
 	def find_logo_path
 	  if params[:kind] == 'model'
 	    @logo = 'collection'
-	  elsif params[:kind] == 'material'
-	    @logo = 'shop'
-	  elsif params[:kind] == 'accessory'
+	  elsif params[:kind] == 'material' || params[:kind] == 'accessory'
 	    @logo = 'shop'
 	  end
 	  @logo
@@ -30,33 +28,46 @@ module ApplicationHelper
 				result = I18n.t('shop.model.main_filters.' + params[:customer])
 			end
 		end
+		if params[:kind] == 'fabric'
+			if params[:family].nil?
+				result = I18n.t('shop.fabric.main_filters.all_models')
+			else
+				result = I18n.t('shop.fabric.main_filters.' + params[:family])
+			end
+		end
 	end
 
-	def define_area
+	#find the website area
+	def define_area 
 		if params[:kind] == 'model' || (!params[:id].nil? && params[:id][0] == 'M') 
-			@area = 'collection'
+			@area = 'model'
 		elsif params[:kind] == 'creation' || (!params[:id].nil? && params[:id][0] == 'C') 
 			@area = 'creation'
 		elsif params[:kind] == 'accessory' || (!params[:id].nil? && params[:id][0] == 'A') 
 			@area = 'accessory'
+		elsif params[:kind] == 'fabric' || (!params[:id].nil? && params[:id][0] == 'F')
+			@area = 'fabric'
+		elsif request.original_url.include?('workshop')
+			@area = 'workshop'
 		end
 		@area
 	end
 
+	# Find the header link to highlight
 	def select_logo_title
 		define_area
-		if @area == 'collection'
+		if @area == 'model'
 			logo_title = t('layouts.main_filters.collection')
 		elsif @area == 'creation'
 			logo_title = t('layouts.main_filters.creation')
-		elsif @area == 'accessory' 
+		elsif @area == 'accessory' || @area == 'fabric' || @area == 'workshop'
 			logo_title = t('layouts.main_filters.shop')
 		end
 	end
 
 	def selected_header_link(option, url)
 		define_area
-		if @area == 'collection'
+		if @area == 'model'
 			if option == 'collection'
 				result = link_to I18n.t('layouts.main_filters.' + option), url, class: 'selected'
 			else
@@ -68,7 +79,7 @@ module ApplicationHelper
 			else
 				result = link_to I18n.t('layouts.main_filters.' + option), url
 			end
-		elsif @area == 'accessory' 
+		elsif @area == 'accessory' || @area == 'fabric' || @area == 'workshop'
 			if option == 'shop'
 				result = link_to I18n.t('layouts.main_filters.' + option), url, class: 'selected'
 			else
@@ -80,11 +91,31 @@ module ApplicationHelper
 	def selected_link(option, url)		
 		if params[:kind] == 'model'
 			if params[:customer].nil? && option.include?('all')
-				result = link_to I18n.t('shop.model.main_filters.' + option), url, class: 'selected'
+				result = link_to I18n.t('shop.main_filters.' + option), url, class: 'selected'
 			elsif params[:customer] == option
-				result = link_to I18n.t('shop.model.main_filters.' + option), url, class: 'selected'
+				result = link_to I18n.t('shop.main_filters.' + option), url, class: 'selected'
 			else
-				result = link_to I18n.t('shop.model.main_filters.' + option), url
+				result = link_to I18n.t('shop.main_filters.' + option), url
+			end
+		elsif params[:kind] == 'accessory'
+			if option == 'accessories'
+				result = link_to I18n.t('shop.main_filters.' + option), url, class: 'selected'
+			else
+				result = link_to I18n.t('shop.main_filters.' + option), url
+			end
+		elsif params[:kind] == 'fabric'
+			if params[:family].nil? && option.include?('all')
+				result = link_to I18n.t('shop.main_filters.' + option), url, class: 'selected'
+			elsif params[:family] == option
+				result = link_to I18n.t('shop.main_filters.' + option), url, class: 'selected'
+			else
+				result = link_to I18n.t('shop.main_filters.' + option), url
+			end
+		elsif request.original_url.include?('workshop')
+			if option == 'workshop'
+				result = link_to I18n.t('shop.main_filters.' + option), url, class: 'selected'
+			else
+				result = link_to I18n.t('shop.main_filters.' + option), url
 			end
 		end
 		result

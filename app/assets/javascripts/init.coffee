@@ -1,6 +1,7 @@
 window.App ||= {}
 
 App.init = ->
+	init_magnific()
 	init_fullpage()
 	init_flash()
 	init_devise_modal()
@@ -16,6 +17,19 @@ $(document).on "turbolinks:load", ->
 
 init_functions = ->
 	$('.icon').mouseenter($('.cart_nb').show).mouseleave($('.cart_nb').hide);
+
+# Init magnific populs
+init_magnific = ->
+	$('.img-link').magnificPopup
+		delegate: 'a'
+		type:'image'
+		mainClass: 'mfp-with-zoom' 		# this class is for CSS animation below
+		zoom:
+			enabled: true
+			duration: 300 				# duration of the effect, in milliseconds
+			easing: 'ease-in-out' 		# CSS transition easing function
+		opener: (openerElement) ->
+			return openerElement.is('img') ? openerElement : openerElement.find('img')
 
 # Init fullpage
 init_fullpage = ->

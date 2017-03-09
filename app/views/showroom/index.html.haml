@@ -1,13 +1,13 @@
-%section.showroom_index.c5
-	%h3= t('.title')
-	%h4= t('.contact')
-	.results.inline
+%section.showroom_index.c2
+	.text
+		%h3= t('.title')
+		%h4= t('.contact')
+	.results.flex
 		- @products.each do |product|
-			.product{ id: "item_#{product.serial}" }
-				= image_tag product.product_pictures.first.image.url.to_s
+			.product.one-edge-shadow.img-link{ id: "item_#{product.serial}" }
+				= link_to product.product_pictures.first.image.url.to_s do
+					= image_tag product.product_pictures.first.image.preview.url.to_s
 
-
-	
 :javascript
 	$(document).ready(function() {
 		$('#footer').show().addClass('pushed');
