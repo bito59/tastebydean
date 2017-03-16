@@ -10,10 +10,13 @@
 					- if product.kind == 'fabric'
 						= image_tag product.image.preview
 					- else
-						= image_tag product.product_pictures.active.main.first.image.preview
+						.img
+							= image_tag product.product_pictures.active.main.first.image.preview
+							.logo
+								= image_tag 'icons/logo-red.png'
 	
 :javascript
-	$(document).ready(function() {
+	$(document).ready(function() {:id => "selector"
 		$('#footer').show().addClass('pushed');
 		$('#open_mb_collection_filter').click(function() {
 			$('#mb_filter').fadeIn(500);

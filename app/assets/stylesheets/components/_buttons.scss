@@ -3,15 +3,15 @@
 input:hover, .btn:hover, label:hover, a:hover {cursor: pointer;}
 input, .btn, a.btn {font-family: $light;font-size: 1em;border-radius: 10px;color: $red;background-color: $white;}
 input.field {background-color: $grey_trsp;}
-input, label, .btn {margin: 1em auto;width: 75%;height: 3em;@include flexbox; @include justify-content(space-around);@include align-items(center);}
+input, label, .btn {margin: 1em auto;width: 75%;min-height: 3em;@include flexbox; @include justify-content(space-around);@include align-items(center);}
 
 label.big {width: 80%;}
-.inline label, .inline .btn {margin: 1em}
+//.inline label, .inline .btn {margin: 1em}
 
 label.option {
 	@include flexbox; @include align-items(center);
 	input {display: none;}
-	input + span {width: 100%;line-height: 3em;border-radius: 10px;background-color:$grey_trsp;border: none;}
+	input + span {width: 90%;line-height: 3em;border-radius: 10px;background-color:$grey_trsp;border: none;}
 	input:checked + span {background-color:$white;border:3px solid $green;}
 }
 label.option.full {

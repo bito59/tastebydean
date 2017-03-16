@@ -1,5 +1,1 @@
-#flash_msg {
-	.flash_notice {padding: 10px 0px 10px 0px;}
-	.flash_alert {padding: 10px 0px 10px 0px;}
-	.flash_success {padding: 10px 0px 10px 0px;}
-}
+#flash_msg .flash_notice, .flash_alert, .flash_success {padding: 10px 1em;}

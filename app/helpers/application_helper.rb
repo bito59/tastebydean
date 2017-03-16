@@ -23,16 +23,15 @@ module ApplicationHelper
 	def select_title
 		if params[:kind] == 'model'
 			if params[:customer].nil?
-				result = I18n.t('shop.model.main_filters.all_models')
+				result = I18n.t('shop.main_filters.all_models')
 			else
-				result = I18n.t('shop.model.main_filters.' + params[:customer])
+				result = I18n.t('shop.main_filters.' + params[:customer])
 			end
-		end
-		if params[:kind] == 'fabric'
+		elsif params[:kind] == 'fabric'
 			if params[:family].nil?
-				result = I18n.t('shop.fabric.main_filters.all_models')
+				result = I18n.t('shop.main_filters.all_fabrics')
 			else
-				result = I18n.t('shop.fabric.main_filters.' + params[:family])
+				result = I18n.t('shop.main_filters.' + params[:family])
 			end
 		end
 	end

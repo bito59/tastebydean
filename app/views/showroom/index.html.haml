@@ -5,8 +5,11 @@
 	.results.flex
 		- @products.each do |product|
 			.product.one-edge-shadow.img-link{ id: "item_#{product.serial}" }
-				= link_to product.product_pictures.first.image.url.to_s do
+				=# link_to product.product_pictures.first.image.url.to_s do
+				.img
 					= image_tag product.product_pictures.first.image.preview.url.to_s
+					.logo
+						= image_tag 'icons/logo-red.png'
 
 :javascript
 	$(document).ready(function() {

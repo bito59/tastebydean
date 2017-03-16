@@ -1,22 +1,18 @@
 %li.logo= image_tag "icons/logo-red.png"
 
-= link_to shop_products_path(kind: 'model') do
+= link_to shop_products_path(kind: 'model'), {class: 'mb-quit'} do
 	%li
-		%h2= t('shop.model.main_filters.all_models')
+		%h2= t('.all_models')
 
-= link_to shop_products_path(kind: 'model', customer: 'man') do
+= link_to shop_products_path(kind: 'model', customer: 'man'), {class: 'mb-quit'} do
 	%li
-		%h2= t('shop.model.main_filters.man')
-= link_to shop_products_path(kind: 'model', customer: 'woman') do
+		%h2= t('.man')
+= link_to shop_products_path(kind: 'model', customer: 'woman'), {class: 'mb-quit'} do
 	%li
-		%h2= t('shop.model.main_filters.woman')
-= link_to shop_products_path(kind: 'model', customer: 'girl') do
+		%h2= t('.woman')
+= link_to shop_products_path(kind: 'model', customer: 'girl'), {class: 'mb-quit'} do
 	%li
-		%h2= t('shop.model.main_filters.girl')
-= link_to shop_products_path(kind: 'model', customer: 'boy') do
+		%h2= t('.girl')
+= link_to shop_products_path(kind: 'model', customer: 'boy'), {class: 'mb-quit'} do
 	%li
-		%h2= t('shop.model.main_filters.boy') 
-
-= link_to '', {class: 'close_mb_menu', remote: true} do
-	%li
-		%h2= t('layouts.main_filters.cancel')
+		%h2= t('.boy') 

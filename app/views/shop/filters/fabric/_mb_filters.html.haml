@@ -1,29 +1,25 @@
 %li.logo= image_tag "icons/logo-red.png"
 
-= link_to shop_fabrics_path(kind: 'fabric') do
+= link_to shop_fabrics_path(kind: 'fabric'), {class: 'mb-quit'} do
 	%li
-		%h2= t('shop.fabric.main_filters.fabrics')
+		%h2= t('.all_fabrics')
 
-= link_to shop_fabrics_path(kind: 'fabric', family: 'silk') do
+= link_to shop_fabrics_path(kind: 'fabric', family: 'silk'), {class: 'mb-quit'} do
 	%li
-		%h2= t('shop.fabric.main_filters.silk')
+		%h2= t('.silk')
 
-= link_to shop_fabrics_path(kind: 'fabric', family: 'cotton') do
+= link_to shop_fabrics_path(kind: 'fabric', family: 'cotton'), {class: 'mb-quit'} do
 	%li
-		%h2= t('shop.fabric.main_filters.cotton')
+		%h2= t('.cotton')
 
-= link_to shop_fabrics_path(kind: 'fabric', family: 'cotton-silk') do
+= link_to shop_fabrics_path(kind: 'fabric', family: 'cotton-silk'), {class: 'mb-quit'} do
 	%li
-		%h2= t('shop.fabric.main_filters.cotton-silk')
+		%h2= t('.cotton-silk')
 
-= link_to shop_products_path(kind: 'accessory') do
+= link_to shop_products_path(kind: 'accessory'), {class: 'mb-quit'} do
 	%li
-		%h2= t('shop.accessory.main_filters.accessories')
+		%h2= t('.accessories')
 
-= link_to shop_workshop_path do
+= link_to shop_workshop_path, {class: 'mb-quit'} do
 	%li
-		%h2= t('shop.accessory.main_filters.workshop')
-
-= link_to '', {class: 'close_mb_menu', remote: true} do
-	%li
-		%h2= t('layouts.main_filters.cancel')
+		%h2= t('.workshop')

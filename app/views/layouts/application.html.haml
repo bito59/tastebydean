@@ -3,7 +3,7 @@
   %title= 'Bienvenue chez Dean !'
   %meta{charset: "utf-8"}
   %meta{content: "description", content: "Designez votre tenue sur mesure..."}
-  %meta{name: "viewport", content: "width=device-width, initial-scale=1.0, maximum-scale=1.0"}
+  %meta{name: "viewport", content: "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"}
 
   = csrf_meta_tags
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -17,23 +17,29 @@
       ga('create', 'UA-88492107-2', 'auto');
 
   %body
-    %header#header.mb-hide.modal-fade
-      - if @root == true
+    - if @root == true
+      %header#header
         = render partial: 'layouts/header_welcome'
-      - else
+    - else
+      %header#header.white-bkg
         = render partial: 'layouts/header_others'
-    %main#main.mb-hide.modal-fade
-      = yield
-      =# render partial: 'layouts/devise_modal'
+
+    %main#main.mb-hide{'canvas': 'container'}
+      #main-fp
+        = yield
+
     %footer#footer.modal-fade
       = render partial: 'layouts/footer'
 
     %section#devise_modal.tb
-      = render partial: 'layouts/devise_modal'      
-    %section#mb_main_menu.mb-menu
-      = render partial: 'layouts/mb_main_menu'
-    - if defined?(@path)
-      %section#mb_filter.mb-menu
-        = render partial: 'shop/' + @path + '/mb_filters'    
+      = render partial: 'layouts/devise_modal' 
+
+    %section.mb_menu{'off-canvas': "mb-main-menu left overlay"}
+      = render partial: 'layouts/mb_main_menu'  
+
+    - if defined?(@area) && @area != 'creation'
+      %section.mb_menu{'off-canvas': "mb-filter-menu left overlay"}
+        = render partial: 'shop/filters/' + @area + '/mb_filters'    
+
     %section#flash_msg
       = render_flash

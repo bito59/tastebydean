@@ -5,7 +5,7 @@
 
 .links.mb
 	%li
-		= link_to_icon('filter-red-mb', 25, 25, root_path, {id: 'open_mb_main_menu', remote: true})
+		= link_to_icon('filter-red-mb', 25, 25, root_path, {class: 'mb_main_menu', remote: true})
 .links.tb
 	- if user_signed_in?
 		%li= link_to t('layouts.main_filters.admin'), admin_products_path

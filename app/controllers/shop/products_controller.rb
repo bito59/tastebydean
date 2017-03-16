@@ -26,7 +26,7 @@ module Shop
     private
    
       def find_product
-        @product = Product.friendly.find(params[:id])
+        @product = Product.friendly.find(params[:id]).decorate
       end
 
       def product_params
@@ -44,7 +44,7 @@ module Shop
         elsif params[:customer]
           @products = @products.with_customer(params[:customer])
         end
-        @products
+        @products.decorate
         puts @products.inspect
       end
   end

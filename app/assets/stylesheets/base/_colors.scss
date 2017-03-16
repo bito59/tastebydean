@@ -24,6 +24,7 @@ header, footer {
     	h4 {color: $white;}
     }
 }
+header.white-bkg {background-color: white;}
 
 footer {
 	span {color: $green;}
@@ -40,8 +41,12 @@ footer {
 	h2.cross {color: $white;}
 }
 
+@media (min-width: map-get($breakpoints, tablet)) {
+  #devise_modal {background-color: $white_trsp;}
+}
+
 .c2, .c3 {background-color: $white;}
-.mb-menu {
+.mb_menu {
 	a, span, h2 {color: $white;} 
 }
 .price {color: $green;}
@@ -53,97 +58,22 @@ footer {
 
 /* ------------------------------ Pages  ------------------------------ */
 
-.welcome.c0 .title h2 {color: $white;}
-.welcome .intro {
-	h3, h4 {color: $red;}
+.welcome {
+  .intro {
+    h2 {color: $white;}
+  	h3, h4 {color: $red;}
     li {background-color: $white_trsp;}
+  }
+  .instagram .title h3 {color: $green;}
+  .follow h3 {color: $red;}
 }
-.welcome .instagram h3 {color: $green;}
-.welcome .follow h3 {color: $red;}
 .shop_index .filters h3 {color: $green;}
 .showroom_index h4 {color: $green;}
+.shop_show .title span {color: $green;}
 
-@media (min-width: map-get($breakpoints, tablet)) {
-	.shop_index, .showroom_index {
-		 .product {border: 2px solid $grey_trsp;}
-	}
-	.one-edge-shadow {
-	  -webkit-box-shadow: 0 12px 12px -6px $grey_trsp;
-	     -moz-box-shadow: 0 12px 12px -6px $grey_trsp;
-	          box-shadow: 0 12px 12px -6px $grey_trsp;
-	}
-}
-
-.shadow {
-   -moz-box-shadow:    inset 0 0 10px $grey_trsp;
-   -webkit-box-shadow: inset 0 0 10px $grey_trsp;
-   box-shadow:         inset 0 0 10px $grey_trsp;
-}
-
-.effect2
-{
-  position: relative;
-}
-.effect2:before, .effect2:after
-{
-  z-index: -1;
-  position: absolute;
-  content: "";
-  bottom: 15px;
-  left: 10px;
-  width: 50%;
-  top: 80%;
-  max-width:300px;
-  background: #777;
-  -webkit-box-shadow: 0 15px 10px #777;
-  -moz-box-shadow: 0 15px 10px #777;
-  box-shadow: 0 15px 10px #777;
-  -webkit-transform: rotate(-3deg);
-  -moz-transform: rotate(-3deg);
-  -o-transform: rotate(-3deg);
-  -ms-transform: rotate(-3deg);
-  transform: rotate(-3deg);
-}
-.effect2:after
-{
-  -webkit-transform: rotate(3deg);
-  -moz-transform: rotate(3deg);
-  -o-transform: rotate(3deg);
-  -ms-transform: rotate(3deg);
-  transform: rotate(3deg);
-  right: 10px;
-  left: auto;
-}
-
-.effect8
-{
-    position:relative;
-    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-}
-.effect8:before, .effect8:after
-{
-    content:"";
-    position:absolute;
-    z-index:-1;
-    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
-    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
-    box-shadow:0 0 20px rgba(0,0,0,0.8);
-    top:10px;
-    bottom:10px;
-    left:0;
-    right:0;
-    -moz-border-radius:100px / 10px;
-    border-radius:100px / 10px;
-}
-.effect8:after
-{
-    right:10px;
-    left:auto;
-    -webkit-transform:skew(8deg) rotate(3deg);
-       -moz-transform:skew(8deg) rotate(3deg);
-        -ms-transform:skew(8deg) rotate(3deg);
-         -o-transform:skew(8deg) rotate(3deg);
-            transform:skew(8deg) rotate(3deg);
+.one-edge-shadow {
+  border: 2px solid $grey_trsp;border-radius: 15px;
+  -webkit-box-shadow: 0 12px 12px -6px $grey_trsp;
+     -moz-box-shadow: 0 12px 12px -6px $grey_trsp;
+          box-shadow: 0 12px 12px -6px $grey_trsp;
 }

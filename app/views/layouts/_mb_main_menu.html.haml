@@ -1,30 +1,26 @@
 %li.logo= image_tag "icons/logo-red.png"
 
-= link_to showroom_products_path(kind: 'creation') do
+= link_to showroom_products_path(kind: 'creation'), {class: 'mb-quit'} do
 	%li
 		%h2= t('layouts.main_filters.creation')
 
-= link_to shop_products_path(kind: 'model') do
+= link_to shop_products_path(kind: 'model'), {class: 'mb-quit'} do
 	%li
 		%h2= t('layouts.main_filters.collection')
 
-= link_to shop_products_path(kind: 'accessory') do
+= link_to shop_products_path(kind: 'accessory'), {class: 'mb-quit'} do
 	%li
 		%h2= t('layouts.main_filters.shop') 
 		
-= link_to cart_path do
+= link_to cart_path, {class: 'mb-quit'} do
 	%li
 		%h2= t('layouts.main_filters.basket') 
 
 - if user_signed_in?
-	= link_to destroy_user_session_path do
+	= link_to destroy_user_session_path, {class: 'mb-quit'} do
 		%li
 			%h2= t('layouts.main_filters.disconnect') 
 - else
-	= link_to new_user_session_path, {class: 'connect_modal', remote: true} do
+	= link_to new_user_session_path, {class: 'connect_modal mb-quit', remote: true} do
 		%li
 			%h2= t('layouts.main_filters.connect')
-
-= link_to '', {class: 'close_mb_menu', remote: true} do
-	%li
-		%h2= t('layouts.main_filters.cancel')

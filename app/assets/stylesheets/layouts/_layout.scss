@@ -6,23 +6,33 @@ footer {z-index: 90;height: 2em;;width: 100%;position: absolute;bottom: 0px;}
 #flash_msg {z-index: 3;position: fixed;top: 0;width:100%;}
 
 .c0, .c1, .c2, .c3, .c4, .c5 {z-index: 2;max-width: 1366px;height: 100vh;margin: auto;padding: 0 2em;}
+
+// Welcome page
 .c0 {@include background-image('welcome');max-width: 100%;}
-.c1 {height: calc(100vh - 4em);}
+.c3{}
+
+// Product page
+.c1 {height: calc(100vh - 6em);padding: 6em 2em 0 2em;}
+
+// Index page
 .c2 {height: 100%;padding: 6em 2em 2em 2em;}
+
+.no-overflow{overflow-y: hidden;}
 
 .inline {@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(space-around);}
 .inline-center {@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(center);}
+.column-center {@include flexbox; @include flex-flow(column nowrap);@include align-items(center);@include justify-content(center);}
 .flex {@include flexbox; @include flex-flow(row wrap);@include align-items(center);@include justify-content(center);}
 
-@media (min-width: map-get($breakpoints, laptop)) {
+
+.fill-height, .fp-tableCell {display: flex;flex-direction: column;}
+.fill-height > *, .fp-tableCell > * {flex: 1;}
+
+@media (min-width: map-get($breakpoints, tablet)) {
 	.inline-tb {@include flexbox; @include align-items(center);@include justify-content(center);}
 	.sized {max-width: 1024px;margin: auto;}
 }
 @media (min-width: map-get($breakpoints, laptop)) {
-	.shop_show {width: 50%;max-width: 512px;height: calc(100vh - 6em - 2em);padding: 6em 0 0 0;}
-	.shop_show.c1 {float: left;right: 50%;position: absolute;}
-	.shop_show.c2, .shop_show.c3 {float: right;left: 50%;position: absolute;}
-	.shop_show.c3 {display:none;}
 }
 
 

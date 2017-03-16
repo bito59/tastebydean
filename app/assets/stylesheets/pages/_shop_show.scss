@@ -1,48 +1,50 @@
 .shop_show {
-	.title {margin-bottom: 1em;}
-
-	//c1
-	.owl-item img {
-		//height: calc(100vh - 8em - 5em - 4em);width: auto !important;margin: auto;
-		//max-width: 100%;
-	}
+	//.owl-carousel {padding-bottom: 2em;}
+	.owl-carousel .owl-item img {width: auto; margin: auto;}
 	.owl-dots {margin-top: 2em!important;}
 	.owl-dots .owl-dot span {height: 2em;width: 12px;height: 12px;}
 	.owl-next, .owl-prev {display: none!important;}
-	.arrows {
-		opacity: 0;
-		transition: opacity 1s linear;position: absolute;z-index: 99;width: 100%;top: 50%;
-		-webkit-transition: opacity 1s linear;
-		-moz-transition: opacity 1s linear;
-		-o-transition: opacity 1s linear;
-		-ms-transition: opacity 1s linear;
-		img{width: 20px;height: 20px;}
-		#btn_prev {float: left;padding-left: 2em;}
-		#btn_next {float: right;padding-right: 2em;}
+	.icons {
+		margin-bottom: 2em;
+		h4 {max-width: 90%;margin: auto;}
 	}
-
-	//C2 et C3
-	.icons img {height: 50px;width: 50px;}
+	.qties {justify-content: center;}
 	.price, .qties select {margin-left: 1em;}
-	//.box1 {margin: 0 auto 2em auto;}
-	//.box2 {margin: 0 auto 1em auto;}
 	.with_fabric {display: none;}
+	.fabrics .title {margin: 1em auto;}
+	.title span {margin-left: 1em;}
+	.sizes, .fabrics{
+		flex: 2;
+		h3 {margin: 0 1em;}
+		img {width: 40px;}
+	}
 }
 
 @media (max-width: map-get($breakpoints, tablet)) {
-	.shop_show {
-		// Centering mobile view
-		.fp-tableCell {height: calc(100vh - 6em)!important;vertical-align: bottom;}
-	}
+	// Centering mobile view
+	.shop_show .fp-tableCell {height: calc(100vh - 6em)!important;vertical-align: bottom;}
 }
 
 @media (min-width: map-get($breakpoints, tablet)) {
+	.c1 {position: absolute;max-width: 512px;}
+	#section1 {float: left;right: 50%;}
+	#section2, #section3 {float: right;left: 50%;}
+	#section3 {display: none;}
 	.shop_show {
 		.owl-item img {height: calc(100vh - 8em - 4em);width: auto !important;margin: auto;}
-		.title, .sizes {padding-top: 0;}
 		.owl-dots {margin-top: 0!important;}
 		.owl-carousel:hover {cursor: pointer;}
 		.owl-carousel:hover + .arrows, .arrows:hover {opacity: 1;cursor: pointer;}
-		.box1, .box2 {max-width: 80%;margin: 0 auto 2em auto;}
+		.arrows {
+			opacity: 0;
+			transition: opacity 1s linear;position: absolute;z-index: 99;width: 100%;top: 50%;
+			-webkit-transition: opacity 1s linear;
+			-moz-transition: opacity 1s linear;
+			-o-transition: opacity 1s linear;
+			-ms-transition: opacity 1s linear;
+			img{width: 20px;height: 20px;}
+			#btn_prev {float: left;padding-left: 2em;}
+			#btn_next {float: right;padding-right: 2em;}
+		}
 	}
 }

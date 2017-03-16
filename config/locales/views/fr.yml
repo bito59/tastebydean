@@ -10,7 +10,8 @@ fr:
             collection: 'Collection'
             shop: 'Boutique'
             basket: 'Panier'
-            connect: 'Connexion'
+            connect: 'Connection'
+            disconnect: 'Déconnection'
             cancel: 'Annuler'
         footer: 
             terms: "Conditions"
@@ -50,60 +51,90 @@ fr:
             validate: 'Valider'
     shop:
         main_filters:
-                man: 'Homme'
-                woman: 'Femme'
-                boy: 'Garçon'
-                girl: 'Fille'
-                all_models: 'Tous les modèles'
-                accessories: 'Les accessoires'
-                fabrics: 'Les tissus'
-                silk: 'Soie'
-                cotton: 'Coton'
-                cotton-silk: 'Soie coton'
-                all_fabrics: 'Tous les tissus'
-                workshop: "L'atelier"
-        model:
-            filters:
-                products: 
-                    zero: '%{count} produit'
-                    one: '%{count} produit'
-                    other: '%{count} produits'
-            details_form:
-                choose_your_size: 'Choisissez votre taille'
-                choose_your_fabric: 'Choisissez votre tissu '
-                dimensions: '(%{length} x %{large} m nécessaires)'
-                dimensions_wp: '(%{length} x %{large} m nécessaires) :'
-                customer_fabric: 'Vous fournissez le tissu'
-                qties: 'Quantités :'
-                add_to_basket: 'Ajouter au panier'
-                man_std: 'S à L'
-                man_big: 'XL ou plus'
-                woman_std: 'T34 à T38'
-                woman_big: 'T40 à T46'
-                boy_std: 'Moins de 10 ans'
-                boy_big: 'Plus de 10 ans'
-                girl_std: 'Moins de 10 ans'
-                girl_big: 'Plus de 10 ans'
-        accessory:
-            filters:
-                products: 
-                    zero: '%{count} produit'
-                    one: '%{count} produit'
-                    other: '%{count} produits'
-        fabric:
-            filters:
-                products: 
-                    zero: '%{count} tissu'
-                    one: '%{count} tissu'
-                    other: '%{count} tissus'
+            man: 'Homme'
+            woman: 'Femme'
+            boy: 'Garçon'
+            girl: 'Jeune fille'
+            all_models: 'Tous les modèles'
+            accessories: 'Les accessoires'
+            fabrics: 'Les tissus'
+            silk: 'Soie'
+            cotton: 'Coton'
+            cotton-silk: 'Soie coton'
+            all_fabrics: 'Tous les tissus'
+            workshop: "L'atelier"
+        filters:
+            model:
+                filters:
+                    products: 
+                        zero: '%{count} produit'
+                        one: '%{count} produit'
+                        other: '%{count} produits'
+                mb_filters:
+                    man: "Homme"
+                    woman: "Femme"
+                    girl: 'Jeune fille'
+                    boy: "Garçon"
+                    all_models: "Tous les modèles"
+            accessory:
+                filters:
+                    products: 
+                        zero: '%{count} produit'
+                        one: '%{count} produit'
+                        other: '%{count} produits'
+                mb_filters:
+                    fabrics: 'Tissus'
+                    workshop: "L'atelier"
+            fabric:
+                filters:
+                    products: 
+                        zero: '%{count} tissu'
+                        one: '%{count} tissu'
+                        other: '%{count} tissus'
+                mb_filters:
+                    silk: 'Soie'
+                    cotton: 'Coton'
+                    cotton-silk: 'Soie coton'
+                    all_fabrics: 'Tous les tissus'
+                    accessories: 'Accessoires'
+                    workshop: "L'atelier"
         show:
+            product_for: 'Produit pour : '
             on_measure: 'Sur mesure'
             on_measure_exp: 'Envoyez nous vos mesures par email.'
-            customize: 'Customiser'
+            unic_fabric: 'Couleur unique'
+            custom_fabric: 'Tissu au choix'
+            btn_customize: 'Choisir la taille et le tissu'
+            btn_choose_size: 'Choisir la taille'
+            btn_choose_fabric: 'Choisir le tissu'
             share: 'Partager ce produit'
             not_on_measure: 'Taille unique'
-            leadtime: 'Délai : ~ %{leadtime} jours'
+            leadtime1: 'Délai'
+            leadtime2: '~ %{leadtime} jours'
+            qties: 'Quantités :'
             add_to_basket: 'Ajouter au panier'
+            confection: 'Confection :'
+            price: 'Prix :'
+        details_form:
+            choose_your_size: 'Choisissez la taille'
+            size_explain: 'Nous vous communiquerons par email les consignes pour la prise de mesure...'
+            choose_your_fabric: 'Choisissez votre tissu '
+            fabric_explain: 'Vous recevrez par email les conseils pour choisir votre tissu...'
+            dimensions: '(%{length} x %{large} m nécessaires)'
+            dimensions_wp: '(%{length} x %{large} m nécessaires) :'
+            customer_fabric: 'Vous fournissez le tissu'
+            unic_fabric: 'Tissu unique'
+            qties: 'Quantités :'
+            add_to_basket: 'Ajouter au panier'
+            cancel: 'Annuler'
+            man_std: 'S à L'
+            man_big: 'XL ou plus'
+            woman_std: 'T34 à T38'
+            woman_big: 'T40 à T46'
+            boy_std: '8 à 10 ans'
+            boy_big: 'Plus de 10 ans'
+            girl_std: 'Moins de 10 ans'
+            girl_big: 'Plus de 10 ans'
     showroom:
         index:
             title: "Vous souhaitez réaliser l'une de vos créations ?"

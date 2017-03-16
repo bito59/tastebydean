@@ -1,57 +1,85 @@
 window.App ||= {}
 
-App.init = ->
+App.load = ->
 	init_magnific()
 	init_fullpage()
 	init_flash()
 	init_devise_modal()
-	init_mobile_menu()
 	init_functions()
+	init_slidebar()
 
+$ ->
 
 $(document).on "turbolinks:load", ->
-  	App.init()
-
+  	App.load()
 
 # -------------------------------  JS init functions  --------------------------------------------
 
 init_functions = ->
 	$('.icon').mouseenter($('.cart_nb').show).mouseleave($('.cart_nb').hide);
 
+# Init Slidebar
+init_slidebar = ->
+	if $('.mb_main_menu').is(':visible') && typeof controller != "undefined" || $('.mb_filter_menu').is(':visible') && typeof controller != "undefined"
+		controller.close('mb-main-menu')
+		console.log 'slidebar closed'	
+	controller = new slidebars
+	controller.init()
+	console.log 'slidebar loaded'
+	$('.mb_main_menu').click (ev) ->
+		console.log 'slidebar opened'
+		controller.open('mb-main-menu')
+		ev.stopPropagation()
+		ev.preventDefault()
+	$('.mb_filter_menu').click (ev) ->
+		console.log 'slidebar opened'
+		controller.open('mb-filter-menu')
+		ev.stopPropagation()
+		ev.preventDefault()
+	$('.mb-hide').click (ev) ->
+		if controller.isActiveSlidebar('mb-main-menu') || controller.isActiveSlidebar('mb-filter-menu')
+			controller.close()
+			console.log 'slidebar closed'
+			ev.stopPropagation()
+			ev.preventDefault()
+	$('.mb-quit').click (ev) ->
+		controller.close()
+		console.log 'slidebar closed'
+
 # Init magnific populs
 init_magnific = ->
-	$('.img-link').magnificPopup
-		delegate: 'a'
-		type:'image'
-		mainClass: 'mfp-with-zoom' 		# this class is for CSS animation below
-		zoom:
-			enabled: true
-			duration: 300 				# duration of the effect, in milliseconds
-			easing: 'ease-in-out' 		# CSS transition easing function
-		opener: (openerElement) ->
-			return openerElement.is('img') ? openerElement : openerElement.find('img')
+	if $(window).width() > 719
+		$('.img-link').magnificPopup
+			delegate: 'a'
+			type:'image'
+			mainClass: 'mfp-with-zoom' 		# this class is for CSS animation below
+			zoom:
+				enabled: true
+				duration: 300 				# duration of the effect, in milliseconds
+				easing: 'ease-in-out' 		# CSS transition easing function
+			opener: (openerElement) ->
+				return openerElement.is('img') ? openerElement : openerElement.find('img')
 
 # Init fullpage
 init_fullpage = ->
 	if typeof $.fn.fullpage.destroy == 'function'
-	    $.fn.fullpage.destroy('all');
+	    $.fn.fullpage.destroy('all')
 	    console.log 'fullpage destroyed (all)'
-	if (screen.width < 1024 && $(".section")[0]) || $(".section-dk")[0]
-		console.log 'fullpage loaded'
-		$('#footer').hide();
-		$('#main').fullpage
-			fitToSectionDelay: 10000
-			scrollOverflow: true
-			afterLoad: (anchor, index) ->
-				if $('.active').hasClass 'dyn-header' #anchor == 1
-					$('#header').fadeIn('slow');
-				if $('.active').hasClass 'dyn-footer' #anchor == 4
-					$('#footer').fadeIn('slow');   	
-			onLeave: (anchor, index) ->
-				if $('.active').hasClass 'dyn-header'
-					$('#header').fadeOut 'slow'
-				if $('.active').hasClass 'dyn-footer'
-					$('#footer').fadeOut 'slow'
+	console.log 'fullpage loaded'
+	$('#footer').hide();
+	$('#main-fp').fullpage
+		fitToSectionDelay: 10000
+		scrollOverflow: true
+		afterLoad: (anchor, index) ->
+			if $('.active').hasClass 'dyn-header' #anchor == 1
+				$('#header').fadeIn('slow');
+			if $('.active').hasClass 'dyn-footer' #anchor == 4
+				$('#footer').fadeIn('slow');   	
+		onLeave: (anchor, index) ->
+			if $('.active').hasClass 'dyn-header'
+				$('#header').fadeOut 'slow'
+			if $('.active').hasClass 'dyn-footer'
+				$('#footer').fadeOut 'slow'	
 
 # Init flash
 init_flash = ->

@@ -44,21 +44,23 @@ footer {font-family: $regular;
 
 #flash_msg {font-family: $bold;font-size: 2.827em;}
 #devise_modal .links > a {font-family: $xlight;font-size: 0.8em;}
-.mb-menu a { @include typi($h2-map); }
+.mb_menu a { @include typi($h2-map); }
 
 /* ------------------------------ Pages  ------------------------------ */
 
-.welcome .c0 {
-    h2 {font-family: $xlight;}
-    h3 {font-family: $regular;}
-}
-.welcome .c2 .comment .text {
-    h1 {font-size: 80px; }
-    .name {font-family: $regular;}
-}
-.welcome .c2 .instagram, .follow {
-    h2 {font-family: $regular;}
-    h3 {font-family: $regular;}
+.welcome {
+    .intro {
+        h2 {font-family: $xlight;}
+        h3 {font-family: $regular;}
+    }
+    .comment .text {
+        h1 {font-size: 80px; }
+        .name {font-family: $regular;}
+    }
+    .instagram, .follow {
+        h2 {font-family: $regular;}
+        h3 {font-family: $regular;}
+    }
 }
 
 .shop_index {
