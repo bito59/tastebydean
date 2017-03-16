@@ -1,0 +1,40 @@
+.sizes
+	- if product.unic_size == true
+		.title.inline-center
+			%h3= t('.unic_size')
+			= image_tag('icons/size-unic.png')
+			= f.hidden_field :size, value: 'unic'
+	- else
+		.title.inline-center
+			%h3= t('.choose_your_size')
+			= image_tag('icons/size-custom.png')
+		.options.inline
+			%label.option
+				= f.radio_button :size, sizes[:std], checked: true
+				%span= t('.' + sizes[:std])
+			%label.option
+				= f.radio_button :size, sizes[:big]
+				%span= t('.' + sizes[:big])
+		%h4= t('.size_explain')
+
+.fabrics
+	- if @product.unic_fabric == true
+		.title.inline-center
+			%h3= t('.unic_fabric')
+			= image_tag('icons/fabric-unic.png')
+	- else
+		.title.inline-center
+			%h3= t('.choose_your_fabric')
+			= image_tag('icons/fabric-custom.png')
+		.options.inline
+			%h4= t('.dimensions', length: product.fabric_lng_std, large: product.fabric_lrg_std)
+		%h4= t('.fabric_explain')
+
+.qties.inline
+	%h3= t('.qties')
+	= f.select :quantity, ['1', '2', '3', '4']
+
+.buttons
+	= f.submit t('.add_to_basket'), class: "btn btn-valid"
+	#btn_cancel.btn.btn-cancel
+		%h4= t('.cancel')
