@@ -17,6 +17,6 @@
 			= link_to_icon('user_green', 20, 20, destroy_user_session_path, {method: :delete})
 		- else
 			= link_to_icon('user_white', 20, 20, new_user_session_path, {class: 'connect_modal', remote: true})
-		= link_to_icon('cart_white', 20, 20, cart_path)
-=#.cart
-=# render partial: 'carts/cart_overview'
+		= link_to root_path, class: 'cart' do
+			= image_tag 'icons/cart_white.png', id: 'bsk_icon'
+			%h4.message= t('.cart_items', count: current_order.count_qties)

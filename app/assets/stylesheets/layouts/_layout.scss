@@ -2,8 +2,8 @@ body {position: relative;}
 body::-webkit-scrollbar {display: none;}
 header {z-index: 90;height: 4em;width: 100%;position: absolute;}
 footer {z-index: 90;height: 2em;;width: 100%;position: absolute;bottom: 0px;}
-#main {z-index: 1;min-height: calc(100vh);margin: auto;}
-#flash_msg {z-index: 3;position: fixed;top: 0;width:100%;}
+#main {z-index: 1;min-height: 100vh;margin: auto;}
+#flash_msg {z-index: 999;position: fixed;top: 0;width:100%;}
 
 .c0, .c1, .c2, .c3, .c4, .c5 {z-index: 2;max-width: 1366px;height: 100vh;margin: auto;padding: 0 2em;}
 
@@ -11,10 +11,10 @@ footer {z-index: 90;height: 2em;;width: 100%;position: absolute;bottom: 0px;}
 .c0 {@include background-image('welcome');max-width: 100%;}
 .c3{}
 
-// Product page
+// Product pages
 .c1 {height: calc(100vh - 6em);padding: 6em 2em 0 2em;}
 
-// Index page
+// Index pages
 .c2 {height: 100%;padding: 6em 2em 2em 2em;}
 
 .no-overflow{overflow-y: hidden;}
@@ -30,7 +30,12 @@ footer {z-index: 90;height: 2em;;width: 100%;position: absolute;bottom: 0px;}
 
 @media (min-width: map-get($breakpoints, tablet)) {
 	.inline-tb {@include flexbox; @include align-items(center);@include justify-content(center);}
-	.sized {max-width: 1024px;margin: auto;}
+	.inline-tb-end {@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(space-between);}
+	.sized {max-width: map-get($breakpoints, desktop);margin: auto;}
+	.shop_show.c1 {width: calc(50% - 4em);}	
+	#section1.shop_show {float: left; position: relative;}
+	#section2.shop_show, #section3.shop_show {float: right; position: relative;}
+	#section3.shop_show {display: none;}
 }
 @media (min-width: map-get($breakpoints, laptop)) {
 }

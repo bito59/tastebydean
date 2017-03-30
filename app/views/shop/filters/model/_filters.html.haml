@@ -2,7 +2,7 @@
 .middle
 	.mb
 		%h3= select_title
-		%h4= t('.products', count: products.length)
+		%h4= t('products', count: products.length)
 	.tb
 		%li= selected_link('all_models', shop_products_path(kind: params[:kind]))
 		%li= '|'
@@ -18,4 +18,4 @@
 	.mb
 		= render partial: 'shop/filters/equalizer'
 	.tb
-		%h5= t('.products', count: products.length)
+		%h5= t('products', count: products.length)

@@ -11,6 +11,7 @@
 //= require fullpage.js/vendors/scrolloverflow.min.js
 //= require fullpage.js/jquery.fullPage.min.js
 //= require slidebars/dist/slidebars.min.js
+//= require ez-plus/src/jquery.ez-plus.js
 
 //= require init
 //= require pages

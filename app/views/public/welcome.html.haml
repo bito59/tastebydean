@@ -1,4 +1,4 @@
-%section.welcome.c0.section.section-dk.fp-noscroll.dyn-header{'data-anchor': '1'}
+%section.welcome.c0.section.section-dk.dyn-header.fp-noscroll.fp-all{'data-anchor': '1'}
 	.intro.column-center.mb
 		.title
 			%h2= t('.welcome_title')
@@ -24,7 +24,7 @@
 		.arrow.tb
 			= link_to_icon('arrow_down', 20, 20, '#process', {id: 'btn_arrow', remote: true})
 
-%section.welcome.c3.section{'data-anchor': '2'}
+%section.welcome.c3.section.fp-noscroll{'data-anchor': '2'}
 	.process.fill-height
 		%li.column-center
 			.box.inline-tb
@@ -74,7 +74,6 @@
 
 :javascript
 	$(document).ready(function() {
-		$('#main').addClass('no-overflow');
 		$('#btn_arrow').click(function() {
 			$.fn.fullpage.moveTo(2);
 		});

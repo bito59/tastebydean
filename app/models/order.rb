@@ -41,6 +41,10 @@ class Order < ApplicationRecord
 		self.save!
 	end
 
+	def count_qties
+		self.order_lines.sum(:quantity)
+	end
+
 	private
 
 	def init_order_params

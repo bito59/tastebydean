@@ -2,24 +2,24 @@
 
 = link_to shop_fabrics_path(kind: 'fabric'), {class: 'mb-quit'} do
 	%li
-		%h2= t('.all_fabrics')
+		%h2= t('shop.mb_filters.all_fabrics')
 
 = link_to shop_fabrics_path(kind: 'fabric', family: 'silk'), {class: 'mb-quit'} do
 	%li
-		%h2= t('.silk')
+		%h2= t('shop.mb_filters.silk')
 
 = link_to shop_fabrics_path(kind: 'fabric', family: 'cotton'), {class: 'mb-quit'} do
 	%li
-		%h2= t('.cotton')
+		%h2= t('shop.mb_filters.cotton')
 
 = link_to shop_fabrics_path(kind: 'fabric', family: 'cotton-silk'), {class: 'mb-quit'} do
 	%li
-		%h2= t('.cotton-silk')
+		%h2= t('shop.mb_filters.cotton-silk')
 
 = link_to shop_products_path(kind: 'accessory'), {class: 'mb-quit'} do
 	%li
-		%h2= t('.accessories')
+		%h2= t('shop.mb_filters.accessories')
 
 = link_to shop_workshop_path, {class: 'mb-quit'} do
 	%li
-		%h2= t('.workshop')
+		%h2= t('shop.mb_filters.workshop')

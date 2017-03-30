@@ -12,7 +12,11 @@ header {
 		li {margin: 0px 20px 0px 20px;}
 		.logo {margin: 0;padding-left: 1em;}
 		.links {img {margin: 0px 5px 0px 5px;}}
-		.cart_nb {display: none;position: absolute;top: 15px;right: 0;border-radius: 30px;width: 30px;height: 30px;}
+		.cart {
+			img {height: 20px; width: 20px;}
+			.message {display: none;position: absolute;top: 1em;right: -1em;border-radius: 30px;width: 30px;height: 30px;line-height: 30px;}
+			.active {display: block; }
+		}
 	}
 
 }

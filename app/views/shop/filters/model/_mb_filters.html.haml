@@ -2,17 +2,17 @@
 
 = link_to shop_products_path(kind: 'model'), {class: 'mb-quit'} do
 	%li
-		%h2= t('.all_models')
+		%h2= t('shop.mb_filters.all_models')
 
 = link_to shop_products_path(kind: 'model', customer: 'man'), {class: 'mb-quit'} do
 	%li
-		%h2= t('.man')
+		%h2= t('shop.mb_filters.man')
 = link_to shop_products_path(kind: 'model', customer: 'woman'), {class: 'mb-quit'} do
 	%li
-		%h2= t('.woman')
+		%h2= t('shop.mb_filters.woman')
 = link_to shop_products_path(kind: 'model', customer: 'girl'), {class: 'mb-quit'} do
 	%li
-		%h2= t('.girl')
+		%h2= t('shop.mb_filters.girl')
 = link_to shop_products_path(kind: 'model', customer: 'boy'), {class: 'mb-quit'} do
 	%li
-		%h2= t('.boy') 
+		%h2= t('shop.mb_filters.boy') 

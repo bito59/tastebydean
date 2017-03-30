@@ -15,10 +15,10 @@
 	%li.icons
 		- if user_signed_in?
 			= link_to_icon('user_green', 20, 20, destroy_user_session_path, {method: :delete})
-			= link_to_icon('cart_red', 20, 20, cart_path, {class: 'cart_icon'})
-			= render partial: 'carts/cart_overview'
 		- else
 			= link_to_icon('user_red', 20, 20, new_user_session_path, {class: 'connect_modal', remote: true})
-		= link_to_icon('cart_red', 20, 20, cart_path)
+		= link_to root_path, class: 'cart' do
+			= image_tag 'icons/cart_red.png', id: 'bsk_icon'
+			%h4.message= t('.cart_items', count: current_order.count_qties)
 		
 

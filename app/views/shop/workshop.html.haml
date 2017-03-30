@@ -2,14 +2,27 @@
 	.filters.inline
 		= render partial: 'shop/filters/' + @area + '/filters'
 	.main
-		
-		
+		.text
+			%h3= t('.title')
+			%h4= t('.contact')
+		.main_img.flex
+			= image_tag 'contents/workshop2.png'
+			= image_tag 'contents/workshop1.png'
+		.icons.inline-center
+			%li
+				= image_tag 'icons/shop.png'
+				%h5= t('.adress1')
+				%h5= t('.adress2')
+				%h5= t('.adress3')
+			%li
+				= image_tag 'icons/calendar.png'
+				%h5= t('.opening')
+			%li
+				= image_tag 'icons/contact.png'
+				%h5= t('.email')
+				%h5= t('.phone')
 	
 :javascript
 	$(document).ready(function() {
 		$('#footer').show().addClass('pushed');
-		$('#open_mb_collection_filter').click(function() {
-			$('#mb_filter').fadeIn(500);
-			$('.mb-hide').hide();
-		});
 	});

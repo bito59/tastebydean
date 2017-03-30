@@ -16,7 +16,7 @@
 								= image_tag 'icons/logo-red.png'
 	
 :javascript
-	$(document).ready(function() {:id => "selector"
+	$(document).on('turbolinks:load', function() {
 		$('#footer').show().addClass('pushed');
 		$('#open_mb_collection_filter').click(function() {
 			$('#mb_filter').fadeIn(500);

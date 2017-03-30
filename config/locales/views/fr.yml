@@ -27,6 +27,10 @@ fr:
             register: "Créer un compte"
             log_in: "Se connecter"
             create_account: "Valider"
+        header_welcome:
+            cart_items: '%{count}'
+        header_others:
+            cart_items: '%{count}'
     public:
         welcome:
             welcome_title: "La tenue de cérémonie sur mesure"
@@ -63,41 +67,19 @@ fr:
             cotton-silk: 'Soie coton'
             all_fabrics: 'Tous les tissus'
             workshop: "L'atelier"
-        filters:
-            model:
-                filters:
-                    products: 
-                        zero: '%{count} produit'
-                        one: '%{count} produit'
-                        other: '%{count} produits'
-                mb_filters:
-                    man: "Homme"
-                    woman: "Femme"
-                    girl: 'Jeune fille'
-                    boy: "Garçon"
-                    all_models: "Tous les modèles"
-            accessory:
-                filters:
-                    products: 
-                        zero: '%{count} produit'
-                        one: '%{count} produit'
-                        other: '%{count} produits'
-                mb_filters:
-                    fabrics: 'Tissus'
-                    workshop: "L'atelier"
-            fabric:
-                filters:
-                    products: 
-                        zero: '%{count} tissu'
-                        one: '%{count} tissu'
-                        other: '%{count} tissus'
-                mb_filters:
-                    silk: 'Soie'
-                    cotton: 'Coton'
-                    cotton-silk: 'Soie coton'
-                    all_fabrics: 'Tous les tissus'
-                    accessories: 'Accessoires'
-                    workshop: "L'atelier"
+        mb_filters:
+            fabrics: 'Les tissus'
+            accessories: 'Les accessoires'
+            workshop: "L'atelier"
+            silk: 'Soie'
+            cotton: 'Coton'
+            cotton-silk: 'Soie coton'
+            all_fabrics: 'Tous les tissus'
+            man: "Homme"
+            woman: "Femme"
+            girl: 'Jeune fille'
+            boy: "Garçon"
+            all_models: "Tous les modèles" 
         show:
             product_for: 'Produit pour : '
             on_measure: 'Sur mesure'
@@ -135,11 +117,23 @@ fr:
             boy_big: 'Plus de 10 ans'
             girl_std: 'Moins de 10 ans'
             girl_big: 'Plus de 10 ans'
+        workshop:
+            title: "Venez nous rencontrer !"
+            contact: "Nous recevons sur place aux horaires indiqués ou sur rendez-vous."
+            adress1: '34 rue François de Badts'
+            adress2: '59 110 La Madeleine'
+            adress3: 'France'
+            email: 'deancorner@gmail.com'
+            phone: '+33 6 60 10 44 00'
+            opening: 'Les lundi, mercredi et vendredi de 12h00 à 19h00'
     showroom:
         index:
             title: "Vous souhaitez réaliser l'une de vos créations ?"
             contact: "Venez visiter l'atelier ou contactez moi pour en discuter ! ..."
     products:
+        zero: '%{count} produit'
+        one: '%{count} produit'
+        other: '%{count} produits'
         browse_products:
             man: "Homme"
             woman: "Femme"

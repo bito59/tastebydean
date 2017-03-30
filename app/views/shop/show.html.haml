@@ -1,6 +1,6 @@
-= form_for @order_line, authenticity_token: true do |f|
+= form_for @order_line, authenticity_token: true, class: 'sized' do |f|
 	= f.hidden_field :product_id, value: @product.id
-	%section#section1.shop_show.c1.section.fp-noscroll{'data-anchor': '1'}
+	%section#section1.shop_show.c1.section.fp-noscroll.fp-mb{'data-anchor': '1'}
 		.title.mb
 			%h3= @product.title
 			%h5= @product.serial
@@ -9,20 +9,25 @@
 		.owl-carousel.owl-theme
 			- @pictures.each do |p|
 				.item.img-link
-					= link_to p.image.url.to_s do
-						= image_tag p.image.preview
-		.arrows.tb
-			#btn_prev
-				= image_tag 'icons/arrow_left.png'
-			#btn_next
-				= image_tag 'icons/arrow_right.png'
+					= image_tag p.image, class: "ezoom", data: {zoom_image: p.image.url }
+		.logo
+			=# image_tag 'icons/logo-red.png'
+		#zoom_btn
+			= image_tag 'icons/zoom2.png', class: 'zoom-icon-inactive'
+			= image_tag 'icons/zoom1.png', class: 'zoom-icon-active'
+		#btn_prev
+			=# image_tag 'icons/arrow_left.png'
+		#btn_next
+			=# image_tag 'icons/arrow_right.png'
 
 	%section#section2.shop_show.c1.section.fp-noscroll{'data-anchor': '2'}
+		#ez-container
 		.title
-			%h3= @product.title
-			%h3.inline-center
-				= t('shop.show.product_for')
-				%span= I18n.t("shop.main_filters.#{@product.customer}").downcase
+			%h3.bold= @product.title
+			.inline-center
+				%h3
+					= t('shop.show.product_for')
+					%span= I18n.t("shop.main_filters.#{@product.customer}").downcase
 			.inline-center
 				- if @product.on_measure == true
 					%h3= t('shop.show.confection')
@@ -39,19 +44,19 @@
 			%li
 				= @product.unic_fabric_rule
 			%li
-				= image_tag 'icons/leadtime.png'
+				= image_tag 'icons/calendar.png'
 				%h4= t('shop.show.leadtime1')
 				%h4= t('shop.show.leadtime2', leadtime: @product.leadtime)
 
 		.buttons
 			- if @product.on_measure == true && @product.unic_fabric == false
-				#btn_custom.btn.btn-green
+				#btn_custom.btn.btn-green.big
 					%h3= t('shop.show.btn_customize')
 			- if @product.on_measure == true && @product.unic_fabric == true
-				#btn_custom.btn.btn-green
+				#btn_custom.btn.btn-green.big
 					%h3= t('shop.show.btn_choose_size')
 			- if @product.on_measure == false && @product.unic_fabric == false
-				#btn_custom.btn.btn-green
+				#btn_custom.btn.btn-green.big
 					%h3= t('shop.show.btn_choose_fabric')
 			- elsif @product.on_measure == false && @product.unic_fabric == true
 				.qties.inline
@@ -65,48 +70,30 @@
 
 
 :javascript
-
 	$(document).ready(function() {
-		$('#main').addClass('no-overflow');
 		if (screen.width > 1024) {
-			$('#footer').show().addClass('fixed');
+			//$('#footer').show().addClass('fixed');
 			if (typeof $.fn.fullpage.destroy == 'function'){
-				$.fn.fullpage.destroy('all');
-				console.log('fullpage destroyed (all)');
+				//$.fn.fullpage.destroy('all');
+				//console.log('fullpage destroyed : show rule');
 			}
-		}	
-		var owl = $('.owl-carousel');
-		owl.owlCarousel({
-			number: 1,
-			dots: true,
-			dotsEach: 1,
-			nav: true,
-			center: true,
-			loop: true,
-			items: 1
-		});
-		
-		$('#btn_prev').click(function() {
-		    $('.owl-prev').trigger('click');
-		});
-		$('#btn_next').click(function() {
-		    $('.owl-next').trigger('click');
-		});
+		}
+
 		$('#btn_custom').click(function() {
 			if (screen.width < 1024) {
 				$.fn.fullpage.moveTo(3);
 			}else {
-				$(".c2").fadeOut(500, function(){
-					$(".c3").fadeIn(500);
+				$("#section2").fadeOut(500, function(){
+					$("#section3").fadeIn(500);
 				});
 			}
 		});
-		$('#btn_cancel').click(function() {
+		$('.cancel').click(function() {
 			if (screen.width < 1024) {
 				$.fn.fullpage.moveTo(2);
 			}else {
-				$(".c3").fadeOut(500, function(){
-					$(".c2").fadeIn(500);
+				$("#section3").fadeOut(500, function(){
+					$("#section2").fadeIn(500);
 				});
 			}
 		});

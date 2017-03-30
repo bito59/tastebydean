@@ -7,7 +7,7 @@ module Shop
 		def show
 			define_area
 			respond_to do |format|
-				format.html { render 'shop/workshop.html.haml' }
+				format.html { render 'shop/workshop' }
 			end
 		end
 	end

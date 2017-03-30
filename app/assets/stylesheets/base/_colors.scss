@@ -19,10 +19,8 @@ a.selected {color: $green;}
 header, footer {
 	a.white {color: $white;}
     a:hover {color: $green;}
-    .cart {
-    	background-color: $green;
-    	h4 {color: $white;}
-    }
+    .cart {h4 {color: $white;background-color: $green;}
+  }
 }
 header.white-bkg {background-color: white;}
 
@@ -67,9 +65,14 @@ footer {
   .instagram .title h3 {color: $green;}
   .follow h3 {color: $red;}
 }
-.shop_index .filters h3 {color: $green;}
+.shop_index, .shop_workshop {
+  .filters h3 {color: $green;}
+}
 .showroom_index h4 {color: $green;}
-.shop_show .title span {color: $green;}
+.shop_show {
+  .title span {color: $green;}
+  h4.cancel {color: $danger;}
+}
 
 .one-edge-shadow {
   border: 2px solid $grey_trsp;border-radius: 15px;

@@ -70,10 +70,10 @@ footer {font-family: $regular;
 }
 
 .shop_show {
-    h3.title  {font-family: $regular;}
-    .customize_form {
-        select {@include typi($h3-map)}
-    }
+    .title h3.bold {font-family: $regular;}
+    .title .inline-center h3 { @include typi($typi);}
+    .icons h4 {line-height: 1.5;}
+    .customize_form select {@include typi($h3-map)}
 }
 
 @media (min-width: map-get($breakpoints, tablet)) {

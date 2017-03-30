@@ -1,7 +1,7 @@
 .left
 .middle
 	.mb
-		%h3= t('shop.accessory.main_filters.workshop')
+		%h3= t('shop.main_filters.workshop')
 	.tb
 		%li= selected_link('accessories', shop_products_path(kind: 'accessory'))
 		%li= '|'
@@ -12,5 +12,3 @@
 .right
 	.mb
 		= render partial: 'shop/filters/equalizer'
-
-
