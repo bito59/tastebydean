@@ -15,10 +15,21 @@ class MainController < ApplicationController
 		render 'public/terms'
 	end
 
+	def redirect_to_back
+		if back_params[:kind] == 'model' || back_params[:kind] == 'accessory'
+			redirect_to shop_products_path(back_params)
+		elsif back_params[:kind] == 'fabric'
+			redirect_to shop_fabrics_path(back_params)
+		else
+			redirect_to root_path
+		end
+		#redirect_back(fallback_location: root_path)
+	end
+
 	private
 
-    def news_params
-      params.require(:news).permit(:zipcode, :email, :country)
+    def back_params
+    	params.permit(:kind, :customer, :family) #params used in filter
     end
 
 end

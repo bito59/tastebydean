@@ -18,17 +18,19 @@
 
   %body
     - if @root == true
-      %header#header
+      %header#header.nav-on
         = render partial: 'layouts/header_welcome'
     - else
-      %header#header.white-bkg
+      %header#header.white-bkg.nav-on
         = render partial: 'layouts/header_others'
 
     %main#main.mb-hide{'canvas': 'container'}
       #main-fp
         = yield
+      #ez-container
+        .test
 
-    %footer#footer.modal-fade
+    %footer#footer.modal-fade.nav-off
       = render partial: 'layouts/footer'
 
     %section#devise_modal.tb

@@ -1,9 +1,10 @@
 .shop_index, .shop_workshop {
 	.filters {
-		a {margin: 0px 10px 0px 10px;}
+		width: 100%;position: relative;
+		//a {margin: 0px 10px 0px 10px;}
 		img {margin: 10px 0 0 1em;}
-		.left, .right {width: 15%;}
-		.middle {width: 70%;}
+		li {margin: 0 1em;}
+		.right {width: 15%;position: absolute;right: 0;top: 0;}
 	}
 }
 

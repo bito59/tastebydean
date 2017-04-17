@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 		resources :news, only: [:create]
 		resources :order_lines, only: [:create, :update, :destroy]
 		match '/terms', to: 'main#terms', via: :get, as: :terms
+		match '/back', to: 'main#redirect_to_back', via: :get, as: :back
 		
 		namespace :admin do
 		  resources :products do

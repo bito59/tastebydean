@@ -15,7 +15,7 @@ $ms-base: 16px;
 $ms-ratio: 1.333;
 
 // Init Typi
-$typi: (null: (16px, 2), tablet: (18px, 2), laptop: (18px, 2), desktop: (20px, 2));
+$typi: (null: (16px, 2), tablet: (18px, 2), laptop: (18px, 2), desktop: (18px, 2));
 $h1-map: (null: (ms(4), 1.2), mobile: ms(3), tablet: ms(3), laptop: ms(4), desktop: (ms(4), 1.3));
 $h2-map: (null: (ms(3), 1.5), mobile: ms(3), tablet: ms(3), laptop: ms(3), desktop: ms(3));
 $h3-map: (null: (ms(2), 2), mobile: ms(1), tablet: ms(1), laptop: (ms(1), 2), desktop: (ms(1), 2));
@@ -36,6 +36,7 @@ h5, h5 > span { @include typi($h5-map) }
 a, h1, h2, h3, h4, h5, input {text-align: center; vertical-align: middle;text-decoration: none;}
 a:hover {text-decoration: none; cursor: pointer;}
 a.selected {font-family: $regular;}
+.bold {font-family: $regular;}
 
 header {font-family: $regular;}
 footer {font-family: $regular;
@@ -70,8 +71,6 @@ footer {font-family: $regular;
 }
 
 .shop_show {
-    .title h3.bold {font-family: $regular;}
-    .title .inline-center h3 { @include typi($typi);}
     .icons h4 {line-height: 1.5;}
     .customize_form select {@include typi($h3-map)}
 }

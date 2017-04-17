@@ -46,7 +46,7 @@ fr:
             explain_creation: "Imaginez votre tenue à partir d'un de nos modèles, ou créez votre tenue."
             explain_fabric: "Trouvez votre tissus et vos couleurs sur notre site ou près de chez vous."
             explain_on_measure: "Communiquez-nous vos mensurations pour les réalisations faites sur mesure."
-            comment: "Super robe livrée juste à temps pour le mariage de mon frère, merci Dean !"
+            comment: "Super robe livrée juste à temps pour le mariage de mon frère !"
             follow_us: "Nous suivre"
         news_form:
             discover: "Découvrez les dernières nouveautés par email :"
@@ -80,15 +80,16 @@ fr:
             girl: 'Jeune fille'
             boy: "Garçon"
             all_models: "Tous les modèles" 
-        show:
+        product_show:
             product_for: 'Produit pour : '
             on_measure: 'Sur mesure'
             on_measure_exp: 'Envoyez nous vos mesures par email.'
             unic_fabric: 'Couleur unique'
             custom_fabric: 'Tissu au choix'
-            btn_customize: 'Choisir la taille et le tissu'
-            btn_choose_size: 'Choisir la taille'
-            btn_choose_fabric: 'Choisir le tissu'
+            customize: 'Choisir la taille et le tissu'
+            choose_size: 'Choisir la taille'
+            choose_fabric: 'Choisir le tissu'
+            return_to_results: 'Retourner aux résultats'
             share: 'Partager ce produit'
             not_on_measure: 'Taille unique'
             leadtime1: 'Délai'
@@ -99,8 +100,8 @@ fr:
             price: 'Prix :'
         details_form:
             choose_your_size: 'Choisissez la taille'
-            size_explain: 'Nous vous communiquerons par email les consignes pour la prise de mesure...'
-            choose_your_fabric: 'Choisissez votre tissu '
+            size_explain: 'Vous recevrez par email les consignes pour réaliser vos mesures...'
+            choose_your_fabric: 'Choisissez le tissu'
             fabric_explain: 'Vous recevrez par email les conseils pour choisir votre tissu...'
             dimensions: '(%{length} x %{large} m nécessaires)'
             dimensions_wp: '(%{length} x %{large} m nécessaires) :'
@@ -126,6 +127,7 @@ fr:
             email: 'deancorner@gmail.com'
             phone: '+33 6 60 10 44 00'
             opening: 'Les lundi, mercredi et vendredi de 12h00 à 19h00'
+            social: 'Rejoignez Dean corder sur Facebook et Instagram'
     showroom:
         index:
             title: "Vous souhaitez réaliser l'une de vos créations ?"

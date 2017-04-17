@@ -54,6 +54,13 @@ footer {
 	.owl-nav [class*='owl-']:hover {background: $red;}
 }
 
+.one-edge-shadow {
+  border: 2px solid $grey_trsp;border-radius: 15px;
+  -webkit-box-shadow: 0 12px 12px -6px $grey_trsp;
+     -moz-box-shadow: 0 12px 12px -6px $grey_trsp;
+          box-shadow: 0 12px 12px -6px $grey_trsp;
+}
+
 /* ------------------------------ Pages  ------------------------------ */
 
 .welcome {
@@ -68,15 +75,13 @@ footer {
 .shop_index, .shop_workshop {
   .filters h3 {color: $green;}
 }
-.showroom_index h4 {color: $green;}
+.showroom_index, .shop_workshop {
+  h4 {color: $green;}
+}
+
 .shop_show {
   .title span {color: $green;}
   h4.cancel {color: $danger;}
 }
 
-.one-edge-shadow {
-  border: 2px solid $grey_trsp;border-radius: 15px;
-  -webkit-box-shadow: 0 12px 12px -6px $grey_trsp;
-     -moz-box-shadow: 0 12px 12px -6px $grey_trsp;
-          box-shadow: 0 12px 12px -6px $grey_trsp;
-}
+

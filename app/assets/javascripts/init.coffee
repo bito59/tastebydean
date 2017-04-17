@@ -13,16 +13,30 @@ $(document).on "turbolinks:load", ->
 	init_devise_modal()
 	init_slidebar()
 	init_callbacks()		# Callbacks buttons valid for all pages
-	#init_ezoom() 			# Elevate zoom plus on class .ezoom .active
-
-#$('#footer').hide();
+	init_scroll() 			# Hide header on scroll
+	#$('#footer').hide();
 
 # -------------------------------  JS init functions  --------------------------------------------
+
+# Init scroll hiding headers
+init_scroll = ->
+	didScroll = false
+	@lastScrollTop = 0
+	@delta = 5
+	@navbarHeight = 40
+	$('#main').scroll (event) ->
+		didScroll = true
+	setInterval ->
+		if didScroll
+			hasScrolled()
+			didScroll = false
+	, 250
+	#console.log 'scroll loaded'
 
 # Init flash
 init_flash = ->
 	$('#flash_msg').hide()
-	console.log 'Flash loaded'
+	#console.log 'Flash loaded'
 	unless $('#flash_msg').length is 0
 		show_flash()
 	$('#flash_msg').change ->
@@ -34,29 +48,32 @@ init_flash = ->
 # Init fullpage
 init_fullpage = ->
 	if typeof $.fn.fullpage.destroy == 'function'
-	    $.fn.fullpage.destroy('all')
-	    console.log 'fullpage destroyed : fp init'
+	    $.fn.fullpage.destroy('all')  # Avoid loading many times FP
+	    #console.log 'fullpage destroyed : fp init'
 	if ($(".fp-all")[0]) || ($(".fp-mb")[0] && $(window).width() < 720) # Test if fp is on the page
-		console.log 'fullpage loaded'
+		#console.log 'fullpage loaded'
 		$('#main').addClass('no-overflow'); # Correct the bug of multi scrolling
 		$('#main-fp').fullpage
 			fitToSectionDelay: 10000
-			scrollOverflow: true
+			scrollOverflow: false
+			autoScrolling: true
+			paddingTop: '1em'
+			paddingBottom: '1em'
 			afterLoad: (anchor, index) ->
-				if $('.active').hasClass 'dyn-header' #anchor == 1
-					$('#header').fadeIn('slow');
-				if $('.active').hasClass 'dyn-footer' #anchor == 4
-					$('#footer').fadeIn('slow');   	
-			onLeave: (anchor, index) ->
 				if $('.active').hasClass 'dyn-header'
-					$('#header').fadeOut 'slow'
+					$('#header').removeClass('nav-off').addClass('nav-on')
 				if $('.active').hasClass 'dyn-footer'
-					$('#footer').fadeOut 'slow'
+					$('#footer').removeClass('nav-off').addClass('nav-on')  	
+			onLeave: (anchor, index) ->
+				if $('#header').hasClass 'nav-on'
+					$('#header').removeClass('nav-on').addClass('nav-off')
+				if $('#footer').hasClass 'nav-on'
+					$('#footer').removeClass('nav-on').addClass('nav-off')
 
 # Init owl-carousel
 init_owl = ->
 	if $(".owl-carousel")[0] # Test if owl is on the page
-		console.log 'owl loaded'
+		#console.log 'owl loaded'
 		$('.owl-carousel').owlCarousel
 			onInitialized: set_ezoom_active
 			onTranslated: reset_ezoom
@@ -74,15 +91,15 @@ init_owl = ->
 
 # Init devise modal
 init_devise_modal = ->
-	if $(window).width() > 719 # Load slidebar unless mobile
-		console.log 'devise modal loaded'
+	if $(window).width() > 719 # Load devise modal unless mobile
+		#console.log 'devise modal loaded'
 		# Block links under modal
 		$(".a").click (ev) ->
 			if $(this).hasClass("blocked") == true
 	      		ev.preventDefault()
 		# Show modal
 		$('.connect_modal').on 'click', ->
-			remove_mb_menu()
+			remove_modal()
 			add_modal()
 		# Hide modal
 		$(window).on 'click', ->
@@ -123,7 +140,7 @@ init_slidebar = ->
 			#console.log 'slidebar closed'
 
 init_ezoom = ->
-	if $(window).width() > 719 # Load slidebar unless mobile
+	if $(window).width() > 1023 # Load slidebar unless mobile
 		$(".ezoom.ez-active").ezPlus
 			zoomWindowPosition: 'ez-container'
 			zoomWindowHeight: 500
@@ -137,7 +154,7 @@ init_ezoom = ->
 		console.log 'init_ezom fired'
 
 init_callbacks = ->
-	console.log 'callback loaded'
+	#console.log 'callback loaded'
 	$('#bsk_icon').hover (ev) -> 
 		$('.message').toggleClass 'active'
 	$("#zoom_btn").click (ev) ->
@@ -167,8 +184,8 @@ show_flash = ->
 		$('#flash_msg')
 			.fadeOut 2000, ->
 				$(this).empty()
-	, 400000
-	console.log 'Flash fired'
+	, 4000
+	#console.log 'Flash fired'
 
 # Move nav buttons into carousel
 change_nav = (event) ->
@@ -184,7 +201,7 @@ set_ezoom_active = ->
 			$(this).addClass('ez-active')
 		else
 			$(this).removeClass('ez-active')
-	console.log 'set_ez_active fired'
+	#console.log 'set_ez_active fired'
 
 # Change ezoom target after owl changed
 reset_ezoom = (event) ->
@@ -215,3 +232,24 @@ add_modal = ->
 remove_modal = ->
 	$('#devise_modal').fadeOut(500)
 	$(".modal-fade a").removeClass("blocked")
+
+# Show/Hide on scroll
+hasScrolled = ->
+	if ($(".fp-all")[0]) || ($(".fp-mb")[0]) # Avoid function if FP is on the page
+		return
+	#console.log 'hasScroll fired'
+	st = $('#main').scrollTop()
+	if Math.abs(lastScrollTop - st) <= delta		# Make sure they scroll more than delta
+		return
+	if st > lastScrollTop && st > @navbarHeight		# Scroll down
+		$('#header').removeClass('nav-on').addClass('nav-off')
+	else
+		if st < lastScrollTop						# Scroll up
+			$('#header').removeClass('nav-off').addClass('nav-on')
+			$('#footer').removeClass('nav-on').addClass('nav-off')
+	#if st > Math.abs($('#main').height() - 100)		# On bottom
+	if st + $('#main').innerHeight() >= $('#main')[0].scrollHeight
+		$('#footer').removeClass('nav-off').addClass('nav-on')
+		#alert('end reached')
+		#console.log 'top bottom'
+	@lastScrollTop = st

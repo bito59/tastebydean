@@ -1,43 +1,56 @@
 body {position: relative;}
 body::-webkit-scrollbar {display: none;}
-header {z-index: 90;height: 4em;width: 100%;position: absolute;}
-footer {z-index: 90;height: 2em;;width: 100%;position: absolute;bottom: 0px;}
+header, footer {z-index: 3; width: 100%;position: absolute;}
+header {height: 4em;}
+footer {height: 2em;bottom: 0px;}
+
+#header, #footer {
+	transition: opacity .5s ease-out;
+	-moz-transition: opacity .5s ease-out;
+	-webkit-transition: opacity .5s ease-out;
+	-o-transition: opacity .5s ease-out;
+}
+.nav-on {opacity:1;}
+.nav-off {opacity:0;}
+
 #main {z-index: 1;min-height: 100vh;margin: auto;}
+#ez-container{width: 500px;height: 500px;position: fixed;z-index: -1;
+	//background-color: grey;opacity: .4;
+}
 #flash_msg {z-index: 999;position: fixed;top: 0;width:100%;}
 
-.c0, .c1, .c2, .c3, .c4, .c5 {z-index: 2;max-width: 1366px;height: 100vh;margin: auto;padding: 0 2em;}
+.c0, .c1, .c2, .c3 {z-index: 2;}
+.c0 {@include background-image('welcome');height: 100vh;} //Full screen page (welcome picture)
+.c1 {max-width: 520px;padding-right: 1em;padding-left: 1em;} // // FP with 2 colons in tb (products)
+.c2 {max-width: 1266px;margin-top: 6em;padding: 1em;} // No fp (index)
+.c3 {padding-right: 1em;padding-left: 1em;} // Fp with 1 section large page (welcome pages)
 
-// Welcome page
-.c0 {@include background-image('welcome');max-width: 100%;}
-.c3{}
-
-// Product pages
-.c1 {height: calc(100vh - 6em);padding: 6em 2em 0 2em;}
-
-// Index pages
-.c2 {height: 100%;padding: 6em 2em 2em 2em;}
-
-.no-overflow{overflow-y: hidden;}
-
-.inline {@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(space-around);}
+.flex {@include flexbox; @include flex-flow(row wrap);@include align-items(center);@include justify-content(center);}
+.inline-around {@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(space-around);}
 .inline-center {@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(center);}
 .column-center {@include flexbox; @include flex-flow(column nowrap);@include align-items(center);@include justify-content(center);}
-.flex {@include flexbox; @include flex-flow(row wrap);@include align-items(center);@include justify-content(center);}
-
 
 .fill-height, .fp-tableCell {display: flex;flex-direction: column;}
 .fill-height > *, .fp-tableCell > * {flex: 1;}
 
 @media (min-width: map-get($breakpoints, tablet)) {
+	.sub-cont {margin-top: 4em;}
+	// Product pages
+	.c1 {width: calc(50% - 2em - 2em) !important;
+		//max-height: calc(100vh - 6em - 1em);
+		padding: 0;margin: 0 2em;}
 	.inline-tb {@include flexbox; @include align-items(center);@include justify-content(center);}
 	.inline-tb-end {@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(space-between);}
 	.sized {max-width: map-get($breakpoints, desktop);margin: auto;}
-	.shop_show.c1 {width: calc(50% - 4em);}	
 	#section1.shop_show {float: left; position: relative;}
 	#section2.shop_show, #section3.shop_show {float: right; position: relative;}
 	#section3.shop_show {display: none;}
 }
 @media (min-width: map-get($breakpoints, laptop)) {
+	#ez-container{left: calc(50%);bottom: 5em;}
+}
+@media (min-width: map-get($breakpoints, desktop)) {
+	#ez-container{left: calc(50% + 2em);}
 }
 
 

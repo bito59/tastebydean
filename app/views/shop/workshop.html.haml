@@ -8,21 +8,24 @@
 		.main_img.flex
 			= image_tag 'contents/workshop2.png'
 			= image_tag 'contents/workshop1.png'
-		.icons.inline-center
-			%li
-				= image_tag 'icons/shop.png'
-				%h5= t('.adress1')
-				%h5= t('.adress2')
-				%h5= t('.adress3')
-			%li
-				= image_tag 'icons/calendar.png'
-				%h5= t('.opening')
-			%li
-				= image_tag 'icons/contact.png'
-				%h5= t('.email')
-				%h5= t('.phone')
-	
-:javascript
-	$(document).ready(function() {
-		$('#footer').show().addClass('pushed');
-	});
+		.icons.inline-around
+			%li.one-edge-shadow.column-center
+				.box
+					= image_tag 'icons/shop.png'
+					%h5= t('.adress1')
+					%h5= t('.adress2')
+					%h5= t('.adress3')
+			%li.one-edge-shadow.column-center
+				.box
+					= image_tag 'icons/leadtime.png'
+					%h5= t('.opening')
+		.icons.inline-around
+			%li.one-edge-shadow.column-center
+				.box
+					= image_tag 'icons/contact.png'
+					%h5= t('.email')
+					%h5= t('.phone')
+			%li.one-edge-shadow.column-center
+				.box
+					= image_tag 'icons/social.png'
+					%h5= t('.social')

@@ -1,61 +1,87 @@
 .shop_show {
-	//.owl-dots {margin-top: 2em!important;}
-	.owl-dots .owl-dot span {height: 2em;width: 12px;height: 12px;}
-	.logo {
-		position: absolute;margin-top: -2em;//right: 4em;
-		img {width: 40px !important;}
+	.intro {
+		display: flex;flex-flow: column;flex: 1;
+		.title {margin: 3em 0 1em 0;} // 3em + 1em by fullpage = 4em (header)
+		.owl-carousel {
+			display: flex; flex-flow: column wrap; flex: 1;
+			.owl-stage-outer {
+				display: flex; flex: 99;
+				.owl-stage {height: 100%;display: flex; flex: 1;}
+				.owl-item {display: flex}
+				.item {width: 100%;display: flex;align-items: center;}
+				// Fix img dimensions to fit in div
+				img {max-width: 100%;width: auto !important;margin: auto;}
+			}
+			.owl-dots {margin: 1em auto 0 auto;flex: 1;}
+			.owl-dots .owl-dot span {height: 2em;width: 12px;height: 12px;}
+		}
+		.logo {
+			position: absolute;margin-top: -2em;
+			img {width: 40px !important;}
+		}
 	}
-	#zoom_btn {
-		z-index: 999;
-		position: absolute; right: 4em;
-		img {width: 30px !important;}
-		.zoom-icon-active {display: none;}
+	.info {
+		.icons {
+			h4 {max-width: 90%;margin: 10px auto 0 auto;}
+			img {width: 40px;height: 40px;margin-bottom: 10px;}
+		}
 	}
-	.icons {
-		margin-bottom: 2em;
-		h4 {max-width: 90%;margin: auto;}
-	}
-	.qties {justify-content: center;}
-	.price, .qties select {margin-left: 1em;}
-	.with_fabric {display: none;}
-	.fabrics .title {margin: 1em auto;}
-	.title span {margin-left: 1em;}
-	.title h3.bold {margin-bottom: 1em;}
-	.sizes, .fabrics{
-		flex: 2;
-		h3 {margin: 0 1em;}
-		img {width: 40px;}
+	.form {
+		.sizes .options {margin: 1em 0;width: 100%;}
+		.qties {justify-content: center;}
+		.price, .qties select {margin-left: 1em;}
+		.with_fabric {display: none;}
+		.sizes, .fabrics, .buy {
+			flex: 2;
+			h3 {margin: 0 1em 0 0;}
+			img {width: 40px;}
+		}
+		.buy .buttons {width: 100%;}
+		.buttons .btn {margin-top: 1em;}
 	}
 
 	@media (max-width: map-get($breakpoints, tablet)) {
-		// Centering mobile view
-		.fp-tableCell {height: calc(100vh - 6em)!important;vertical-align: bottom;}
+		#ez-container{display: none;}
+		.owl-carousel img {max-height: 350px !important;}
 		.owl-next, .owl-prev {display: none!important;}
 	}
 
 	@media (min-width: map-get($breakpoints, tablet)) {
-		.owl-carousel {
-			height: calc(100vh - 6em - 2em - 4em);position:	relative;
-			div:not(.owl-nav):not(.owl-dots):not(#btn_prev):not(#btn_next) {height: 100%;}
-			.owl-item img {max-width: 100%;max-height: 100%;height: auto;width: auto;margin: auto;}
-			.owl-nav {display: none;}
-			.owl-dots {position: relative; display: inline-flex;}
-			#btn_prev, #btn_next {
-				position: absolute; top: -7px;
-				img {width: 20px; height: 20px;}
+		.intro {
+			.owl-carousel {
+				height: calc(100vh - 6em - 2em - 4em);position:	relative;
+				div:not(.owl-nav):not(.owl-dots):not(#btn_prev):not(#btn_next) {height: 100%;}
+				.owl-item img {max-width: 100%;max-height: 100%;height: auto;width: auto;margin: auto;}
+				.owl-nav {display: none;}
+				.owl-dots {position: relative;}
+				#btn_prev, #btn_next {
+					position: absolute; top: -7px;
+					img {width: 20px; height: 20px;}
+				}
 			}
 			#btn_prev {left: -2em;}
 			#btn_next {right: -2em;}
+			#zoom_btn {
+				z-index: 999;
+				position: absolute; right: 0;bottom: 0;
+				img {width: 30px !important;}
+				.zoom-icon-active {display: none;}
+			}
 		}
-		#ez-container{z-index: 99;position: absolute;top: calc(6em + 1em + 2em + 1em); left: calc(50% - 250px);}
-		.title, .descriptions, .icons, .buttons {margin: 1em auto 2em auto;}
-		.icons {max-width: 400px;}
+		.info {
+			.title, .description, .icons, .buttons {margin: 1em auto;width: 80%;}
+			.title h3 {margin-bottom: 1em;}
+		}
+		.form {
+			.sizes, .fabrics, .buy {margin: 1em auto;width: 80%;}
+			.sizes .options {margin: 0;width: 100%;}
+			.icons {max-width: 400px;}
 
-		//.owl-dots {margin-top: 0!important;}
-		//.owl-carousel:hover {cursor: pointer;}
-		//.owl-carousel:hover + .arrows, .arrows:hover {opacity: 1;cursor: pointer;}
-		.buttons {position: relative}
-		h4.cancel{position: absolute;top: 0; right: 0; line-height: 3em;}
-		h4.cancel:hover {cursor: pointer;}
+			//.owl-dots {margin-top: 0!important;}
+			//.owl-carousel:hover {cursor: pointer;}
+			//.owl-carousel:hover + .arrows, .arrows:hover {opacity: 1;cursor: pointer;}
+			.buttons {position: relative}
+			h4.cancel:hover {cursor: pointer;}
+		}
 	}
 }

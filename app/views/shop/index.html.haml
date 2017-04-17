@@ -5,19 +5,22 @@
 	.results.flex
 		- @products.each do |product|
 			.product.one-edge-shadow{ id: "item_#{product.serial}" }
-				= link_to shop_product_path(id: product.slug) do
-					%h3.title= product.title
-					- if product.kind == 'fabric'
-						= image_tag product.image.preview
-					- else
+				- if product.kind == 'model'
+					= link_to shop_product_path(id: product.slug, customer: params[:customer], kind: params[:kind], family: params[:family]) do
+						%h3.title= product.title
 						.img
 							= image_tag product.product_pictures.active.main.first.image.preview
 							.logo
 								= image_tag 'icons/logo-red.png'
-	
+				- elsif product.kind == 'fabric'
+					= link_to shop_fabric_path(id: product.slug, kind: params[:kind], family: params[:family]) do
+						%h3.title= product.title
+						.img
+							= image_tag product.image.preview	
+
 :javascript
 	$(document).on('turbolinks:load', function() {
-		$('#footer').show().addClass('pushed');
+		//$('#footer').show().addClass('pushed');
 		$('#open_mb_collection_filter').click(function() {
 			$('#mb_filter').fadeIn(500);
 			$('.mb-hide').hide();

@@ -1,8 +1,8 @@
 .shop_index, .showroom_index {
 	.text {margin-bottom: 4em;}
-	.product {margin: 3em 0;}
 	.product .title {line-height: 4em;}
-	.results .product {padding: 2em;}
+	.results .product {margin: 3em 0;padding: 0 2em 2em 2em;} 
+	.product:last-of-type {margin-bottom: 6em;}
 	.img {position: relative}
 	.logo {
 		position: absolute;bottom: 0;right: 0;
@@ -14,13 +14,12 @@
 	.shop_index, .showroom_index {
 		.product {width: 100%;}
 		.results img {width: 100%;}
-		//.text {margin-bottom: 4em;}
 	}
 }
 
 @media (min-width: map-get($breakpoints, tablet)) {
 	.shop_index, .showroom_index {
-		.results .product {margin: 2em;}
+		.results .product {margin: 3em;}
 	}
 }
 

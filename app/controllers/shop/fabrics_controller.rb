@@ -15,9 +15,6 @@ module Shop
 
   	def show
       @order_line = current_order.order_lines.new
-      @sizes = @fabric.find_sizes
-      @pictures = @fabric.fabric_pictures.active
-      puts @pictures.inspect
   		respond_to do |format|
   			format.html { render 'shop/show.html.haml' }
   		end
@@ -26,7 +23,7 @@ module Shop
     private
    
       def find_fabric
-        @fabric = Fabric.friendly.find(params[:id])
+        @product = Fabric.friendly.find(params[:id]).decorate
       end
 
       def fabric_params

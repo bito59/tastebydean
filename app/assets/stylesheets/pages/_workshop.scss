@@ -1,10 +1,11 @@
 .shop_workshop .main {
-	margin-top: 2em;
-	.main_img img {width: 100%;max-width: 350px;margin: 2em auto;}
+	margin: 2em auto;
+	.main_img img {width: 100%;max-width: 350px;margin: 2em auto;border-radius: 20px;}
 	.icons {
 		align-items: flex-start;
-		li {max-width: 50%;margin: 0;}
-		h4 {max-width: 90%;margin: auto;}
+		li {height: 150px;margin: 1em 0;}
+		li > * {padding: 0 1em;}
+		h5 {max-width: 90%;margin: 0 1em;}
 		img {max-width: 50px;margin: 1em;}
 	}
 
@@ -15,10 +16,13 @@
 
 	@media (min-width: map-get($breakpoints, tablet)) {
 		.main_img {
-			//max-width: 1024px;margin: auto;
 			img {max-width: 500px;}
 		}
-		.icons {max-width: 720px;margin: auto;}
+		.icons {
+			max-width: 720px;
+			margin: auto;
+			li{height: 200px;max-width: 300px;}
+		}
 	}
 
 }

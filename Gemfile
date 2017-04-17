@@ -20,8 +20,6 @@ gem 'friendly_id'
 gem 'will_paginate'
 gem "carrierwave", github: "carrierwaveuploader/carrierwave"
 gem 'carrierwave-aws'
-#gem 'aws-sdk', '~> 2'
-#gem 'aws-sdk-v1'
 gem 'mini_magick'
 gem 'devise'
 gem "figaro"

@@ -17,9 +17,8 @@ module Shop
       @order_line = current_order.order_lines.new
       @sizes = @product.find_sizes
       @pictures = @product.product_pictures.active
-      puts @pictures.inspect
   		respond_to do |format|
-  			format.html { render 'shop/show.html.haml' }
+  			format.html { render 'shop/show' }
   		end
   	end
 
