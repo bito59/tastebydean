@@ -13,7 +13,7 @@
 							.logo
 								= image_tag 'icons/logo-red.png'
 				- elsif product.kind == 'fabric'
-					= link_to shop_fabric_path(id: product.slug, kind: params[:kind], family: params[:family]) do
+					= link_to shop_fabric_path(id: product.slug, family: params[:family], selected_product_id: params[:selected_product_id], selected_fabric_id: params[:selected_fabric_id], size: params[:size]) do
 						%h3.title= product.title
 						.img
 							= image_tag product.image.preview	

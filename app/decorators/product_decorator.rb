@@ -21,7 +21,7 @@ class ProductDecorator < Drape::Decorator
   end
 
   def unic_fabric_rule
-    if self.unic_fabric == true
+    if self.custom_fabric == false
       html = image_tag('icons/fabric-unic.png')
       html << content_tag(:h5, t('shop.show.unic_fabric'))
       html.html_safe

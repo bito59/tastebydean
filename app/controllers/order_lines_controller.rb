@@ -47,7 +47,7 @@ class OrderLinesController < ApplicationController
   private
 
   def order_line_params
-    params.require(:order_line).permit(:quantity, :size, :sep_fabric, :product_id, :fabric_id)
+    params.require(:order_line).permit(:quantity, :std_size, :sep_fabric, :product_id, :fabric_id)
   end
 
   def find_product

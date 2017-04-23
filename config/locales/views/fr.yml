@@ -54,6 +54,12 @@ fr:
             email: "Email"
             validate: 'Valider'
     shop:
+        common:
+            price: 'Prix :'
+            euro: 
+                zero: '%{count} euro'
+                one: '%{count} euro'
+                other: '%{count} euros'
         main_filters:
             man: 'Homme'
             woman: 'Femme'
@@ -80,32 +86,39 @@ fr:
             girl: 'Jeune fille'
             boy: "Garçon"
             all_models: "Tous les modèles" 
-        product_show:
+        show:
             product_for: 'Produit pour : '
             on_measure: 'Sur mesure'
             on_measure_exp: 'Envoyez nous vos mesures par email.'
             unic_fabric: 'Couleur unique'
             custom_fabric: 'Tissu au choix'
-            customize: 'Choisir la taille et le tissu'
-            choose_size: 'Choisir la taille'
-            choose_fabric: 'Choisir le tissu'
-            return_to_results: 'Retourner aux résultats'
-            share: 'Partager ce produit'
             not_on_measure: 'Taille unique'
             leadtime1: 'Délai'
             leadtime2: '~ %{leadtime} jours'
             qties: 'Quantités :'
             add_to_basket: 'Ajouter au panier'
             confection: 'Confection :'
-            price: 'Prix :'
+        info:
+            customize: 'Choisir la taille et le tissu'
+            choose_size: 'Choisir la taille'
+            choose_fabric: 'Choisir le tissu'
+            return_to_results: 'Retourner aux résultats'
+            select_this_fabric: 'Choisir ce tissu'
+            other_fabrics: 'Autres tissus'
+            return_to_product: 'Retour au produit'
+            fabric_unit_price: ' le mètre'
+            origin: 'Produit à '
         details_form:
             choose_your_size: 'Choisissez la taille'
-            size_explain: 'Vous recevrez par email les consignes pour réaliser vos mesures...'
+            size_explain: 'Vous recevrez par email les consignes pour prendre vos mesures.'
             choose_your_fabric: 'Choisissez le tissu'
-            fabric_explain: 'Vous recevrez par email les conseils pour choisir votre tissu...'
-            dimensions: '(%{length} x %{large} m nécessaires)'
-            dimensions_wp: '(%{length} x %{large} m nécessaires) :'
-            customer_fabric: 'Vous fournissez le tissu'
+            choose_fabric_explain: 'Vous recevrez par email les conseils pour choisir votre tissu.'
+            confirm_fabric_explain: 'Nous vous confirmerons par email que le tissu est disponible.'
+            dimensions: '(%{length} x %{large} cm nécessaires)'
+            buy_fabric_myself: 'Vous fournissez le tissu'
+            choose_fabric: 'Choisir un tissu'
+            change_fabric: 'Changer le tissu'
+            buy_fabric: 'Acheter ce tissu'
             unic_fabric: 'Tissu unique'
             qties: 'Quantités :'
             add_to_basket: 'Ajouter au panier'
@@ -132,6 +145,10 @@ fr:
         index:
             title: "Vous souhaitez réaliser l'une de vos créations ?"
             contact: "Venez visiter l'atelier ou contactez moi pour en discuter ! ..."
+    fabrics:
+        zero: '%{count} tissu'
+        one: '%{count} tissu'
+        other: '%{count} tissus'
     products:
         zero: '%{count} produit'
         one: '%{count} produit'

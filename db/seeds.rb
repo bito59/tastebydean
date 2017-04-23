@@ -37,8 +37,8 @@ Product.delete_all
 	)
 	if p.even? && kind == 'model'
 		product[:activated] = true
-		product[:unic_fabric] = true
-		product[:unic_size] = false
+		product[:custom_fabric] = true
+		product[:unic_size] = true
 		product[:fabric_lng_std] = 1
 		product[:fabric_lrg_std] = 0.5
         product[:fabric_lng_big] = 1.5
@@ -46,7 +46,7 @@ Product.delete_all
         product[:on_measure] = true
 	else
 		product[:activated] = true
-		product[:unic_fabric] = true
+		product[:custom_fabric] = true
 		product[:unic_size] = true
 		product[:on_measure] = false
 

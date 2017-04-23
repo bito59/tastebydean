@@ -10,7 +10,11 @@ label.big, .big {width: 80% !important;}
 label.option {
 	@include flexbox; @include align-items(center);
 	input {display: none;}
-	input + span {width: 90%;max-width: 200px;line-height: 3em;border-radius: 10px;background-color:$grey_trsp;border: none;}
+	input + span {
+		@include flexbox; @include flex-flow(column nowrap);@include align-items(center);@include justify-content(center);
+		width: 90%;max-width: 180px;height: 3em;line-height: 1.5em;
+		border-radius: 10px;background-color:$grey_trsp;border: none;
+	}
 	input:checked + span {background-color:$white;border:3px solid $green;}
 }
 label.option.full {
@@ -19,7 +23,7 @@ label.option.full {
 }
 
 .btn-green {border:2px solid $green;}
-.btn-red {border:2px solid $danger;}
+.btn-red {border:2px solid $danger; *{color: $red;}}
 .btn-info {border:2px solid $info;}
 .btn-valid {background: $green;color: $white; *{color: $white;}}
 .btn-cancel {background: $danger;color: $white; *{color: $white;}}

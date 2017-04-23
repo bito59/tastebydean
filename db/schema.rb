@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170223193433) do
+ActiveRecord::Schema.define(version: 20170222202203) do
 
   create_table "fabrics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "serial"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20170223193433) do
     t.text     "description", limit: 65535
     t.decimal  "price",                     precision: 8, scale: 2
     t.integer  "price_unit",                                        default: 1
+    t.string   "origin"
+    t.string   "content"
     t.datetime "created_at",                                                        null: false
     t.datetime "updated_at",                                                        null: false
     t.string   "slug"
@@ -77,14 +79,16 @@ ActiveRecord::Schema.define(version: 20170223193433) do
   create_table "order_lines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "order_id"
     t.integer  "product_id"
-    t.string   "size",                                  default: "0"
+    t.integer  "fabric_id"
+    t.boolean  "std_size",                              default: true
     t.boolean  "sep_fabric",                            default: true
-    t.integer  "quantity"
+    t.integer  "quantity",                              default: 0
     t.decimal  "unit_price",   precision: 12, scale: 3
     t.decimal  "fabric_price", precision: 12, scale: 3
     t.decimal  "total_price",  precision: 12, scale: 3
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
+    t.index ["fabric_id"], name: "index_order_lines_on_fabric_id", using: :btree
     t.index ["order_id"], name: "index_order_lines_on_order_id", using: :btree
     t.index ["product_id"], name: "index_order_lines_on_product_id", using: :btree
   end
@@ -136,13 +140,14 @@ ActiveRecord::Schema.define(version: 20170223193433) do
     t.integer  "customer",                                             default: 1
     t.integer  "family",                                               default: 1
     t.string   "title"
+    t.integer  "measure_id"
     t.text     "description",    limit: 65535
     t.decimal  "price",                        precision: 8, scale: 2
     t.integer  "price_unit",                                           default: 1
     t.string   "leadtime"
+    t.boolean  "custom_fabric",                                        default: true
     t.boolean  "on_measure",                                           default: true
     t.boolean  "unic_size",                                            default: true
-    t.boolean  "unic_fabric",                                          default: true
     t.float    "fabric_lng_std", limit: 24
     t.float    "fabric_lrg_std", limit: 24
     t.float    "fabric_lng_big", limit: 24
@@ -150,7 +155,6 @@ ActiveRecord::Schema.define(version: 20170223193433) do
     t.datetime "created_at",                                                           null: false
     t.datetime "updated_at",                                                           null: false
     t.string   "slug"
-    t.integer  "measure_id"
     t.index ["measure_id"], name: "index_products_on_measure_id", using: :btree
     t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree
   end
@@ -174,6 +178,7 @@ ActiveRecord::Schema.define(version: 20170223193433) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "order_lines", "fabrics"
   add_foreign_key "order_lines", "orders"
   add_foreign_key "order_lines", "products"
   add_foreign_key "orders", "users"

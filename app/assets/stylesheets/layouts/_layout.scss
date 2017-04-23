@@ -10,18 +10,17 @@ footer {height: 2em;bottom: 0px;}
 	-webkit-transition: opacity .5s ease-out;
 	-o-transition: opacity .5s ease-out;
 }
+
 .nav-on {opacity:1;}
 .nav-off {opacity:0;}
 
 #main {z-index: 1;min-height: 100vh;margin: auto;}
-#ez-container{width: 500px;height: 500px;position: fixed;z-index: -1;
-	//background-color: grey;opacity: .4;
-}
+#ez-container{width: 500px;height: 500px;position: fixed;z-index: -1;}
 #flash_msg {z-index: 999;position: fixed;top: 0;width:100%;}
 
 .c0, .c1, .c2, .c3 {z-index: 2;}
 .c0 {@include background-image('welcome');height: 100vh;} //Full screen page (welcome picture)
-.c1 {max-width: 520px;padding-right: 1em;padding-left: 1em;} // // FP with 2 colons in tb (products)
+.c1 {max-width: 520px;padding-right: 1em;padding-left: 1em;position: relative;} // // FP with 2 colons in tb (products)
 .c2 {max-width: 1266px;margin-top: 6em;padding: 1em;} // No fp (index)
 .c3 {padding-right: 1em;padding-left: 1em;} // Fp with 1 section large page (welcome pages)
 
@@ -30,27 +29,23 @@ footer {height: 2em;bottom: 0px;}
 .inline-center {@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(center);}
 .column-center {@include flexbox; @include flex-flow(column nowrap);@include align-items(center);@include justify-content(center);}
 
+.hidded-link {display: none;}
 .fill-height, .fp-tableCell {display: flex;flex-direction: column;}
 .fill-height > *, .fp-tableCell > * {flex: 1;}
 
 @media (min-width: map-get($breakpoints, tablet)) {
-	.sub-cont {margin-top: 4em;}
-	// Product pages
-	.c1 {width: calc(50% - 2em - 2em) !important;
-		//max-height: calc(100vh - 6em - 1em);
-		padding: 0;margin: 0 2em;}
+	.sub-cont {height: calc(100vh - 6em);margin-top: 6em;align-items: flex-start;}
 	.inline-tb {@include flexbox; @include align-items(center);@include justify-content(center);}
 	.inline-tb-end {@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(space-between);}
 	.sized {max-width: map-get($breakpoints, desktop);margin: auto;}
-	#section1.shop_show {float: left; position: relative;}
-	#section2.shop_show, #section3.shop_show {float: right; position: relative;}
 	#section3.shop_show {display: none;}
 }
 @media (min-width: map-get($breakpoints, laptop)) {
-	#ez-container{left: calc(50%);bottom: 5em;}
+	.fill-height {height: 100%;}
+	.c1 {width: 512px;height: calc(100vh - 6em - 2em);margin: 0;padding: 0;}
+	//width: calc(50% - 2em) !important;padding: 0;margin: 0 1em;
 }
 @media (min-width: map-get($breakpoints, desktop)) {
-	#ez-container{left: calc(50% + 2em);}
 }
 
 

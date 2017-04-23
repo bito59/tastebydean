@@ -3,10 +3,13 @@
 	.product .title {line-height: 4em;}
 	.results .product {margin: 3em 0;padding: 0 2em 2em 2em;} 
 	.product:last-of-type {margin-bottom: 6em;}
-	.img {position: relative}
-	.logo {
-		position: absolute;bottom: 0;right: 0;
-		img {width: 40px !important;}
+	.img {
+		position: relative;
+		img {border-radius: 15px;}
+		.logo {
+			position: absolute;bottom: 0;right: 0;
+			img {width: 40px !important;}
+		}
 	}
 }
 

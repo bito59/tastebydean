@@ -8,13 +8,26 @@ module Shop
 
   	def index
       define_area
+      #@query= params
+      #puts 'query was : ' + params.inspect
   		respond_to do |format|
   		    format.html { render 'shop/index' }
   		end
   	end
 
   	def show
-      @order_line = current_order.order_lines.new
+      if params[:selected_fabric_id]
+        unless params[:std_size]
+          params[:std_size] = true
+        end
+        @order_line = current_order.order_lines.new(
+          std_size: params[:std_size],
+          fabric_id: params[:selected_fabric_id],
+          sep_fabric: false
+        ) 
+      else
+        @order_line = current_order.order_lines.new
+      end
       @sizes = @product.find_sizes
       @pictures = @product.product_pictures.active
   		respond_to do |format|

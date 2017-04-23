@@ -14,9 +14,24 @@ $(document).on "turbolinks:load", ->
 	init_slidebar()
 	init_callbacks()		# Callbacks buttons valid for all pages
 	init_scroll() 			# Hide header on scroll
+	init_links()
+	init_ezoom()
 	#$('#footer').hide();
 
 # -------------------------------  JS init functions  --------------------------------------------
+
+init_links = ->
+	$('#select_fabric_link').click (ev) ->
+		$('#link_to_fabrics')[0].click()
+	$('#order_line_std_size_true').click (ev) ->
+		$('.small_size').show()
+		$('.big_size').hide()
+	$('#order_line_std_size_false').click (ev) ->
+		$('.small_size').hide()
+		$('.big_size').show()
+	$('#order_line_sep_fabric_true').click (ev) ->
+		$('#ol_fabric_field').val('')
+		console.log 'field reset'
 
 # Init scroll hiding headers
 init_scroll = ->
@@ -76,7 +91,7 @@ init_owl = ->
 		#console.log 'owl loaded'
 		$('.owl-carousel').owlCarousel
 			onInitialized: set_ezoom_active
-			onTranslated: reset_ezoom
+			onTranslated: set_ezoom_active #Before was reset_ezoom
 			items: 1
 			nav: true
 			dots: true
@@ -195,13 +210,15 @@ change_nav = (event) ->
 
 # Apply active to the picture being owl2 active
 set_ezoom_active = ->
+	destroy_ezoom()
 	$('.ezoom').removeClass('ez-active')
 	$('.ezoom').each ->
 		if $(this).parents('.active').length
 			$(this).addClass('ez-active')
 		else
 			$(this).removeClass('ez-active')
-	#console.log 'set_ez_active fired'
+	init_ezoom()
+	console.log 'set_ez_active fired'
 
 # Change ezoom target after owl changed
 reset_ezoom = (event) ->

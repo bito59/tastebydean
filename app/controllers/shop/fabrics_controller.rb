@@ -15,6 +15,7 @@ module Shop
 
   	def show
       @order_line = current_order.order_lines.new
+      puts '@product is : ' + @product.inspect
   		respond_to do |format|
   			format.html { render 'shop/show.html.haml' }
   		end

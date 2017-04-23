@@ -30,8 +30,8 @@ body, a, h1, h2, h3, h4, h5, input, span, p {font-family: $light;}
 h1, h1 > span { @include typi($h1-map) }
 h2, h2 > span { @include typi($h2-map);}
 h3, h3 > span, select { @include typi($h3-map);}
-h4, ul, li, p, a, span { @include typi($typi) }
-h5, h5 > span { @include typi($h5-map) }
+h4, ul, li, p, a { @include typi($typi) }
+h5, h5 > span, span { @include typi($h5-map) }
 
 a, h1, h2, h3, h4, h5, input {text-align: center; vertical-align: middle;text-decoration: none;}
 a:hover {text-decoration: none; cursor: pointer;}

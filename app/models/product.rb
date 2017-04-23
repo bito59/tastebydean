@@ -2,14 +2,15 @@ class Product < ApplicationRecord
 	extend FriendlyId
   	friendly_id :serial, use: :slugged
 
-  	after_save :affect_serial # Needs product ID
-	validates_uniqueness_of :serial, message: "This serial number is already used"
-	validates_presence_of :kind, :customer, :family, :title
-
-	has_many :product_pictures, dependent: :destroy
+  	has_many :product_pictures, dependent: :destroy
 	accepts_nested_attributes_for :product_pictures, allow_destroy: true
 	has_many :order_lines
 	has_many :orders, through: :order_lines
+	belongs_to :measure
+
+  	after_save :affect_serial # Needs product ID
+	validates_uniqueness_of :serial, message: "This serial number is already used"
+	validates_presence_of :kind, :customer, :family, :title
 
 # ---------------- Scopes -------------------------------------------------------------------------
 
