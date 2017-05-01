@@ -10,23 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222202203) do
+ActiveRecord::Schema.define(version: 20170430204835) do
+
+  create_table "customers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fabric_families", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fabric_prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.integer  "product_family_id"
+    t.integer  "fabric_family_id"
+    t.decimal  "price_std",         precision: 8, scale: 2
+    t.decimal  "price_big",         precision: 8, scale: 2
+    t.string   "price_unit",                                default: "€"
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.index ["fabric_family_id"], name: "index_fabric_prices_on_fabric_family_id", using: :btree
+    t.index ["product_family_id"], name: "index_fabric_prices_on_product_family_id", using: :btree
+  end
 
   create_table "fabrics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "serial"
-    t.boolean  "activated",                                         default: false
-    t.integer  "kind",                                              default: 1
-    t.integer  "family",                                            default: 1
+    t.string   "kind",                           default: "fabric"
     t.string   "title"
-    t.text     "image",       limit: 65535
-    t.text     "description", limit: 65535
-    t.decimal  "price",                     precision: 8, scale: 2
-    t.integer  "price_unit",                                        default: 1
+    t.integer  "fabric_family_id"
+    t.boolean  "activated",                      default: false
+    t.text     "image",            limit: 65535
     t.string   "origin"
     t.string   "content"
-    t.datetime "created_at",                                                        null: false
-    t.datetime "updated_at",                                                        null: false
+    t.text     "description",      limit: 65535
+    t.float    "stock_length",     limit: 24
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.string   "slug"
+    t.index ["fabric_family_id"], name: "index_fabrics_on_fabric_family_id", using: :btree
   end
 
   create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -80,14 +105,16 @@ ActiveRecord::Schema.define(version: 20170222202203) do
     t.integer  "order_id"
     t.integer  "product_id"
     t.integer  "fabric_id"
-    t.boolean  "std_size",                              default: true
-    t.boolean  "sep_fabric",                            default: true
-    t.integer  "quantity",                              default: 0
-    t.decimal  "unit_price",   precision: 12, scale: 3
-    t.decimal  "fabric_price", precision: 12, scale: 3
-    t.decimal  "total_price",  precision: 12, scale: 3
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
+    t.boolean  "std_size",                                  default: true
+    t.boolean  "sep_fabric",                                default: true
+    t.decimal  "confection_price", precision: 12, scale: 3, default: "0.0"
+    t.decimal  "fabric_price",     precision: 12, scale: 3, default: "0.0"
+    t.decimal  "unit_price",       precision: 12, scale: 3, default: "0.0"
+    t.integer  "quantity",                                  default: 1
+    t.decimal  "total_price",      precision: 12, scale: 3, default: "0.0"
+    t.string   "price_unit",                                default: "€"
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
     t.index ["fabric_id"], name: "index_order_lines_on_fabric_id", using: :btree
     t.index ["order_id"], name: "index_order_lines_on_order_id", using: :btree
     t.index ["product_id"], name: "index_order_lines_on_product_id", using: :btree
@@ -125,6 +152,18 @@ ActiveRecord::Schema.define(version: 20170222202203) do
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
+  create_table "price_units", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_families", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "product_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "product_id"
     t.boolean "main",                     default: false
@@ -135,27 +174,29 @@ ActiveRecord::Schema.define(version: 20170222202203) do
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "serial"
-    t.boolean  "activated",                                            default: false
-    t.integer  "kind",                                                 default: 1
-    t.integer  "customer",                                             default: 1
-    t.integer  "family",                                               default: 1
     t.string   "title"
+    t.boolean  "activated",                                               default: false
+    t.integer  "kind",                                                    default: 1
+    t.integer  "customer_id"
+    t.integer  "product_family_id"
     t.integer  "measure_id"
-    t.text     "description",    limit: 65535
-    t.decimal  "price",                        precision: 8, scale: 2
-    t.integer  "price_unit",                                           default: 1
+    t.text     "description",       limit: 65535
+    t.decimal  "confection_price",                precision: 8, scale: 2
+    t.string   "price_unit",                                              default: "€"
     t.string   "leadtime"
-    t.boolean  "custom_fabric",                                        default: true
-    t.boolean  "on_measure",                                           default: true
-    t.boolean  "unic_size",                                            default: true
-    t.float    "fabric_lng_std", limit: 24
-    t.float    "fabric_lrg_std", limit: 24
-    t.float    "fabric_lng_big", limit: 24
-    t.float    "fabric_lrg_big", limit: 24
-    t.datetime "created_at",                                                           null: false
-    t.datetime "updated_at",                                                           null: false
+    t.boolean  "custom_fabric",                                           default: true
+    t.boolean  "on_measure",                                              default: true
+    t.boolean  "unic_size",                                               default: true
+    t.float    "fabric_lng_std",    limit: 24
+    t.float    "fabric_lrg_std",    limit: 24
+    t.float    "fabric_lng_big",    limit: 24
+    t.float    "fabric_lrg_big",    limit: 24
+    t.datetime "created_at",                                                              null: false
+    t.datetime "updated_at",                                                              null: false
     t.string   "slug"
+    t.index ["customer_id"], name: "index_products_on_customer_id", using: :btree
     t.index ["measure_id"], name: "index_products_on_measure_id", using: :btree
+    t.index ["product_family_id"], name: "index_products_on_product_family_id", using: :btree
     t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree
   end
 
@@ -178,10 +219,12 @@ ActiveRecord::Schema.define(version: 20170222202203) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "fabric_prices", "fabric_families"
+  add_foreign_key "fabric_prices", "product_families"
+  add_foreign_key "fabrics", "fabric_families"
   add_foreign_key "order_lines", "fabrics"
   add_foreign_key "order_lines", "orders"
   add_foreign_key "order_lines", "products"
-  add_foreign_key "orders", "users"
   add_foreign_key "product_pictures", "products"
-  add_foreign_key "products", "measures"
+  add_foreign_key "products", "product_families"
 end

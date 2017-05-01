@@ -5,28 +5,19 @@ class OrderLine < ApplicationRecord
 	belongs_to :fabric
 
 	validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+	validate :product_present
+	validate :order_present
 
 	before_save :finalize
 
 # ---------------- Methods and selects  -----------------------------------------------------------------------------
 
-	SERVICE = ['SELLING', 'CONFECTION', 'ALL']
-
 
 	def unit_price
 		if persisted?
-			self[:unit_price]
+			self[:confection_price] + self[:fabric_price]
 		else
-			product.price
-		end
-	end
-
-	def fabric_price
-		if persisted?
-			self[:fabric_price]
-		else
-			#fabric.price
-			0
+			fabric_price + confection_price
 		end
 	end
 
@@ -50,9 +41,7 @@ class OrderLine < ApplicationRecord
 
 	def finalize
 		self[:unit_price] = unit_price
-		self[:fabric_price] = fabric_price
-		self[:total_price] = quantity * (self[:unit_price])
-		# + self[:fabric_price] * product.fab_length)
+		self[:total_price] = quantity * self[:unit_price]
 	end
 
 end

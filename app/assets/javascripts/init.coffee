@@ -3,8 +3,6 @@ window.App ||= {}
 App.load = ->
 	init_functions()
 
-$ ->
-
 $(document).on "turbolinks:load", ->
   	#App.load
 	init_flash()
@@ -21,17 +19,35 @@ $(document).on "turbolinks:load", ->
 # -------------------------------  JS init functions  --------------------------------------------
 
 init_links = ->
-	$('#select_fabric_link').click (ev) ->
-		$('#link_to_fabrics')[0].click()
+	$('#order_line_quantity').change () ->
+		qty = $('#order_line_quantity option:selected').val()
+		update_price(std_size, sep_fabric, qty)
 	$('#order_line_std_size_true').click (ev) ->
+		std_size = 'true'
+		ev.stopPropagation()
+		update_price(std_size, sep_fabric)
 		$('.small_size').show()
 		$('.big_size').hide()
 	$('#order_line_std_size_false').click (ev) ->
+		std_size = 'false'
+		ev.stopPropagation()
+		update_price(std_size, sep_fabric)
 		$('.small_size').hide()
 		$('.big_size').show()
 	$('#order_line_sep_fabric_true').click (ev) ->
-		$('#ol_fabric_field').val('')
-		console.log 'field reset'
+		sep_fabric = 'true'
+		update_price(std_size, sep_fabric)
+		$("#order_line_sep_fabric_false").data("last-value", "")
+	$('#order_line_sep_fabric_false').change (ev) ->
+		sep_fabric = 'false'
+		update_price(std_size, sep_fabric)
+		$('.full-price').show()
+		$('.confection-price').hide()
+		if $(this).data("last-value") == 'ok' # It was already checked
+			$('#link_to_fabrics')[0].click()
+		$(this).data("last-value", 'ok')
+	$('#total-price.btn').click (ev) ->
+		$('#new_order_line').submit();
 
 # Init scroll hiding headers
 init_scroll = ->
@@ -249,6 +265,14 @@ add_modal = ->
 remove_modal = ->
 	$('#devise_modal').fadeOut(500)
 	$(".modal-fade a").removeClass("blocked")
+
+update_price = (x, y, z) ->
+	$.ajax
+		url: Routes.shop_update_price_path(),
+		dataType: 'script',
+		data: { product_id: product_id, fabric_id: fabric_id, std_size: x, sep_fabric: y, qty: z },
+		#success: (data) ->    
+		#console.log("ajax successly fired")
 
 # Show/Hide on scroll
 hasScrolled = ->

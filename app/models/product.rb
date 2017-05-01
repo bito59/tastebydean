@@ -2,15 +2,17 @@ class Product < ApplicationRecord
 	extend FriendlyId
   	friendly_id :serial, use: :slugged
 
-  	has_many :product_pictures, dependent: :destroy
-	accepts_nested_attributes_for :product_pictures, allow_destroy: true
+	belongs_to :customer
+	belongs_to :product_family
+	belongs_to :measure
 	has_many :order_lines
 	has_many :orders, through: :order_lines
-	belongs_to :measure
+  	has_many :product_pictures, dependent: :destroy
+	accepts_nested_attributes_for :product_pictures, allow_destroy: true
 
   	after_save :affect_serial # Needs product ID
 	validates_uniqueness_of :serial, message: "This serial number is already used"
-	validates_presence_of :kind, :customer, :family, :title
+	validates_presence_of :kind, :customer, :product_family, :title
 
 # ---------------- Scopes -------------------------------------------------------------------------
 
@@ -40,10 +42,10 @@ class Product < ApplicationRecord
 # ---------------- Options & functions -----------------------------------------------------------------------------
 
 	enum kind: [:model, :accessory, :creation]
-	enum customer: [:man, :woman, :boy, :girl]
-	enum family: [:dress, :jacket, :hat, :tie, :bow_tie, :neck_tie]
-	enum price_unit: [:euro]
-	enum measure_unit: [:m, :cm]
+	#enum customer: [:man, :woman, :boy, :girl]
+	#enum family: [:dress, :jacket, :hat, :tie, :bow_tie, :neck_tie]
+	#enum price_unit: [:euro]
+	#enum measure_unit: [:m, :cm]
 
 	#KINDS = ['model', 'accessory', 'creation']
 	#CUSTOMERS = ['man', 'woman', 'boy', 'girl']
@@ -55,9 +57,9 @@ class Product < ApplicationRecord
 	#PRICE_UNITS = ['€']
 	#MEASURE_UNITS = ['m','cm']
 
-	def find_sizes
-		if self.unic_size == false
-			sizes = {std: self.customer + '_std', big: self.customer + '_big'}
+	def load_sizes
+		unless self.unic_size?
+			sizes = {std: self.customer.title.downcase + '_std', big: self.customer.title.downcase + '_big'}
 		end
 	end
 

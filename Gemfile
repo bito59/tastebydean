@@ -28,6 +28,8 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'drape'
 gem 'neatjson'
 gem 'magnific-popup-rails'
+gem 'groupdate'
+gem "js-routes"
 
 group :development, :test do
   gem 'byebug', platform: :mri

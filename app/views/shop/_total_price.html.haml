@@ -1,0 +1,10 @@
+%h4= t('shop.common.add_to_basket')
+%h5= t('shop.common.total_price') + ' ' + @total_price.to_s
+
+:javascript
+	$(document).ready(function() {
+		qty = $('#order_line_quantity option:selected').val()
+		std_size = $('input[name="order_line[std_size]"]:checked').val();
+		sep_fabric = $('input[name="order_line[sep_fabric]"]:checked').val();
+		console.log(std_size, sep_fabric);
+	});

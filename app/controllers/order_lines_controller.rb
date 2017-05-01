@@ -6,18 +6,18 @@ class OrderLinesController < ApplicationController
   	@order = current_order
     @order_line = @order.order_lines.new(order_line_params)
     respond_to do |format|
-      if @order.save
-        @order.save
+      if @order_line.save
+        #@order.save
         session[:order_id] = @order.id
         if params[:order_line][:quantity].to_i > 1
           flash_message('success', t('.items_added'))
         else
           flash_message('success', t('.item_added'))
         end
-        format.html { redirect_to shop_product_path(@product) }
       else
-        flash_message('error', t('.item_not_added'))
+        flash_message('alert', t('.item_not_added'))
       end
+      format.html { redirect_to shop_product_path(@product) }
     end
   end
 

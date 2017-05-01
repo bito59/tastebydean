@@ -4,8 +4,8 @@ class ProductDecorator < Drape::Decorator
 
   delegate_all
 
-  def show_price
-    self.price.to_s + " " + self.price_unit
+  def show_confection_price
+    self.confection_price.to_s + " " + self.price_unit
   end
 
   def on_measure_rule

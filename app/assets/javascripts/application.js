@@ -1,10 +1,11 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
+
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
 //= require magnific-popup
+//= require js-routes
 
 // Bower adds on
 //= require owl.carousel/dist/owl.carousel.min.js
@@ -16,3 +17,4 @@
 //= require init
 //= require pages
 
+//= require turbolinks

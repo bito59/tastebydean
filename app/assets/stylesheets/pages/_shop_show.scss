@@ -24,8 +24,8 @@
 			position: absolute;bottom: 1em;right: 1em;z-index: 99;width: 33%;
 			img {border-radius: 15px;width: 100%;}
 			.delete {
-				position: absolute;top: -20px;right: -10px;
-				img {width: 20px;}
+				position: absolute;top: -30px;right: -10px;
+				img {width: 40px;}
 			}
 		}
 	}
@@ -73,7 +73,13 @@
 					img {width: 20px; height: 20px;}
 				}
 			}
-			.fabric {bottom: -1em;}
+			.fabric {
+				bottom: -1em;
+				.delete {
+					position: absolute;top: -25px;right: -10px;
+					img {width: 30px;}
+				}
+			}
 		}
 		.info {
 			max-height: calc(512px + 5em); // to be covered by ez-container
@@ -82,14 +88,14 @@
 		}
 		.form {
 			max-height: calc(512px + 5em); // to be covered by ez-container
-			//input, label, btn {margin: 0.5em auto;}
 			input + span {max-width: 80%;}
-			.title {flex: 0; //margin-bottom: 2em;
+			.title {flex: 0;
 			}
 			.sizes, .fabrics, .buy {margin: 0 auto;width: 80%;}
 			.sizes .options {margin: 0;width: 100%;}
 			.icons {max-width: 400px;}
-			.buttons {position: relative;}
+			//.buttons {position: relative;}
+			.buy {margin-top: 2em;}
 			.cancel {margin: 0;}
 		}
 	}

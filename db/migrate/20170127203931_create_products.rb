@@ -4,25 +4,25 @@ class CreateProducts < ActiveRecord::Migration[5.0]
 
     	# Main datas 
     	t.string :serial
+        t.string :title
     	t.boolean :activated, default: false
     	t.integer :kind, default: 1
-    	t.integer :customer, default: 1
-    	t.integer :family, default: 1
-    	t.string :title
-        t.references :measure, foreign_key: true
+    	t.references :customer, index: true
+    	t.references :product_family, foreign_key: true, index: true
+        t.references :measure
 
         # Commercial
     	t.text :description
-    	t.decimal :price, precision: 8, scale: 2
-    	t.integer :price_unit, default: 1
+    	t.decimal :confection_price, precision: 8, scale: 2
+    	t.string :price_unit, default: '€'
 
 		# Production
         t.string :leadtime #leadtime for production
         t.boolean :custom_fabric, default: true #customer can choose his fabric or not
         t.boolean :on_measure, default: true #customer will specify his dimensions
         t.boolean :unic_size, default: true #customer can choose standard or large
-		t.float :fabric_lng_std #fabric lenght for std size
-		t.float :fabric_lrg_std #fabric lenght for std size
+        t.float :fabric_lng_std #fabric lenght for std size
+        t.float :fabric_lrg_std #fabric lenght for std size
         t.float :fabric_lng_big #fabric lenght for large size
         t.float :fabric_lrg_big #fabric lenght for large size
 

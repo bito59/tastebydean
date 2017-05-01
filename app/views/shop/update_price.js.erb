@@ -1,0 +1,4 @@
+$("#total-price").empty();
+$("#total-price").append("<%= j render 'shop/total_price' %>");
+console.log("Price was updated : <%= @total_price.to_s %>");
+

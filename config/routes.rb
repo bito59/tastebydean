@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 		namespace :shop do
 		  resources :products, only: [:index, :show]
 		  resources :fabrics, only: [:index, :show]
+		  match 'update_price', to: 'products#update_price', via: :get, as: :update_price
 		  match '/workshop', to: 'workshop#show', via: :get, as: :workshop
 		end
 		namespace :showroom do

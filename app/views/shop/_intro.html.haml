@@ -1,7 +1,10 @@
 .title.mb
 	%h3.bold= @product.title
 	%h5= @product.serial
-	%h3.price= @product.show_price
+	- if @product.kind == 'model'
+		%h3.price= @product.show_confection_price
+	- if @product.kind == 'fabric' && @selected_product
+		%h3.price= @price.title
 .owl-carousel.owl-theme
 	- if @product.kind == 'model'
 		- @pictures.each do |p|
@@ -14,6 +17,6 @@
 	.fabric
 		= link_to shop_fabric_path(kind: 'fabric', id: @order_line.fabric.id, selected_product_id: @product.id, selected_fabric_id: @order_line.fabric.id, std_size: @order_line.std_size) do
 			= image_tag @order_line.fabric.image.preview.url
-		.delete.lt
+		.delete
 			= link_to shop_product_path(kind: 'model', id: @product.id) do
-				= image_tag 'icons/delete.png'
+				= image_tag 'icons/cancel.png'

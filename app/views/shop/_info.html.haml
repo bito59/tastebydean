@@ -1,24 +1,22 @@
-=# @order_line.inspect
 .title
 	%h3.bold= @product.title
+	%h6= @product.serial
 	- if @product.kind == 'model'
 		.inline-center
 			%h4
 				= t('shop.show.product_for')
-				%span= I18n.t("shop.main_filters.#{@product.customer}").downcase
+				%span= I18n.t("shop.main_filters.#{@product.customer.title.downcase}")
 		.inline-center
-			- if @product.on_measure == true
-				%h4
+			%h4
+				- if @product.on_measure == true
 					= t('shop.show.confection')
-					%span= t('shop.common.euro', count: @product.price) + t('.fabric_unit_price')
-			- else
-				%h4
+				- else
 					= t('shop.common.price')
-					%span= t('shop.common.euro', count: @product.price)
-	- elsif @product.kind == 'fabric'
+				%span= t('shop.common.euro', count: @product.confection_price)
+	- elsif @product.kind == 'fabric' && @price
 		%h4
-			= t('shop.common.price')
-			%span= t('shop.common.euro', count: @product.price) + t('.fabric_unit_price')
+			= t('shop.common.price_for_this_product')
+			%span= @price.price_std.to_s + ' '+ @price.price_unit
 .icons.column-center
 	- if @product.kind == 'model'				
 		.icons.inline-center
@@ -33,12 +31,13 @@
 		.icons.inline-center
 			%li
 				= image_tag('icons/origin.png')
-				%h5= t('.origin') + @product.origin
+				%h5= t('.origin') + @product.origin.to_s
 			%li
 				= image_tag('icons/content.png')
-				%h5= @product.content
+				%h5= '100% ' + I18n.t("shop.families.#{@product.fabric_family.title}")
 			%li
 				%h5= image_tag('icons/use.png')
+				%h5= t('.for_all_products')
 
 .description.column-center
 	%h4= @product.description + @product.description
@@ -49,7 +48,7 @@
 			.qties.inline-around
 				%h3= t('.qties')
 				= f.select :quantity, ['1', '2', '3', '4']
-			= f.submit t('.add_to_basket'), class: "btn btn-valid big"
+			= f.submit t('shop.common.add_to_basket'), class: "btn btn-valid big"
 		- else
 			#btn_custom.btn.btn-green.big
 				- if @product.on_measure == true && @product.custom_fabric == true
@@ -64,7 +63,13 @@
 	- elsif @product.kind == 'fabric' && params.has_key?(:selected_product_id)
 		.btn.btn-green.big
 			= link_to shop_product_path(kind: 'model', id: params[:selected_product_id], selected_fabric_id: @product.id) do
-				%h4= t('.select_this_fabric')
+				- if params.has_key?(:selected_fabric_id)
+					- if params[:selected_fabric_id] == @product.id.to_s
+						%h4= t('.confirm_this_fabric')
+					- else
+						%h4= t('.change_for_this_fabric')
+				- else
+					%h4= t('.select_this_fabric')
 		.btn.btn-info.big
 			= link_to shop_fabrics_path(kind: 'fabric', selected_product_id: params[:selected_product_id], selected_fabric_id: params[:selected_fabric_id]) do
 				%h4= t('.other_fabrics')

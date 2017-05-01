@@ -56,15 +56,24 @@ fr:
     shop:
         common:
             price: 'Prix :'
+            total_price: 'Prix total : '
+            price_for_this_product: 'Prix pour ce produit :'
+            add_to_basket: 'Ajouter au panier'
             euro: 
                 zero: '%{count} euro'
                 one: '%{count} euro'
                 other: '%{count} euros'
+        families:
+            wool: 'laine'
+            cotton: 'cotton'
+            linen: 'lin'
+            silk: 'soie'
         main_filters:
             man: 'Homme'
             woman: 'Femme'
             boy: 'Garçon'
             girl: 'Jeune fille'
+            child: 'Enfant'
             all_models: 'Tous les modèles'
             accessories: 'Les accessoires'
             fabrics: 'Les tissus'
@@ -96,7 +105,6 @@ fr:
             leadtime1: 'Délai'
             leadtime2: '~ %{leadtime} jours'
             qties: 'Quantités :'
-            add_to_basket: 'Ajouter au panier'
             confection: 'Confection :'
         info:
             customize: 'Choisir la taille et le tissu'
@@ -108,6 +116,9 @@ fr:
             return_to_product: 'Retour au produit'
             fabric_unit_price: ' le mètre'
             origin: 'Produit à '
+            for_all_products: 'Tous les produits'
+            confirm_this_fabric: 'Confirmer ce tissu'
+            change_for_this_fabric: 'Changer pour ce tissu'
         details_form:
             choose_your_size: 'Choisissez la taille'
             size_explain: 'Vous recevrez par email les consignes pour prendre vos mesures.'
@@ -118,19 +129,22 @@ fr:
             buy_fabric_myself: 'Vous fournissez le tissu'
             choose_fabric: 'Choisir un tissu'
             change_fabric: 'Changer le tissu'
-            buy_fabric: 'Acheter ce tissu'
+            buy_this_fabric: 'Acheter ce tissu'
             unic_fabric: 'Tissu unique'
             qties: 'Quantités :'
+            price: 'Prix :'
             add_to_basket: 'Ajouter au panier'
             cancel: 'Annuler'
             man_std: 'S à L'
             man_big: 'XL ou plus'
             woman_std: 'T34 à T38'
             woman_big: 'T40 à T46'
-            boy_std: '8 à 10 ans'
+            boy_std: 'Moins de 10 ans'
             boy_big: 'Plus de 10 ans'
             girl_std: 'Moins de 10 ans'
             girl_big: 'Plus de 10 ans'
+            child_std: 'Moins de 10 ans'
+            child_big: 'Plus de 10 ans'
         workshop:
             title: "Venez nous rencontrer !"
             contact: "Nous recevons sur place aux horaires indiqués ou sur rendez-vous."

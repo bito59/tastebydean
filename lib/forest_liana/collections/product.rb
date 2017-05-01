@@ -1,14 +1,14 @@
 class Forest::Product
 	include ForestLiana::Collection
 
-	collection :products
-	field :prices, type: 'String' do
-		if object.price > 1
-			"#{object.price.to_s} #{object.price_unit}s"
-		else
-			"#{object.price.to_s} #{object.price_unit}"
-		end
-	end
+	#collection :products
+	#field :prices, type: 'String' do
+	#	if object.price > 1
+	#		"#{object.price.to_s} #{object.price_unit}s"
+	#	else
+	#		"#{object.price.to_s} #{object.price_unit}"
+	#	end
+	#end
 	field :main_pict, type: 'String' do
 		unless object.product_pictures.main.empty?
 			data = object.product_pictures.main.as_json

@@ -15,7 +15,10 @@ module Shop
 
   	def show
       @order_line = current_order.order_lines.new
-      puts '@product is : ' + @product.inspect
+      if params[:selected_product_id]
+        product_family_id = Product.friendly.find(params[:selected_product_id]).product_family.id
+        @price = @product.fabric_family.fabric_prices.where(product_family_id: product_family_id).first
+      end
   		respond_to do |format|
   			format.html { render 'shop/show.html.haml' }
   		end
@@ -36,7 +39,7 @@ module Shop
       end
         
       def load_fabrics
-        @products = Fabric.with_kind(params[:kind]).on_site
+        @products = Fabric.on_site
         unless params[:family].nil?
           @products = @products.with_family(params[:family])
         end
