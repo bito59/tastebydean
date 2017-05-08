@@ -3,6 +3,7 @@ class MainController < ApplicationController
 	skip_before_action :auth_user
 
 	def welcome
+		puts 'current order : ' + current_order.inspect
 		@news = News.new
 		@root = true
 		if flash.empty?

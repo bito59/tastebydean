@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
 
 	def pass
 		@order = current_order
+		@order.user_id = current_user.id
 		if @order.update(order_params)
 			@order.change_order_status('passed')
 			session.delete :order_id

@@ -18,7 +18,7 @@ footer {height: 2em;bottom: 0px;}
 #ez-container{width: 500px;height: 500px;position: fixed;z-index: -1;}
 #flash_msg {z-index: 999;position: fixed;top: 0;width:100%;}
 
-.c0, .c1, .c2, .c3 {z-index: 2;}
+.c0, .c1, .c2, .c3 {z-index: 2;margin: 0 auto;}
 .c0 {@include background-image('welcome');height: 100vh;} //Full screen page (welcome picture)
 .c1 {max-width: 520px;padding-right: 1em;padding-left: 1em;position: relative;} // // FP with 2 colons in tb (products)
 .c2 {max-width: 1266px;margin-top: 6em;padding: 1em;} // No fp (index)

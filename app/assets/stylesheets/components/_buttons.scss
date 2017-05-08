@@ -1,6 +1,7 @@
 /* ------------------------------ Layouts  ------------------------------ */
 
 input:hover, .btn:hover, label:hover, a:hover {cursor: pointer;}
+input {line-height: 3em;}
 input, .btn, a.btn {font-family: $light;font-size: 1em;border-radius: 10px;}
 input, label, .btn {margin: 1em auto;width: 80%;
 	@include flexbox; @include justify-content(space-around);@include align-items(center);}

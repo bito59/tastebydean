@@ -42,7 +42,11 @@ class Order < ApplicationRecord
 	end
 
 	def count_qties
-		self.order_lines.sum(:quantity)
+		if self.order_lines.any?
+			self.order_lines.sum(:quantity)
+		else
+			0
+		end
 	end
 
 	private

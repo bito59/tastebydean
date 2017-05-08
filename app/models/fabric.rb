@@ -19,7 +19,8 @@ class Fabric < ApplicationRecord
 	scope :on_site, -> { with_picture.active }
 	scope :random, -> { order('RAND()') }
 	#scope :with_kind, -> (kind) { where kind: kind }
-	scope :with_family, -> (family) { where family: family }
+	#scope :with_family, -> (family) { where family: family }
+	scope :with_fabric_family, -> (family) { where fabric_family: family }
 
 # ---------------- Options & functions -----------------------------------------------------------------------------
 

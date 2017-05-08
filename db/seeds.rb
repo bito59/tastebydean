@@ -13,17 +13,17 @@ ProductPicture.delete_all
 
 user = User.create( email: 'bitocreator@gmail.com', password: "fouesnant", password_confirmation: "fouesnant", zipcode: "59000", newsletter: true )
 
-Measure.create(title: 'Simple', around_collar_large: true)
-Measure.create(title: 'More', around_collar_large: true, shoulder_width: true)
-Measure.create(title: 'Complex', around_collar_large: true, shoulder_width: true, shoulder_waist_front_large: true)
+Measure.create(title: 'simple', around_collar_large: true)
+Measure.create(title: 'standard', around_collar_large: true, shoulder_width: true)
+Measure.create(title: 'complex', around_collar_large: true, shoulder_width: true, shoulder_waist_front_large: true)
 
-Customer.create(title: 'Man')
-Customer.create(title: 'Woman')
-Customer.create(title: 'Boy')
-Customer.create(title: 'Girl')
-Customer.create(title: 'Adult')
-Customer.create(title: 'Child')
-Customer.create(title: 'All')
+Customer.create(title: 'man')
+Customer.create(title: 'woman')
+Customer.create(title: 'boy')
+Customer.create(title: 'girl')
+Customer.create(title: 'adult')
+Customer.create(title: 'child')
+Customer.create(title: 'all')
 
 ProductFamily.create(title: 'dress')
 ProductFamily.create(title: 'vest')

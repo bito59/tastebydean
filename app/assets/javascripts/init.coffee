@@ -23,24 +23,24 @@ init_links = ->
 		qty = $('#order_line_quantity option:selected').val()
 		update_price(std_size, sep_fabric, qty)
 	$('#order_line_std_size_true').click (ev) ->
-		std_size = 'true'
+		std_size = true
 		ev.stopPropagation()
-		update_price(std_size, sep_fabric)
+		update_price(std_size, sep_fabric, qty)
 		$('.small_size').show()
 		$('.big_size').hide()
 	$('#order_line_std_size_false').click (ev) ->
-		std_size = 'false'
+		std_size = false
 		ev.stopPropagation()
-		update_price(std_size, sep_fabric)
+		update_price(std_size, sep_fabric, qty)
 		$('.small_size').hide()
 		$('.big_size').show()
 	$('#order_line_sep_fabric_true').click (ev) ->
 		sep_fabric = 'true'
-		update_price(std_size, sep_fabric)
+		update_price(std_size, sep_fabric, qty)
 		$("#order_line_sep_fabric_false").data("last-value", "")
 	$('#order_line_sep_fabric_false').change (ev) ->
 		sep_fabric = 'false'
-		update_price(std_size, sep_fabric)
+		update_price(std_size, sep_fabric, qty)
 		$('.full-price').show()
 		$('.confection-price').hide()
 		if $(this).data("last-value") == 'ok' # It was already checked
@@ -270,7 +270,7 @@ update_price = (x, y, z) ->
 	$.ajax
 		url: Routes.shop_update_price_path(),
 		dataType: 'script',
-		data: { product_id: product_id, fabric_id: fabric_id, std_size: x, sep_fabric: y, qty: z },
+		data: { id: product_id, fabric_id: fabric_id, std_size: x, sep_fabric: y, qty: z },
 		#success: (data) ->    
 		#console.log("ajax successly fired")
 

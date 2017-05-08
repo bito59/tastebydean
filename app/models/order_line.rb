@@ -8,21 +8,21 @@ class OrderLine < ApplicationRecord
 	validate :product_present
 	validate :order_present
 
-	before_save :finalize
+	before_save :update_price
 
 # ---------------- Methods and selects  -----------------------------------------------------------------------------
 
 
-	def unit_price
+	def calc_unit_price
 		if persisted?
 			self[:confection_price] + self[:fabric_price]
 		else
-			fabric_price + confection_price
+			confection_price + fabric_price
 		end
 	end
 
-	def total_price
-		unit_price * quantity
+	def calc_price
+		calc_unit_price * quantity
 	end
 
 	private
@@ -39,9 +39,11 @@ class OrderLine < ApplicationRecord
 		end
 	end
 
-	def finalize
-		self[:unit_price] = unit_price
+	def update_price
+		#sets the price of the cart item to the price of the product + fabric
+		self[:unit_price] = calc_unit_price
 		self[:total_price] = quantity * self[:unit_price]
+		puts 'price updated with :' + self[:unit_price].to_s + ' and ' + self[:total_price].to_s
 	end
 
 end

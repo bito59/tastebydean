@@ -34,28 +34,14 @@ class Product < ApplicationRecord
 	scope :with_discount, -> { where discount: true }
 	
 	scope :with_kind, -> (kind) { where kind: kind }
-	scope :with_family, -> (family) { where family: family }
-	scope :with_customer, -> (customer) { where customer: customer }
-	scope :adult, -> { where("customer = ? or customer = ?", 'man', 'woman') }
-	scope :child, -> { where("customer = ? or customer = ?", 'boy', 'girl') }
+	#scope :with_product_family, -> (family) { where product_family: family }
+	scope :with_customer, -> (customer, age) { joins(:customer)
+		.where('customers.title = ? OR customers.title = ?', customer, age)
+	}
 
 # ---------------- Options & functions -----------------------------------------------------------------------------
 
 	enum kind: [:model, :accessory, :creation]
-	#enum customer: [:man, :woman, :boy, :girl]
-	#enum family: [:dress, :jacket, :hat, :tie, :bow_tie, :neck_tie]
-	#enum price_unit: [:euro]
-	#enum measure_unit: [:m, :cm]
-
-	#KINDS = ['model', 'accessory', 'creation']
-	#CUSTOMERS = ['man', 'woman', 'boy', 'girl']
-	#FAMILIES = {
-	#	female: ['dress','jacket','hat'],
-	#	male: ['tie','bow-tie','neck-tie','jacket'],
-	#	material: ['silk','cotton-silk','cotton']
-	#}
-	#PRICE_UNITS = ['€']
-	#MEASURE_UNITS = ['m','cm']
 
 	def load_sizes
 		unless self.unic_size?
