@@ -15,12 +15,13 @@ module Shop
 
   	def show
       @order_line = current_order.order_lines.new
+      @pictures = @product.fabric_pictures.active.view
       if params[:selected_product_id]
         product_family_id = Product.friendly.find(params[:selected_product_id]).product_family.id
         @price = @product.fabric_family.fabric_prices.where(product_family_id: product_family_id).first
       end
   		respond_to do |format|
-  			format.html { render 'shop/show.html.haml' }
+  			format.html { render 'shop/show/show' }
   		end
   	end
 
@@ -43,7 +44,7 @@ module Shop
         unless params[:family].nil?
           @products = @products.with_fabric_family(params[:family])
         end
-        puts @fabrics.inspect
+        #puts @fabrics.inspect
       end
   end
 end

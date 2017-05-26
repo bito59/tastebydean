@@ -1,0 +1,44 @@
+= form_for @order_line, authenticity_token: true, class: 'sized' do |f|
+	= f.hidden_field :product_id, value: @product.id
+	= f.hidden_field :fabric_id, value: @order_line.fabric_id, id: 'ol_fabric_field'
+	.sub-cont.flex
+		%section#section1.section.shop_show.c1.dyn-header.fp-mb{'data-anchor': '1'}
+			.intro
+				= render partial: 'shop/show/intro', locals: {f: f, product: @product, sizes: @sizes}
+			#ez-container
+		%section#section2.section.shop_show.c1{'data-anchor': '2'}
+			.info.fill-height
+				= render partial: 'shop/show/info', locals: {f: f, product: @product, sizes: @sizes}
+		- if @product.kind == 'model' && (@product.on_measure == true || @product.custom_fabric == true)
+			%section#section3.section.shop_show.c1{'data-anchor': '3'}
+				.form.fill-height
+					= render partial: 'shop/show/details_form', locals: {f: f, product: @product, sizes: @sizes}
+
+:javascript
+	$(document).ready(function() {
+		product_id = "#{@product.id}";
+		fabric_id = "#{@order_line.fabric_id}";
+		if ($('#ol_fabric_field').val().length > 0 && screen.width > 1023) {
+			$('#section2.shop_show').hide();
+			$('#section3.shop_show').show();
+		}
+			
+		$('#btn_custom').click(function() {
+			if (screen.width < 1024) {
+				$.fn.fullpage.moveTo(3);
+			}else {
+				$("#section2").fadeOut(500, function(){
+					$("#section3").fadeIn(500);
+				});
+			}
+		});
+		$('.cancel').click(function() {
+			if (screen.width < 1024) {
+				$.fn.fullpage.moveTo(2);
+			}else {
+				$("#section3").fadeOut(500, function(){
+					$("#section2").fadeIn(500);
+				});
+			}
+		});
+	});

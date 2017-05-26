@@ -32,14 +32,11 @@ module Shop
           confection_price: @product.confection_price,
         )
       end
-      #puts 'test : ' + @order_line.inspect
       @total_price = @order_line.calc_price
       @sizes = @product.load_sizes
       @pictures = @product.product_pictures.active
-      #puts @order_line.inspect
-      #puts 'total price is : ' + @total_price.to_s
   		respond_to do |format|
-  			format.html { render 'shop/show' }
+  			format.html { render 'shop/show/show' }
   		end
   	end
 
@@ -56,7 +53,7 @@ module Shop
       puts orderline.inspect
       @total_price = orderline.calc_price
       respond_to do |format|
-        format.js { render 'shop/update_price.js.erb' }
+        format.js { render 'shop/show/update_price.js.erb' }
       end
     end
 

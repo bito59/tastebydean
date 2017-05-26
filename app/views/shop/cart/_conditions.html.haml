@@ -1,0 +1,12 @@
+%h4.title= t('shop.cart.conditions.title')
+.condition
+	%h5.green= t('shop.cart.conditions.fabric1')
+	%h5= t('shop.cart.conditions.fabric2') 
+.condition
+	%h5.green= t('shop.cart.conditions.leadtime1') 
+	%h5= t('shop.cart.conditions.leadtime2')  
+.option.flex
+	= f.radio_button :accept_conditions, true, checked: false, required: true
+	%h5
+		= t('shop.cart.conditions.accept_conditions')
+		= link_to t('shop.cart.conditions.cgv'), root_path, {class: 'green', target: '_blank'}

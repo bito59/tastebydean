@@ -27,11 +27,11 @@ $main-title-map: (null: (ms(2), 1.2), mobile: ms(2), tablet: ms(3), laptop: ms(3
 
 html {@include typi-base();}
 body, a, h1, h2, h3, h4, h5, input, span, p {font-family: $light;}
-h1, h1 > span { @include typi($h1-map) }
-h2, h2 > span { @include typi($h2-map);}
-h3, h3 > span, select { @include typi($h3-map);}
-h4, ul, li, p, a { @include typi($typi) }
-h5, h5 > span, span { @include typi($h5-map) }
+h1, h1 > span, h1 > a { @include typi($h1-map) }
+h2, h2 > span, h2 > a { @include typi($h2-map);}
+h3, h3 > span, select, h3 > a { @include typi($h3-map);}
+h4, ul, li, p, a, h4 > a { @include typi($typi) }
+h5, h5 > span, span, h5 > a { @include typi($h5-map) }
 
 a, h1, h2, h3, h4, h5, input {text-align: center; vertical-align: middle;text-decoration: none;}
 a:hover {text-decoration: none; cursor: pointer;}
@@ -73,6 +73,11 @@ footer {font-family: $regular;
 .shop_show {
     .icons h4 {line-height: 1.5;}
     .customize_form select {@include typi($h3-map)}
+}
+
+.shop_cart {
+    .title {font-family: $regular;}
+    #delivery .option span {@include typi($typi)}
 }
 
 @media (min-width: map-get($breakpoints, tablet)) {

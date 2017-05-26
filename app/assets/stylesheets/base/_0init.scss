@@ -9,6 +9,7 @@ ul, li {list-style-type: none;vertical-align: middle;width: 100%;//margin: auto;
 li { display:inline;}
 input {border: none;}
 img { vertical-align: middle;}
+table {margin: auto;}
 
 //Typi breakpoint variables
 $breakpoints: (mobile: 320px, tablet: 720px, laptop: 1024px, desktop: 1366px);

@@ -1,0 +1,8 @@
+<% unless @order_line.nil? %>
+	$('#ol_<%= @order_line.id %>').fadeOut("slow",function(){ $(this).remove(); });
+	console.log("Order_line was deleted. New total price : <%= j @order.subtotal.to_s %>");	
+<% end %>
+$("#subtotal").text("<%= j @order.subtotal.to_s %>");
+$("#total").text("<%= j @order.total.to_s %>");
+$('#flash_msg').append("<%= j render_flash %>").change();
+console.log("cart updated");	

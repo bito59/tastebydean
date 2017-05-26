@@ -1,26 +1,34 @@
 class OrdersController < ApplicationController
 	include ApplicationHelper
 
-	def pass
+	def update
 		@order = current_order
-		@order.user_id = current_user.id
+		#puts '@order : ' + @order.inspect
 		if @order.update(order_params)
-			@order.change_order_status('passed')
-			session.delete :order_id
-			#OrderMailer.confirm_order(User.first, @order).deliver
-			flash_message('confirm', 'The order ' + @order.serial + ' has been created !')
-			redirect_to root_path
+			if order_params[:accept_conditions] == 'false'
+				flash_message('notice', t('flash_messages.pls_accept_conditions'))
+				redirect_to shop_cart_show_path
+			elsif order_params[:delivery_method] == 'delivery' && order_params.values.any?(&:blank?)
+				flash_message('notice', t('flash_messages.pls_check_adress'))
+				redirect_to shop_cart_show_path
+			else
+				@order.change_order_status('passed')
+				session.delete :order_id
+				flash_message('success', t('flash_messages.order_passed', serial: @order.serial))
+				redirect_to root_path
+			end
 		else
-			flash_message('alert', 'There is a problem with your order...')
-			redirect_to cart_path
+			flash_message('alert', t('flash_messages.order_cant_pass'))
+			redirect_to shop_cart_show_path
 		end
   	end
 
-private
+
+	private
 
 	def order_params
 		params.require(:order).permit( :delivery_method, :payment_method, :user_id,
-			:name, :surname, :address, :zipcode, :city, :country, :phone)
+			:name, :surname, :address, :zipcode, :city, :country, :phone, :accept_conditions)
 	end
 
 end

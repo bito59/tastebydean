@@ -4,6 +4,7 @@ class Fabric < ApplicationRecord
   	belongs_to :fabric_family
 	has_many :order_lines
 	has_many :orders, through: :order_lines
+	has_many :fabric_pictures, dependent: :destroy
 
 	mount_uploader :image, FabricPictureUploader
 	validate :image_size_validation
@@ -14,22 +15,22 @@ class Fabric < ApplicationRecord
 
 # ---------------- Scopes -------------------------------------------------------------------------
 
-	scope :with_picture, -> { where.not image: nil }
-	scope :active, -> { where activated: true }
-	scope :on_site, -> { with_picture.active }
+	#scope :with_picture, -> { where.not image: nil }
+	scope :on_site, -> { joins(:fabric_pictures)
+		.where('fabric_pictures.activated = ?',true)
+		.where('fabric_pictures.preview = ?',false)
+		.group("fabrics.id")
+		.having("count(fabric_pictures.id) > ?",0)
+	}
 	scope :random, -> { order('RAND()') }
-	#scope :with_kind, -> (kind) { where kind: kind }
-	#scope :with_family, -> (family) { where family: family }
-	scope :with_fabric_family, -> (family) { where fabric_family: family }
+	scope :with_fabric_family, -> (family) { joins(:fabric_family)
+		.where('fabric_families.title = ?', family)
+	}
 
 # ---------------- Options & functions -----------------------------------------------------------------------------
 
-	#enum kind: [:fabric]
-	#enum family: [:silk, :linen, :wool, :cotton, :viscos, :velvet, :satin, :knit]
-	#enum price_unit: [:euro]
-
 	def on_site?
-		if self.activated == true && self.image.url != nil
+		if self.activated == true && self.fabric_pictures.active.view.count > 0
 			true
 		else
 			false

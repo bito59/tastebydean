@@ -48,6 +48,22 @@ init_links = ->
 		$(this).data("last-value", 'ok')
 	$('#total-price.btn').click (ev) ->
 		$('#new_order_line').submit();
+	# Trigger delivery options
+	$('#order_delivery_method_delivery').click (ev) ->
+		$('#delivery_details').slideDown(1000)
+		$('.collect').fadeOut()
+		$('.delivery').fadeIn()
+		#$('body, html, #delivery_details').scrollTop(0)
+		#$('#delivery_details').animate({ scrollTop: 0 }, .2)
+	$('#order_delivery_method_collect, #adress_validate').click (ev) ->
+		$('#delivery_details').slideUp(1000)
+		#$('html, body').scrollTop()
+	$('#order_delivery_method_collect').click (ev) ->
+		$('.collect').fadeIn()
+		$('.delivery').fadeOut()
+		
+		
+		
 
 # Init scroll hiding headers
 init_scroll = ->
@@ -215,7 +231,7 @@ show_flash = ->
 		$('#flash_msg')
 			.fadeOut 2000, ->
 				$(this).empty()
-	, 4000
+	, 400000
 	#console.log 'Flash fired'
 
 # Move nav buttons into carousel

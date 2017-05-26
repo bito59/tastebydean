@@ -48,6 +48,8 @@ module ApplicationHelper
 			@area = 'fabric'
 		elsif request.original_url.include?('workshop')
 			@area = 'workshop'
+		elsif request.original_url.include?('cart')
+			@area = 'workshop'
 		end
 		@area
 	end
@@ -90,31 +92,31 @@ module ApplicationHelper
 	def selected_link(option, url)		
 		if params[:kind] == 'model'
 			if params[:customer].nil? && option.include?('all')
-				result = link_to I18n.t('shop.main_filters.' + option), url, class: 'selected'
+				result = link_to I18n.t('shop.filters.' + option), url, class: 'selected'
 			elsif params[:customer] == option
-				result = link_to I18n.t('shop.main_filters.' + option), url, class: 'selected'
+				result = link_to I18n.t('shop.filters.' + option), url, class: 'selected'
 			else
-				result = link_to I18n.t('shop.main_filters.' + option), url
+				result = link_to I18n.t('shop.filters.' + option), url
 			end
 		elsif params[:kind] == 'accessory'
 			if option == 'accessories'
-				result = link_to I18n.t('shop.main_filters.' + option), url, class: 'selected'
+				result = link_to I18n.t('shop.filters.' + option), url, class: 'selected'
 			else
-				result = link_to I18n.t('shop.main_filters.' + option), url
+				result = link_to I18n.t('shop.filters.' + option), url
 			end
 		elsif params[:kind] == 'fabric'
 			if params[:family].nil? && option.include?('all')
-				result = link_to I18n.t('shop.main_filters.' + option), url, class: 'selected'
+				result = link_to I18n.t('shop.filters.' + option), url, class: 'selected'
 			elsif params[:family] == option
-				result = link_to I18n.t('shop.main_filters.' + option), url, class: 'selected'
+				result = link_to I18n.t('shop.filters.' + option), url, class: 'selected'
 			else
-				result = link_to I18n.t('shop.main_filters.' + option), url
+				result = link_to I18n.t('shop.filters.' + option), url
 			end
 		elsif request.original_url.include?('workshop')
 			if option == 'workshop'
-				result = link_to I18n.t('shop.main_filters.' + option), url, class: 'selected'
+				result = link_to I18n.t('shop.filters.' + option), url, class: 'selected'
 			else
-				result = link_to I18n.t('shop.main_filters.' + option), url
+				result = link_to I18n.t('shop.filters.' + option), url
 			end
 		end
 		result

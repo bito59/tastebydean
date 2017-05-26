@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430204835) do
+ActiveRecord::Schema.define(version: 20170508112122) do
 
   create_table "customers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20170430204835) do
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "fabric_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "fabric_id"
+    t.boolean  "activated",                default: true
+    t.boolean  "main",                     default: false
+    t.boolean  "preview",                  default: false
+    t.text     "image",      limit: 65535
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.index ["fabric_id"], name: "index_fabric_pictures_on_fabric_id", using: :btree
   end
 
   create_table "fabric_prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -133,12 +144,12 @@ ActiveRecord::Schema.define(version: 20170430204835) do
     t.string   "city"
     t.string   "country"
     t.string   "phone"
-    t.decimal  "subtotal",          precision: 12, scale: 3
-    t.decimal  "shipping_fees",     precision: 12, scale: 3
-    t.decimal  "tax_fees",          precision: 12, scale: 3
-    t.decimal  "share_discount",    precision: 10
-    t.decimal  "num_discount",      precision: 10
-    t.decimal  "total",             precision: 12, scale: 3
+    t.decimal  "subtotal",          precision: 12, scale: 3, default: "0.0"
+    t.decimal  "shipping_fees",     precision: 12, scale: 3, default: "0.0"
+    t.decimal  "tax_fees",          precision: 12, scale: 3, default: "0.0"
+    t.decimal  "share_discount",    precision: 10,           default: 0
+    t.decimal  "num_discount",      precision: 12, scale: 3, default: "0.0"
+    t.decimal  "total",             precision: 12, scale: 3, default: "0.0"
     t.string   "payment_method"
     t.string   "payment_type"
     t.string   "payment_status"
@@ -147,8 +158,8 @@ ActiveRecord::Schema.define(version: 20170430204835) do
     t.datetime "confirmation_date"
     t.datetime "expedition_date"
     t.datetime "payment_date"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
@@ -219,6 +230,7 @@ ActiveRecord::Schema.define(version: 20170430204835) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "fabric_pictures", "fabrics"
   add_foreign_key "fabric_prices", "fabric_families"
   add_foreign_key "fabric_prices", "product_families"
   add_foreign_key "fabrics", "fabric_families"

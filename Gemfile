@@ -9,7 +9,6 @@ gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-gem 'rspec'
 
 # Custom gems
 gem 'haml'
@@ -29,10 +28,17 @@ gem 'drape'
 gem 'neatjson'
 gem 'magnific-popup-rails'
 gem 'groupdate'
-gem "js-routes"
+gem 'js-routes'
 
 group :development, :test do
-  gem 'byebug', platform: :mri
+	gem 'rspec-rails'
+  	gem 'byebug', platform: :mri
+end
+
+group :test do
+	gem 'factory_girl_rails'
+	gem 'capybara'
+	gem 'guard-rspec'
 end
 
 group :development do

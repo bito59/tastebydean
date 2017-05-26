@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
 
 	before_create :init_order_params
-	before_save :update_subtotal
+	before_save :update_subtotal, :update_total
 	after_save :affect_serial
 
 	belongs_to :user
@@ -32,8 +32,12 @@ class Order < ApplicationRecord
 		end
 	end
 
-	def subtotal
+	def calc_subtotal
 		order_lines.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
+	end
+
+	def calc_total
+		(self[:subtotal] + self[:shipping_fees] + self[:tax_fees] + self[:num_discount])*(1-self[:share_discount])
 	end
 
 	def change_order_status(status)
@@ -53,11 +57,18 @@ class Order < ApplicationRecord
 
 	def init_order_params
 		self.status = 'basket'
-		self.shipping_fees = "0"
+		self.shipping_fees = 0
+		self.tax_fees = 0
+		self.share_discount = 0
+		self.num_discount = 0
 	end
 
 	def update_subtotal
-		self[:subtotal] = subtotal
+		self[:subtotal] = calc_subtotal
+	end
+
+	def update_total
+		self[:total] = calc_total
 	end
 
 end

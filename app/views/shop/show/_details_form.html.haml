@@ -1,0 +1,64 @@
+.title.lt
+	%h3.bold= @product.title
+.sizes.column-center
+	- if @product.unic_size == true
+		.subtitle.inline-center
+			%h3= t('shop.show.not_on_measure')
+			= image_tag('icons/size-unic.png')
+			= f.hidden_field :size, value: 'unic'
+	- else
+		.subtitle.inline-center
+			%h3= t('.choose_your_size')
+			= image_tag('icons/size-custom.png')
+		.options.inline-center
+			%label.option
+				= f.radio_button :std_size, true
+				%span= t('.' + sizes[:std])
+			%label.option
+				= f.radio_button :std_size, false 
+				%span= t('.' + sizes[:big])
+		.msg
+			%h6= t('.size_explain')
+
+.fabrics.column-center
+	- if @product.custom_fabric == false
+		.inline-center
+			%h3= t('shop.show.unic_fabric')
+			= image_tag('icons/fabric-unic.png')
+	- else
+		.inline-center
+			%h3= t('.choose_your_fabric')
+			= image_tag('icons/fabric-custom.png')
+		.dimensions	
+			%h6.small_size= t('shop.details_form.dimensions', length: product.fabric_lng_std, large: product.fabric_lrg_std)
+			%h6.big_size= t('shop.details_form.dimensions', length: product.fabric_lng_big, large: product.fabric_lrg_big)
+		.options.inline-center
+			.hidded-link
+				- if @order_line.fabric_id
+					= link_to '#', shop_fabric_path(kind: 'fabric', id: @order_line.fabric_id,selected_product_id: @product.id, selected_fabric_id: params[:selected_fabric_id]), id: 'link_to_fabrics'
+					
+			%label.option
+				= f.radio_button :sep_fabric, true
+				%span= t('.buy_fabric_myself')
+			- if @order_line.fabric_id
+				%label.option
+					= f.radio_button :sep_fabric, false
+					%span{id: 'select_fabric_link'}= t('.buy_this_fabric')
+			- else
+				%label.option
+					= link_to t('.choose_fabric'), shop_fabrics_path(kind: 'fabric', selected_product_id: @product.id), id: 'link_to_fabrics'
+		.msg
+			- if @order_line.fabric_id
+				%h6= t('.confirm_fabric_explain')
+			- else
+				%h6= t('.choose_fabric_explain')
+
+.buy.column-center
+	.qties.inline-center
+		%h3= t('shop.common.qties')
+		= f.select :quantity, ['1', '2', '3', '4']
+	#total-price.btn.btn-custom.btn-valid.column-center
+		= render partial: 'shop/show/total_price'
+	.btn.btn-red.cancel
+		%h4= t('.cancel')
+

@@ -36,7 +36,7 @@ class Product < ApplicationRecord
 	scope :with_kind, -> (kind) { where kind: kind }
 	#scope :with_product_family, -> (family) { where product_family: family }
 	scope :with_customer, -> (customer, age) { joins(:customer)
-		.where('customers.title = ? OR customers.title = ?', customer, age)
+		.where('customers.title = ? OR customers.title = ? OR customers.title = ?', customer, age, 'all')
 	}
 
 # ---------------- Options & functions -----------------------------------------------------------------------------

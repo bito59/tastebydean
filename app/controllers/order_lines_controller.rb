@@ -1,26 +1,28 @@
 class OrderLinesController < ApplicationController
   include ApplicationHelper
-  skip_before_action :auth_user, only: [:create]
+  #skip_before_action :auth_user, only: [:create]
   before_action :find_product, only: [:create]
   before_action :set_order_line, only: [:show, :edit, :update, :destroy]
 
   def create
     #save the current order instance stored in the session
   	@order = current_order
+    @order.user_id = current_user.id
     @order.save
+    set_order_session(@order)
     @order_line = @order.order_lines.new(order_line_params)
-    session[:order_id] = @order.id
     #set prices
-    if params[:order_line][:sep_fabric] == 'true'
-      @order_line.fabric_price = 0
-    else
+    if params[:order_line][:sep_fabric] == 'false'
       @order_line.fabric_price = find_fabric_price(@product.id, @order_line.fabric_id, 
         @order_line.std_size)
+    else
+      @order_line.fabric_price = 0
     end
     @order_line.confection_price = @product.confection_price
-    #set the session_id to @order.id
     respond_to do |format|
       if @order_line.save
+        #save the order to recalculate the prices
+        @order.save
         if params[:order_line][:quantity].to_i > 1
           flash_message('success', t('.items_added'))
         else
@@ -46,11 +48,12 @@ class OrderLinesController < ApplicationController
     @order_line = OrderLine.find(params[:id])
     respond_to do |format|
       if @order_line.destroy
-        @order.save
+        @order.save #Update prices
         if @order.order_lines.any?
-          flash_message('success', t('.ol_removed'))
-          format.js { render 'order_lines/destroy.js.erb' }
+          #flash_message('success', t('.ol_removed'))
+          format.js { render 'shop/cart/update_cart' }
         else
+          flash_message('notice', t('flash_messages.empty_cart'))
           format.js { render js: "window.location = '#{root_path}'" }
         end
       end

@@ -3,6 +3,8 @@ class OrderLine < ApplicationRecord
 	belongs_to :order
 	belongs_to :product
 	belongs_to :fabric
+	has_many :product_pictures, through: :product
+	has_many :fabric_pictures, through: :fabric
 
 	validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
 	validate :product_present

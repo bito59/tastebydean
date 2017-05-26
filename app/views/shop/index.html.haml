@@ -16,7 +16,10 @@
 					= link_to shop_fabric_path(id: product.slug, family: params[:family], selected_product_id: params[:selected_product_id], selected_fabric_id: params[:selected_fabric_id], size: params[:size]) do
 						%h3.title= product.title
 						.img
-							= image_tag product.image.preview	
+							- if product.fabric_pictures.active.preview.any?
+								= image_tag product.fabric_pictures.active.preview.first.image.preview
+							- else
+								= image_tag product.fabric_pictures.active.view.first.image.preview	
 
 :javascript
 	$(document).on('turbolinks:load', function() {

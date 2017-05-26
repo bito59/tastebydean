@@ -1,8 +1,14 @@
 fr:
+    common:
+        validate: 'Valider'
     flash_messages:
         news_created: 'Vous êtes abonné !'
         news_problem: 'Impossible de vous abonner'
         welcome: 'Bienvenue chez Dean !'
+        empty_cart: 'Votre panier est vide'
+        cart_problem: 'Problème de panier'
+        order_passed: 'Merci pour votre commande !'
+        order_cant_pass: 'Il y a un problème avec votre commande'
     layouts:
         main_filters:
             admin: 'Admin'
@@ -30,7 +36,15 @@ fr:
         header_welcome:
             cart_items: '%{count}'
         header_others:
-            cart_items: '%{count}'
+            cart_items: '%{count}'     
+    fabrics:
+        zero: '%{count} tissu'
+        one: '%{count} tissu'
+        other: '%{count} tissus'
+    products:
+        zero: '%{count} produit'
+        one: '%{count} produit'
+        other: '%{count} produits'
     public:
         welcome:
             welcome_title: "La tenue de cérémonie sur mesure"
@@ -52,49 +66,38 @@ fr:
             discover: "Découvrez les dernières nouveautés par email :"
             zipcode: "Code postal"
             email: "Email"
-            validate: 'Valider'
     shop:
         common:
+            qties: 'Quantités :'
             price: 'Prix :'
+            subtotal: 'Total :'
             total_price: 'Prix total : '
+            total_ttc: 'Total TTC :'
             price_for_this_product: 'Prix pour ce produit :'
             add_to_basket: 'Ajouter au panier'
+            cancel: 'Annuler'
+            pass_order: 'Passer la commande'
+            free: 'Gratuit !'
             euro: 
                 zero: '%{count} euro'
                 one: '%{count} euro'
-                other: '%{count} euros'
-        families:
-            wool: 'laine'
-            cotton: 'cotton'
-            linen: 'lin'
-            silk: 'soie'
-        main_filters:
+                other: '%{count} euros'  
+        filters:
             man: 'Homme'
             woman: 'Femme'
             boy: 'Garçon'
             girl: 'Jeune fille'
             child: 'Enfant'
+            all: 'Tous'
             all_models: 'Tous les modèles'
             accessories: 'Les accessoires'
             fabrics: 'Les tissus'
-            silk: 'Soie'
-            cotton: 'Coton'
-            cotton-silk: 'Soie coton'
             all_fabrics: 'Tous les tissus'
+            wool: 'laine'
+            cotton: 'cotton'
+            linen: 'lin'
+            silk: 'soie'
             workshop: "L'atelier"
-        mb_filters:
-            fabrics: 'Les tissus'
-            accessories: 'Les accessoires'
-            workshop: "L'atelier"
-            silk: 'Soie'
-            cotton: 'Coton'
-            cotton-silk: 'Soie coton'
-            all_fabrics: 'Tous les tissus'
-            man: "Homme"
-            woman: "Femme"
-            girl: 'Jeune fille'
-            boy: "Garçon"
-            all_models: "Tous les modèles" 
         show:
             product_for: 'Produit pour : '
             on_measure: 'Sur mesure'
@@ -104,7 +107,6 @@ fr:
             not_on_measure: 'Taille unique'
             leadtime1: 'Délai'
             leadtime2: '~ %{leadtime} jours'
-            qties: 'Quantités :'
             confection: 'Confection :'
         info:
             customize: 'Choisir la taille et le tissu'
@@ -131,10 +133,6 @@ fr:
             change_fabric: 'Changer le tissu'
             buy_this_fabric: 'Acheter ce tissu'
             unic_fabric: 'Tissu unique'
-            qties: 'Quantités :'
-            price: 'Prix :'
-            add_to_basket: 'Ajouter au panier'
-            cancel: 'Annuler'
             man_std: 'S à L'
             man_big: 'XL ou plus'
             woman_std: 'T34 à T38'
@@ -155,72 +153,46 @@ fr:
             phone: '+33 6 60 10 44 00'
             opening: 'Les lundi, mercredi et vendredi de 12h00 à 19h00'
             social: 'Rejoignez Dean corder sur Facebook et Instagram'
+        cart:
+            table:  # Table in cart page
+                quantity: 'Quantités'
+                product: 'Produits'
+                fabric: 'Tissus'
+                unit_price: 'Prix unitaire'
+                total_price: 'Total'
+            empty_cart: "Votre panier est vide !"
+            own_fabric: "Vous fournissez le tissu"
+            delivery:
+                title: "Choix de la livraison :"
+                c&c: "Livraison à l'atelier sur RDV"
+                c&c_price: "gratuit"
+                c&s: "Expédition à mon adresse"
+                c&s_price: "5€"
+                shipping_fees: "Frais de livraison :"
+                name: 'Nom'
+                surname: 'Prénom'
+                address: 'Adresse'
+                zipcode: 'Code postal'
+                city: 'Ville'
+                country: 'Pays'
+                phone: 'Téléphone'
+            payment:
+                title: "Choix du paiement :"
+                online: 'En ligne'
+                check : 'Chèque'
+                quotation: 'Recevoir un devis'
+            conditions:
+                title: "Conditions :"
+                fabric1: "Vous avez choisi de fournir le tissu pour certains articles"
+                fabric2: "Les quantités requises vous seront communiqées par email, Les frais d’acheminement jusqu’à notre atelier sont à votre charge."
+                leadtime1: "Nos délais d’expédition sont d’en moyenne 2 semaines"
+                leadtime2: "à compter de la réception de toutes les mesures et des tissus. Vous serez avertis de la production des articles par email."
+                accept_conditions: "j'accepte les "
+                cgv: "conditions générales de vente"
     showroom:
         index:
             title: "Vous souhaitez réaliser l'une de vos créations ?"
             contact: "Venez visiter l'atelier ou contactez moi pour en discuter ! ..."
-    fabrics:
-        zero: '%{count} tissu'
-        one: '%{count} tissu'
-        other: '%{count} tissus'
-    products:
-        zero: '%{count} produit'
-        one: '%{count} produit'
-        other: '%{count} produits'
-        browse_products:
-            man: "Homme"
-            woman: "Femme"
-            child: "Enfant"
-            all_models: "Tous les modèles"
-            products: 
-                one: "produit"
-                other: " %{count} produits"
-        show_product:
-            share: "Partager ce produit"
-        buy_form:
-            available_fabrics: "Tissus disponibles"
-            i_buy_fabric: "J'achette mon tissus."
-            add_to_basket: 'Ajouter au panier'
-    carts:
-        shopping_cart:
-            empty_cart: "Votre panier est vide !"
-            quantity: "Quantité"
-            product: "Produit"
-            photo: "Photo"
-            fabric: "Tissu"
-            unit_price: "Prix"
-            total_price: "Total"
-            basket_total: "Sous total :"
-            shipping_fees: "Frais de livraison :"
-            # Delivery
-            delivery_title: "Choix de la livraison :"
-            c&c: "Je viens chercher ma commande à l'atelier sur RDV"
-            c&c_price: "gratuit"
-            c&s: "Expédition à mon adresse"
-            c&s_price: "payant"
-            surname: "Prénom"
-            name: "Nom"
-            address: "Adresse"
-            zipcode: "Code postal"
-            city: "Ville"
-            phone: "Téléphone"
-            # Invoice
-            invoice_title: "Détails pour la facturation :"
-            # Payment details
-            payment_title: "Choix du paiement :"
-            payment_title: 'Type de paiement :'
-            proposal: 'Faire un devis'
-            total: 'Total TTC :'
-            # Conditions
-            conditions_title: "Conditions :"
-            condition1_title: "Vous avez choisi de fournir le tissu pour certains articles"
-            condition1: "Les quantités requises vous seront communiqées par email, Les frais d’acheminement jusqu’à notre atelier sont à votre charge."
-            condition2_title: "Nos délais d’expédition sont d’en moyenne 2 semaines"
-            condition2: "à compter de la réception de toutes les mesures et des tissus. Vous serez avertis de la production des articles par email."
-            conditions_valid: "j'accepte les conditions générales de vente"
-            #
-            order_btn: "Commander"
-
 
 
 
