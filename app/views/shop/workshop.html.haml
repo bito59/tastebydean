@@ -3,8 +3,8 @@
 		= render partial: 'shop/filters/' + @area + '/filters'
 	.main
 		.text
-			%h3= t('.title')
-			%h4= t('.contact')
+			%h3= t('workshop.title')
+			%h4= t('workshop.contact')
 		.main_img.flex
 			= image_tag 'contents/workshop2.png'
 			= image_tag 'contents/workshop1.png'
@@ -12,20 +12,20 @@
 			%li.one-edge-shadow.column-center
 				.box
 					= image_tag 'icons/shop.png'
-					%h5= t('.adress1')
-					%h5= t('.adress2')
-					%h5= t('.adress3')
+					%h5= t('workshop.adress1')
+					%h5= t('workshop.adress2')
+					%h5= t('workshop.adress3')
 			%li.one-edge-shadow.column-center
 				.box
 					= image_tag 'icons/leadtime.png'
-					%h5= t('.opening')
+					%h5= t('workshop.opening')
 		.icons.inline-around
 			%li.one-edge-shadow.column-center
 				.box
 					= image_tag 'icons/contact.png'
-					%h5= t('.email')
-					%h5= t('.phone')
+					%h5= t('workshop.email')
+					%h5= t('workshop.phone')
 			%li.one-edge-shadow.column-center
 				.box
 					= image_tag 'icons/social.png'
-					%h5= t('.social')
+					%h5= t('workshop.social')

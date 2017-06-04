@@ -43,9 +43,10 @@ footer {font-family: $regular;
     h4, a {font-family: $xlight; font-size: 1em;}
 }
 
-#flash_msg {font-family: $bold;font-size: 2.827em;}
+#flash_msg {font-family: $bold;}
 #devise_modal .links > a {font-family: $xlight;font-size: 0.8em;}
 .mb_menu a { @include typi($h2-map); }
+.justify {text-align: justify!important;}
 
 /* ------------------------------ Pages  ------------------------------ */
 

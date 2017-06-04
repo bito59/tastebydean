@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: fabrics
+#
+#  id               :integer          not null, primary key
+#  serial           :string(255)
+#  kind             :string(255)      default("fabric")
+#  title            :string(255)
+#  fabric_family_id :integer
+#  activated        :boolean          default("0")
+#  image            :text(65535)
+#  origin           :string(255)
+#  content          :string(255)
+#  description      :text(65535)
+#  stock_length     :float(24)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  slug             :string(255)
+#
+
 class Fabric < ApplicationRecord
 	extend FriendlyId
   	friendly_id :serial, use: :slugged
@@ -18,7 +38,7 @@ class Fabric < ApplicationRecord
 	#scope :with_picture, -> { where.not image: nil }
 	scope :on_site, -> { joins(:fabric_pictures)
 		.where('fabric_pictures.activated = ?',true)
-		.where('fabric_pictures.preview = ?',false)
+		.where('fabric_pictures.main = ?',true)
 		.group("fabrics.id")
 		.having("count(fabric_pictures.id) > ?",0)
 	}
@@ -30,7 +50,7 @@ class Fabric < ApplicationRecord
 # ---------------- Options & functions -----------------------------------------------------------------------------
 
 	def on_site?
-		if self.activated == true && self.fabric_pictures.active.view.count > 0
+		if self.activated == true && self.fabric_pictures.active.preview.count > 0 && self.fabric_pictures.active.view.count > 0
 			true
 		else
 			false

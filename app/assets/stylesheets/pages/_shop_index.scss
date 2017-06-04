@@ -1,4 +1,6 @@
 .shop_index, .showroom_index {
+	h5.pin {z-index: 99;position: absolute; left: 50%;border-radius: 20px;background-color: 
+		black;height: 7px;width: 7px;}
 	.text {margin-bottom: 4em;}
 	.product .title {line-height: 4em;}
 	.results .product {margin: 3em 0;padding: 0 2em 2em 2em;} 
@@ -12,6 +14,7 @@
 		}
 	}
 }
+
 
 @media (max-width: map-get($breakpoints, tablet)) {
 	.shop_index, .showroom_index {

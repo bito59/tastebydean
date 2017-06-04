@@ -11,11 +11,11 @@ class ProductDecorator < Drape::Decorator
   def on_measure_rule
     if self.on_measure == false
       html = image_tag('icons/size-unic.png')
-      html << content_tag(:h5, t('shop.show.not_on_measure'))
+      html << content_tag(:h5, t('products.not_on_measure'))
       html.html_safe
     else
       html = image_tag('icons/size-custom.png')
-      html << content_tag(:h5, t('shop.show.on_measure'))
+      html << content_tag(:h5, t('products.on_measure'))
       html.html_safe
     end
   end
@@ -23,11 +23,11 @@ class ProductDecorator < Drape::Decorator
   def unic_fabric_rule
     if self.custom_fabric == false
       html = image_tag('icons/fabric-unic.png')
-      html << content_tag(:h5, t('shop.show.unic_fabric'))
+      html << content_tag(:h5, t('products.unic_fabric'))
       html.html_safe
     else
       html = image_tag('icons/fabric-custom.png')
-      html << content_tag(:h5, t('shop.show.custom_fabric'))
+      html << content_tag(:h5, t('products.custom_fabric'))
       html.html_safe
     end
   end

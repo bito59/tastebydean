@@ -1,6 +1,14 @@
 fr:
     common:
         validate: 'Valider'
+        add_to_basket: 'Ajouter au panier'
+        cancel: 'Annuler'
+        pass_order: 'Passer la commande'
+        free: 'Gratuit !'
+        euro: 
+            zero: '%{count} euro'
+            one: '%{count} euro'
+            other: '%{count} euros'
     flash_messages:
         news_created: 'Vous êtes abonné !'
         news_problem: 'Impossible de vous abonner'
@@ -41,10 +49,33 @@ fr:
         zero: '%{count} tissu'
         one: '%{count} tissu'
         other: '%{count} tissus'
+        fabric_unit_price: ' le mètre'
     products:
         zero: '%{count} produit'
         one: '%{count} produit'
         other: '%{count} produits'
+        origin: 'Produit à '
+        product_for: 'Produit pour '
+        on_measure: 'Sur mesure'
+        dimensions: '(%{length} x %{large} cm nécessaires)'
+        on_measure_exp: 'Envoyez nous vos mesures par email.'
+        not_on_measure: 'Taille unique'
+        unic_fabric: 'Tissu unique'
+        custom_fabric: 'Tissu au choix'
+        leadtime1: 'Délai'
+        leadtime2: '~ %{leadtime} jours'
+        confection: 'Confection'
+        size:
+            man_std: 'S à L'
+            man_big: 'XL ou plus'
+            woman_std: 'T34 à T38'
+            woman_big: 'T40 à T46'
+            boy_std: 'Moins de 10 ans'
+            boy_big: 'Plus de 10 ans'
+            girl_std: 'Moins de 10 ans'
+            girl_big: 'Plus de 10 ans'
+            child_std: 'Moins de 10 ans'
+            child_big: 'Plus de 10 ans'
     public:
         welcome:
             welcome_title: "La tenue de cérémonie sur mesure"
@@ -66,22 +97,24 @@ fr:
             discover: "Découvrez les dernières nouveautés par email :"
             zipcode: "Code postal"
             email: "Email"
+            validate: "S'abonner à la newsletter"
     shop:
-        common:
-            qties: 'Quantités :'
-            price: 'Prix :'
-            subtotal: 'Total :'
-            total_price: 'Prix total : '
-            total_ttc: 'Total TTC :'
-            price_for_this_product: 'Prix pour ce produit :'
-            add_to_basket: 'Ajouter au panier'
-            cancel: 'Annuler'
-            pass_order: 'Passer la commande'
-            free: 'Gratuit !'
-            euro: 
-                zero: '%{count} euro'
-                one: '%{count} euro'
-                other: '%{count} euros'  
+        action:
+            customize: 'Choisir la taille et le tissu'
+            choose_size: 'Choisir la taille'
+            size_explain: 'Vous recevrez par email les consignes pour prendre vos mesures.'
+            choose_fabric: 'Choisir le tissu'
+            choose_fabric_explain: 'Vous recevrez par email les conseils pour choisir votre tissu.'
+            confirm_fabric_explain: 'Nous vous confirmerons par email que le tissu est disponible.'
+            return_to_results: 'Retourner aux résultats'
+            select_this_fabric: 'Choisir ce tissu'
+            buy_fabric_myself: 'Vous fournissez le tissu'
+            other_fabrics: 'Autres tissus'
+            return_to_product: 'Retour au produit' 
+            confirm_this_fabric: 'Confirmer ce tissu'
+            change_for_this_fabric: 'Changer pour ce tissu'  
+            change_fabric: 'Changer le tissu'
+            buy_this_fabric: 'Acheter ce tissu'
         filters:
             man: 'Homme'
             woman: 'Femme'
@@ -91,6 +124,7 @@ fr:
             all: 'Tous'
             all_models: 'Tous les modèles'
             accessories: 'Les accessoires'
+            all_products: 'Tous les produits'
             fabrics: 'Les tissus'
             all_fabrics: 'Tous les tissus'
             wool: 'laine'
@@ -98,97 +132,53 @@ fr:
             linen: 'lin'
             silk: 'soie'
             workshop: "L'atelier"
-        show:
-            product_for: 'Produit pour : '
-            on_measure: 'Sur mesure'
-            on_measure_exp: 'Envoyez nous vos mesures par email.'
-            unic_fabric: 'Couleur unique'
-            custom_fabric: 'Tissu au choix'
-            not_on_measure: 'Taille unique'
-            leadtime1: 'Délai'
-            leadtime2: '~ %{leadtime} jours'
-            confection: 'Confection :'
-        info:
-            customize: 'Choisir la taille et le tissu'
-            choose_size: 'Choisir la taille'
-            choose_fabric: 'Choisir le tissu'
-            return_to_results: 'Retourner aux résultats'
-            select_this_fabric: 'Choisir ce tissu'
-            other_fabrics: 'Autres tissus'
-            return_to_product: 'Retour au produit'
-            fabric_unit_price: ' le mètre'
-            origin: 'Produit à '
-            for_all_products: 'Tous les produits'
-            confirm_this_fabric: 'Confirmer ce tissu'
-            change_for_this_fabric: 'Changer pour ce tissu'
-        details_form:
-            choose_your_size: 'Choisissez la taille'
-            size_explain: 'Vous recevrez par email les consignes pour prendre vos mesures.'
-            choose_your_fabric: 'Choisissez le tissu'
-            choose_fabric_explain: 'Vous recevrez par email les conseils pour choisir votre tissu.'
-            confirm_fabric_explain: 'Nous vous confirmerons par email que le tissu est disponible.'
-            dimensions: '(%{length} x %{large} cm nécessaires)'
-            buy_fabric_myself: 'Vous fournissez le tissu'
-            choose_fabric: 'Choisir un tissu'
-            change_fabric: 'Changer le tissu'
-            buy_this_fabric: 'Acheter ce tissu'
-            unic_fabric: 'Tissu unique'
-            man_std: 'S à L'
-            man_big: 'XL ou plus'
-            woman_std: 'T34 à T38'
-            woman_big: 'T40 à T46'
-            boy_std: 'Moins de 10 ans'
-            boy_big: 'Plus de 10 ans'
-            girl_std: 'Moins de 10 ans'
-            girl_big: 'Plus de 10 ans'
-            child_std: 'Moins de 10 ans'
-            child_big: 'Plus de 10 ans'
-        workshop:
-            title: "Venez nous rencontrer !"
-            contact: "Nous recevons sur place aux horaires indiqués ou sur rendez-vous."
-            adress1: '34 rue François de Badts'
-            adress2: '59 110 La Madeleine'
-            adress3: 'France'
-            email: 'deancorner@gmail.com'
-            phone: '+33 6 60 10 44 00'
-            opening: 'Les lundi, mercredi et vendredi de 12h00 à 19h00'
-            social: 'Rejoignez Dean corder sur Facebook et Instagram'
-        cart:
-            table:  # Table in cart page
-                quantity: 'Quantités'
-                product: 'Produits'
-                fabric: 'Tissus'
-                unit_price: 'Prix unitaire'
-                total_price: 'Total'
+    workshop:
+        title: "Venez nous rencontrer !"
+        contact: "Nous recevons sur place aux horaires indiqués ou sur rendez-vous."
+        adress1: '34 rue François de Badts'
+        adress2: '59 110 La Madeleine'
+        adress3: 'France'
+        email: 'deancorner@gmail.com'
+        phone: '+33 6 60 10 44 00'
+        opening: 'Les lundi, mercredi et vendredi de 12h00 à 19h00'
+        social: 'Rejoignez Dean corder sur Facebook et Instagram'
+    cart:
+        common:
+            quantity: 'Quantités'
+            price: 'Prix :'
+            unit_price: 'Prix unitaire'
+            subtotal: 'Total :'
+            total_price: 'Prix total'
+            total_ttc: 'Total TTC :'
+            price_for_this_product: 'Prix pour ce produit :'
             empty_cart: "Votre panier est vide !"
-            own_fabric: "Vous fournissez le tissu"
-            delivery:
-                title: "Choix de la livraison :"
-                c&c: "Livraison à l'atelier sur RDV"
-                c&c_price: "gratuit"
-                c&s: "Expédition à mon adresse"
-                c&s_price: "5€"
-                shipping_fees: "Frais de livraison :"
-                name: 'Nom'
-                surname: 'Prénom'
-                address: 'Adresse'
-                zipcode: 'Code postal'
-                city: 'Ville'
-                country: 'Pays'
-                phone: 'Téléphone'
-            payment:
-                title: "Choix du paiement :"
-                online: 'En ligne'
-                check : 'Chèque'
-                quotation: 'Recevoir un devis'
-            conditions:
-                title: "Conditions :"
-                fabric1: "Vous avez choisi de fournir le tissu pour certains articles"
-                fabric2: "Les quantités requises vous seront communiqées par email, Les frais d’acheminement jusqu’à notre atelier sont à votre charge."
-                leadtime1: "Nos délais d’expédition sont d’en moyenne 2 semaines"
-                leadtime2: "à compter de la réception de toutes les mesures et des tissus. Vous serez avertis de la production des articles par email."
-                accept_conditions: "j'accepte les "
-                cgv: "conditions générales de vente"
+        delivery:
+            title: "Choix de la livraison :"
+            c&c: "Livraison à l'atelier sur RDV"
+            c&c_price: "gratuit"
+            c&s: "Expédition à mon adresse"
+            c&s_price: "5€"
+            shipping_fees: "Frais de livraison :"
+            name: 'Nom'
+            surname: 'Prénom'
+            address: 'Adresse'
+            zipcode: 'Code postal'
+            city: 'Ville'
+            country: 'Pays'
+            phone: 'Téléphone'
+        payment:
+            title: "Choix du paiement :"
+            online: 'En ligne'
+            check : 'Chèque'
+            quotation: 'Recevoir un devis'
+        conditions:
+            title: "Conditions :"
+            fabric1: "Vous avez choisi de fournir le tissu pour certains articles"
+            fabric2: "Les quantités requises vous seront communiqées par email, Les frais d’acheminement jusqu’à notre atelier sont à votre charge."
+            leadtime1: "Nos délais d’expédition sont d’en moyenne 2 semaines"
+            leadtime2: "à compter de la réception de toutes les mesures et des tissus. Vous serez avertis de la production des articles par email."
+            accept_conditions: "j'accepte les "
+            cgv: "conditions générales de vente"
     showroom:
         index:
             title: "Vous souhaitez réaliser l'une de vos créations ?"

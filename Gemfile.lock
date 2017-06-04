@@ -1,8 +1,8 @@
 GIT
-  remote: git://github.com/carrierwaveuploader/carrierwave.git
-  revision: 9ef68325dd5ea465b4d340af9a9def10934cd677
+  remote: https://github.com/carrierwaveuploader/carrierwave.git
+  revision: 07dc4d7bd7806ab4b963cf8acbad73d97cdfe74e
   specs:
-    carrierwave (1.0.0)
+    carrierwave (1.1.0)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
@@ -54,6 +54,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
+    annotate (2.6.5)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
     arel (7.1.4)
     arel-helpers (2.3.0)
       activerecord (>= 3.1.0, < 6)
@@ -302,6 +305,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   bootstrap-modal-rails
   byebug
   capybara

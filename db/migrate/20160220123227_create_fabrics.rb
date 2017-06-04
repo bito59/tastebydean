@@ -8,7 +8,6 @@ class CreateFabrics < ActiveRecord::Migration[5.0]
     	t.string :title
       t.references :fabric_family, foreign_key: true, index: true
       t.boolean :activated, default: false
-    	t.text :image
 
       # Commercial
       t.string :origin

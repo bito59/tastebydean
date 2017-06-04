@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.string   "title"
     t.integer  "fabric_family_id"
     t.boolean  "activated",                      default: false
-    t.text     "image",            limit: 65535
     t.string   "origin"
     t.string   "content"
     t.text     "description",      limit: 65535
@@ -150,6 +149,7 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.decimal  "share_discount",    precision: 10,           default: 0
     t.decimal  "num_discount",      precision: 12, scale: 3, default: "0.0"
     t.decimal  "total",             precision: 12, scale: 3, default: "0.0"
+    t.string   "price_unit",                                 default: "€"
     t.string   "payment_method"
     t.string   "payment_type"
     t.string   "payment_status"

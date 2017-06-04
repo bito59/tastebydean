@@ -27,7 +27,11 @@ footer {height: 2em;bottom: 0px;}
 .flex {@include flexbox; @include flex-flow(row wrap);@include align-items(center);@include justify-content(center);}
 .inline-around {@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(space-around);}
 .inline-center {@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(center);}
+.inline-center > * {margin-left: 10px;margin-right: 10px;}
+//.inline-center:nth-child(2) {margin-left: 5px;}
 .column-center {@include flexbox; @include flex-flow(column nowrap);@include align-items(center);@include justify-content(center);}
+.inline > li { display:inline;}
+
 
 .hidded-link {display: none;}
 .fill-height, .fp-tableCell {display: flex;flex-direction: column;}

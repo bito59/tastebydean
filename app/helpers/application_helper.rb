@@ -23,15 +23,15 @@ module ApplicationHelper
 	def select_title
 		if params[:kind] == 'model'
 			if params[:customer].nil?
-				result = I18n.t('shop.main_filters.all_models')
+				result = I18n.t('shop.filters.all_models')
 			else
-				result = I18n.t('shop.main_filters.' + params[:customer])
+				result = I18n.t('shop.filters.' + params[:customer])
 			end
 		elsif params[:kind] == 'fabric'
 			if params[:family].nil?
-				result = I18n.t('shop.main_filters.all_fabrics')
+				result = I18n.t('shop.filters.all_fabrics')
 			else
-				result = I18n.t('shop.main_filters.' + params[:family])
+				result = I18n.t('shop.filters.' + params[:family])
 			end
 		end
 	end
@@ -124,32 +124,26 @@ module ApplicationHelper
 
 # --------    Flash messages display -----------------------------------------
 
-	def flash_message (type, text)
+	def flash_message (type, msg)
 		flash[type] ||= []
-		flash[type] << text
+		flash[type] << msg
 	end
 
 	def render_flash
-		rendered = []
-  		flash.each do |type, msg|
-  			if msg.class == Array
-  				msg.each do |message|
-  					content = ""
-  					if message.class == Array
-  						content = message[0].to_s + " " + message[1][0].to_s
-  					else
-  						content = message
-  					end
-  					rendered << content_tag(:div, content, class: "flash_#{type} flash")
-  				end
+		flash_array = []
+  		flash.each do |type, messages|
+  			if messages.is_a?(String)
+  				flash_array << render(partial: 'layouts/flash', 
+  				locals: { type: type, message: messages })
   			else
-  				rendered << content_tag(:div, msg, class: "flash_#{type} flash")   			
+	  			messages.each do |msg|
+	  				flash_array << render(partial: 'layouts/flash', 
+	  				locals: { type: type, message: msg }) unless msg.blank?
+  				end
   			end
-	  	end
-	  	flash.clear
-	  	if !rendered.empty?
-			rendered.join().html_safe
-		end
+  		end
+		#flash.clear
+  		flash_array.join('').html_safe
 	end
 
 # --------    Modal devise -----------------------------------------

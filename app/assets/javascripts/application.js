@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require turbolinks
 
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
@@ -13,8 +14,7 @@
 //= require fullpage.js/jquery.fullPage.min.js
 //= require slidebars/dist/slidebars.min.js
 //= require ez-plus/src/jquery.ez-plus.js
+//= require jquery-nice-select/js/jquery.nice-select.min.js
 
-//= require init
-//= require pages
+//= require_tree .
 
-//= require turbolinks

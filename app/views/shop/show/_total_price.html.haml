@@ -1,5 +1,5 @@
-%h4= t('shop.common.add_to_basket')
-%h5= t('shop.common.total_price') + ' ' + @total_price.to_s
+%h4= t('common.add_to_basket')
+%h5= t('common.euro', count: @total_price)
 
 :javascript
 	$(document).ready(function() {

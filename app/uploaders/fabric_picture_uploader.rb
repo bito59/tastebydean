@@ -12,9 +12,10 @@ class FabricPictureUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    #{}"#{model.class.to_s.underscore}/#{model.serial}/#{mounted_as}"
-    #{}"#{model.class.to_s.underscore}/#{model.serial}"
-    "#{model.fabric.class.to_s.underscore}/#{model.fabric.kind}/#{model.fabric.serial}/#{mounted_as}-#{model.id}"
+    #"#{model.class.to_s.underscore}/#{model.serial}/#{mounted_as}"
+    #"#{model.class.to_s.underscore}/#{model.serial}"
+    #"#{model.fabric.class.to_s.underscore}/#{model.fabric.kind}/#{model.fabric.serial}/#{mounted_as}-#{model.id}"
+    "#{model.fabric.class.to_s.underscore}/#{model.fabric.serial}/#{mounted_as}-#{model.id}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

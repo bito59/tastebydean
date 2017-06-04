@@ -53,19 +53,7 @@ class FabricsController < ApplicationController
 	def fabric_params
 		params.require(:fabric).permit(
 			:activated, :kind, :title, 
-			:description, :price, :price_unit, 
-			{image:[]}
+			:description, :price, :price_unit
 		)
 	end
-
-	def remove_old_picture
-		if @fabric.respond_to?(:image) && params[:image].present?
-			old_picture = @fabric.image
-			deleted_picture = old_picture.delete
-			deleted_picture.try(:remove!) # delete picture from S3
-			puts 'deleted previous image'
-		else
-			puts 'no previous image to delete'
-		end
-    end
 end

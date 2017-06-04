@@ -1,28 +1,31 @@
-%h4.title= t('shop.cart.delivery.title')
-.option.inline-around
-	= f.radio_button :delivery_method, 'collect', checked: true
-	.text
-		%h4= t('shop.cart.delivery.c&c')
-		%h4
-			= "(" 
-			%span.green= t('shop.cart.delivery.c&c_price')
-			= ")"
-.option.inline-around
-	= f.radio_button :delivery_method, 'delivery'
-	.text
-		%h4= t('shop.cart.delivery.c&s')
-		%h4
-			= "(" 
-			%span.green= t('shop.cart.delivery.c&s_price')
-			= ")"
-#delivery_details
-	= f.text_field :name, placeholder: t('shop.cart.delivery.name'), class: 'field'
-	= f.text_field :surname, placeholder: t('shop.cart.delivery.surname'), class: 'field'
-	= f.text_field :address, placeholder: t('shop.cart.delivery.address'), class: 'field'
-	= f.text_field :zipcode, placeholder: t('shop.cart.delivery.zipcode'), class: 'field'
-	= f.text_field :city, placeholder: t('shop.cart.delivery.city'), class: 'field'
-	= f.text_field :country, placeholder: t('shop.cart.delivery.country'), class: 'field'
-	= f.text_field :phone, placeholder: t('shop.cart.delivery.phone'), class: 'field'
+%h4.title= t('cart.delivery.title')
+.del_options
+	.option.inline-around
+		= f.radio_button :delivery_method, 'collect', checked: true
+		.text
+			%h4= t('cart.delivery.c&c')
+			%h4
+				= "(" 
+				%span.green= t('cart.delivery.c&c_price')
+				= ")"
+	.option.inline-around
+		= f.radio_button :delivery_method, 'delivery'
+		.text
+			%h4= t('cart.delivery.c&s')
+			%h4
+				= "(" 
+				%span.green= t('cart.delivery.c&s_price')
+				= ")"
+.cust_details
+	= f.text_field :name, placeholder: t('cart.delivery.name'), class: 'field'
+	= f.text_field :surname, placeholder: t('cart.delivery.surname'), class: 'field'
+	= f.text_field :phone, placeholder: t('cart.delivery.phone'), class: 'field'
+.del_details
+	= f.text_field :address, placeholder: t('cart.delivery.address'), class: 'field'
+	= f.text_field :zipcode, placeholder: t('cart.delivery.zipcode'), class: 'field'
+	= f.text_field :city, placeholder: t('cart.delivery.city'), class: 'field'
+	= f.text_field :country, placeholder: t('cart.delivery.country'), class: 'field'
+
 	#adress_validate.btn.btn-info.big
 		%h4= t('common.validate')
 #delivery_price.flex

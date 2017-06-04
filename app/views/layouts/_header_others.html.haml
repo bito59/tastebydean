@@ -6,7 +6,7 @@
 .links.mb
 	%li
 		= link_to_icon('filter-red-mb', 25, 25, root_path, {class: 'mb_main_menu', remote: true})
-.links.tb
+.links.inline.tb
 	%li= selected_header_link('creation', showroom_products_path(kind: 'creation'))
 	%li= selected_header_link('collection', shop_products_path(kind: 'model'))
 	%li= selected_header_link('shop', shop_products_path(kind: 'accessory'))

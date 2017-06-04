@@ -2,7 +2,7 @@
 .middle
 	.mb
 		%h3= t('shop.filters.workshop')
-	.tb
+	.inline.tb
 		%li= selected_link('workshop', shop_workshop_path)
 		%li= '|'
 		%li= selected_link('accessories', shop_products_path(kind: 'accessory'))

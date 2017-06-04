@@ -44,7 +44,7 @@ module Shop
         unless params[:family].nil?
           @products = @products.with_fabric_family(params[:family])
         end
-        #puts @fabrics.inspect
+        puts 'fabrics loaded : ' + @fabrics.inspect
       end
   end
 end

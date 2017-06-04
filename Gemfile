@@ -29,6 +29,7 @@ gem 'neatjson'
 gem 'magnific-popup-rails'
 gem 'groupdate'
 gem 'js-routes'
+gem 'annotate'
 
 group :development, :test do
 	gem 'rspec-rails'

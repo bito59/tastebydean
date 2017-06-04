@@ -36,5 +36,5 @@ input.field {background-color: $grey_trsp;}
 
 @media (min-width: map-get($breakpoints, tablet)) {
 	input:not(.large), label, .btn {width: 50%;}
-	.btn {max-width: 300px;height: 3em;}
+	.btn {max-width: 300px;height: 2em;}
 }
