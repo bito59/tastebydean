@@ -1,4 +1,10 @@
 fr:
+    user:
+        connection: 'Connection'
+        register: 'Creer un compte'
+        password_forgotten: 'Mot de passe oublié ?'
+        remember_me: 'Se souvenir de moi'
+        email: 'email'
     common:
         validate: 'Valider'
         add_to_basket: 'Ajouter au panier'
@@ -17,6 +23,7 @@ fr:
         cart_problem: 'Problème de panier'
         order_passed: 'Merci pour votre commande !'
         order_cant_pass: 'Il y a un problème avec votre commande'
+        log_in_first: 'Merci de vous inscrire ou vous connecter'
     layouts:
         main_filters:
             admin: 'Admin'

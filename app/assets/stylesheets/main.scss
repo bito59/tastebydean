@@ -11,6 +11,12 @@
 //@import "jquery-nice-select/scss/_style.scss";
 //@import "jquery-nice-select/scss/_prism.scss";
 
+// External rules
+@import "materialize/components/color";
+//$primary-color: color("blue", "lighten-2") !default;
+//$secondary-color: color("yellow", "base") !default;
+@import "materialize";
+
 // Adding internal rules
 @import "helpers/*";
 @import "base/*";

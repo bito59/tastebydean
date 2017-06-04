@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
+
   protect_from_forgery with: :exception
   before_action :set_locale, :current_order
   before_action :store_current_location, unless: :devise_controller?
@@ -65,6 +67,13 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def auth_user
+    unless user_signed_in?
+      flash_message('alert', t('flash_messages.log_in_first'))
+      redirect_to request.referrer
+    end
+  end
+
   def store_current_location
     store_location_for(:user, request.url)
   end
@@ -75,13 +84,6 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(user)
     root_path
-  end
-
-  def auth_user
-    unless user_signed_in?
-      flash_message('alert', 'Please create an account first')
-      redirect_to request.referrer
-    end
   end
 
 end
