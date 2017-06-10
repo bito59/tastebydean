@@ -11,8 +11,6 @@ FabricFamily.delete_all
 PriceUnit.delete_all
 ProductPicture.delete_all
 
-user = User.create( email: 'bitocreator@gmail.com', password: "fouesnant", password_confirmation: "fouesnant", zipcode: "59000", newsletter: true )
-
 Measure.create(title: 'simple', around_collar_large: true)
 Measure.create(title: 'standard', around_collar_large: true, shoulder_width: true)
 Measure.create(title: 'complex', around_collar_large: true, shoulder_width: true, shoulder_waist_front_large: true)
