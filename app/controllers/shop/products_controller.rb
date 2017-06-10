@@ -53,7 +53,7 @@ module Shop
       puts orderline.inspect
       @total_price = orderline.calc_price
       respond_to do |format|
-        format.js { render 'shop/show/update_price.js.erb' }
+        format.js { render 'shop/show/update_product_price.js.erb' }
       end
     end
 

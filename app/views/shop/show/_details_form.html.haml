@@ -6,12 +6,12 @@
 .sizes.column-center
 	- if @product.unic_size == true
 		.subtitle.inline-center
-			%h5= t('products.not_on_measure')
+			%h4= t('products.not_on_measure')
 			= image_tag('icons/size-unic.png')
 			= f.hidden_field :size, value: 'unic'
 	- else
 		.subtitle.inline-center
-			%h5= t('shop.action.choose_size')
+			%h4= t('shop.action.choose_size')
 			= image_tag('icons/size-custom.png')
 		%h6= t('shop.action.size_explain')
 		.options.inline-center
@@ -26,17 +26,12 @@
 .fabrics.column-center
 	- if @product.custom_fabric == false
 		.inline-center
-			%h5= t('products.unic_fabric')
+			%h4= t('products.unic_fabric')
 			= image_tag('icons/fabric-unic.png')
 	- else
 		.inline-center
-			%h5= t('shop.action.choose_fabric')
+			%h4= t('shop.action.choose_fabric')
 			= image_tag('icons/fabric-custom.png')
-		.msg
-			- if @order_line.fabric_id
-				%h6= t('shop.action.confirm_fabric_explain')
-			- else
-				%h6= t('shop.action.choose_fabric_explain')
 		.dimensions	
 			%h6.small_size= t('products.dimensions', length: product.fabric_lng_std, large: product.fabric_lrg_std)
 			%h6.big_size= t('products.dimensions', length: product.fabric_lng_big, large: product.fabric_lrg_big)
@@ -59,10 +54,10 @@
 
 .buy.column-center
 	.qties.inline-center
-		%h3= t('cart.common.quantity')
+		%h4= t('cart.common.quantity')
 		= f.select :quantity, [1, 2, 3, 4, 5]
-	#total-price.btn.btn-custom.btn-valid.column-center
+	#total-price.btn-custo.big.btn-valid.column-center
 		= render partial: 'shop/show/total_price'
-	.btn.btn-red.cancel
+	.btn-custo.btn-red.cancel
 		%h4= t('common.cancel')
 

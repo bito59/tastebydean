@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
+
   protect_from_forgery with: :exception
-  before_action :set_locale, :current_order
+  before_action :set_locale, :current_order, :auth_user, :check_header
   before_action :store_current_location, unless: :devise_controller?
-  before_action :auth_user
   helper_method :current_order
 
   def current_order
@@ -41,7 +42,7 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
-    puts 'current order : ' + current_order.inspect
+    #puts 'current order : ' + current_order.inspect
   end
 
   def find_fabric_price(product_id, fabric_id, std_size)
@@ -65,23 +66,34 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def auth_user
+    unless user_signed_in?
+      flash_message('alert', t('flash_messages.log_in_first'))
+      redirect_to request.referrer || root_path
+    end
+  end
+
+  def check_header
+    if request.fullpath == '/' || request.url.include?('users') 
+      @header_trsp = true
+    else
+      @header_trsp = false
+    end
+    #puts '@header_trsp : ' + @header_trsp.inspect
+    #puts request.url.inspect
+    #puts request.fullpath
+  end
+
   def store_current_location
     store_location_for(:user, request.url)
   end
 
-  def after_sign_in_path_for(user)
+  def after_sign_out_path_for(resource)
     request.referrer || root_path
   end
 
-  def after_sign_out_path_for(user)
-    root_path
-  end
-
-  def auth_user
-    unless user_signed_in?
-      flash_message('alert', 'Please create an account first')
-      redirect_to request.referrer
-    end
+  def after_sign_in_path_for(resource)
+    session["user_return_to"] || root_path
   end
 
 end

@@ -1,0 +1,17 @@
+.user {
+	.logo {margin-top: 1em;}
+	.box {
+		position: relative;height: 100vh;
+		background-color: white;margin: auto;border-radius: 10px;
+		.form {margin-top: 3em;padding: 0 2em;}
+		.title {margin: 1em auto;height: 3em; border-bottom: 1px solid $grey_trsp;}
+		.switch  {width: 60%;}
+		.zipcode  {width: 40%;}
+		.links {position: absolute; bottom: 2em;left: 0;right: 0;}
+	}
+
+	@media (min-width: map-get($breakpoints, tablet)) {
+		.logo {display: none;}
+		.box {width: 460px;height: 650px;}
+	}
+}

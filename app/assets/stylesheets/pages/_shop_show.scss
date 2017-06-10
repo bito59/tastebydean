@@ -1,15 +1,16 @@
 .shop_show {
-	#ez-container{position: absolute;top: 5em;right: -512px;}
+	#ez-container{position: absolute;top: 8em;right: -512px;}
 	.intro {
 		display: flex;flex-flow: column;flex: 1;
-		.title {margin: 3em 0 1em 0;} // 3em + 1em by fullpage = 4em (header)
+		.title {margin-top: 4em;}
 		.owl-carousel {
 			display: flex; flex-flow: column wrap; flex: 99;
 			.owl-stage-outer {
 				display: flex; flex: 99;
 				.owl-stage {height: 100%;display: flex; flex: 1;}
 				.owl-item {display: flex}
-				.item {width: 100%;display: flex;align-items: center;}
+				.item {width: 100%;//display: flex;align-items: center;
+				}
 				// Fix img dimensions to fit in div
 				img {max-width: 100%;width: auto !important;margin: auto;border-radius: 15px;}
 			}
@@ -30,6 +31,7 @@
 		}
 	}
 	.info {
+		.title h3 {margin-bottom: 1em;}
 		.icons {
 			align-items: flex-start;width: 100%;
 			h4 {max-width: 90%;margin: 10px auto 0 auto;}
@@ -38,16 +40,9 @@
 	}
 	.form {
 		.sizes, .fabrics {
-			.options {width: 100%;}
-		}
-		.qties {justify-content: center;}
-		.price, .qties select {margin-left: 1em;}
-		.with_fabric {display: none;}
-		.sizes, .fabrics, .buy {
-			h3 {margin: 0 1em 0 0;}
 			img {width: 40px;}
+			.options {width: 100%;margin-top: 1em;}
 		}
-		.buy .buttons {width: 100%;}
 		.fabrics .dimensions .big_size {display: none;}
 	}
 
@@ -55,12 +50,13 @@
 		.owl-carousel img {max-height: 350px !important;}
 		.owl-next, .owl-prev {display: none!important;}
 		.form {
-			.fabrics {margin: 2em auto;}
+			//.fabrics {margin: 2em auto;}
 			.cancel {margin: 0 auto;}
 		}
 	}
 
 	@media (min-width: map-get($breakpoints, laptop)) {
+		margin-top: 4em;align-items: flex-start;
 		.intro {
 			.owl-carousel {
 				height: calc(100vh - 4em - 2em);position: relative;
@@ -92,7 +88,7 @@
 			.title {flex: 0;
 			}
 			.sizes, .fabrics, .buy {margin: 0 auto;width: 80%;}
-			.sizes .options {margin: 0;width: 100%;}
+			//.sizes .options {margin: 0;width: 100%;}
 			.icons {max-width: 400px;}
 			//.buttons {position: relative;}
 			.buy {margin-top: 2em;}

@@ -1,10 +1,10 @@
 .title.mb
 	%h3.bold= @product.title
-	%h5= @product.serial
-	- if @product.kind == 'model'
-		%h3.price= @product.show_confection_price
-	- if @product.kind == 'fabric' && @selected_product
-		%h3.price= @price.title
+	%h4.price
+		- if @product.kind == 'model'
+			= @product.show_confection_price
+		- if @product.kind == 'fabric' && @selected_product
+			= @price.title
 .owl-carousel.owl-theme
 	- @pictures.each do |p|
 		.item.img-link

@@ -1,31 +1,24 @@
 .shop_index, .showroom_index {
-	h5.pin {z-index: 99;position: absolute; left: 50%;border-radius: 20px;background-color: 
-		black;height: 7px;width: 7px;}
-	.text {margin-bottom: 4em;}
-	.product .title {line-height: 4em;}
-	.results .product {margin: 3em 0;padding: 0 2em 2em 2em;} 
-	.product:last-of-type {margin-bottom: 6em;}
-	.img {
-		position: relative;
-		img {border-radius: 15px;}
-		.logo {
-			position: absolute;bottom: 0;right: 0;
-			img {width: 40px !important;}
-		}
-	}
+	margin-top: 2em;
+	.product, .fabric {margin-top: 3em;}
+	.product {padding: 0 2em 2em 2em;position: relative;}
+	img.img {max-width: 100%;max-height: 90%;border-radius: 15px;}
+	img.logo {width: 40px;position: absolute;bottom: 10px;right: 10px;}
+	h4.title {line-height: 4em;}
+	h5.pin {z-index: 99;position: absolute; left: 50%;border-radius: 20px;height: 7px;width: 7px;}
 }
 
 
 @media (max-width: map-get($breakpoints, tablet)) {
 	.shop_index, .showroom_index {
-		.product {width: 100%;}
-		.results img {width: 100%;}
+		//.product {width: 100%;}
 	}
 }
 
 @media (min-width: map-get($breakpoints, tablet)) {
 	.shop_index, .showroom_index {
-		.results .product {margin: 3em;}
+		.product, .fabric {margin: 3em 1em;width: 350px;height: 500px;}
+		.filters .tb * {margin: 0 1em;}
 	}
 }
 

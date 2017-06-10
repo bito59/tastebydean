@@ -1,18 +1,23 @@
-%li.logo= image_tag "icons/logo-red.png"
+.logo.flex
+	= image_tag "icons/logo-red.png"
 
 = link_to shop_fabrics_path(kind: 'fabric'), {class: 'mb-quit'} do
-	%li
-		%h2= t('shop.filters.all_fabrics')
+	%li.flex
+		%h3= t('shop.filters.all_fabrics')
 
 - FabricFamily.all.each do |f|
 	= link_to shop_fabrics_path(kind: 'fabric', family: f.title), {class: 'mb-quit'} do
-		%li
-			%h2= t('shop.filters.' + f.title)
+		%li.flex
+			%h3= t('shop.filters.' + f.title)
 
 = link_to shop_products_path(kind: 'accessory'), {class: 'mb-quit'} do
-	%li
-		%h2= t('shop.filters.accessories')
+	%li.flex
+		%h3= t('shop.filters.accessories')
 
 = link_to shop_workshop_path, {class: 'mb-quit'} do
-	%li
-		%h2= t('shop.filters.workshop')
+	%li.flex
+		%h3= t('shop.filters.workshop')
+
+= link_to root_path, {class: 'mb-quit', remote: true} do
+	%li.flex
+		%h3= t('common.cancel') 

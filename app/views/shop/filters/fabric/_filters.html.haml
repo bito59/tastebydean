@@ -1,17 +1,15 @@
-.left
-.middle
-	.mb
-		%h3= select_title
-		%h4= t('fabrics', count: products.length)
-	.inline.tb
-		%li= selected_link('workshop', shop_workshop_path)
-		%li= '|'
-		%li= selected_link('accessories', shop_products_path(kind: 'accessory'))
-		%li= '|'
-		%li= selected_link('all_fabrics', shop_fabrics_path(kind: 'fabric'))
-		- FabricFamily.all.each do |f|
-			%li= '|'
-			%li= selected_link(f.title, shop_fabrics_path(kind: 'fabric', family: f.title))
+.mb
+	%h3= select_title
+	%h4= t('fabrics', count: products.length)
+.inline-center.tb
+	= selected_link('workshop', shop_workshop_path)
+	= '|'
+	= selected_link('accessories', shop_products_path(kind: 'accessory'))
+	= '|'
+	= selected_link('all_fabrics', shop_fabrics_path(kind: 'fabric'))
+	- FabricFamily.all.each do |f|
+		= '|'
+		= selected_link(f.title, shop_fabrics_path(kind: 'fabric', family: f.title))
 
 .right
 	.mb

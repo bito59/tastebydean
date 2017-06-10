@@ -1,16 +1,20 @@
 .shop_cart {
+	.page-title {
+		h3 {line-height: 3em;}
+		margin-bottom: 2em;border-bottom: 1px solid $grey_trsp;
+	}
 	.subtotal, .total {
 		:first-child {margin-right: 10px;}
 	}
 	.subtotal, .delivery, .total, .payment, .conditions, .confirm {
 		input[type="radio"] {margin: 0 !important;width: 20px;}
-		padding: 3em 0;border-bottom: 1px solid $grey_trsp;
+		padding: 3em 0;border-top: 1px solid $grey_trsp;
 		.title {text-align: left;}
 		.option{margin: 1em 0;}
-	}	
+	}
+
 	#orderline {
 		img {width: 100px;border-radius: 10px;}
-		li {border-bottom: 1px solid $grey_trsp;}
 		.product {max-width: 100%;align-items: flex-start;padding: 2em 0;}
 		.img, .details {width: 50%;}
 		.details {
@@ -28,6 +32,7 @@
 	.delivery {
 		#delivery_price :first-child {margin-right: 10px;}
 		.option h4 {text-align: left;}
+		.del_options label {height: 4em;}
 		.del_details {display: none;}
 		.btn {margin-top: 3em;}
 	}
@@ -38,11 +43,9 @@
 		h5 {text-align: left;margin: 1em auto;}
 	}
 
-	@media (max-width: map-get($breakpoints, tablet)) {
-		//.icons {flex-flow: row wrap;}
-	}
-
 	@media (min-width: map-get($breakpoints, tablet)) {
+		margin: 4em auto;border-radius: 10px;
+		form {max-width: 512px;margin: auto;}
 		.main_img {
 			img {max-width: 500px;}
 		}

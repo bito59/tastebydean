@@ -1,18 +1,23 @@
-%li.logo= image_tag "icons/logo-red.png"
+.logo.flex
+	= image_tag "icons/logo-red.png"
 
 = link_to shop_products_path(kind: 'model'), {class: 'mb-quit'} do
-	%li
-		%h2= t('shop.filters.all_models')
+	%li.flex
+		%h3= t('shop.filters.all_models')
 
 = link_to shop_products_path(kind: 'model', customer: 'man'), {class: 'mb-quit'} do
-	%li
-		%h2= t('shop.filters.man')
+	%li.flex
+		%h3= t('shop.filters.man')
 = link_to shop_products_path(kind: 'model', customer: 'woman'), {class: 'mb-quit'} do
-	%li
-		%h2= t('shop.filters.woman')
+	%li.flex
+		%h3= t('shop.filters.woman')
 = link_to shop_products_path(kind: 'model', customer: 'girl'), {class: 'mb-quit'} do
-	%li
-		%h2= t('shop.filters.girl')
+	%li.flex
+		%h3= t('shop.filters.girl')
 = link_to shop_products_path(kind: 'model', customer: 'boy'), {class: 'mb-quit'} do
-	%li
-		%h2= t('shop.filters.boy') 
+	%li.flex
+		%h3= t('shop.filters.boy')
+
+= link_to root_path, {class: 'mb-quit', remote: true} do
+	%li.flex
+		%h3= t('common.cancel') 

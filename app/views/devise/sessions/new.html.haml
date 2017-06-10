@@ -1,9 +1,23 @@
-%h2= 'Log in'
+.user.c0.bck-img-tb.img-login.hd-tb-trsp.ft-no.flex
+	.logo
+		= link_to_icon('logo-round-white', 90, 90, root_path)
+	.box
+		.title.inline-around
+			= link_to t('user.connection').upcase, new_session_path(resource_name), class: 'active-area'
+			= link_to t('user.register').upcase, new_registration_path(resource_name)
+		.form
+			= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+				.input-field
+					= f.text_field :email, maxlength: "100", required: true, pattern: '[^@]+@[^@.]+\.[^@]+', class: 'validate'
+					= f.label :email, t('user.email')
 
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  = f.email_field :email, autofocus: true
-  = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    = f.label :remember_me
-  = f.submit "Log in"
-  = render "devise/shared/links"
+				.input-field
+					= f.password_field :password, required: true, type: 'password' , class: 'validate'
+					= f.label :email, t('user.password')
+				.input-entry
+					- if devise_mapping.rememberable?
+						= f.check_box :remember_me
+						= f.label :remember_me, t('user.remember_me')
+				= f.submit t('common.validate'), class: 'btn btn-large btn-valid'
+		.links		
+			= link_to t('user.password_forgotten'), new_password_path(resource_name)

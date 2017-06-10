@@ -1,12 +1,13 @@
 %h4.title= t('cart.conditions.title')
 .condition
-	%h5.green= t('cart.conditions.fabric1')
+	%h5.price= t('cart.conditions.fabric1')
 	%h5.justify= t('cart.conditions.fabric2') 
 .condition
-	%h5.green= t('cart.conditions.leadtime1') 
+	%h5.price= t('cart.conditions.leadtime1') 
 	%h5.justify= t('cart.conditions.leadtime2')  
 .option.flex
-	= f.radio_button :accept_conditions, true, checked: false, required: true
-	%h5
-		= t('cart.conditions.accept_conditions')
-		= link_to t('cart.conditions.cgv'), asset_path('Deancorner_conditions_FR.pdf'), {class: 'green', target: '_blank'}
+	= f.radio_button :accept_conditions, true, {class: 'with-gap', required: true}
+	= f.label :accept_conditions, value: 'true' do
+		%h5
+			= t('cart.conditions.accept_conditions')
+			= link_to t('cart.conditions.cgv'), asset_path('Deancorner_conditions_FR.pdf'), {class: 'price', target: '_blank'}

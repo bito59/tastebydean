@@ -1,80 +1,74 @@
-%section.section.welcome.c0.dyn-header.fp-all{'data-anchor': '1'} 
-	.intro.column-center.mb
-		.title
-			%h2= t('.welcome_title')
-	.intro.tb
-		.title
-			%h2= t('.welcome_title')
-		.box.inline-around
-			= link_to showroom_products_path(kind: 'creation') do
-				%li.column-center
-					%h3= t('.creations')
-					= image_tag "contents/creations.png"
-					%h4= t('.creations_caption')
-			= link_to shop_products_path(kind: 'model') do
-				%li.column-center
-					%h3= t('.collections')
-					= image_tag "contents/collections.png"
-					%h4= t('.collections_caption')
-			= link_to shop_products_path(kind: 'accessory') do
-				%li.column-center
-					%h3= t('.accessories')
-					= image_tag "contents/accessories.png"
-					%h4= t('.accessories_caption')
-		.arrow.tb
-			= link_to_icon('arrow_down', 20, 20, '#process', {id: 'btn_arrow', remote: true})
-
-%section.section.welcome.c3{'data-anchor': '2'}
-	.process.fill-height
-		%li.column-center
-			.box.inline-tb
-				= image_tag "contents/drawing.png"
-				%h3.mb= t('.explain_creation_mb')
-				%h4.tb= t('.explain_creation')
-		%li.column-center
-			.box.mb
-				= image_tag "contents/fabrics.png"
-				%h3= t('.explain_fabric_mb')
-			.box.inline-tb.tb
-				%h4= t('.explain_fabric')
-				= image_tag "contents/fabrics.png"
-		%li.column-center
-			.box.inline-tb
-				= image_tag "contents/manequin.png"
-				%h3.mb= t('.explain_on_measure_mb')
-				%h4.tb= t('.explain_on_measure')
-
-%section.section.welcome.c3{'data-anchor': '3'}
-	.social.fill-height
-		%li.comment.column-center
-			= image_tag "comments/jolie.png"
-			.text
-				%h1= '“'
-				%h3= t('.comment')
-				%h3.name.tb= 'Sophie'
-		%li.instagram.column-center
+#fullpage.fb-all.hd-trsp.welcome
+	.section.c0.bck-img-all.img-welcome.fp-img.dyn-header.fp-all{'data-anchor': '1'} 
+		.intro.column-center.mb
 			.title
-				%h2= 'Instagram'
-				%h3= '#tastebydean'
-			.pictures
-				.mb= image_tag "instagram/instagram_#{rand(1..3)}.png"
-				- (1..3).each do |i|
-					.tb= image_tag "instagram/instagram_#{i}.png"
+				%h2= t('.welcome_title')
+		.intro.tb
+			.title
+				%h2= t('.welcome_title')
+			.box.inline-around
+				= link_to showroom_products_path(kind: 'creation') do
+					%li.column-center
+						%h3= t('.creations')
+						= image_tag "contents/creations.png"
+						%h4= t('.creations_caption')
+				= link_to shop_products_path(kind: 'model') do
+					%li.column-center
+						%h3= t('.collections')
+						= image_tag "contents/collections.png"
+						%h4= t('.collections_caption')
+				= link_to shop_products_path(kind: 'accessory') do
+					%li.column-center
+						%h3= t('.accessories')
+						= image_tag "contents/fabrics.png"
+						%h4= t('.accessories_caption')
+			.arrow.tb
+				= link_to_icon('arrow_down', 20, 20, '#process', {id: 'btn_arrow', remote: true})
 
-%section.section.welcome.c3.dyn-footer{'data-anchor': '4'}
-	.follow.fill-height
-		%li.column-center
-			%h2= t('.follow_us')
-			.box
-				= link_to_icon('facebook', 40, 40, 'https://www.facebook.com/Dean-Corner-448035335534087/', target: "_blank")
-				= link_to_icon('instagram', 40, 40, 'https://www.instagram.com/tastebydean/', target: "_blank")
-				= link_to_icon('pinterest', 40, 40, 'https://fr.pinterest.com/tastebydean/tastebydean/', target: "_blank")
-		%li.newsletter
-			= render partial: 'public/news_form'
+	.section.c3{'data-anchor': '2'}
+		.process.fill-height
+			%li.column-center
+				.box.inline-tb
+					= image_tag "contents/drawing.png"
+					%h3.mb= t('.explain_creation_mb')
+					%h4.tb= t('.explain_creation')
+			%li.column-center
+				.box.mb
+					= image_tag "contents/fabrics.png"
+					%h3= t('.explain_fabric_mb')
+				.box.inline-tb.tb
+					%h4= t('.explain_fabric')
+					= image_tag "contents/fabrics.png"
+			%li.column-center
+				.box.inline-tb
+					= image_tag "contents/manequin.png"
+					%h3.mb= t('.explain_on_measure_mb')
+					%h4.tb= t('.explain_on_measure')
 
-:javascript
-	$(document).ready(function() {
-		$('#btn_arrow').click(function() {
-			$.fn.fullpage.moveTo(2);
-		});
-	});
+	.section.c3.social{'data-anchor': '3'}
+		.fill-height
+			.column-center
+				.img
+					= image_tag "comments/jolie.png"
+				.text
+					%h1= '“'
+					%h3= t('.comment')
+			.column-center
+				.title
+					%h2= 'Instagram'
+					%h3= '#tastebydean'
+				.pictures
+					.mb= image_tag "instagram/instagram_#{rand(1..3)}.png"
+					- (1..3).each do |i|
+						.tb= image_tag "instagram/instagram_#{i}.png"
+
+	.section.c3.follow{'data-anchor': '4'}
+		.fill-height
+			.column-center
+				%h2= t('.follow_us')
+				.inline-center
+					= link_to_icon('facebook', 40, 40, 'https://www.facebook.com/Dean-Corner-448035335534087/', target: "_blank")
+					= link_to_icon('instagram', 40, 40, 'https://www.instagram.com/tastebydean/', target: "_blank")
+					= link_to_icon('pinterest', 40, 40, 'https://fr.pinterest.com/tastebydean/tastebydean/', target: "_blank")
+			.newsletter
+				= render partial: 'public/news_form'

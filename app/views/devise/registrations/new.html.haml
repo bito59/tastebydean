@@ -1,0 +1,34 @@
+.user.c0.bck-img-tb.img-login.hd-tb-trsp.ft-no.flex
+  .box
+    .title.inline-around
+      = link_to t('user.connection').upcase, new_session_path(resource_name)
+      = link_to t('user.register').upcase, new_registration_path(resource_name), class: 'active-area'
+    .form
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        .input-field
+          = f.text_field :email, maxlength: "100", required: true, type: 'email', pattern: '[^@]+@[^@.]+\.[^@]+', class: 'validate'
+          = f.label :email, t('user.email')
+        .password
+          .input-field
+            = f.password_field :password, required: true, type: 'password' , class: 'validate'
+            = f.label :email, t('user.password')
+          .input-field
+            = f.password_field :password_confirmation, required: true, type: 'password' , class: 'validate'
+            = f.label :email, t('user.password_confirmation')
+        .news.inline-around
+          .switch.entry
+            %label
+              = t('user.no-news')
+              = f.check_box :newsletter, checked: true
+              %span{class: 'lever'}
+              = t('user.news')
+          .zipcode.input-field
+            = f.text_field :zipcode, required: false, placeholder: t('user.city'), type: 'text', pattern: '\d{2}[ ]?\d{3}', class: 'validate'
+            =# f.label :zipcode, t('user.city')
+
+        - if devise_mapping.rememberable?
+          .input-entry.inline-center
+            = f.check_box :remember_me
+            = f.label :remember_me, t('user.remember_me')
+        = f.submit t('common.validate'), class: 'btn btn-large btn-valid'
+

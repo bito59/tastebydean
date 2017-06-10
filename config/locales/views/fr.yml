@@ -1,10 +1,22 @@
 fr:
+    user:
+        connection: 'Connection'
+        register: 'Inscription'
+        password: 'Mot de passe'
+        password_confirmation: 'Confirmer le mot de passe'
+        password_forgotten: 'Mot de passe oublié ?'
+        remember_me: 'Rester connecté'
+        email: 'Email'
+        city: 'Code postal'
+        news: 'News'
+        no-news: 'Non'
     common:
         validate: 'Valider'
         add_to_basket: 'Ajouter au panier'
         cancel: 'Annuler'
         pass_order: 'Passer la commande'
         free: 'Gratuit !'
+        optional: 'Facultatif'
         euro: 
             zero: '%{count} euro'
             one: '%{count} euro'
@@ -17,6 +29,9 @@ fr:
         cart_problem: 'Problème de panier'
         order_passed: 'Merci pour votre commande !'
         order_cant_pass: 'Il y a un problème avec votre commande'
+        log_in_first: 'Merci de vous inscrire ou vous connecter'
+        cannot_update_price: "Le prix total ne peut être mis à jour"
+        please_check_adress: 'Merci de vérifier votre adresse'
     layouts:
         main_filters:
             admin: 'Admin'
@@ -40,11 +55,7 @@ fr:
             no_news: "Non merci"
             register: "Créer un compte"
             log_in: "Se connecter"
-            create_account: "Valider"
-        header_welcome:
-            cart_items: '%{count}'
-        header_others:
-            cart_items: '%{count}'     
+            create_account: "Valider"             
     fabrics:
         zero: '%{count} tissu'
         one: '%{count} tissu'
@@ -58,6 +69,7 @@ fr:
         product_for: 'Produit pour '
         on_measure: 'Sur mesure'
         dimensions: '(%{length} x %{large} cm nécessaires)'
+        for_all_products: 'Pour tous produits'
         on_measure_exp: 'Envoyez nous vos mesures par email.'
         not_on_measure: 'Taille unique'
         unic_fabric: 'Tissu unique'
@@ -94,21 +106,20 @@ fr:
             comment: "Super robe livrée juste à temps pour le mariage de mon frère !"
             follow_us: "Nous suivre"
         news_form:
-            discover: "Découvrez les dernières nouveautés par email :"
+            discover: "Découvrez les dernières nouveautés par email"
             zipcode: "Code postal"
             email: "Email"
-            validate: "S'abonner à la newsletter"
+            validate: "S'abonner"
     shop:
         action:
             customize: 'Choisir la taille et le tissu'
             choose_size: 'Choisir la taille'
-            size_explain: 'Vous recevrez par email les consignes pour prendre vos mesures.'
+            size_explain: 'Vous recevez par email les consignes pour prendre vos mesures.'
             choose_fabric: 'Choisir le tissu'
-            choose_fabric_explain: 'Vous recevrez par email les conseils pour choisir votre tissu.'
-            confirm_fabric_explain: 'Nous vous confirmerons par email que le tissu est disponible.'
+            confirm_fabric_explain: 'Nous vous confirmerons que le tissu est disponible.'
             return_to_results: 'Retourner aux résultats'
             select_this_fabric: 'Choisir ce tissu'
-            buy_fabric_myself: 'Vous fournissez le tissu'
+            buy_fabric_myself: 'Fournir le tissu'
             other_fabrics: 'Autres tissus'
             return_to_product: 'Retour au produit' 
             confirm_this_fabric: 'Confirmer ce tissu'
@@ -143,15 +154,19 @@ fr:
         opening: 'Les lundi, mercredi et vendredi de 12h00 à 19h00'
         social: 'Rejoignez Dean corder sur Facebook et Instagram'
     cart:
+        title: "Votre panier"
         common:
+            cart_items: '%{count}'
             quantity: 'Quantités'
+            own_fabric : 'Vous fournissez le tissu'
             price: 'Prix :'
             unit_price: 'Prix unitaire'
-            subtotal: 'Total :'
+            subtotal: 'Total panier :'
             total_price: 'Prix total'
             total_ttc: 'Total TTC :'
             price_for_this_product: 'Prix pour ce produit :'
             empty_cart: "Votre panier est vide !"
+            cancel_item: "Annuler l'article"
         delivery:
             title: "Choix de la livraison :"
             c&c: "Livraison à l'atelier sur RDV"

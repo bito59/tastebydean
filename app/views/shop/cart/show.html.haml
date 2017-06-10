@@ -1,4 +1,6 @@
-%section.shop_cart.c2
+.shop_cart.c4
+	.page-title
+		%h3.title= t('cart.title')
 	= form_for @order, authenticity_token: true do |f|
 		#orderline
 			- @order.order_lines.each do |ol|
@@ -8,35 +10,36 @@
 					.details
 						%h4.title= ol.product.title
 						%h5.serial= ol.product.serial
-						%h5.price.green= ol.unit_price.to_s + ol.price_unit
+						%h5.price= ol.unit_price.to_s + ol.price_unit
 						- if ol.fabric.present?
 							= image_tag ol.fabric.fabric_pictures.active.view.first.image.preview
 						- else
-							%h5.fabric= t('shop.cart.own_fabric')
+							%h5.fabric= t('cart.common.own_fabric')
 					.order.inline-around
 						.qty.flex
 							%h4= t('cart.common.quantity')
-							%h4.green= ol.quantity
+							%h4.price= ol.quantity
 						.total-price.flex
 							%h4= t('cart.common.total_price')
-							%h4.green= ol.total_price.to_s + ol.price_unit
-					.action.mb
-						.btn.btn-red
+							%h4.price= ol.total_price.to_s + ol.price_unit
+					.action
+						.btn-custo.btn-red
 							= link_to order_line_path(ol.id), {remote: true, method: :delete} do
-								%h4= t('common.cancel')
+								%h4= t('cart.common.cancel_item')
 					.action.tb
-						= link_to_icon('cancel', 20, 20, order_line_path(ol.id), {remote: true, method: :delete})
+						=# link_to_icon('cancel', 20, 20, order_line_path(ol.id), {remote: true, method: :delete})
 
 		.subtotal.flex
 			%h3= t('cart.common.subtotal')
-			%h3.green{id: 'subtotal'}= @order.calc_subtotal.to_s + @order.price_unit
+			%h3.price{id: 'subtotal'}= @order.calc_subtotal.to_s + @order.price_unit
 
 		.delivery
 			= render partial: 'shop/cart/delivery', locals: {f: f}
 
 		.total.flex
 			%h3= t('cart.common.total_ttc')
-			%h3.green.collect{id: 'total'}= @order.calc_total.to_s + @order.price_unit
+			%h3.price.collect{id: 'total_ttc'}= @order.calc_total.to_s + @order.price_unit
+			=# render partial: 'shop/cart/total_price'
 
 		.payment
 			= render partial: 'shop/cart/payment', locals: {f: f}
@@ -45,4 +48,4 @@
 			= render partial: 'shop/cart/conditions', locals: {f: f}
 
 		.confirm
-			= f.submit t('common.pass_order'), class: "btn btn-valid big"
+			= f.submit t('common.pass_order'), class: "btn btn-valid btn-large"

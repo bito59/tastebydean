@@ -1,14 +1,11 @@
 .mb_menu {
 	width: 80%;
 	background-color: $red;
-	li{
-		width: 100%;min-height: 100px;background-color: white;
-		@include flexbox; @include justify-content(center); @include align-items(center);
-	}
-	li:not(.logo) {background-color: $red;list-style-position:inside;border: 1px solid white;}
-	//li:last-child {border-bottom: none;}
-	li h2 {width: 90%;}
+	.logo {height: 100px;background-color: white;}
 	img {height: 60%;}
+	li {background-color: $red;min-height: 80px;list-style-position:inside;border: 1px solid white;}
+	//li h2 {width: 90%;}
+	
 }
 
 @media (min-width: map-get($breakpoints, tablet)) {

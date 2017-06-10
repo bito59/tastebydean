@@ -1,7 +1,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
+//= require materialize
 
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
@@ -16,5 +16,6 @@
 //= require ez-plus/src/jquery.ez-plus.js
 //= require jquery-nice-select/js/jquery.nice-select.min.js
 
+//= require turbolinks
 //= require_tree .
 

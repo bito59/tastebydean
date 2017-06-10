@@ -17,22 +17,17 @@
       ga('create', 'UA-88492107-2', 'auto');
 
   %body
-    - if @root == true
-      %header#header.nav-on
-        = render partial: 'layouts/header_welcome'
-    - else
-      %header#header.white-bkg.nav-on
-        = render partial: 'layouts/header_others'
+    %header#header
+      - if @header_trsp == true
+        = render partial: 'layouts/header_trsp'
+      - elsif @header_trsp == false
+        = render partial: 'layouts/header'
 
-    %main#main.mb-hide{'canvas': 'container'}
-      #main-fp
-        = yield
+    %main#main.mb-quit{'canvas': 'container', class: "#{@bck_size} #{@bck_img}"}
+      = yield
 
-    %footer#footer.modal-fade.nav-off
+    %footer#footer
       = render partial: 'layouts/footer'
-
-    %section#devise_modal.tb
-      = render partial: 'layouts/devise_modal' 
 
     %section.mb_menu{'off-canvas': "mb-main-menu left overlay"}
       = render partial: 'layouts/mb_main_menu'  

@@ -30,6 +30,7 @@ gem 'magnific-popup-rails'
 gem 'groupdate'
 gem 'js-routes'
 gem 'annotate'
+gem 'materialize-sass'
 
 group :development, :test do
 	gem 'rspec-rails'
