@@ -50,6 +50,8 @@ module ApplicationHelper
 			@area = 'workshop'
 		elsif request.original_url.include?('cart')
 			@area = 'workshop'
+		elsif request.original_url.include?('users')	
+			@area = 'users'
 		end
 		@area
 	end

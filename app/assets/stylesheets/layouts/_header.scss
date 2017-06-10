@@ -1,11 +1,10 @@
 header {
 	@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(space-between);
 	.logo {margin: auto;}
-	.links {position: absolute;right: 1em;}
+	.links {position: absolute;right: 1em;max-width: 40%;}
 	.logo-left {
-		display: inherit;@include flexbox;@include align-items(center);
-		li:nth-child(1) {margin: 0px 0px 0px 20px;}
-		li:nth-child(2) {margin-left: 5px!important;}
+		margin-left: 10px;
+		h5 {margin-left: 5px!important;}
 	}	
 
 	@media (min-width: map-get($breakpoints, tablet)) {
@@ -13,8 +12,9 @@ header {
 		.logo {margin: 0;padding-left: 1em;}
 		.links {img {margin: 0px 5px 0px 5px;}}
 		.cart {
+			position: relative;
 			img {height: 20px; width: 20px;}
-			.message {display: none;position: absolute;top: 1em;right: -1em;border-radius: 30px;width: 30px;height: 30px;line-height: 30px;}
+			.message {display: none;position: absolute;top: 20px;right: -20px;border-radius: 30px;width: 30px;height: 30px;line-height: 30px;}
 			.active {display: block; }
 		}
 	}

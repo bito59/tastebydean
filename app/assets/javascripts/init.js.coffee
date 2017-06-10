@@ -5,18 +5,34 @@ App.load = ->
 
 $(document).on "turbolinks:load", ->
 	init_flash()
+	init_layouts()
 	init_fullpage()
 	init_owl()
-	init_devise_modal()
 	init_slidebar()	
 	init_callbacks()		# Callbacks buttons valid for all pages
 	init_scroll() 			# Hide header on scroll
 	init_ezoom()
 	init_nice_select()
+	init_welcome()
 	init_shop()
 	init_cart()
 
 # -------------------------------  JS init functions  --------------------------------------------
+
+# Init the header ad footer specific rules
+init_layouts = ->
+	if $(".hd-trsp")[0] # Test if header needs to be pushed for full page image
+		$('#header').addClass('covered')
+	
+	# Test if header needs to be pushed for full page image for tb
+	if $(".hd-tb-trsp")[0]
+		if $(window).width() > 720
+			$('#header').addClass('covered')
+		else
+			$('#header').addClass('hide')
+
+	if $(".ft-no")[0]
+		$('#footer').addClass('hide')
 		
 init_nice_select = ->
 	$('select').niceSelect()		
@@ -52,11 +68,11 @@ init_flash = ->
 init_fullpage = ->
 	if typeof $.fn.fullpage.destroy == 'function'
 	    $.fn.fullpage.destroy('all')  # Avoid loading many times FP
-	    #console.log 'fullpage destroyed : fp init'
+	    console.log 'fullpage destroyed : fp init'
 	if ($(".fp-all")[0]) || ($(".fp-mb")[0] && $(window).width() < 720) # Test if fp is on the page
-		#console.log 'fullpage loaded'
-		$('#main').addClass('no-overflow'); # Correct the bug of multi scrolling
-		$('#main-fp').fullpage
+		console.log 'fullpage loaded'
+		#$('#main').addClass('no-overflow') # Correct the bug of multi scrolling
+		$('#fullpage').fullpage
 			fitToSectionDelay: 10000
 			scrollOverflow: false
 			autoScrolling: true
@@ -76,7 +92,7 @@ init_fullpage = ->
 # Init owl-carousel
 init_owl = ->
 	if $(".owl-carousel")[0] # Test if owl is on the page
-		#console.log 'owl loaded'
+		console.log 'owl loaded'
 		$('.owl-carousel').owlCarousel
 			onInitialized: set_ezoom_active
 			onTranslated: set_ezoom_active #Before was reset_ezoom
@@ -91,27 +107,6 @@ init_owl = ->
 	    $('.owl-prev').trigger 'click'
 	$('#btn_next').on 'click', ->
 	    $('.owl-next').trigger 'click'
-
-# Init devise modal
-init_devise_modal = ->
-	if $(window).width() > 719 # Load devise modal unless mobile
-		#console.log 'devise modal loaded'
-		# Block links under modal
-		$(".a").click (ev) ->
-			if $(this).hasClass("blocked") == true
-	      		ev.preventDefault()
-		# Show modal
-		$('.connect_modal').on 'click', ->
-			remove_modal()
-			add_modal()
-		# Hide modal
-		$(window).on 'click', ->
-			if !$(event.target).parents('.front').length
-				remove_modal()
-				#enable_fp()
-		$('.register-link, .cross').on 'click', -> 
-			remove_modal()
-			enable_fp()
 
 # Init Slidebar
 init_slidebar = ->
@@ -140,7 +135,7 @@ init_slidebar = ->
 				ev.preventDefault()
 		$('.mb-quit').click (ev) ->
 			controller.close()
-			#console.log 'slidebar closed'
+			console.log 'slidebar closed'
 
 init_ezoom = ->
 	if $(window).width() > 1023 # Load slidebar unless mobile
@@ -187,7 +182,7 @@ show_flash = ->
 		$('#flash_msg')
 			.fadeOut 2000, ->
 				$(this).empty()
-	, 5000
+	, 500000
 	#console.log 'Flash fired'
 
 # Move nav buttons into carousel
@@ -237,14 +232,6 @@ add_modal = ->
 remove_modal = ->
 	$('#devise_modal').fadeOut(500)
 	$(".modal-fade a").removeClass("blocked")
-
-@update_price = (x, y, z) ->
-	$.ajax
-		url: Routes.shop_update_price_path(),
-		dataType: 'script',
-		data: { id: product_id, fabric_id: fabric_id, std_size: x, sep_fabric: y, qty: z },
-		#success: (data) ->    
-		#console.log("ajax successly fired")
 
 # Show/Hide on scroll
 hasScrolled = ->

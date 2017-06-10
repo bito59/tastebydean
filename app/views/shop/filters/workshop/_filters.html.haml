@@ -2,12 +2,12 @@
 .middle
 	.mb
 		%h3= t('shop.filters.workshop')
-	.inline.tb
-		%li= selected_link('workshop', shop_workshop_path)
-		%li= '|'
-		%li= selected_link('accessories', shop_products_path(kind: 'accessory'))
-		%li= '|'
-		%li= selected_link('fabrics', shop_fabrics_path(kind: 'fabric'))
+	.inline-center.tb
+		= selected_link('workshop', shop_workshop_path)
+		= '|'
+		= selected_link('accessories', shop_products_path(kind: 'accessory'))
+		= '|'
+		= selected_link('fabrics', shop_fabrics_path(kind: 'fabric'))
 
 
 .right

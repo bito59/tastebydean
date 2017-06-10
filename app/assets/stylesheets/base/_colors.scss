@@ -17,16 +17,16 @@ a, h1, h2, h3, h4, h5, input, span, p {color: $red;}
 a.selected {color: $green;}
 
 header, footer {
-	a.white {color: $white;}
-    a:hover {color: $green;}
-    .cart {h4 {color: $white;background-color: $green;}
-  }
+	a.font-white {color: $white;}
+  a:hover {color: $green;}
+  .cart h5 {color: $white;background-color: $green;}
 }
-header.white-bkg {background-color: white;}
+header:not(.covered) {background-color: white;}
 
 footer {
-	span {color: $green;}
-	background-color: $white;
+  border-top: 1px solid $grey_trsp;
+  span {color: $green;}
+	//background-color: $white;
 }
 
 .flash_msg {color: $white;}
@@ -43,11 +43,11 @@ footer {
   #devise_modal {background-color: $white_trsp;}
 }
 
-.c2, .c3 {background-color: $white;}
+.c0, .c1, .c2, .c3, .c4, .c5 {background-color: $white;}
 .mb_menu {
-	a, span, h2 {color: $white;} 
+	a, span, h3 {color: $white;} 
 }
-.green {color: $green;}
+.price, .green {color: $green;}
 
 .owl-theme {
 	.owl-dots .owl-dot.active span {background-color: $red;}
@@ -69,11 +69,12 @@ footer {
   	h3, h4 {color: $red;}
     li {background-color: $white_trsp;}
   }
-  .instagram .title h3 {color: $green;}
-  .follow h3 {color: $red;}
+  .social .title h3 {color: $green;}
+  .follow h3 {color: $green;}
 }
 .shop_index, .shop_workshop {
   .filters h3 {color: $green;}
+  h5.pin {background-color: $grey;}
 }
 .showroom_index, .shop_workshop {
   h4 {color: $green;}
@@ -82,6 +83,10 @@ footer {
 .shop_show {
   .title span {color: $green;}
   h4.cancel {color: $danger;}
+}
+
+.user {
+    .active-area {box-shadow: 0 8px 0 0 $green;}
 }
 
 

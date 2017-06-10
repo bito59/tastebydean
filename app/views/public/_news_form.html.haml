@@ -1,7 +1,10 @@
 = form_for @news, remote: true, authenticity_token: true do |f|
 	%h3= t('.discover')
 	= f.hidden_field :country, value: I18n.locale
-	.fields
-		%li.zipcode= f.text_field :zipcode, autocomplete: "off", placeholder: t('.zipcode'), required: true, class: 'field'
-		%li.email= f.text_field :email, autocomplete: "off", placeholder: t('.email'), required: true, class: 'field'
-		%li= f.submit t('.validate'), class: "btn btn-valid"
+	.input-field
+		= f.text_field :email, maxlength: "100", required: true, pattern: '[^@]+@[^@.]+\.[^@]+', class: 'validate'
+		= f.label :email, t('user.email')
+	.input-field
+		= f.text_field :zipcode, required: false, type: 'text', pattern: '[^@]+@[^@.]+\.[^@]+', class: 'validate'
+		= f.label :zipcode, t('user.city')
+	= f.submit t('public.news_form.validate'), class: "btn btn-valid btn-large"

@@ -1,0 +1,21 @@
+.logo-left
+	.flex
+		= link_to_icon('logo-round', 50, 50, root_path)
+		%h5= select_logo_title
+
+.links.mb
+	= link_to_icon('filter-red-mb', 25, 25, root_path, {class: 'mb_main_menu', remote: true})
+.links.inline-around.tb
+	= selected_header_link('creation', showroom_products_path(kind: 'creation'))
+	= selected_header_link('collection', shop_products_path(kind: 'model'))
+	= selected_header_link('shop', shop_products_path(kind: 'accessory'))
+	.icons
+		- if user_signed_in?
+			= link_to_icon('user_green', 20, 20, destroy_user_session_path, {method: :delete})
+			= link_to shop_cart_show_path, class: 'cart' do
+				= image_tag 'icons/cart_red.png', id: 'bsk_icon'
+				%h5.message= t('cart.common.cart_items', count: current_order.count_qties)
+		- else
+			= link_to_icon('user_red', 20, 20, new_user_session_path, {class: 'connect_modal'})
+		
+

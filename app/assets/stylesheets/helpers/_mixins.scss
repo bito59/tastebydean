@@ -1,9 +1,9 @@
 /* Retina images */
-$image-path: '../assets/welcome' !default;
+$image-path: '../assets' !default;
 $fallback-extension: 'png' !default;
 $retina-suffix: '@2x';
 @mixin background-image($name){
-  background: url(#{$image-path}/#{$name}.#{$fallback-extension}) no-repeat center center;
+  background: url(#{$image-path}/backgrounds/#{$name}.#{$fallback-extension}) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

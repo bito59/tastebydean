@@ -1,8 +1,7 @@
 footer {
-	.content {@include flexbox; @include justify-content(space-around); @include align-items(center);} 
-
+	.content {height: 100%;}
 	@media (min-width: map-get($breakpoints, tablet)) {
-		.content {height: 100%;@include justify-content(space-between);}
+		.inline-around {height: 100%;@include justify-content(space-between);}
 		.logo {width:50%;padding-left: 1em; * {float: left;}}
 		.copyright {position: absolute;left: calc(50% - 50px);}
 		.links {width: 50%;display: inherit;padding-right: 1em; * {float: right;}}

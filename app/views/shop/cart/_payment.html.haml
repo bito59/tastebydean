@@ -1,11 +1,8 @@
 %h4.title= t('cart.payment.title')
-.inline-around
-	= #%label.option
-	=# f.radio_button :payment_method, 'online'
-	=#%span= t('shop.cart.payment.online')
-	%label.option
-		= f.radio_button :payment_method, 'check'
-		%span= t('cart.payment.check')
+.inline-center
 	%label.option
 		= f.radio_button :payment_method, 'quotation', checked: true
 		%span= t('cart.payment.quotation')
+	%label.option
+		= f.radio_button :payment_method, 'check'
+		%span= t('cart.payment.check')

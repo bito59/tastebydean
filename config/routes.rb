@@ -20,7 +20,8 @@ Rails.application.routes.draw do
 		  resources :products, only: [:index, :show]
 		  resources :fabrics, only: [:index, :show]
 		  match '/cart', to: 'carts#show', via: :get, as: :cart_show
-		  match 'update_price', to: 'products#update_price', via: :get, as: :update_price
+		  match 'update_product_price', to: 'products#update_price', via: :get, as: :update_product_price
+		  match 'update_final_price', to: 'carts#update_price', via: :get, as: :update_final_price
 		  match '/workshop', to: 'workshop#show', via: :get, as: :workshop
 		end
 		namespace :showroom do

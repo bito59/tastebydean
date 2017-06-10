@@ -75,6 +75,14 @@ class Order < ApplicationRecord
 		(self[:subtotal] + self[:shipping_fees] + self[:tax_fees] + self[:num_discount])*(1-self[:share_discount])
 	end
 
+	def calc_shipping_fees
+		if self[:delivery_method] == 'collect'
+			0
+		else
+			5
+		end
+	end
+
 	def change_order_status(status)
 		self.status = status
 		self.save!
@@ -103,6 +111,7 @@ class Order < ApplicationRecord
 	end
 
 	def update_total
+		self[:shipping_fees] = calc_shipping_fees
 		self[:total] = calc_total
 	end
 

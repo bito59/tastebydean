@@ -1,8 +1,10 @@
-body {position: relative;}
+html, body {position: relative;overflow: visible;}
 body::-webkit-scrollbar {display: none;}
-header, footer {z-index: 3; width: 100%;position: absolute;}
+header, footer {z-index: 3; width: 100%;}
 header {height: 4em;}
-footer {height: 2em;bottom: 0px;}
+footer {height: 2em;bottom: 0px;//margin-top: 3em;
+}
+//footer {display: none;}
 
 #header, #footer {
 	transition: opacity .5s ease-out;
@@ -10,32 +12,73 @@ footer {height: 2em;bottom: 0px;}
 	-webkit-transition: opacity .5s ease-out;
 	-o-transition: opacity .5s ease-out;
 }
+.covered {position: absolute;}
+.fixed {position: fixed;}
+.hide {display: none;}
 
 .nav-on {opacity:1;}
 .nav-off {opacity:0;}
 
-#main {z-index: 1;min-height: 100vh;margin: auto;}
+#main {z-index: 1;margin: auto;}
 #ez-container{width: 500px;height: 500px;position: fixed;z-index: -1;}
 #flash_msg {z-index: 999;position: fixed;top: 0;width:100%;}
 
-.c0, .c1, .c2, .c3 {z-index: 2;margin: 0 auto;}
-.c0 {@include background-image('welcome');height: 100vh;} //Full screen page (welcome picture)
-.c1 {max-width: 520px;padding-right: 1em;padding-left: 1em;position: relative;} // // FP with 2 colons in tb (products)
-.c2 {max-width: 1266px;margin-top: 6em;padding: 1em;} // No fp (index)
-.c3 {padding-right: 1em;padding-left: 1em;} // Fp with 1 section large page (welcome pages)
-
-.flex {@include flexbox; @include flex-flow(row wrap);@include align-items(center);@include justify-content(center);}
-.inline-around {@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(space-around);}
-.inline-center {@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(center);}
-.inline-center > * {margin-left: 10px;margin-right: 10px;}
-//.inline-center:nth-child(2) {margin-left: 5px;}
+.flex {width: 100%;@include flexbox; @include flex-flow(row wrap);@include align-items(center);@include justify-content(center);}
+.inline-around {width: 100%;@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(space-around);}
+.inline-center {width: 100%;@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(center);}
+.inline-center > * {margin-left: 0.5em;margin-right: 0.5em;}
 .column-center {@include flexbox; @include flex-flow(column nowrap);@include align-items(center);@include justify-content(center);}
-.inline > li { display:inline;}
 
-
-.hidded-link {display: none;}
+// Fix to keep content in the Fullpage block
 .fill-height, .fp-tableCell {display: flex;flex-direction: column;}
 .fill-height > *, .fp-tableCell > * {flex: 1;}
+
+// c0 : full screen
+// box : flying window
+// c1: full screen with paddings
+// c2 : full page max 1266px with margins
+// c3 : full page max 1024px with margins
+// c4 : 2 columns in 1 page (custom)
+.c0, .c1, .c2, .c3, .c4 {z-index: 2;margin: 0 auto;padding: 0;}
+.c1, .c2, .c3, .c4, .c5 {padding-right: 1em;padding-left: 1em;} //Fullpage forces padding 1em 0
+.c2 {width: 100%;max-width: 1266px;}
+.c3 {width: 100%;max-width: 1024px;}
+.c4 {width: 100%;max-width: 712px;}
+.c5 {width: 100%;max-width: 512px;position: relative;} // // FP with 2 colons in tb (products)
+
+@media (min-width: map-get($breakpoints, tablet)) {
+	// Switch right screen on big screens
+	.c5 {height: calc(100vh - 4em);}
+	.c5[data-anchor="3"] {display: none;}
+}
+
+/* ----------------------------------------------------------------------*/
+// Background images
+$pages: welcome login cart;
+//.img-wlc {@include background-image('welcome');height: 100vh;}
+//.img-bsk {@include background-image('welcome');height: 100vh;}
+.bck-img-all {
+	@each $page in $pages {
+        &.#{'img-' + $page} {
+        	z-index: 1;height: 100vh;
+			@include background-image($page); 
+		}
+	}
+}
+
+@media (min-width: map-get($breakpoints, tablet)) {
+	.bck-img-tb {
+		@each $page in $pages {
+	        &.#{'img-' + $page} {
+	        	z-index: 1;height: 100vh;
+				@include background-image($page); 
+			}
+		}
+	}
+}
+
+
+/* ----------------------------------------------------------------------*/
 
 @media (min-width: map-get($breakpoints, tablet)) {
 	.sub-cont {height: calc(100vh - 6em);margin-top: 6em;align-items: flex-start;}
@@ -46,7 +89,7 @@ footer {height: 2em;bottom: 0px;}
 }
 @media (min-width: map-get($breakpoints, laptop)) {
 	.fill-height {height: 100%;}
-	.c1 {width: 512px;height: calc(100vh - 6em - 2em);margin: 0;padding: 0;}
+	//.c1 {width: 512px;height: calc(100vh - 6em - 2em);margin: 0;padding: 0;}
 	//width: calc(50% - 2em) !important;padding: 0;margin: 0 1em;
 }
 @media (min-width: map-get($breakpoints, desktop)) {

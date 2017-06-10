@@ -5,15 +5,31 @@ module Shop
 
 		def show
 			@order = current_order
-			#@new_order = Order.new()
+			@bck_size = 'bck-img-tb'
+			@bck_img = 'img-login'
 			respond_to do |format|
 				if @order.order_lines.count > 0
 					format.html { render 'shop/cart/show' }				
 				else
 					flash_message('notice', t('flash_messages.empty_cart'))
-					format.html { redirect_to :back }
+					format.html { redirect_to :back || root_path }
 				end
 			end
+		end
+
+		def update_price
+			@order = current_order
+			puts @order.inspect
+			respond_to do |format|
+				if @order.update_attributes(delivery_method: params[:delivery_method])
+					@order = current_order
+					format.js { render 'shop/cart/update_cart.js.erb' }
+				else
+					flash_message('notice', t('flash_messages.cannot_update_price'))
+					format.js { render 'shop/cart/update_cart.js.erb' }
+				end
+			end
+			puts @order.inspect
 		end
 
 		def destroy
@@ -38,6 +54,10 @@ module Shop
 		def find_ol
 			@ol = OrderLine.find(params[:id])
 			#puts 'Product was loaded : ' + @product.inspect
+		end
+
+		def cart_params
+			params.require(:cart).permit(:order_id, :delivery_method)
 		end
 
 	end
