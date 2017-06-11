@@ -17,7 +17,7 @@ gem 'normalize-rails'
 gem 'bootstrap-modal-rails'
 gem 'friendly_id'
 gem 'will_paginate'
-gem "carrierwave", github: "carrierwaveuploader/carrierwave"
+gem "carrierwave"
 gem 'carrierwave-aws'
 gem 'mini_magick'
 gem 'devise'
