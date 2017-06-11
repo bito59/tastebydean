@@ -51,7 +51,7 @@ class Product < ApplicationRecord
 		.having("count(product_pictures.id) > ?",0)
 		.where('products.activated = ?',true)
 	}
-	scope :random, -> { order('RAND()') }
+	scope :random, -> { order('RANDOM()') }
 
 	scope :all_creations, -> { where kind: 'creation' }
 	scope :all_models, -> { where kind: 'model' }

@@ -42,7 +42,7 @@ class Fabric < ApplicationRecord
 		.group("fabrics.id")
 		.having("count(fabric_pictures.id) > ?",0)
 	}
-	scope :random, -> { order('RAND()') }
+	scope :random, -> { order('RANDOM()') }
 	scope :with_fabric_family, -> (family) { joins(:fabric_family)
 		.where('fabric_families.title = ?', family)
 	}

@@ -12,30 +12,33 @@
 
 ActiveRecord::Schema.define(version: 20170508112122) do
 
-  create_table "customers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "customers", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "fabric_families", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "fabric_families", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "fabric_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "fabric_pictures", force: :cascade do |t|
     t.integer  "fabric_id"
-    t.boolean  "activated",                default: true
-    t.boolean  "main",                     default: false
-    t.boolean  "preview",                  default: false
-    t.text     "image",      limit: 65535
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.boolean  "activated",  default: true
+    t.boolean  "main",       default: false
+    t.boolean  "preview",    default: false
+    t.text     "image"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["fabric_id"], name: "index_fabric_pictures_on_fabric_id", using: :btree
   end
 
-  create_table "fabric_prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "fabric_prices", force: :cascade do |t|
     t.string   "title"
     t.integer  "product_family_id"
     t.integer  "fabric_family_id"
@@ -48,23 +51,23 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.index ["product_family_id"], name: "index_fabric_prices_on_product_family_id", using: :btree
   end
 
-  create_table "fabrics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "fabrics", force: :cascade do |t|
     t.string   "serial"
-    t.string   "kind",                           default: "fabric"
+    t.string   "kind",             default: "fabric"
     t.string   "title"
     t.integer  "fabric_family_id"
-    t.boolean  "activated",                      default: false
+    t.boolean  "activated",        default: false
     t.string   "origin"
     t.string   "content"
-    t.text     "description",      limit: 65535
-    t.float    "stock_length",     limit: 24
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.text     "description"
+    t.float    "stock_length"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "slug"
     t.index ["fabric_family_id"], name: "index_fabrics_on_fabric_family_id", using: :btree
   end
 
-  create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
     t.string   "sluggable_type", limit: 50
@@ -76,7 +79,7 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
-  create_table "measures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "measures", force: :cascade do |t|
     t.string   "title"
     t.boolean  "around_collar_large",        default: false
     t.boolean  "shoulder_width",             default: false
@@ -103,7 +106,7 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.datetime "updated_at",                                 null: false
   end
 
-  create_table "news", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "news", force: :cascade do |t|
     t.string   "zipcode"
     t.string   "email"
     t.string   "country"
@@ -111,7 +114,7 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "order_lines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "order_lines", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "product_id"
     t.integer  "fabric_id"
@@ -130,7 +133,7 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.index ["product_id"], name: "index_order_lines_on_product_id", using: :btree
   end
 
-  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "serial"
     t.string   "status"
@@ -146,7 +149,7 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.decimal  "subtotal",          precision: 12, scale: 3, default: "0.0"
     t.decimal  "shipping_fees",     precision: 12, scale: 3, default: "0.0"
     t.decimal  "tax_fees",          precision: 12, scale: 3, default: "0.0"
-    t.decimal  "share_discount",    precision: 10,           default: 0
+    t.decimal  "share_discount",                             default: "0.0"
     t.decimal  "num_discount",      precision: 12, scale: 3, default: "0.0"
     t.decimal  "total",             precision: 12, scale: 3, default: "0.0"
     t.string   "price_unit",                                 default: "€"
@@ -163,47 +166,47 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
-  create_table "price_units", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "price_units", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "product_families", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "product_families", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "product_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "product_pictures", force: :cascade do |t|
     t.integer "product_id"
-    t.boolean "main",                     default: false
-    t.boolean "activated",                default: true
-    t.text    "image",      limit: 65535
+    t.boolean "main",       default: false
+    t.boolean "activated",  default: true
+    t.text    "image"
     t.index ["product_id"], name: "index_product_pictures_on_product_id", using: :btree
   end
 
-  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "serial"
     t.string   "title"
-    t.boolean  "activated",                                               default: false
-    t.integer  "kind",                                                    default: 1
+    t.boolean  "activated",                                 default: false
+    t.integer  "kind",                                      default: 1
     t.integer  "customer_id"
     t.integer  "product_family_id"
     t.integer  "measure_id"
-    t.text     "description",       limit: 65535
-    t.decimal  "confection_price",                precision: 8, scale: 2
-    t.string   "price_unit",                                              default: "€"
+    t.text     "description"
+    t.decimal  "confection_price",  precision: 8, scale: 2
+    t.string   "price_unit",                                default: "€"
     t.string   "leadtime"
-    t.boolean  "custom_fabric",                                           default: true
-    t.boolean  "on_measure",                                              default: true
-    t.boolean  "unic_size",                                               default: true
-    t.float    "fabric_lng_std",    limit: 24
-    t.float    "fabric_lrg_std",    limit: 24
-    t.float    "fabric_lng_big",    limit: 24
-    t.float    "fabric_lrg_big",    limit: 24
-    t.datetime "created_at",                                                              null: false
-    t.datetime "updated_at",                                                              null: false
+    t.boolean  "custom_fabric",                             default: true
+    t.boolean  "on_measure",                                default: true
+    t.boolean  "unic_size",                                 default: true
+    t.float    "fabric_lng_std"
+    t.float    "fabric_lrg_std"
+    t.float    "fabric_lng_big"
+    t.float    "fabric_lrg_big"
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
     t.string   "slug"
     t.index ["customer_id"], name: "index_products_on_customer_id", using: :btree
     t.index ["measure_id"], name: "index_products_on_measure_id", using: :btree
@@ -211,7 +214,7 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "zipcode"

@@ -180,7 +180,6 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
-    mysql2 (0.4.5)
     neatjson (0.8.3)
     nenv (0.3.0)
     nio4r (1.2.1)
@@ -191,6 +190,7 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
+    pg (0.20.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -326,9 +326,9 @@ DEPENDENCIES
   magnific-popup-rails
   materialize-sass
   mini_magick
-  mysql2
   neatjson
   normalize-rails
+  pg
   puma (~> 3.0)
   rack-cors
   rails (~> 5.0.0, >= 5.0.0.1)

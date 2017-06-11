@@ -54,8 +54,8 @@ end
 # Creation of products
 (1..20).each do |p|
 	kind = Product.kinds.sample(1).to_sym
-	customer = Customer.order("RAND()").first
-	family = ProductFamily.order("RAND()").first
+	customer = Customer.order("RANDOM()").first
+	family = ProductFamily.order("RANDOM()").first
 	confection_price = ["2", "3", "4", "5", "6", "7", "8", "9", "10"].sample
 	title = 'Elegance ' + p.to_s
 	product = Product.new(	serial: p,
@@ -90,7 +90,7 @@ end
 # Creation of fabrics
 (1..10).each do |p|
 	#kind = Fabric.kinds.sample(1).to_sym
-	family = FabricFamily.order("RAND()").first
+	family = FabricFamily.order("RANDOM()").first
 	title = 'Tissu  ' + p.to_s
 	fabric = Fabric.new(	serial: p,
 							activated: true,
