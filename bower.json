@@ -1,0 +1,27 @@
+{
+  "name": "DeanCorner",
+  "homepage": "https://github.com/massetech/tastebydean",
+  "authors": [
+    "Mac Thib <bitocreator@gmail.com>"
+  ],
+  "description": "sewing",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "modular-scale": "^2.1.3",
+    "ez-plus": "^1.2.1",
+    "fullpage.js": "^2.9.2",
+    "owl.carousel": "^2.2.0",
+    "sass-flex-mixin": "^1.0.3",
+    "typi": "^2.3.0",
+    "slidebars": "^2.0.2"
+  }
+}
