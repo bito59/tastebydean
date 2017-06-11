@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.3'
 
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 #gem 'mysql2'
@@ -10,6 +11,7 @@ gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'rails_12factor', group: :production
 
 # Custom gems
 gem 'haml'
