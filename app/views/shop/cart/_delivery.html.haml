@@ -22,7 +22,7 @@
 	= f.text_field :phone, placeholder: t('cart.delivery.phone'), class: 'field', required: true
 .del_details
 	= f.text_field :address, placeholder: t('cart.delivery.address'), class: 'field'
-	= f.text_field :zipcode, placeholder: t('cart.delivery.zipcode'), class: 'field'
+	= f.text_field :zipcode, placeholder: t('cart.delivery.zipcode'), pattern: '^(F-)?((2[A|B])|[0-9]{2})[0-9]{3}$', class: 'field'
 	= f.text_field :city, placeholder: t('cart.delivery.city'), class: 'field'
 	= f.text_field :country, placeholder: t('cart.delivery.country'), class: 'field'
 

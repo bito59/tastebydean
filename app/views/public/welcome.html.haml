@@ -60,7 +60,8 @@
 				.pictures
 					.mb= image_tag "instagram/instagram_#{rand(1..3)}.png"
 					- (1..3).each do |i|
-						.tb= image_tag "instagram/instagram_#{i}.png"
+						= link_to_icon('facebook', 40, 40, 'https://www.instagram.com/deanscorner/', target: "_blank") do
+							.tb= image_tag "instagram/instagram_#{i}.png"
 
 	.section.c3.follow{'data-anchor': '4'}
 		.fill-height
@@ -68,7 +69,7 @@
 				%h2= t('.follow_us')
 				.inline-center
 					= link_to_icon('facebook', 40, 40, 'https://www.facebook.com/Dean-Corner-448035335534087/', target: "_blank")
-					= link_to_icon('instagram', 40, 40, 'https://www.instagram.com/tastebydean/', target: "_blank")
-					= link_to_icon('pinterest', 40, 40, 'https://fr.pinterest.com/tastebydean/tastebydean/', target: "_blank")
+					= link_to_icon('instagram', 40, 40, 'https://www.instagram.com/deanscorner/', target: "_blank")
+					= link_to_icon('pinterest', 40, 40, 'https://fr.pinterest.com/deanscorner/', target: "_blank")
 			.newsletter
 				= render partial: 'public/news_form'

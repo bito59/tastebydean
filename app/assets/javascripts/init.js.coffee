@@ -182,7 +182,7 @@ show_flash = ->
 		$('#flash_msg')
 			.fadeOut 2000, ->
 				$(this).empty()
-	, 500000
+	, 5000
 	#console.log 'Flash fired'
 
 # Move nav buttons into carousel

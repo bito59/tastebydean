@@ -5,6 +5,6 @@
 		= f.text_field :email, maxlength: "100", required: true, pattern: '[^@]+@[^@.]+\.[^@]+', class: 'validate'
 		= f.label :email, t('user.email')
 	.input-field
-		= f.text_field :zipcode, required: false, type: 'text', pattern: '[^@]+@[^@.]+\.[^@]+', class: 'validate'
+		= f.text_field :zipcode, required: false, type: 'text', pattern: '^(F-)?((2[A|B])|[0-9]{2})[0-9]{3}$', class: 'validate'
 		= f.label :zipcode, t('user.city')
 	= f.submit t('public.news_form.validate'), class: "btn btn-valid btn-large"
