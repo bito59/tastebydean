@@ -15,7 +15,7 @@ class CreateOrderLines < ActiveRecord::Migration[5.0]
 		t.decimal :unit_price, precision: 12, scale: 3, default: 0
 		t.integer :quantity, default: 1
 		t.decimal :total_price, precision: 12, scale: 3, default: 0
-		t.string :price_unit, default: '€'
+		t.references :price_unit, index: true
 
 		t.timestamps null: false
     end

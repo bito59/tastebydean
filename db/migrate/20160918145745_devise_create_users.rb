@@ -7,6 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
 
       t.string :zipcode
       t.boolean :newsletter, default: false
+      t.references :country
 
       ## Recoverable
       t.string   :reset_password_token

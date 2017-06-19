@@ -4,7 +4,7 @@ footer {
 		.inline-around {height: 100%;@include justify-content(space-between);}
 		.logo {width:50%;padding-left: 1em; * {float: left;}}
 		.copyright {position: absolute;left: calc(50% - 50px);}
-		.links {width: 50%;display: inherit;padding-right: 1em; * {float: right;}}
+		.links {width: 50%;display: inherit;padding-right: 1em;max-width: 45%;}
 		span {margin-left: 5px;}
 	}
 }

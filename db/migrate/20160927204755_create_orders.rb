@@ -24,9 +24,9 @@ class CreateOrders < ActiveRecord::Migration[5.0]
 		t.decimal :share_discount, default: 0
 		t.decimal :num_discount, precision: 12, scale: 3, default: 0
 		t.decimal :total, precision: 12, scale: 3, default: 0
+		t.references :price_unit, index: true
 
 		# Payment
-		t.string :price_unit, default: '€'
 		t.string :payment_method
 		t.string :payment_type
 		t.string :payment_status

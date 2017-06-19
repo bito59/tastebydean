@@ -4,12 +4,16 @@
 #
 #  id         :integer          not null, primary key
 #  fabric_id  :integer
-#  activated  :boolean          default("1")
-#  main       :boolean          default("0")
-#  preview    :boolean          default("0")
-#  image      :text(65535)
+#  activated  :boolean          default("true")
+#  main       :boolean          default("false")
+#  preview    :boolean          default("false")
+#  image      :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_fabric_pictures_on_fabric_id  (fabric_id)
 #
 
 require 'test_helper'

@@ -35,8 +35,8 @@ module Tastebydean
 
     # Skip authentication for devise controllers
     config.to_prepare do
-      Devise::SessionsController.skip_before_filter :auth_user
-      Devise::RegistrationsController.skip_before_filter :auth_user
+      Devise::SessionsController.skip_before_action :auth_user
+      Devise::RegistrationsController.skip_before_action :auth_user
     end
 
   end

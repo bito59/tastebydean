@@ -4,9 +4,13 @@
 #
 #  id         :integer          not null, primary key
 #  product_id :integer
-#  main       :boolean          default("0")
-#  activated  :boolean          default("1")
-#  image      :text(65535)
+#  main       :boolean          default("false")
+#  activated  :boolean          default("true")
+#  image      :text
+#
+# Indexes
+#
+#  index_product_pictures_on_product_id  (product_id)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

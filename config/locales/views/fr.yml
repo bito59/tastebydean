@@ -10,6 +10,8 @@ fr:
         city: 'Code postal'
         news: 'News'
         no-news: 'Non'
+        mr: 'Mr'
+        mrs: 'Mme'
     common:
         validate: 'Valider'
         add_to_basket: 'Ajouter au panier'

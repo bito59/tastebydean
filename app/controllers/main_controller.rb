@@ -4,10 +4,13 @@ class MainController < ApplicationController
 
 	def welcome
 		@news = News.new
-		#if flash.empty?
 		unless session[:welcome_msg]
-			flash_message('notice', t('flash_messages.welcome'))
-			session[:welcome_msg] = true
+			if flash.any? #User was allready online
+				session[:welcome_msg] = true
+			else
+				flash_message('notice', t('flash_messages.welcome'))
+				session[:welcome_msg] = true
+			end
 		end
 		render 'public/welcome'
 	end

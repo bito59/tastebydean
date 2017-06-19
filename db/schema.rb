@@ -15,6 +15,12 @@ ActiveRecord::Schema.define(version: 20170508112122) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "countries", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
@@ -44,10 +50,11 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.integer  "fabric_family_id"
     t.decimal  "price_std",         precision: 8, scale: 2
     t.decimal  "price_big",         precision: 8, scale: 2
-    t.string   "price_unit",                                default: "€"
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
+    t.integer  "price_unit_id"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.index ["fabric_family_id"], name: "index_fabric_prices_on_fabric_family_id", using: :btree
+    t.index ["price_unit_id"], name: "index_fabric_prices_on_price_unit_id", using: :btree
     t.index ["product_family_id"], name: "index_fabric_prices_on_product_family_id", using: :btree
   end
 
@@ -125,11 +132,12 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.decimal  "unit_price",       precision: 12, scale: 3, default: "0.0"
     t.integer  "quantity",                                  default: 1
     t.decimal  "total_price",      precision: 12, scale: 3, default: "0.0"
-    t.string   "price_unit",                                default: "€"
+    t.integer  "price_unit_id"
     t.datetime "created_at",                                                null: false
     t.datetime "updated_at",                                                null: false
     t.index ["fabric_id"], name: "index_order_lines_on_fabric_id", using: :btree
     t.index ["order_id"], name: "index_order_lines_on_order_id", using: :btree
+    t.index ["price_unit_id"], name: "index_order_lines_on_price_unit_id", using: :btree
     t.index ["product_id"], name: "index_order_lines_on_product_id", using: :btree
   end
 
@@ -152,7 +160,7 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.decimal  "share_discount",                             default: "0.0"
     t.decimal  "num_discount",      precision: 12, scale: 3, default: "0.0"
     t.decimal  "total",             precision: 12, scale: 3, default: "0.0"
-    t.string   "price_unit",                                 default: "€"
+    t.integer  "price_unit_id"
     t.string   "payment_method"
     t.string   "payment_type"
     t.string   "payment_status"
@@ -163,6 +171,7 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.datetime "payment_date"
     t.datetime "created_at",                                                 null: false
     t.datetime "updated_at",                                                 null: false
+    t.index ["price_unit_id"], name: "index_orders_on_price_unit_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
@@ -196,7 +205,7 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.integer  "measure_id"
     t.text     "description"
     t.decimal  "confection_price",  precision: 8, scale: 2
-    t.string   "price_unit",                                default: "€"
+    t.integer  "price_unit_id"
     t.string   "leadtime"
     t.boolean  "custom_fabric",                             default: true
     t.boolean  "on_measure",                                default: true
@@ -210,6 +219,7 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.string   "slug"
     t.index ["customer_id"], name: "index_products_on_customer_id", using: :btree
     t.index ["measure_id"], name: "index_products_on_measure_id", using: :btree
+    t.index ["price_unit_id"], name: "index_products_on_price_unit_id", using: :btree
     t.index ["product_family_id"], name: "index_products_on_product_family_id", using: :btree
     t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree
   end
@@ -219,6 +229,7 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "zipcode"
     t.boolean  "newsletter",             default: false
+    t.integer  "country_id"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -229,6 +240,7 @@ ActiveRecord::Schema.define(version: 20170508112122) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.index ["country_id"], name: "index_users_on_country_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

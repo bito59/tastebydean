@@ -1,10 +1,10 @@
-html, body {position: relative;overflow: visible;}
+html, body {position: relative;//overflow: visible;
+}
 body::-webkit-scrollbar {display: none;}
 header, footer {z-index: 3; width: 100%;}
 header {height: 4em;}
-footer {height: 2em;bottom: 0px;//margin-top: 3em;
+footer {height: 2em;bottom: 0px;
 }
-//footer {display: none;}
 
 #header, #footer {
 	transition: opacity .5s ease-out;
@@ -19,7 +19,7 @@ footer {height: 2em;bottom: 0px;//margin-top: 3em;
 .nav-on {opacity:1;}
 .nav-off {opacity:0;}
 
-#main {z-index: 1;margin: auto;}
+#main {z-index: 1;margin: auto;overflow: hidden;}
 #ez-container{width: 500px;height: 500px;position: fixed;z-index: -1;}
 #flash_msg {z-index: 999;position: fixed;top: 0;width:100%;}
 

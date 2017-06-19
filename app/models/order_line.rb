@@ -6,16 +6,23 @@
 #  order_id         :integer
 #  product_id       :integer
 #  fabric_id        :integer
-#  std_size         :boolean          default("1")
-#  sep_fabric       :boolean          default("1")
-#  confection_price :decimal(12, 3)   default("0.000")
-#  fabric_price     :decimal(12, 3)   default("0.000")
-#  unit_price       :decimal(12, 3)   default("0.000")
+#  std_size         :boolean          default("true")
+#  sep_fabric       :boolean          default("true")
+#  confection_price :decimal(12, 3)   default("0")
+#  fabric_price     :decimal(12, 3)   default("0")
+#  unit_price       :decimal(12, 3)   default("0")
 #  quantity         :integer          default("1")
-#  total_price      :decimal(12, 3)   default("0.000")
-#  price_unit       :string(255)      default("€")
+#  total_price      :decimal(12, 3)   default("0")
+#  price_unit_id    :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#
+# Indexes
+#
+#  index_order_lines_on_fabric_id      (fabric_id)
+#  index_order_lines_on_order_id       (order_id)
+#  index_order_lines_on_price_unit_id  (price_unit_id)
+#  index_order_lines_on_product_id     (product_id)
 #
 
 class OrderLine < ApplicationRecord
@@ -23,6 +30,7 @@ class OrderLine < ApplicationRecord
 	belongs_to :order
 	belongs_to :product
 	belongs_to :fabric
+	belongs_to :price_unit
 	has_many :product_pictures, through: :product
 	has_many :fabric_pictures, through: :fabric
 

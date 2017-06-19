@@ -14,7 +14,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
         # Commercial
     	t.text :description
     	t.decimal :confection_price, precision: 8, scale: 2
-    	t.string :price_unit, default: '€'
+    	t.references :price_unit, index: true
 
 		# Production
         t.string :leadtime #leadtime for production

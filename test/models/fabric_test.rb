@@ -3,19 +3,22 @@
 # Table name: fabrics
 #
 #  id               :integer          not null, primary key
-#  serial           :string(255)
-#  kind             :string(255)      default("fabric")
-#  title            :string(255)
+#  serial           :string
+#  kind             :string           default("fabric")
+#  title            :string
 #  fabric_family_id :integer
-#  activated        :boolean          default("0")
-#  image            :text(65535)
-#  origin           :string(255)
-#  content          :string(255)
-#  description      :text(65535)
-#  stock_length     :float(24)
+#  activated        :boolean          default("false")
+#  origin           :string
+#  content          :string
+#  description      :text
+#  stock_length     :float
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  slug             :string(255)
+#  slug             :string
+#
+# Indexes
+#
+#  index_fabrics_on_fabric_family_id  (fabric_family_id)
 #
 
 require 'test_helper'

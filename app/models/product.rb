@@ -3,27 +3,35 @@
 # Table name: products
 #
 #  id                :integer          not null, primary key
-#  serial            :string(255)
-#  title             :string(255)
-#  activated         :boolean          default("0")
+#  serial            :string
+#  title             :string
+#  activated         :boolean          default("false")
 #  kind              :integer          default("1")
 #  customer_id       :integer
 #  product_family_id :integer
 #  measure_id        :integer
-#  description       :text(65535)
+#  description       :text
 #  confection_price  :decimal(8, 2)
-#  price_unit        :string(255)      default("€")
-#  leadtime          :string(255)
-#  custom_fabric     :boolean          default("1")
-#  on_measure        :boolean          default("1")
-#  unic_size         :boolean          default("1")
-#  fabric_lng_std    :float(24)
-#  fabric_lrg_std    :float(24)
-#  fabric_lng_big    :float(24)
-#  fabric_lrg_big    :float(24)
+#  price_unit_id     :integer
+#  leadtime          :string
+#  custom_fabric     :boolean          default("true")
+#  on_measure        :boolean          default("true")
+#  unic_size         :boolean          default("true")
+#  fabric_lng_std    :float
+#  fabric_lrg_std    :float
+#  fabric_lng_big    :float
+#  fabric_lrg_big    :float
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  slug              :string(255)
+#  slug              :string
+#
+# Indexes
+#
+#  index_products_on_customer_id        (customer_id)
+#  index_products_on_measure_id         (measure_id)
+#  index_products_on_price_unit_id      (price_unit_id)
+#  index_products_on_product_family_id  (product_family_id)
+#  index_products_on_slug               (slug) UNIQUE
 #
 
 class Product < ApplicationRecord
@@ -36,6 +44,7 @@ class Product < ApplicationRecord
 	has_many :order_lines
 	has_many :orders, through: :order_lines
   	has_many :product_pictures, dependent: :destroy
+	belongs_to :price_unit
 	accepts_nested_attributes_for :product_pictures, allow_destroy: true
 
   	after_save :affect_serial # Needs product ID

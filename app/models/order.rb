@@ -4,26 +4,27 @@
 #
 #  id                :integer          not null, primary key
 #  user_id           :integer
-#  serial            :string(255)
-#  status            :string(255)
-#  delivery_method   :string(255)
-#  title             :string(255)
-#  name              :string(255)
-#  surname           :string(255)
-#  address           :string(255)
-#  zipcode           :string(255)
-#  city              :string(255)
-#  country           :string(255)
-#  phone             :string(255)
-#  subtotal          :decimal(12, 3)   default("0.000")
-#  shipping_fees     :decimal(12, 3)   default("0.000")
-#  tax_fees          :decimal(12, 3)   default("0.000")
-#  share_discount    :decimal(10, )    default("0")
-#  num_discount      :decimal(12, 3)   default("0.000")
-#  total             :decimal(12, 3)   default("0.000")
-#  payment_method    :string(255)
-#  payment_type      :string(255)
-#  payment_status    :string(255)
+#  serial            :string
+#  status            :string
+#  delivery_method   :string
+#  title             :string
+#  name              :string
+#  surname           :string
+#  address           :string
+#  zipcode           :string
+#  city              :string
+#  country           :string
+#  phone             :string
+#  subtotal          :decimal(12, 3)   default("0")
+#  shipping_fees     :decimal(12, 3)   default("0")
+#  tax_fees          :decimal(12, 3)   default("0")
+#  share_discount    :decimal(, )      default("0")
+#  num_discount      :decimal(12, 3)   default("0")
+#  total             :decimal(12, 3)   default("0")
+#  price_unit_id     :integer
+#  payment_method    :string
+#  payment_type      :string
+#  payment_status    :string
 #  creation_date     :datetime
 #  validation_date   :datetime
 #  confirmation_date :datetime
@@ -31,6 +32,11 @@
 #  payment_date      :datetime
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#
+# Indexes
+#
+#  index_orders_on_price_unit_id  (price_unit_id)
+#  index_orders_on_user_id        (user_id)
 #
 
 class Order < ApplicationRecord
@@ -43,6 +49,7 @@ class Order < ApplicationRecord
 	has_many :order_lines, dependent: :destroy
 	has_many :products, through: :order_lines
 	accepts_nested_attributes_for :order_lines
+	belongs_to :price_unit
 
 	attr_accessor :accept_conditions
 

@@ -3,7 +3,7 @@
 # Table name: price_units
 #
 #  id         :integer          not null, primary key
-#  title      :string(255)
+#  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

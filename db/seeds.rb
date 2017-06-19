@@ -10,6 +10,10 @@ ProductFamily.delete_all
 FabricFamily.delete_all
 PriceUnit.delete_all
 ProductPicture.delete_all
+Country.delete_all
+
+Country.create(title: 'France')
+Country.create(title: 'Myanmar')
 
 Measure.create(title: 'simple', around_collar_large: true)
 Measure.create(title: 'standard', around_collar_large: true, shoulder_width: true)

@@ -31,7 +31,7 @@ gem 'neatjson'
 gem 'magnific-popup-rails'
 gem 'groupdate'
 gem 'js-routes'
-gem 'annotate'
+gem 'annotate' #rails g annotate:install
 gem 'materialize-sass'
 
 group :production do
