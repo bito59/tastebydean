@@ -4,7 +4,7 @@ module Shop
 		before_action :find_ol, only: [:destroy]
 
 		def show
-			@order = current_order
+			@order = OrderDecorator.decorate(current_order)
 			@bck_size = 'bck-img-tb'
 			@bck_img = 'img-login'
 			respond_to do |format|
@@ -15,21 +15,21 @@ module Shop
 					format.html { redirect_to :back || root_path }
 				end
 			end
+			puts 'order : ' + @order.inspect
 		end
 
 		def update_price
 			@order = current_order
-			puts @order.inspect
 			respond_to do |format|
 				if @order.update_attributes(delivery_method: params[:delivery_method])
-					@order = current_order
+					@order = OrderDecorator.decorate(current_order)
 					format.js { render 'shop/cart/update_cart.js.erb' }
 				else
 					flash_message('notice', t('flash_messages.cannot_update_price'))
 					format.js { render 'shop/cart/update_cart.js.erb' }
 				end
 			end
-			puts @order.inspect
+			#puts @order.inspect
 		end
 
 		def destroy
@@ -53,7 +53,6 @@ module Shop
    
 		def find_ol
 			@ol = OrderLine.find(params[:id])
-			#puts 'Product was loaded : ' + @product.inspect
 		end
 
 		def cart_params

@@ -1,14 +1,23 @@
 header {
 	@include flexbox; @include flex-flow(row nowrap);@include align-items(center);@include justify-content(space-between);
 	.logo {margin: auto;}
-	.links {position: absolute;right: 1em;max-width: 40%;}
+	.links {position: absolute;right: 1em;max-width: 50%;}
 	.logo-left {
 		margin-left: 10px;
 		h5 {margin-left: 5px!important;}
+	}
+	.icons {width: 25%;}
+	.country-select {
+		//width: 40px;
+		input[name="country"] {display: none;}
+		.flag {transform: scale(1.25);}
+		.arrow {display: none;}
+		.country-list {right: 0;}
+		//select[name="order[title]"] + .nice-select {width: 100%;margin: 1em 0;}
 	}	
 
 	@media (min-width: map-get($breakpoints, tablet)) {
-		li {margin: 0px 20px 0px 20px;}
+		//li {margin: 0px 20px 0px 20px;}
 		.logo {margin: 0;padding-left: 1em;}
 		.links {img {margin: 0px 5px 0px 5px;}}
 		.cart {

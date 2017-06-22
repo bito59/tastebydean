@@ -2,13 +2,12 @@
 
 *, html, body {margin: 0; padding:0;}
 body {overflow-x: hidden;}
-html {height: 100%;}
-div, header, footer {margin: 0px; padding: 0px; text-align: center;}
-ul, li {list-style-type: none;vertical-align: middle;width: 100%;//margin: auto;
-	padding: 0;}
-//input {border: none;}
+div, header, footer {text-align: center;}
+ul, li {list-style-type: none;vertical-align: middle;width: 100%;}
 img { vertical-align: middle;}
 table {margin: auto;}
+
+::-webkit-scrollbar {display: none;}
 
 //Typi breakpoint variables
 $breakpoints: (mobile: 320px, tablet: 720px, laptop: 1024px, desktop: 1366px);

@@ -15,6 +15,7 @@
 //= require slidebars/dist/slidebars.min.js
 //= require ez-plus/src/jquery.ez-plus.js
 //= require jquery-nice-select/js/jquery.nice-select.min.js
+//= require country-select-js-master/build/js/countrySelect.min.js
 
 //= require turbolinks
 //= require_tree .

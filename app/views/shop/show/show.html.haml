@@ -1,25 +1,21 @@
-= form_for @order_line, authenticity_token: true, class: 'sized' do |f|
-	= f.hidden_field :product_id, value: @product.id
-	= f.hidden_field :fabric_id, value: @order_line.fabric_id, id: 'ol_fabric_field'
+= form_for @orderline, authenticity_token: true, class: 'sized' do |f|
+	= f.hidden_field :product_id, value: @orderline.product_id, id: 'ol_product_field'
+	= f.hidden_field :fabric_id, value: @orderline.fabric_id, id: 'ol_fabric_field'
 	#fullpage.fp-mb.shop_show.flex
 		.section.c5.dyn-header{'data-anchor': '1'}
 			.intro
-				= render partial: 'shop/show/intro', locals: {f: f, product: @product, sizes: @sizes}
+				= render partial: 'shop/show/intro', locals: {f: f, product: @result, sizes: @sizes}
 			#ez-container
 		.section.c5{'data-anchor': '2'}
 			.info.fill-height
-				= render partial: 'shop/show/info', locals: {f: f, product: @product, sizes: @sizes}
-		- if @product.kind == 'model' && (@product.on_measure == true || @product.custom_fabric == true)
+				= render partial: 'shop/show/info', locals: {f: f, product: @result, sizes: @sizes}
+		- if @result.kind == 'model' && (@result.on_measure == true || @result.custom_fabric == true)
 			.section.c5{'data-anchor': '3'}
 				.form.fill-height
-					= render partial: 'shop/show/details_form', locals: {f: f, product: @product, sizes: @sizes}
+					= render partial: 'shop/show/details_form', locals: {f: f, product: @result, sizes: @sizes}
 
 :javascript
 	$(document).ready(function() {
-		product_id = "#{@product.id}";
-		fabric_id = "#{@order_line.fabric_id}";
-		//if ($('#ol_fabric_field').val().length > 0 && screen.width > 1023) {
-		//$('.c5[data-anchor="2"]').hide();
-		//$('.c5[data-anchor="3"]').show();
-		//}
+		product_id = "#{@result.id}";
+		fabric_id = "#{@orderline.fabric_id}";
 	});

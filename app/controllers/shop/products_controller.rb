@@ -15,26 +15,27 @@ module Shop
 
   	def show
       if params[:selected_fabric_id]
-        fabric_price = find_fabric_price(@product.id, params[:selected_fabric_id], nil)
-        @order_line = current_order.order_lines.new(
-          product_id: @product.id,
+        fabric_price = find_fabric_price(@result.id, params[:selected_fabric_id], nil)
+        @orderline = current_order.order_lines.new(
+          product_id: @result.id,
           sep_fabric: false,
           fabric_id: params[:selected_fabric_id],
           std_size: params[:std_size],
-          confection_price: @product.confection_price,
+          confection_price: @result.confection_price,
           fabric_price: fabric_price,
           quantity: 1,
-          price_unit: '€',
-        )
+          price_unit_id: 1
+        ).decorate
       else
-        @order_line = current_order.order_lines.new(
-          product_id: @product.id,
-          confection_price: @product.confection_price,
-        )
+        @orderline = current_order.order_lines.new(
+          product_id: @result.id,
+          confection_price: @result.confection_price,
+          price_unit_id: 1
+        ).decorate
       end
-      @total_price = @order_line.calc_price
-      @sizes = @product.load_sizes
-      @pictures = @product.product_pictures.active
+      @orderline.calc_price
+      @sizes = @result.load_sizes
+      @pictures = @result.product_pictures.active
   		respond_to do |format|
   			format.html { render 'shop/show/show' }
   		end
@@ -45,13 +46,15 @@ module Shop
       if params[:sep_fabric] == 'true' || params[:fabric_id].empty?
         fabric_price = 0
       else
-        fabric_price = find_fabric_price(@product.id, params[:fabric_id], params[:std_size])
+        fabric_price = find_fabric_price(@result.id, params[:fabric_id], params[:std_size])
       end
-      orderline = OrderLine.new(
-        confection_price: @product.confection_price, fabric_price: fabric_price, 
-        quantity: qty)
-      puts orderline.inspect
-      @total_price = orderline.calc_price
+      @orderline = OrderLine.new(
+        confection_price: @result.confection_price, 
+        fabric_price: fabric_price, 
+        quantity: qty,
+        price_unit_id: @result.price_unit.id
+      ).decorate
+      @orderline.calc_price
       respond_to do |format|
         format.js { render 'shop/show/update_product_price.js.erb' }
       end
@@ -60,8 +63,7 @@ module Shop
     private
    
       def find_product
-        @product = Product.friendly.find(params[:id]).decorate
-        #puts 'Product was loaded : ' + @product.inspect
+        @result = Product.friendly.find(params[:id]).decorate
       end
 
       def product_params
@@ -73,16 +75,16 @@ module Shop
       end
         
       def load_products
-        @products = Product.with_kind(params[:kind]).on_site
+        @results = Product.with_kind(params[:kind]).on_site
         if params[:customer]
           if params[:customer] == 'man' || params[:customer] == 'woman'
-            @products = @products.with_customer(params[:customer], 'adult')
+            @results = @results.with_customer(params[:customer], 'adult')
           elsif params[:customer] == 'boy' || params[:customer] == 'girl'
-            @products = @products.with_customer(params[:customer], 'child')
+            @results = @results.with_customer(params[:customer], 'child')
           end
         end
-        @products.decorate
-        puts @products.inspect
+        @results.decorate
+        puts @results.inspect
       end
   end
 end

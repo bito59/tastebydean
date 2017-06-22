@@ -39,7 +39,7 @@ FabricFamily.create(title: 'silk')
 FabricFamily.create(title: 'cotton')
 FabricFamily.create(title: 'linen')
 
-PriceUnit.create(title: '€')
+PriceUnit.create(title: '€') #Always first pls
 PriceUnit.create(title: 'Kyat')
 PriceUnit.create(title: 'USD')
 

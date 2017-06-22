@@ -1,12 +1,6 @@
-class ProductDecorator < Drape::Decorator
-  include Drape::LazyHelpers
-  include ApplicationHelper
+class ProductDecorator < ApplicationDecorator
 
   delegate_all
-
-  def show_confection_price
-    self.confection_price.to_s + " " + self.price_unit.title
-  end
 
   def on_measure_rule
     if self.on_measure == false

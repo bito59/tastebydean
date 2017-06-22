@@ -1,4 +1,4 @@
 $("#total-price").empty();
 $("#total-price").append("<%= j render 'shop/show/total_price' %>");
-console.log("Price was updated : <%= @total_price.to_s %>");
+console.log("Price was updated : <%= @orderline.show_price_in_local_currency('total_price') %>");
 

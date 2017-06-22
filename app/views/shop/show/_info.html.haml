@@ -1,49 +1,49 @@
 // Block 1 : title of the page
 .title
-	%h3.bold= @product.title
-	- if @product.kind == 'model'
+	%h3.bold= @result.title
+	- if @result.kind == 'model'
 		%h4
 			= t('products.product_for')
-			%span= I18n.t("shop.filters.#{@product.customer.title.downcase}")
+			%span= I18n.t("shop.filters.#{@result.customer.title.downcase}")
 		%h4
-			- if @product.on_measure == true
-				= t('products.confection')	
-			%span= t('common.euro', count: @product.confection_price)
-	- elsif @product.kind == 'fabric' && @price
+			- if @result.on_measure == true
+				= t('products.confection')
+			%span= @result.show_price_in_local_currency('confection_price')
+	- elsif @result.kind == 'fabric' && @orderline.fabric_price
 		%h4
 			= t('cart.common.price_for_this_product')
-			%span= @price.price_std.to_s + ' '+ @price.price_unit
+			%span= @orderline.show_price_in_local_currency('fabric_price')
 
 // Block 2 : icons to describe services
 .icons.column-center
 	.icons.inline-center
-		- if @product.kind == 'model'				
+		- if @result.kind == 'model'				
 			%li
-				= @product.on_measure_rule
+				= @result.on_measure_rule
 			%li
-				= @product.unic_fabric_rule
+				= @result.unic_fabric_rule
 			%li
 				= image_tag 'icons/leadtime.png'
-				%h5= t('products.leadtime2', leadtime: @product.leadtime)
-		- elsif @product.kind == 'fabric'
+				%h5= t('products.leadtime2', leadtime: @result.leadtime)
+		- elsif @result.kind == 'fabric'
 			%li
 				= image_tag('icons/origin.png')
-				%h5= t('products.origin') + @product.origin.to_s
+				%h5= t('products.origin') + @result.origin.to_s
 			%li
 				= image_tag('icons/content.png')
-				%h5= '100% ' + I18n.t("shop.filters.#{@product.fabric_family.title}")
+				%h5= '100% ' + I18n.t("shop.filters.#{@result.fabric_family.title}")
 			%li
 				%h5= image_tag('icons/use.png')
 				%h5= t('products.for_all_products')
 
 // Block 3 : Description text of the product itself
 .description.column-center
-	%h4= @product.description
+	%h4= @result.description
 
 // Block 4 : form to add products to the basket
 .basket
-	- if @product.kind == 'model'
-		- if @product.on_measure == false && @product.custom_fabric == false 
+	- if @result.kind == 'model'
+		- if @result.on_measure == false && @result.custom_fabric == false 
 			=#Rules for MODELS not customizable
 			.qties.inline-center
 				%h3= t('cart.common.quantity')
@@ -55,22 +55,22 @@
 			=# Rules for MODELS customizable
 			#btn_custom.btn-custo.btn-green
 				= link_to root_path, remote: true do
-					- if @product.on_measure == true && @product.custom_fabric == true
+					- if @result.on_measure == true && @result.custom_fabric == true
 						%h4= t('shop.action.customize')
-					- elsif @product.on_measure == true && @product.custom_fabric == false
+					- elsif @result.on_measure == true && @result.custom_fabric == false
 						%h4= t('shop.action.choose_size')
-					- elsif @product.on_measure == false && @product.custom_fabric == true
+					- elsif @result.on_measure == false && @result.custom_fabric == true
 						%h4= t('shop.action.choose_fabric')
 		.btn-custo.btn-info
 			= link_to back_path(kind: params[:kind], customer: params[:customer], family: params[:family]) do
 				%h4= t('shop.action.return_to_results')
 	
-	- elsif @product.kind == 'fabric' && params.has_key?(:selected_product_id) 
+	- elsif @result.kind == 'fabric' && params.has_key?(:selected_product_id) 
 		=#Rules for FABRICS if a fabric has been selected previously
 		.btn-custo.btn-green
-			= link_to shop_product_path(kind: 'model', id: params[:selected_product_id], selected_fabric_id: @product.id) do
+			= link_to shop_product_path(kind: 'model', id: params[:selected_product_id], selected_fabric_id: @result.id) do
 				- if params.has_key?(:selected_fabric_id)
-					- if params[:selected_fabric_id] == @product.id.to_s
+					- if params[:selected_fabric_id] == @result.id.to_s
 						%h4= t('shop.action.confirm_this_fabric')
 					- else
 						%h4= t('shop.action.change_for_this_fabric')

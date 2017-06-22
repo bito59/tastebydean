@@ -4,6 +4,7 @@ App.load = ->
 	init_functions()
 
 $(document).on "turbolinks:load", ->
+	init_country_select()
 	init_flash()
 	init_layouts()
 	init_fullpage()
@@ -19,7 +20,7 @@ $(document).on "turbolinks:load", ->
 
 # -------------------------------  JS init functions  --------------------------------------------
 
-# Init the header ad footer specific rules
+# Init the header and footer specific rules
 init_layouts = ->
 	if $(".hd-trsp")[0] # Test if header needs to be pushed for full page image
 		$('#header').addClass('covered')
@@ -33,6 +34,12 @@ init_layouts = ->
 
 	if $(".ft-no")[0]
 		$('#footer').addClass('hide')
+
+init_country_select = ->
+	$("#country").countrySelect
+		onlyCountries: ['fr', 'gb', 'mm']
+		preferredCountries: []
+		defaultCountry: 'fr' 
 		
 init_nice_select = ->
 	$('select').niceSelect()		

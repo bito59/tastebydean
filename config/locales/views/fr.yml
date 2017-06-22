@@ -20,7 +20,7 @@ fr:
         free: 'Gratuit !'
         optional: 'Facultatif'
         euro: 
-            zero: '%{count} euro'
+            zero: 'gratuit'
             one: '%{count} euro'
             other: '%{count} euros'
     flash_messages:

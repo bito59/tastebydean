@@ -10,7 +10,7 @@
 					.details
 						%h4.title= ol.product.title
 						%h5.serial= ol.product.serial
-						%h5.price= ol.unit_price.to_s + ol.price_unit
+						%h5.price= ol.show_price_in_local_currency('total_price')
 						- if ol.fabric.present?
 							= image_tag ol.fabric.fabric_pictures.active.view.first.image.preview
 						- else
@@ -21,7 +21,7 @@
 							%h4.price= ol.quantity
 						.total-price.flex
 							%h4= t('cart.common.total_price')
-							%h4.price= ol.total_price.to_s + ol.price_unit
+							%h4.price= ol.show_price_in_local_currency('total_price')
 					.action
 						.btn-custo.btn-red
 							= link_to order_line_path(ol.id), {remote: true, method: :delete} do
@@ -31,14 +31,13 @@
 
 		.subtotal.flex
 			%h3= t('cart.common.subtotal')
-			%h3.price{id: 'subtotal'}= @order.calc_subtotal.to_s + @order.price_unit
-
+			%h3.price{id: 'subtotal'}= @order.show_price_in_local_currency('subtotal')
 		.delivery
 			= render partial: 'shop/cart/delivery', locals: {f: f}
 
 		.total.flex
 			%h3= t('cart.common.total_ttc')
-			%h3.price.collect{id: 'total_ttc'}= @order.calc_total.to_s + @order.price_unit
+			%h3.price.collect{id: 'total_ttc'}= @order.show_price_in_local_currency('total')
 			=# render partial: 'shop/cart/total_price'
 
 		.payment

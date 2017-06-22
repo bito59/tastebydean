@@ -52,7 +52,7 @@ class OrderLine < ApplicationRecord
 	end
 
 	def calc_price
-		calc_unit_price * quantity
+		self.total_price = self.calc_unit_price * quantity
 	end
 
 	private

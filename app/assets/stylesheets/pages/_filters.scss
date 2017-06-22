@@ -4,7 +4,7 @@
 		//a {margin: 0px 10px 0px 10px;}
 		img {margin: 10px 0 0 1em;}
 		li {margin: 0 0.5em;}
-		.right {width: 15%;position: absolute;right: 0;top: 0;}
+		.right {margin: auto;position: absolute;top: 0;/* left: 0; */bottom: 0;right: 0;}
 	}
 }
 

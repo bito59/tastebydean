@@ -1,9 +1,9 @@
 .shop_index.c2
 	.filters
-		= render partial: 'shop/filters/' + @area + '/filters', locals: {products: @products}
+		= render partial: 'shop/filters/' + @area + '/filters', locals: {results: @results}
 
 	.results.flex
-		- @products.each do |product|
+		- @results.each do |product|
 			- if product.kind == 'model'
 				.product.one-edge-shadow{ id: "item_#{product.serial}" }
 					= link_to shop_product_path(id: product.slug, customer: params[:customer], kind: params[:kind], family: params[:family]) do

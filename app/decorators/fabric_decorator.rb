@@ -1,8 +1,6 @@
-class FabricDecorator < Drape::Decorator
-	delegate_all
+class FabricDecorator < ApplicationDecorator
 
-	def show_price
-		self.price.to_s + " " + self.price_unit
-	end
+  delegate_all
+
 
 end

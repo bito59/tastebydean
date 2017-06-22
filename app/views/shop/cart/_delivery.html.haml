@@ -17,8 +17,7 @@
 				%span.price= t('cart.delivery.c&s_price')
 				= ")"
 .cust_details
-	= f.select :title, [t('user.mr'), t('user.mrs')]
-	= f.text_field :title, placeholder: t('cart.delivery.title'), class: 'field', required: true
+	= f.select :title, [t('user.mrs'), t('user.mr')], class: 'mr_title'
 	= f.text_field :name, placeholder: t('cart.delivery.name'), class: 'field', required: true
 	= f.text_field :surname, placeholder: t('cart.delivery.surname'), class: 'field', required: true
 	= f.text_field :phone, placeholder: t('cart.delivery.phone'), class: 'field', required: true

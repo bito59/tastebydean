@@ -8,7 +8,8 @@
 	= link_to t('layouts.main_filters.creation'), showroom_products_path(kind: 'creation'), class: 'font-white'
 	= link_to t('layouts.main_filters.collection'), shop_products_path(kind: 'model'), class: 'font-white'
 	= link_to t('layouts.main_filters.shop'), shop_products_path(kind: 'accessory'), class: 'font-white'
-	.icons
+	.icons.inline-around
+		= text_field_tag :country, [], id: 'country'
 		- if user_signed_in?
 			= link_to_icon('user_green', 20, 20, destroy_user_session_path, {method: :delete})
 			= link_to shop_cart_show_path, class: 'cart' do
@@ -16,4 +17,5 @@
 				%h5.message= t('cart.common.cart_items', count: current_order.count_qties)
 		- else
 			= link_to_icon('user_white', 20, 20, new_user_session_path)
+
 		

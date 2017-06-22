@@ -1,6 +1,6 @@
 .mb
 	%h3= select_title
-	%h4= t('fabrics', count: products.length)
+	%h4= t('fabrics', count: @results.length)
 .inline-center.tb
 	= selected_link('workshop', shop_workshop_path)
 	= '|'
@@ -15,4 +15,4 @@
 	.mb
 		= render partial: 'shop/filters/equalizer'
 	.tb
-		%h5= t('fabrics', count: products.length)
+		%h5= t('fabrics', count: @results.length)

@@ -2,7 +2,7 @@
 	$('#ol_<%= @order_line.id %>').fadeOut("slow",function(){ $(this).remove(); });
 	console.log("Order_line was deleted. New total price : <%= j @order.subtotal.to_s %>");	
 <% end %>
-$("#subtotal").text("<%= j @order.subtotal.to_s + @order.price_unit %>");
-$("#total_ttc").text("<%= j @order.total.to_s + @order.price_unit %>");
+$("#subtotal").text("<%= j @order.show_price_in_local_currency('subtotal') %>");
+$("#total_ttc").text("<%= j @order.show_price_in_local_currency('total') %>");
 $('#flash_msg').append("<%= j render_flash %>").change();
 console.log("cart updated");	

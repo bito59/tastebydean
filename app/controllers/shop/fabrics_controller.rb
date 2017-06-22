@@ -14,23 +14,22 @@ module Shop
   	end
 
   	def show
-      @order_line = current_order.order_lines.new
-      @pictures = @product.fabric_pictures.active.view
       if params[:selected_product_id]
         product_family_id = Product.friendly.find(params[:selected_product_id]).product_family.id
-        @price = @product.fabric_family.fabric_prices.where(product_family_id: product_family_id).first
+        price = @result.fabric_family.fabric_prices.where(product_family_id: product_family_id).first
       end
+      @orderline = current_order.order_lines.new(
+        product_id: params[:selected_product_id],
+        fabric_price: price
+        ).decorate
+      @pictures = @result.fabric_pictures.active.view
   		respond_to do |format|
   			format.html { render 'shop/show/show' }
   		end
   	end
 
     private
-   
-      def find_fabric
-        @product = Fabric.friendly.find(params[:id]).decorate
-      end
-
+  
       def fabric_params
         params.require(:fabric).permit(
           :title, :description, :activated, :kind, :family, :customer, :event, 
@@ -38,13 +37,16 @@ module Shop
           :fabric_pictures_attributes,
         )
       end
+
+      def find_fabric
+        @result = Fabric.friendly.find(params[:id]).decorate
+      end
         
       def load_fabrics
-        @products = Fabric.on_site
+        @results = Fabric.on_site
         unless params[:family].nil?
-          @products = @products.with_fabric_family(params[:family])
+          @results = @results.with_fabric_family(params[:family])
         end
-        puts 'fabrics loaded : ' + @fabrics.inspect
       end
   end
 end

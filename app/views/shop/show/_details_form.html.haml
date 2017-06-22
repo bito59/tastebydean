@@ -1,10 +1,10 @@
 // Block 1 : title of the page
 .title.lt
-	%h3.bold= @product.title
+	%h3.bold= @result.title
 
 // Block 2 : custom sizes if proposed
 .sizes.column-center
-	- if @product.unic_size == true
+	- if @result.unic_size == true
 		.subtitle.inline-center
 			%h4= t('products.not_on_measure')
 			= image_tag('icons/size-unic.png')
@@ -24,7 +24,7 @@
 
 // Block 3 : custom fabric if proposed
 .fabrics.column-center
-	- if @product.custom_fabric == false
+	- if @result.custom_fabric == false
 		.inline-center
 			%h4= t('products.unic_fabric')
 			= image_tag('icons/fabric-unic.png')
@@ -37,19 +37,19 @@
 			%h6.big_size= t('products.dimensions', length: product.fabric_lng_big, large: product.fabric_lrg_big)
 		.options.inline-center
 			.hidded-link
-				- if @order_line.fabric_id
-					= link_to '#', shop_fabric_path(kind: 'fabric', id: @order_line.fabric_id,selected_product_id: @product.id, selected_fabric_id: params[:selected_fabric_id]), id: 'link_to_fabrics'
+				- if @orderline.fabric_id
+					= link_to '#', shop_fabric_path(kind: 'fabric', id: @orderline.fabric_id,selected_product_id: @result.id, selected_fabric_id: params[:selected_fabric_id]), id: 'link_to_fabrics'
 					
 			%label.option
 				= f.radio_button :sep_fabric, true
 				%span= t('shop.action.buy_fabric_myself')
-			- if @order_line.fabric_id
+			- if @orderline.fabric_id
 				%label.option
 					= f.radio_button :sep_fabric, false
 					%span{id: 'select_fabric_link'}= t('shop.action.buy_this_fabric')
 			- else
 				%label.option
-					= link_to shop_fabrics_path(kind: 'fabric', selected_product_id: @product.id), id: 'link_to_fabrics' do
+					= link_to shop_fabrics_path(kind: 'fabric', selected_product_id: @result.id), id: 'link_to_fabrics' do
 						%span= t('shop.action.choose_fabric')
 
 .buy.column-center

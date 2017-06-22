@@ -1,18 +1,18 @@
 .title.mb
-	%h3.bold= @product.title
+	%h3.bold= @result.title
 	%h4.price
-		- if @product.kind == 'model'
-			= @product.show_confection_price
-		- if @product.kind == 'fabric' && @selected_product
-			= @price.title
+		- if @result.kind == 'model'
+			= @result.show_price_in_local_currency('confection_price')
+		- if @result.kind == 'fabric' && @selected_product
+			= @result.show_price_in_local_currency
 .owl-carousel.owl-theme
 	- @pictures.each do |p|
 		.item.img-link
 			= image_tag p.image, class: "ezoom", data: {zoom_image: p.image.url }
-- if @order_line.fabric_id
+- if @orderline.fabric_id
 	.fabric
-		= link_to shop_fabric_path(kind: 'fabric', id: @order_line.fabric.id, selected_product_id: @product.id, selected_fabric_id: @order_line.fabric.id, std_size: @order_line.std_size) do
-			= image_tag @order_line.fabric.fabric_pictures.active.view.first.image.url
+		= link_to shop_fabric_path(kind: 'fabric', id: @orderline.fabric.id, selected_product_id: @result.id, selected_fabric_id: @orderline.fabric.id, std_size: @orderline.std_size) do
+			= image_tag @orderline.fabric.fabric_pictures.active.view.first.image.url
 		.delete
-			= link_to shop_product_path(kind: 'model', id: @product.id) do
+			= link_to shop_product_path(kind: 'model', id: @result.id) do
 				= image_tag 'icons/cancel.png'
