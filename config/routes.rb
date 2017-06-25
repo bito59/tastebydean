@@ -1,21 +1,14 @@
 Rails.application.routes.draw do
 
-  mount ForestLiana::Engine => '/forest'
-	root "main#welcome"
-	#match '', to: redirect("/#{I18n.locale}"), via: :get
-	#scope "(:locale)", locale: /en|bi|fr/ do
-	scope "(/:Locale)" do
+	match '', to: redirect("/#{I18n.locale}"), via: :get
+	scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+		root to: "main#welcome"
 		devise_for :users
 		resources :news, only: [:create]
 		resources :order_lines, only: [:create, :update, :destroy]
-		resources :orders#, only: [:show, :edit]
+		resources :orders
 		match '/terms', to: 'main#terms', via: :get, as: :terms
 		match '/back', to: 'main#redirect_to_back', via: :get, as: :back
-
-		namespace :forest do
-		  post '/actions/do_it' => 'products#do_it'
-		end
-
 		namespace :shop do
 		  resources :products, only: [:index, :show]
 		  resources :fabrics, only: [:index, :show]
@@ -28,4 +21,10 @@ Rails.application.routes.draw do
 			resources :products, only: [:index]
 		end
 	end
+
+	mount ForestLiana::Engine => '/forest'
+	namespace :forest do
+	  post '/actions/do_it' => 'products#do_it'
+	end
+
 end

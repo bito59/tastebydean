@@ -42,7 +42,12 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
-    #puts 'current order : ' + current_order.inspect
+    #I18n.locale = params[:locale] || session[:locale] || I18n.default_locale
+    session[:locale] = I18n.locale
+  end
+
+  def default_url_options(options={})
+    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale  }
   end
 
   def find_fabric_price(product_id, fabric_id, std_size)
@@ -74,14 +79,16 @@ class ApplicationController < ActionController::Base
   end
 
   def check_header
-    if request.fullpath == '/' || request.url.include?('users') 
+    case request.fullpath
+    when '/fr', '/bi', '/en' then
       @header_trsp = true
     else
-      @header_trsp = false
+      if request.url.include?('users') 
+        @header_trsp = true
+      else
+        @header_trsp = false
+      end
     end
-    #puts '@header_trsp : ' + @header_trsp.inspect
-    #puts request.url.inspect
-    #puts request.fullpath
   end
 
   def store_current_location

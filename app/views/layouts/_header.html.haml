@@ -9,7 +9,9 @@
 	= selected_header_link('creation', showroom_products_path(kind: 'creation'))
 	= selected_header_link('collection', shop_products_path(kind: 'model'))
 	= selected_header_link('shop', shop_products_path(kind: 'accessory'))
-	.icons
+	.icons.inline-center
+		.country_select_container
+			= text_field_tag :country, [], id: 'country_id'
 		- if user_signed_in?
 			= link_to_icon('user_green', 20, 20, destroy_user_session_path, {method: :delete})
 			= link_to shop_cart_show_path, class: 'cart' do

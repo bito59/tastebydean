@@ -167,11 +167,11 @@ module ApplicationHelper
 	
 	def alternate_locales
 	  # Remove current locale from list
-	  aval_locales_but_current = I18n.available_locales - [locale]
+	  #aval_locales_but_current = I18n.available_locales - [locale]
 	end
 
 	def flag(language, width, height)
-		image_tag('flags/' + language.to_s + '.jpg', width: width, height: height)
+		#image_tag('flags/' + language.to_s + '.jpg', width: width, height: height)
 	end
 	
 end

@@ -6,8 +6,9 @@
   %meta{name: "viewport", content: "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"}
 
   = csrf_meta_tags
-  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-  = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %script
+    var locale = "#{I18n.locale}";
+
   - if Rails.env.production?
     %script
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -16,18 +17,13 @@
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-88492107-2', 'auto');
 
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+  = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
   %body
-    %header#header
-      - if @header_trsp == true
-        = render partial: 'layouts/header_trsp'
-      - elsif @header_trsp == false
-        = render partial: 'layouts/header'
-
-    %main#main.mb-quit{'canvas': 'container', class: "#{@bck_size} #{@bck_img}"}
-      = yield
-
-    %footer#footer
-      = render partial: 'layouts/footer'
+    %section#languages
+      - ['en', 'bi', 'fr'].each do |l|
+        = link_to l, params.permit(:locale).merge(locale: l, params: request.query_parameters), data: { no_turbolink: true }, id: "switch_#{l}"
 
     %section.mb_menu{'off-canvas': "mb-main-menu left overlay"}
       = render partial: 'layouts/mb_main_menu'  
@@ -39,5 +35,14 @@
     %section#flash_msg
       = render_flash
 
-    - if (@page_libs || []).include?('fullpage')
-      =# javascript_include_tag '/javascripts/lib/fullpage.js'
+    %header#header
+      - if @header_trsp == true
+        = render partial: 'layouts/header_trsp'
+      - else
+        = render partial: 'layouts/header'
+
+    %main#main.mb-quit{'canvas': 'container', class: "#{@bck_size} #{@bck_img}"}
+      = yield
+
+    %footer#footer
+      = render partial: 'layouts/footer'

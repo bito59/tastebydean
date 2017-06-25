@@ -1,35 +1,191 @@
 en:
-  views: 
-    main:
-        header:
-            creations: "Creations"
-            collections: "Collections"
-            accessories: "Accessories"
+    user:
+        connection: 'Connection'
+        register: 'Registration'
+        password: 'Password'
+        password_confirmation: 'Confirm password'
+        password_forgotten: 'Password forgotten ?'
+        remember_me: 'Stay connected'
+        email: 'Email'
+        city: 'Zipcode'
+        news: 'News'
+        no-news: 'No thanks'
+        mr: 'Mr'
+        mrs: 'Mrs'
+    common:
+        validate: 'Confirm'
+        add_to_basket: 'Add to basket'
+        cancel: 'Cancel'
+        pass_order: 'Create order'
+        free: 'Free !'
+        optional: 'Optionnal'
+        euro: 
+            zero: 'free'
+            one: '%{count} USD'
+            other: '%{count} USD'
+    flash_messages:
+        news_created: 'You registered !'
+        news_problem: 'Sorry, cannot register'
+        welcome: "Welcome to Dean's corner !"
+        empty_cart: 'Your basket is empty'
+        cart_problem: 'Sorry, basket problem'
+        order_passed: 'Thanks for your order !'
+        order_cant_pass: 'Sorry, there is a problem with your order'
+        log_in_first: 'Please register first or log in'
+        cannot_update_price: "Price cant be updated"
+        please_check_adress: 'please check your adress'
+    layouts:
+        main_filters:
+            creation: 'Creation'
+            collection: 'Collection'
+            shop: 'Shop'
+            basket: 'Basket'
+            connect: 'Log in'
+            disconnect: 'Log out'
+            cancel: 'Cancel'
         footer: 
             terms: "Conditions"
-            designed_by: "Design by bitocreator"
+            designed_by: "Design by"            
+    fabrics:
+        zero: 'No fabric'
+        one: '%{count} fabric'
+        other: '%{count} fabrics'
+        fabric_unit_price: ' for one meter'
+    products:
+        zero: 'No product'
+        one: '%{count} product'
+        other: '%{count} products'
+        origin: 'Made in '
+        product_for: 'Product for '
+        on_measure: 'On measure'
+        dimensions: '(%{length} x %{large} cm needed)'
+        for_all_products: 'For all products'
+        not_on_measure: 'Taille unique'
+        unic_fabric: 'Unic fabric'
+        custom_fabric: 'Custom fabric'
+        leadtime1: 'Leadtime'
+        leadtime2: '~ %{leadtime} days'
+        confection: 'Confection'
+        size:
+            man_std: 'S to L'
+            man_big: 'XL or more'
+            woman_std: 'T34 to T38'
+            woman_big: 'T40 to T46'
+            boy_std: 'Less than 10 years'
+            boy_big: 'More than 10 years'
+            girl_std: 'Less than 10 years'
+            girl_big: 'More than 10 years'
+            child_std: 'Less than 10 years'
+            child_big: 'More than 10 years'
+    public:
         welcome:
-            welcome_title: "Your tenue on measure"
+            welcome_title: "Dresses for special occasions"
             creations: "Creation"
-            creations_caption: "Concevez votre tenue"
+            creations_caption: "Your creation on measure"
             collections: "Collection"
-            collections_caption: "Choisissez votre tissus et vos couleurs"
-            accessories: "Accessoires"
-            accessories_caption: "Ajoutez une touche personnelle"
-            drawing_explain: "Concevez votre tenue à partir d'un dessin, une photo, un modèle."
-            fabrics_explain: "Choisissez votre tissus et vos couleurs sur notre site ou près de chez vous."
-            manequin_explain: "Communiquez-nous vos mensurations, toutes nos réalisations sont faites sur mesure."
-            comment: "Super robe livrée juste à temps pour le mariage de mon frère, merci Dean !"
-            follow_us: "Nous suivre"
+            collections_caption: "Our models to customize"
+            accessories: "Shop"
+            accessories_caption: "Our fabrics and accessories"
+            explain_creation_mb: 'Imagine your dress'
+            explain_fabric_mb: 'Find your fabric'
+            explain_on_measure_mb: 'Send us your measures'
+            explain_creation: "Imaginez votre tenue à partir d'un de nos modèles, ou créez votre tenue."
+            explain_fabric: "Trouvez votre tissus et vos couleurs sur notre site ou près de chez vous."
+            explain_on_measure: "Communiquez-nous vos mensurations pour les réalisations faites sur mesure."
+            comment: "A beautifull dress just on time for my brother's weeding, thanks !"
+            follow_us: "Follow us"
         news_form:
-            discover: "Découvrez les dernières nouveautés et ventes privées par email :"
+            discover: "Get our last news by email"
             zipcode: "Zipcode"
             email: "Email"
-        browse_products:
-            man: "Homme"
-            woman: "Femme"
-            child: "Enfant"
-            accessories: "Accessoires"
+            validate: "Register"
+    shop:
+        action:
+            customize: 'Choose your size and fabric'
+            choose_size: 'Choose your size'
+            size_explain: 'You will receive by email explanations'
+            choose_fabric: 'Choose your fabric'
+            confirm_fabric_explain: 'We will confirm by email this fabric is available'
+            return_to_results: 'Retourner aux résultats'
+            select_this_fabric: 'Choose this fabric'
+            buy_fabric_myself: 'Provide your own fabrics'
+            other_fabrics: 'Other fabrics'
+            return_to_product: 'Return to product' 
+            confirm_this_fabric: 'Confirm this fabric'
+            change_for_this_fabric: 'Change for this fabric'  
+            change_fabric: 'Change fabric'
+            buy_this_fabric: 'Buy this fabric'
+        filters:
+            man: 'Man'
+            woman: 'Woman'
+            boy: 'Boy'
+            girl: 'Girl'
+            child: 'Child'
+            all: 'All'
+            all_models: 'All models'
+            accessories: 'Accessories'
+            all_products: 'All productss'
+            fabrics: 'Fabrics'
+            all_fabrics: 'All fabrics'
+            wool: 'wool'
+            cotton: 'cotton'
+            linen: 'linen'
+            silk: 'silk'
+            workshop: "The workshop"
+    workshop:
+        title: "Come to meet us !"
+        contact: "We receive at openning time or on appointment"
+        adress1: '34 rue François de Badts'
+        adress2: '59 110 La Madeleine'
+        adress3: 'France'
+        email: 'deancorner@gmail.com'
+        phone: '+33 6 60 10 44 00'
+        opening: 'Monday to fridayn, 12h00 to 19h00'
+        social: 'Join Deancorner on Facebook and Instagram'
+    cart:
+        title: "Your basket"
+        common:
+            quantity: 'Quantities'
+            own_fabric : 'You provide your fabric'
+            price: 'Price :'
+            unit_price: 'Unit price'
+            subtotal: 'Total basket :'
+            total_price: 'Total '
+            total_ttc: 'Total price :'
+            price_for_this_product: 'Price for this product :'
+            empty_cart: "Your cart is empty !"
+            cancel_item: "Cancel item"
+        delivery:
+            title: "Delivery choice :"
+            c&c: "Collect in the workshop on appointment"
+            c&c_price: "Free"
+            c&s: "Ship to my adress"
+            c&s_price: "5€"
+            shipping_fees: "Delivery price :"
+            name: 'Name'
+            surname: 'Surname'
+            address: 'Adress'
+            zipcode: 'Zipcode'
+            city: 'City'
+            country: 'Country'
+            phone: 'Phone'
+        payment:
+            title: "Payment choice :"
+            online: 'Online'
+            check : 'Send a check'
+            quotation: 'Receive a quotation'
+        conditions:
+            title: "Conditions :"
+            fabric1: "You choosed to provide fabric for some of your products"
+            fabric2: "Quantities needed will be sent by email. The costs to bring them to our workshop are on your behalf."
+            leadtime1: "We usually ship within 2 to 3 weeks"
+            leadtime2: "after receiving all fabrics. You will be noticed by email."
+            accept_conditions: "I accept the"
+            cgv: "selling conditions"
+    showroom:
+        index:
+            title: "You want to realize one of your creations ?"
+            contact: "Please come to meet us to discuss about it !"
 
 
-        
+

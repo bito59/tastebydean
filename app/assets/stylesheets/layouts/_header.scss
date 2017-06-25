@@ -7,13 +7,14 @@ header {
 		h5 {margin-left: 5px!important;}
 	}
 	.icons {width: 25%;}
-	.country-select {
-		//width: 40px;
+	.country_select_container {
+		width: 30px;height: 30px;display: flex;
 		input[name="country"] {display: none;}
-		.flag {transform: scale(1.25);}
+		.country-select {display: flex;}
+		.flag-dropdown {position: initial;}
+		.flag {position: initial;transform: scale(1.25);}
+		.country-list {right: 0;width: 150px;}
 		.arrow {display: none;}
-		.country-list {right: 0;}
-		//select[name="order[title]"] + .nice-select {width: 100%;margin: 1em 0;}
 	}	
 
 	@media (min-width: map-get($breakpoints, tablet)) {

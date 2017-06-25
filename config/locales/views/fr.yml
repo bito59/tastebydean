@@ -36,7 +36,6 @@ fr:
         please_check_adress: 'Merci de vérifier votre adresse'
     layouts:
         main_filters:
-            admin: 'Admin'
             creation: 'Création'
             collection: 'Collection'
             shop: 'Boutique'
@@ -46,25 +45,14 @@ fr:
             cancel: 'Annuler'
         footer: 
             terms: "Conditions"
-            designed_by: "Design par"
-        devise_modal:
-            email: "Email"
-            password: "Mot de passe"
-            confirm_password: "Confirmer le mot de passe"
-            password_forgotten: "Mot de passe oublié"
-            zipcode: "Code postal"
-            news: "Newsletter"
-            no_news: "Non merci"
-            register: "Créer un compte"
-            log_in: "Se connecter"
-            create_account: "Valider"             
+            designed_by: "Design par"          
     fabrics:
-        zero: '%{count} tissu'
+        zero: 'Aucun tissu'
         one: '%{count} tissu'
         other: '%{count} tissus'
         fabric_unit_price: ' le mètre'
     products:
-        zero: '%{count} produit'
+        zero: 'Aucun produit'
         one: '%{count} produit'
         other: '%{count} produits'
         origin: 'Produit à '
@@ -72,7 +60,6 @@ fr:
         on_measure: 'Sur mesure'
         dimensions: '(%{length} x %{large} cm nécessaires)'
         for_all_products: 'Pour tous produits'
-        on_measure_exp: 'Envoyez nous vos mesures par email.'
         not_on_measure: 'Taille unique'
         unic_fabric: 'Tissu unique'
         custom_fabric: 'Tissu au choix'
@@ -158,7 +145,6 @@ fr:
     cart:
         title: "Votre panier"
         common:
-            cart_items: '%{count}'
             quantity: 'Quantités'
             own_fabric : 'Vous fournissez le tissu'
             price: 'Prix :'

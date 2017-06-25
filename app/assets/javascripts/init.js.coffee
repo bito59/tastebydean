@@ -36,10 +36,25 @@ init_layouts = ->
 		$('#footer').addClass('hide')
 
 init_country_select = ->
-	$("#country").countrySelect
+	switch locale
+		when 'en' then loc = 'gb'
+		when 'bi' then loc = 'mm'
+		else loc = 'fr'
+	console.log loc
+	$("#country_id").countrySelect
 		onlyCountries: ['fr', 'gb', 'mm']
 		preferredCountries: []
-		defaultCountry: 'fr' 
+		defaultCountry: loc
+	$(".country_select_container").hover (ev) ->
+		#$('.country-list').removeClass('hide')
+	$(".country_select_container").mouseleave (ev) ->
+		#$('.country-list').addClass('hide')
+	$("#country_id").change ->
+		countryCode = $(".country_select_container").find(".selected-flag .flag").attr("class").split(" ")[1]
+		switch countryCode
+			when 'gb' then $("#switch_en")[0].click()
+			when 'fr' then $("#switch_fr")[0].click()
+			when 'mm' then $("#switch_bi")[0].click()
 		
 init_nice_select = ->
 	$('select').niceSelect()		
